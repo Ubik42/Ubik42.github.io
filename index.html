@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Lucas (Yuyan) Shen, technical artist and developer.">
+  <link rel="icon" href="data:,">
+  <title>Lucas Shen | Technical Artist & Developer</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: oklch(0.18 0.02 255);
+      --muted: oklch(0.43 0.025 255);
+      --paper: oklch(0.985 0.004 255);
+      --line: oklch(0.84 0.018 255);
+      --lime: oklch(0.87 0.22 120);
+      --blue: oklch(0.55 0.22 255);
+      --surface: oklch(0.95 0.015 255);
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.55;
+    }
+
+    a { color: inherit; }
+
+    .shell {
+      width: min(calc(100% - 40px), var(--max));
+      margin-inline: auto;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .name {
+      font-weight: 750;
+      text-decoration: none;
+    }
+
+    nav { display: flex; gap: 22px; }
+
+    nav a {
+      color: var(--muted);
+      font-size: 0.94rem;
+      text-decoration: none;
+    }
+
+    nav a:hover, nav a:focus-visible { color: var(--ink); }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(380px, 1.1fr);
+      gap: clamp(36px, 7vw, 96px);
+      align-items: center;
+      min-height: min(640px, calc(88vh - 72px));
+      padding-block: clamp(48px, 7vw, 88px);
+    }
+
+    .hero h1 {
+      max-width: 11ch;
+      margin: 0;
+      font-size: clamp(3rem, 7vw, 5.8rem);
+      line-height: 0.98;
+      letter-spacing: -0.035em;
+      text-wrap: balance;
+    }
+
+    .hero p {
+      max-width: 54ch;
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+      text-wrap: pretty;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 10px 18px;
+      border: 1px solid var(--ink);
+      border-radius: 6px;
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    .button.primary { background: var(--ink); color: white; }
+    .button:hover { transform: translateY(-1px); }
+
+    .visual {
+      position: relative;
+      min-height: 430px;
+      overflow: hidden;
+      border-radius: 8px;
+      background: var(--ink);
+    }
+
+    .visual img {
+      width: 100%;
+      height: 100%;
+      min-height: 430px;
+      object-fit: cover;
+      display: block;
+      opacity: 0.88;
+    }
+
+    .visual-label {
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      max-width: 240px;
+      padding: 12px 14px;
+      border-radius: 5px;
+      background: var(--lime);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    section { padding-block: clamp(64px, 8vw, 104px); }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 38px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+    }
+
+    .section-heading p {
+      max-width: 42ch;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 18px;
+    }
+
+    article {
+      display: flex;
+      min-height: 310px;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(24px, 4vw, 40px);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+
+    article.featured { background: var(--blue); color: white; }
+
+    article h3 {
+      margin: 0;
+      font-size: clamp(1.55rem, 3vw, 2.3rem);
+      line-height: 1.08;
+      overflow-wrap: anywhere;
+    }
+
+    article p { max-width: 50ch; margin: 18px 0; }
+    article:not(.featured) p { color: var(--muted); }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .tag {
+      padding: 5px 9px;
+      border: 1px solid currentColor;
+      border-radius: 999px;
+      font-size: 0.78rem;
+    }
+
+    .project-link {
+      align-self: flex-start;
+      margin-top: 28px;
+      font-weight: 700;
+      text-underline-offset: 4px;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      padding-block: 28px 42px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 800px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .visual, .visual img { min-height: 330px; }
+      .section-heading { align-items: start; flex-direction: column; }
+    }
+
+    @media (max-width: 520px) {
+      .shell { width: min(calc(100% - 28px), var(--max)); }
+      header { min-height: 64px; }
+      nav a:first-child { display: none; }
+      .hero { gap: 28px; padding-block: 34px 20px; }
+      .hero h1 { font-size: clamp(2.65rem, 15vw, 4rem); }
+      .hero p { margin-top: 20px; }
+      .hero-actions { margin-top: 22px; }
+      .visual, .visual img { min-height: 170px; }
+      section { padding-block: 32px 72px; }
+      footer { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <a class="name" href="#top">Lucas Shen</a>
+      <nav aria-label="Primary navigation">
+        <a href="#work">Selected work</a>
+        <a href="https://github.com/Ubik42">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <div class="hero">
+        <div>
+          <h1>Technical art, tools, and real-time graphics.</h1>
+          <p>I am Lucas (Yuyan) Shen, a technical artist and developer working across DCC tools, rigging, web graphics, and interactive systems.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#work">View selected work</a>
+            <a class="button" href="https://lucasshen2002.artstation.com/">Open ArtStation</a>
+          </div>
+        </div>
+        <div class="visual">
+          <img src="assets/digital-twin.png" alt="A WebGL city scene with editable building outlines and rendering controls">
+          <div class="visual-label">WebGL experiments built with Vue 3 and Three.js</div>
+        </div>
+      </div>
+
+      <section id="work">
+        <div class="section-heading">
+          <h2>Selected work</h2>
+          <p>Two earlier web projects, preserved here as snapshots of different stages in my development practice.</p>
+        </div>
+
+        <div class="projects">
+          <article class="featured">
+            <div>
+              <h3>Vue3 Digital Twin</h3>
+              <p>A Three.js and Vue 3 experiment library covering digital cities, industrial visualization, shaders, post-processing, GIS, particles, materials, and scene interaction.</p>
+              <div class="tags" aria-label="Technologies">
+                <span class="tag">Vue 3</span>
+                <span class="tag">Three.js</span>
+                <span class="tag">WebGL</span>
+                <span class="tag">GLSL</span>
+              </div>
+            </div>
+            <a class="project-link" href="https://github.com/Ubik42/Vue3_Digital_Twin">View repository -&gt;</a>
+          </article>
+
+          <article>
+            <div>
+              <h3>Vue Shop</h3>
+              <p>An early Vue 2 information-management course project. The repository contains an Element UI login flow, form validation, API authentication, token storage, and route protection.</p>
+              <div class="tags" aria-label="Technologies">
+                <span class="tag">Vue 2</span>
+                <span class="tag">Element UI</span>
+                <span class="tag">Axios</span>
+                <span class="tag">Vue Router</span>
+              </div>
+            </div>
+            <a class="project-link" href="https://github.com/Ubik42/vue_shop">View repository -&gt;</a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Lucas (Yuyan) Shen</span>
+      <span>Technical Artist &amp; Developer</span>
+    </footer>
+  </div>
+</body>
+</html>
