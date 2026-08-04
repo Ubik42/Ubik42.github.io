@@ -1,2 +1,10 @@
 /desktop.png
 /mobile.png
+/node_modules/
+/dist/
+/playwright-report/
+/test-results/
+/.playwright-cli/
+/qa-*.png
+/.vite/
+*.log
