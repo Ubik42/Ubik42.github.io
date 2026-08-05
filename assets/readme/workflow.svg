@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" role="img" aria-labelledby="title desc">
+  <title id="title">AI-assisted production workflow</title>
+  <desc id="desc">A six-stage workflow from production problem through deterministic rules, bounded AI assistance, human review, DCC or engine execution, and exported evidence.</desc>
+  <rect width="1200" height="320" rx="26" fill="#f6f4f5"/>
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif">
+    <text x="56" y="62" fill="#171217" font-size="38" font-weight="800">A bounded AI production loop</text>
+    <text x="56" y="94" fill="#6d626a" font-size="18" font-weight="650" letter-spacing="1.2">DETERMINISTIC RULES AND HUMAN REVIEW STAY AUTHORITATIVE</text>
+    <path d="M110 190H1090" stroke="#bbb3b9" stroke-width="3"/>
+
+    <g transform="translate(70 144)">
+      <g transform="translate(0)"><circle cx="40" cy="46" r="31" fill="#3b082f"/><text x="40" y="54" text-anchor="middle" fill="#fff" font-size="22" font-weight="800">01</text><text x="40" y="106" text-anchor="middle" fill="#171217" font-size="20" font-weight="750">Problem</text></g>
+      <g transform="translate(194)"><circle cx="40" cy="46" r="31" fill="#74105b"/><text x="40" y="54" text-anchor="middle" fill="#fff" font-size="22" font-weight="800">02</text><text x="40" y="106" text-anchor="middle" fill="#171217" font-size="20" font-weight="750">Rules</text></g>
+      <g transform="translate(388)"><circle cx="40" cy="46" r="36" fill="#20b96f"/><text x="40" y="54" text-anchor="middle" fill="#fff" font-size="22" font-weight="800">03</text><text x="40" y="106" text-anchor="middle" fill="#15965a" font-size="20" font-weight="800">AI assist</text></g>
+      <g transform="translate(582)"><circle cx="40" cy="46" r="31" fill="#3b082f"/><text x="40" y="54" text-anchor="middle" fill="#fff" font-size="22" font-weight="800">04</text><text x="40" y="106" text-anchor="middle" fill="#171217" font-size="20" font-weight="750">Review</text></g>
+      <g transform="translate(776)"><circle cx="40" cy="46" r="36" fill="#1657c8"/><text x="40" y="54" text-anchor="middle" fill="#fff" font-size="22" font-weight="800">05</text><text x="40" y="106" text-anchor="middle" fill="#1657c8" font-size="20" font-weight="800">DCC / Engine</text></g>
+      <g transform="translate(970)"><circle cx="40" cy="46" r="31" fill="#3b082f"/><text x="40" y="54" text-anchor="middle" fill="#fff" font-size="22" font-weight="800">06</text><text x="40" y="106" text-anchor="middle" fill="#171217" font-size="20" font-weight="750">Evidence</text></g>
+    </g>
+    <path d="M1090 190l-14-9v18Z" fill="#3b082f"/>
+  </g>
+</svg>
