@@ -228,10 +228,15 @@ main {
 
 .hero-identity {
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(15rem, 20vw, 19rem);
+  grid-template-rows: 1fr auto;
+  grid-template-areas:
+    'name avatar'
+    'actions actions';
   min-height: 43rem;
-  flex-direction: column;
-  justify-content: space-between;
+  align-items: start;
+  gap: clamp(2rem, 4vw, 4rem);
   overflow: hidden;
   padding: clamp(3rem, 6vw, 6.7rem) clamp(2rem, 6.5vw, 7.2rem) clamp(2.8rem, 5vw, 5.5rem);
   background: var(--plum);
@@ -260,6 +265,7 @@ main {
 .hero-name-block {
   position: relative;
   z-index: 2;
+  grid-area: name;
   max-width: 49rem;
 }
 
@@ -328,15 +334,15 @@ main {
 }
 
 .hero-avatar-stamp {
-  position: absolute;
+  position: relative;
   z-index: 3;
-  top: clamp(8.5rem, 24vh, 14rem);
-  right: -3.8rem;
-  width: clamp(8.8rem, 14vw, 12.5rem);
-  padding: 0.65rem;
+  grid-area: avatar;
+  width: 100%;
+  max-width: 19rem;
+  justify-self: end;
+  padding: clamp(0.7rem, 1vw, 0.95rem);
   background: var(--green);
   box-shadow: 0 0 0 1px var(--ink);
-  rotate: 1.5deg;
 }
 
 .hero-avatar-stamp img {
@@ -351,7 +357,7 @@ main {
   padding-top: 0.48rem;
   color: var(--ink);
   font-family: var(--display);
-  font-size: 0.65rem;
+  font-size: 0.72rem;
   font-weight: 750;
   letter-spacing: 0.08em;
 }
@@ -359,10 +365,11 @@ main {
 .hero-actions {
   position: relative;
   z-index: 4;
+  grid-area: actions;
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-top: clamp(3rem, 8vw, 6rem);
+  margin-top: clamp(1rem, 3vw, 2.5rem);
 }
 
 .magnet-wrapper {
@@ -1389,8 +1396,7 @@ main {
   }
 
   .hero-avatar-stamp {
-    right: -3rem;
-    width: 9.5rem;
+    max-width: 16.5rem;
   }
 
   .atlas-shell {
@@ -1418,9 +1424,7 @@ main {
   }
 
   .hero-avatar-stamp {
-    top: auto;
-    right: 5vw;
-    bottom: 5rem;
+    max-width: 19rem;
   }
 
   .hero-instrument {
@@ -1481,6 +1485,7 @@ main {
   }
 
   .hero-identity {
+    grid-template-columns: minmax(0, 1fr) 11rem;
     min-height: 38rem;
     padding: 3.4rem 1.5rem 2rem;
   }
@@ -1494,13 +1499,11 @@ main {
   }
 
   .hero-avatar-stamp {
-    right: 1.2rem;
-    bottom: 5.2rem;
-    width: 7rem;
+    width: 11rem;
   }
 
   .hero-actions {
-    max-width: calc(100% - 8.2rem);
+    max-width: none;
   }
 
   .hero-instrument {
@@ -1649,12 +1652,19 @@ main {
   }
 
   .hero-identity {
-    min-height: 42rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      'avatar'
+      'name'
+      'actions';
+    min-height: auto;
+    gap: 2rem;
   }
 
   .hero-signal {
     max-width: 18ch;
-    margin-bottom: 5rem;
+    margin-bottom: 2rem;
   }
 
   .hero-chinese-name {
@@ -1672,13 +1682,13 @@ main {
   }
 
   .hero-avatar-stamp {
-    bottom: 7.5rem;
-    width: 6.4rem;
+    width: clamp(10rem, 44vw, 12rem);
+    justify-self: end;
   }
 
   .hero-actions {
     max-width: 100%;
-    margin-top: 5.4rem;
+    margin-top: 0.5rem;
   }
 
   .action {
