@@ -12,7 +12,7 @@ They usually arrive with limited time. They need to understand the role, see con
 
 ## Product Purpose
 
-This site is the public front door for an AI Tool Technical Artist. It connects personal positioning, selected production-tool case studies, public engineering work, visual evidence, and longer-form portfolio material.
+This site is the personal front door for an AI Tool Technical Artist. It introduces Lucas as a person first, then connects that story to selected production tools, public engineering work, visual experiments, and the channels where he shares them.
 
 Success means a visitor can answer these questions quickly:
 
@@ -41,9 +41,9 @@ The experience should combine the directness of a senior toolmaker's workbench w
 
 ## Design Principles
 
-1. **Lead with the current role.** AI Tool TA is the first positioning; earlier game, graphics, and web work provides supporting range.
-2. **Show evidence before claims.** Every major capability points to a real interface, artifact, diagram, repository, validation result, or case-study page.
-3. **Translate the workbench.** Borrow the precision, density, and state language of modern tools, then add enough narrative for a first-time visitor.
+1. **Lead with the person and current role.** The visitor meets Lucas, understands his motivation, and then sees the AI Tool TA practice.
+2. **Connect interests to evidence.** Every major capability points to a real interface, artifact, diagram, repository, validation result, or public channel.
+3. **Keep the toolmaker’s precision.** Clear structure and honest technical language support the personal narrative without turning the homepage into a dashboard.
 4. **Explain the AI boundary.** Show where AI drafts, diagnoses, clusters, or explains, and where deterministic rules validate and execute.
 5. **Build a durable index.** The homepage remains concise while case studies and the AI Tool TA Portfolio can grow independently behind it.
 6. **Publish safely.** Company experience is expressed through transferable methods and synthetic public cases, not internal implementation details.

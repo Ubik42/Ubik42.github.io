@@ -2,69 +2,55 @@
 
 ## Approved Direction
 
-The homepage combines `mock-b-identity-instrument.png` and `mock-c-evidence-atlas.png`.
+The homepage follows `docs/design/personal-site-north-star.png`: a personal introduction built around one compact avatar-and-name identity cluster, a tactile cobalt 3D field, first-person writing, three kinds of work, and annotated public links.
 
-- The hero is identity-led: a committed plum field, the green hand-drawn avatar, a narrow engineered display face, and concise positioning.
-- The second major surface is an Evidence Atlas: three unequal systems share protocol, rules, AI assist, DCC/engine, and evidence layers.
-- Real workbench captures provide proof. They are cropped by the live layout and retain their original files.
-- English and Chinese are equal product states. The switch updates visible copy, document language, metadata, and the persisted preference.
+The page is not a résumé or a product dashboard. Technical evidence remains visible through real project imagery and precise copy, but the narrative explains who Lucas is, what he enjoys, how he learns, and why he builds tools.
 
 ## Palette
 
 ```css
---plum: oklch(0.36 0.147 340);
---plum-deep: oklch(0.20 0.08 340);
---green: oklch(0.86 0.20 153);
---blue: oklch(0.54 0.16 252);
---white: oklch(1 0 0);
---surface: oklch(0.965 0 0);
---ink: oklch(0.16 0.025 340);
---muted: oklch(0.48 0.025 340);
+--blue: oklch(0.52 0.27 264);
+--blue-deep: oklch(0.38 0.21 264);
+--green: oklch(0.86 0.29 142);
+--ink: oklch(0.16 0.02 255);
+--muted: oklch(0.43 0.025 255);
+--steel: oklch(0.55 0.07 252);
+--white: oklch(0.975 0.004 255);
 ```
 
-Plum carries the identity plane and evidence inspector. Green identifies AI assistance and the avatar. Anodized blue identifies DCC/engine work, active selections, and technical links. White and neutral surfaces keep long-form evidence readable.
+Cobalt blue carries the main visual surface. Electric green connects the original avatar to interactive and spatial accents. Cool white and near-black keep the long-form introduction readable.
 
 ## Type
 
-- Display: Archivo Variable, condensed through its width and weight range.
+- Display: Archivo Variable, using its condensed width for identity and section headings.
 - Body: Atkinson Hyperlegible Next Variable.
-- Chinese fallback: system CJK sans stack.
+- Chinese fallback: Microsoft YaHei UI and the local system sans stack.
 
-Generated mocks referenced commercial type only as a visual direction. The shipped typefaces use deployable packages and remain legible across English and Chinese.
+The name uses strong size and width contrast while body copy remains at least 16px with a readable measure.
 
-## Mock Fidelity Inventory
+## Layout
 
-| Visible ingredient | Live implementation |
-| --- | --- |
-| Large plum identity field | Semantic hero heading, copy, actions, and avatar |
-| Green avatar stamp | Original public avatar file, not a generated redraw |
-| Instrument-like right hero | Lazy-loaded React Three Fiber evidence core plus semantic method index |
-| Six-stage method | HTML list and a related six-part WebGL object |
-| Evidence Atlas | Keyboard-operable system selector, shared layers, and live inspector |
-| Real tool evidence | Original Cross-DCC, Visual Review, and Slidev motion captures |
-| Plum evidence inspector | Animated content replacement with a native dialog for deeper review |
-| Practice range | Real work and education chronology from the public resume |
-| Motion cues | Motion for React for entry, selection, and layout transitions |
-| React Bits behavior | Adapted Magnet interaction on primary actions, disabled for coarse pointers and reduced motion |
+- Avatar and name are one flex container at every viewport. The avatar never uses a viewport corner as its anchor.
+- Desktop hero is a two-part composition: personal introduction and blue spatial field.
+- Mobile hero stacks the same two parts without shrinking the identity cluster.
+- About, work, and public links use different structures to create rhythm instead of repeating one card grid.
+- Project images use a controlled 16:10 crop so source screenshots cannot stretch the page.
 
-## 3D and Motion
+## Motion and 3D
 
-- WebGL renders a six-part protocol core rather than a generic orb or particle field.
-- The 3D module is code-split and has a styled fallback. Text and navigation never depend on WebGL.
-- Motion uses transform and opacity, with short quart/expo easing. Content remains visible before animation.
-- `prefers-reduced-motion` disables magnetic motion, looping WebGL rotation, scroll behavior, and decorative transitions.
+- Motion for React orchestrates the hero entrance and button interaction.
+- React Three Fiber renders three connected practice objects inside the blue field.
+- The 3D chunk is lazy-loaded and all text remains independent of WebGL.
+- Long-form content is visible by default; it never depends on scroll-triggered opacity.
+- Reduced-motion mode disables animation and continuous rendering.
 
 ## Localization
 
-- Locale is `en` or `zh` and is stored under a versioned local-storage key.
-- The first visit follows the browser language, falling back to English.
-- Strings remain complete units rather than concatenated fragments.
-- Layout reserves enough width for both languages and recomposes on narrow screens.
+- English and Chinese are full content states, stored under `portfolio.locale.v1`.
+- The first visit follows the browser language.
+- The document language, title, and description update with the selected locale.
+- Both languages share the same information architecture and responsive behavior.
 
-## Deliberate Deviations from the Mocks
+## Public Channels
 
-- Generated metrics and project counts are removed because they are not authoritative.
-- Generated dates are replaced with resume-backed dates.
-- LinkedIn and email are omitted until a confirmed public address is provided.
-- The full Toolbench has no fake public repository CTA. Visitors inspect evidence on-page and use verified public links.
-
+The homepage explains what each verified link contains: GitHub for code and tools, ArtStation for artwork and breakdowns, Bilibili for demos and tutorials, and Xiaohongshu for notes and resources.

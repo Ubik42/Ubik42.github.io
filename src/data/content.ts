@@ -37,7 +37,10 @@ export interface SiteCopy {
     description: string;
   };
   nav: {
+    about: string;
     work: string;
+    notes: string;
+    links: string;
     practice: string;
     connect: string;
     aria: string;
@@ -56,6 +59,27 @@ export interface SiteCopy {
     methodTitle: string;
     coreLabel: string;
     coreStatus: string;
+  };
+  personal: {
+    intro: string;
+    storyAction: string;
+    aboutTitle: string;
+    aboutBody: string[];
+    traits: { title: string; detail: string }[];
+    workTitle: string;
+    workIntro: string;
+    workItems: {
+      title: string;
+      detail: string;
+      meta: string;
+      image: string;
+      imageWidth: number;
+      imageHeight: number;
+      imageAlt: string;
+    }[];
+    linksTitle: string;
+    linksIntro: string;
+    social: { name: string; detail: string; href: string; mark: string }[];
   };
   method: MethodStage[];
   atlas: {
@@ -227,7 +251,10 @@ export const siteCopy: Record<Locale, SiteCopy> = {
         'Lucas Shen builds inspectable AI-assisted tools for DCC, engine, and art-production workflows.',
     },
     nav: {
-      work: 'Evidence atlas',
+      about: 'About',
+      work: 'Work',
+      notes: 'Notes',
+      links: 'Links',
       practice: 'Practice',
       connect: 'Connect',
       aria: 'Primary navigation',
@@ -247,6 +274,35 @@ export const siteCopy: Record<Locale, SiteCopy> = {
       methodTitle: 'Rules become tools. Evidence closes the loop.',
       coreLabel: 'Protocol core',
       coreStatus: 'Six layers, one reviewable handoff',
+    },
+    personal: {
+      intro: 'I build AI-assisted tools that connect DCCs, engines, and creative workflows. I like understanding how a system really works, then making it easier for artists to use.',
+      storyAction: 'Read my story',
+      aboutTitle: 'A little about me',
+      aboutBody: [
+        'I’m Lucas, a technical artist from China. My path crosses industrial engineering, game development, real-time graphics, and production tools. That mix is why I’m comfortable moving between an artist’s problem and the code behind it.',
+        'I enjoy reverse-engineering systems, turning repeated work into tools, and testing where AI is genuinely useful. Outside the toolchain, I keep learning through games, animation, music, graphics experiments, and sharing what I find.',
+      ],
+      traits: [
+        { title: 'What I care about', detail: 'Graphics, tools, AI, games, animation, and music.' },
+        { title: 'How I learn', detail: 'Build a real thing, inspect the result, then improve the system.' },
+        { title: 'How I work', detail: 'Keep the creative decision human and make the repetitive parts dependable.' },
+      ],
+      workTitle: 'Things I make',
+      workIntro: 'A mix of production tools, personal workflows, and graphics experiments.',
+      workItems: [
+        { title: 'DCC tools', detail: 'Asset protocols, review tools, rig helpers, and safer scene operations for Maya and adjacent DCC workflows.', meta: 'Maya · Python · PySide6', image: '/media/visual-review-workflow.png', imageWidth: 1440, imageHeight: 11665, imageAlt: 'A visual review tool interface for DCC production.' },
+        { title: 'AI workflows', detail: 'Inspectable pipelines that use AI for drafting and diagnosis while deterministic checks protect delivery.', meta: 'Agents · Rules · Evidence', image: '/media/cross-dcc-rule-matrix.png', imageWidth: 1440, imageHeight: 8682, imageAlt: 'A cross-DCC rule and validation workflow.' },
+        { title: 'Graphics & games', detail: 'Shaders, real-time 3D, interactive prototypes, and presentation experiments built to understand the medium.', meta: 'Three.js · Unity · Unreal', image: '/media/slidev-motion-study.png', imageWidth: 1280, imageHeight: 720, imageAlt: 'A Three.js motion and presentation experiment.' },
+      ],
+      linksTitle: 'Find me online',
+      linksIntro: 'Different parts of my work live in different places.',
+      social: [
+        { name: 'GitHub', detail: 'Code, tools, and open-source projects.', href: 'https://github.com/Ubik42', mark: 'GH' },
+        { name: 'ArtStation', detail: 'Artwork, breakdowns, and visual process.', href: 'https://lucasshen2002.artstation.com/', mark: 'AS' },
+        { name: 'Bilibili', detail: 'Tool demos, tutorials, and longer videos.', href: 'https://space.bilibili.com/12367861?spm_id_from=333.1007.0.0', mark: 'Bi' },
+        { name: 'Xiaohongshu', detail: 'Notes, resources, and everyday discoveries.', href: 'https://www.xiaohongshu.com/user/profile/670526b2000000001e001891', mark: 'RED' },
+      ],
     },
     method: [
       { id: 'problem', label: 'Problem', detail: 'Frame the production constraint.' },
@@ -318,7 +374,10 @@ export const siteCopy: Record<Locale, SiteCopy> = {
       description: '沈裕焱专注于为 DCC、引擎和美术生产流程构建可检查的 AI 辅助工具。',
     },
     nav: {
-      work: '证据图谱',
+      about: '关于我',
+      work: '作品',
+      notes: '随笔',
+      links: '链接',
       practice: '经历',
       connect: '联系',
       aria: '主导航',
@@ -337,6 +396,35 @@ export const siteCopy: Record<Locale, SiteCopy> = {
       methodTitle: '规则形成工具，证据完成闭环。',
       coreLabel: '协议核心',
       coreStatus: '六层关系，一份可审查交付',
+    },
+    personal: {
+      intro: '我为 DCC、引擎和创作流程开发 AI 辅助工具。我喜欢先弄清一个系统真正如何运转，再把它做得更容易被创作者使用。',
+      storyAction: '认识我',
+      aboutTitle: '关于我',
+      aboutBody: [
+        '我是沈裕焱，一名来自中国的技术美术。我的经历横跨工业工程、游戏开发、实时图形和生产工具，所以我习惯同时理解创作者遇到的问题，以及问题背后的代码与系统。',
+        '我喜欢拆解复杂系统，把重复劳动做成工具，也会认真验证 AI 到底适合参与哪一步。工具之外，我持续从游戏、动画、音乐、图形实验和公开分享中学习。',
+      ],
+      traits: [
+        { title: '我关心的事', detail: '图形、工具、AI、游戏、动画和音乐。' },
+        { title: '我的学习方式', detail: '先做出真实的东西，检查结果，再改进整个系统。' },
+        { title: '我的工作习惯', detail: '让创作决定留给人，让重复环节变得可靠。' },
+      ],
+      workTitle: '我在做的东西',
+      workIntro: '生产工具、个人工作流，以及帮助我理解媒介的图形实验。',
+      workItems: [
+        { title: 'DCC 工具', detail: '围绕 Maya 与相邻 DCC 流程开发资产协议、评审工具、绑定辅助和更安全的场景操作。', meta: 'Maya · Python · PySide6', image: '/media/visual-review-workflow.png', imageWidth: 1440, imageHeight: 11665, imageAlt: '面向 DCC 生产流程的视觉评审工具界面。' },
+        { title: 'AI 工作流', detail: '让 AI 负责起草与诊断，同时用确定性检查保护生产交付的可检查流程。', meta: 'Agent · 规则 · 证据', image: '/media/cross-dcc-rule-matrix.png', imageWidth: 1440, imageHeight: 8682, imageAlt: '跨 DCC 的规则与验证工作流。' },
+        { title: '图形与游戏', detail: '通过 Shader、实时三维、交互原型和演示实验持续理解图形媒介。', meta: 'Three.js · Unity · Unreal', image: '/media/slidev-motion-study.png', imageWidth: 1280, imageHeight: 720, imageAlt: 'Three.js 动效与演示实验。' },
+      ],
+      linksTitle: '在这些地方找到我',
+      linksIntro: '不同平台记录着我工作的不同侧面。',
+      social: [
+        { name: 'GitHub', detail: '代码、工具和开源项目。', href: 'https://github.com/Ubik42', mark: 'GH' },
+        { name: 'ArtStation', detail: '美术作品、拆解与视觉过程。', href: 'https://lucasshen2002.artstation.com/', mark: 'AS' },
+        { name: '哔哩哔哩', detail: '工具演示、教程和长视频。', href: 'https://space.bilibili.com/12367861?spm_id_from=333.1007.0.0', mark: 'Bi' },
+        { name: '小红书', detail: '笔记、资源和日常发现。', href: 'https://www.xiaohongshu.com/user/profile/670526b2000000001e001891', mark: 'RED' },
+      ],
     },
     method: [
       { id: 'problem', label: '生产问题', detail: '明确真实约束与失败成本。' },
