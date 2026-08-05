@@ -1,0 +1,20 @@
+[submodule "references/source/ai-tool-ta-portfolio"]
+	path = references/source/ai-tool-ta-portfolio
+	url = https://github.com/Ubik42/ai-tool-ta-portfolio.git
+	shallow = true
+[submodule "references/source/resume"]
+	path = references/source/resume
+	url = https://github.com/Ubik42/resume-shen-yuyan-editable.git
+	shallow = true
+[submodule "references/source/github-profile"]
+	path = references/source/github-profile
+	url = https://github.com/Ubik42/Ubik42.git
+	shallow = true
+[submodule "references/inspiration/developer-portfolios"]
+	path = references/inspiration/developer-portfolios
+	url = https://github.com/emmabostian/developer-portfolios.git
+	shallow = true
+[submodule "references/inspiration/portfolio-ideas"]
+	path = references/inspiration/portfolio-ideas
+	url = https://github.com/Evavic44/portfolio-ideas.git
+	shallow = true

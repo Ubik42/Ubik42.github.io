@@ -14,7 +14,6 @@ export function Header() {
         <nav className="site-nav" aria-label={copy.nav.aria}>
           <a href="#portfolio">{copy.nav.work}</a>
           <a href="#career">{copy.nav.practice}</a>
-          <a href="#repositories">GitHub</a>
           <a href="#artstation">ArtStation</a>
           <a href="#links">{copy.nav.links}</a>
         </nav>

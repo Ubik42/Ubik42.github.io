@@ -15,11 +15,15 @@ The content flow is therefore:
 - Positioning and hiring focus
 - Flagship `ai-tool-ta-portfolio` case with engineering evidence
 - Capability pillars, experience, and education
-- Public GitHub repositories and presentation layers
-- ArtStation visual-practice carousel
+- Complete AI Tool TA system: five core workbenches and integrated runtime tools
+- Complete ArtStation visual-practice archive
 - Public contact and profile channels
 
-`src/data/showcase.ts` is the main bilingual content model for portfolio, repository, and ArtStation data. Sections remain independent React components so the flagship portfolio can grow without turning the home page into a second case-study application.
+`src/data/showcase.ts` is the main bilingual content model for the AI tool portfolio and ArtStation archive. Source repositories and external portfolio datasets live under `references/` as Git submodules, so maintainers and AI agents can inspect the current source of truth without turning repository links into homepage content.
+
+```powershell
+git submodule update --init --recursive --depth 1
+```
 
 ## Stack
 
