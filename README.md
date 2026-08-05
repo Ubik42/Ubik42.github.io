@@ -24,5 +24,10 @@ npm run lint
 npm run build
 ```
 
-GitHub Actions builds `dist/` and deploys it to GitHub Pages.
+## Deploy
 
+```powershell
+npm run deploy
+```
+
+The deploy command verifies the project, builds `dist/`, and publishes the result to the `gh-pages` branch used by GitHub Pages.
