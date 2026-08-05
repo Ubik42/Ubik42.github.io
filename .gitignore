@@ -4,6 +4,7 @@
 /dist/
 /playwright-report/
 /test-results/
+/artifacts/
 /.playwright-cli/
 /qa-*.png
 /.vite/

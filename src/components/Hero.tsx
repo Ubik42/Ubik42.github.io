@@ -28,7 +28,7 @@ export function Hero() {
         <p className={`hero-intro ${locale === 'zh' ? 'is-chinese' : ''}`}>{copy.personal.intro}</p>
         <div className="hero-actions">
           <Magnet wrapperClassName="magnet-wrapper" innerClassName="magnet-inner">
-            <a className="action action-primary" href="#work">{copy.hero.primaryAction}<span aria-hidden="true">↘</span></a>
+            <a className="action action-primary" href="#portfolio">{copy.hero.primaryAction}<span aria-hidden="true">↘</span></a>
           </Magnet>
           <a className="action action-secondary" href="#about">{copy.personal.storyAction}<span aria-hidden="true">↓</span></a>
         </div>
@@ -36,6 +36,7 @@ export function Hero() {
 
       <motion.div
         className="hero-world"
+        role="img"
         initial={reducedMotion ? false : { opacity: 0, x: 36 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.95, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}

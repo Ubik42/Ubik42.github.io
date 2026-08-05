@@ -12,8 +12,10 @@ export function Header() {
       </a>
       <div className="header-actions">
         <nav className="site-nav" aria-label={copy.nav.aria}>
-          <a href="#about">{copy.nav.about}</a>
-          <a href="#work">{copy.nav.work}</a>
+          <a href="#portfolio">{copy.nav.work}</a>
+          <a href="#career">{copy.nav.practice}</a>
+          <a href="#repositories">GitHub</a>
+          <a href="#artstation">ArtStation</a>
           <a href="#links">{copy.nav.links}</a>
         </nav>
         <LanguageToggle />
