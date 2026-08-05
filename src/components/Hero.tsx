@@ -40,25 +40,29 @@ export function Hero() {
         variants={entrance}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="hero-avatar-stamp">
-          <img
-            src="/media/avatar.jpg"
-            alt="Lucas Shen hand-drawn avatar"
-            width="640"
-            height="640"
-            fetchPriority="high"
-          />
-          <span aria-hidden="true">ID / LSHEN</span>
+        <p className="hero-signal">AI / DCC / ENGINE / EVIDENCE</p>
+
+        <div className="hero-profile">
+          <div className="hero-name-block">
+            <h1 id="hero-title">Lucas Shen</h1>
+            <p className="hero-chinese-name" lang="zh-CN">沈裕焱</p>
+            <p className="hero-role">{copy.hero.role}</p>
+          </div>
+
+          <div className="hero-avatar-stamp">
+            <img
+              src="/media/avatar.jpg"
+              alt="Lucas Shen hand-drawn avatar"
+              width="640"
+              height="640"
+              fetchPriority="high"
+            />
+            <span aria-hidden="true">ID / LSHEN</span>
+          </div>
         </div>
 
-        <div className="hero-name-block">
-          <p className="hero-signal">AI / DCC / ENGINE / EVIDENCE</p>
-          <h1 id="hero-title">Lucas Shen</h1>
-          <p className="hero-chinese-name" lang="zh-CN">沈裕焱</p>
-          <p className="hero-role">{copy.hero.role}</p>
-          <span className="hero-rule" aria-hidden="true" />
-          <p className={`hero-statement ${locale === 'zh' ? 'is-chinese' : ''}`}>{copy.hero.statement}</p>
-        </div>
+        <span className="hero-rule" aria-hidden="true" />
+        <p className={`hero-statement ${locale === 'zh' ? 'is-chinese' : ''}`}>{copy.hero.statement}</p>
 
         <div className="hero-actions">
           <Magnet wrapperClassName="magnet-wrapper" innerClassName="magnet-inner">
