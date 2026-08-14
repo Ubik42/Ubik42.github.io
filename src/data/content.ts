@@ -30,7 +30,7 @@ export const siteCopy: Record<Locale, SiteCopy> = {
     },
     nav: { work: 'Tools', practice: 'Experience', links: 'Links', aria: 'Primary navigation' },
     language: { label: 'Language', english: 'English', changed: 'Language changed to English.' },
-    hero: { role: 'AI Tool Technical Artist', primaryAction: 'Explore 16 production tools' },
+    hero: { role: 'AI Tool Technical Artist', primaryAction: 'Explore five product lines' },
     personal: {
       intro: 'I build AI-assisted tools that connect DCCs, engines, and art-production workflows. I focus on production rules, safe execution, review evidence, and artist-facing usability.',
       storyAction: 'Meet Lucas',
@@ -70,7 +70,7 @@ export const siteCopy: Record<Locale, SiteCopy> = {
     },
     nav: { work: '工具', practice: '经历', links: '链接', aria: '主导航' },
     language: { label: '语言', english: 'English', changed: '语言已切换为中文。' },
-    hero: { role: 'AI 工具技术美术', primaryAction: '查看 16 个生产工具' },
+    hero: { role: 'AI 工具技术美术', primaryAction: '查看五条产品线' },
     personal: {
       intro: '我为 DCC、引擎和美术生产流程开发 AI 辅助工具，关注生产规则、安全执行、评审证据与创作者真正使用工具时的体验。',
       storyAction: '认识我',

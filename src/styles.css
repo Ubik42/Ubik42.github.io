@@ -246,6 +246,13 @@ p { text-wrap: pretty; }
 .tool-detail-copy dd { margin: 0; color: var(--muted); }
 .tool-detail-copy > ul { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: .45rem; padding: 0; margin: 0; list-style: none; }
 .tool-detail-copy > ul li { padding: .3rem .6rem; border: 1px solid var(--line); color: var(--muted); font-size: .76rem; }
+.repository-links { grid-column: 1 / -1; display: grid; gap: .8rem; padding-top: 1.25rem; border-top: 1px solid var(--ink); }
+.repository-links > strong { color: var(--blue-deep); font-size: .82rem; }
+.repository-links > div { display: flex; flex-wrap: wrap; gap: .55rem; }
+.repository-links a { display: inline-flex; align-items: center; gap: .45rem; max-width: 100%; padding: .45rem .65rem; border: 1px solid var(--line); color: var(--ink); font-size: .78rem; font-weight: 700; overflow-wrap: anywhere; text-decoration: none; transition: border-color 180ms ease, color 180ms ease, background 180ms ease; }
+.repository-links a:hover { border-color: var(--blue); background: color-mix(in oklch, var(--blue) 7%, var(--white)); color: var(--blue-deep); }
+.repository-links a:focus-visible { outline: 3px solid var(--green); outline-offset: 2px; }
+.portfolio-disclaimer { max-width: 72ch; margin: clamp(3rem, 6vw, 6rem) 0 0 auto; padding-top: 1.5rem; border-top: 1px solid var(--ink); color: var(--muted); font-size: .95rem; }
 .integrated-tools { margin-top: clamp(4rem, 8vw, 8rem); }
 .integrated-tools > header { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 7vw, 8rem); align-items: end; margin-bottom: 2rem; }
 .integrated-tools > header h3 { max-width: 16ch; margin: 0; font-size: clamp(2.2rem, 4vw, 4.2rem); font-stretch: condensed; line-height: .95; letter-spacing: -.035em; }

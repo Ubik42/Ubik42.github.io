@@ -22,7 +22,7 @@ Success means a visitor can answer these questions quickly:
 - What screenshots, data flows, tests, repositories, or runnable artifacts prove the work?
 - Where should the visitor go next for a deeper review?
 
-The site is English-first for international review, with concise Chinese context where it materially helps local collaborators.
+The site is Chinese-first for domestic recruiting and portfolio review. English remains a complete, manually selectable content state for international visitors.
 
 ## Brand Personality
 

@@ -10,10 +10,10 @@ function getInitialLocale(): Locale {
     const stored = window.localStorage.getItem(STORAGE_KEY);
     if (stored === 'en' || stored === 'zh') return stored;
   } catch {
-    // Storage can be unavailable in privacy modes. Browser language remains a safe fallback.
+    // Storage can be unavailable in privacy modes. Chinese remains the public default.
   }
 
-  return window.navigator.language.toLowerCase().startsWith('zh') ? 'zh' : 'en';
+  return 'zh';
 }
 
 function updateDescription(description: string) {

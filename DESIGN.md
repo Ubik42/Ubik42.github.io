@@ -47,7 +47,7 @@ The name uses strong size and width contrast while body copy remains at least 16
 ## Localization
 
 - English and Chinese are full content states, stored under `portfolio.locale.v1`.
-- The first visit follows the browser language.
+- The first visit defaults to Chinese; an explicit previous language choice remains persisted locally.
 - The document language, title, and description update with the selected locale.
 - Both languages share the same information architecture and responsive behavior.
 

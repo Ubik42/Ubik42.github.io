@@ -2,9 +2,14 @@ import type { Locale } from './content';
 
 export type Localized = Record<Locale, string>;
 
-export interface CoreTool {
+export interface RepositoryLink {
+  name: string;
+  href: string;
+}
+
+export interface ProductLine {
   id: string;
-  title: string;
+  title: Localized;
   order: string;
   image: string;
   imageWidth: number;
@@ -13,30 +18,24 @@ export interface CoreTool {
   purpose: Localized;
   workflow: Localized;
   proof: Localized;
+  stage: Localized;
   stack: string[];
-}
-
-export interface IntegratedTool {
-  title: string;
-  family: Localized;
-  purpose: Localized;
-  runtime: string;
-  maturity: string;
+  repositories: RepositoryLink[];
 }
 
 export const portfolioOverview = {
-  title: { en: 'AI Tool TA, DCC-first portfolio', zh: 'AI 工具 TA · DCC-first 作品集' },
+  title: { en: 'Five product lines, one technical-art practice', zh: '五条产品线，一套技术美术实践' },
   summary: {
-    en: 'A connected production-tool system, not a collection of frontend demos. The work runs through Maya, Blender, 3ds Max, Unreal, and a reviewable evidence pipeline.',
-    zh: '这是一套相互连接的生产工具系统，而不是前端 Demo 集合。工具覆盖 Maya、Blender、3ds Max、Unreal，并通过可审查的证据管线完成交付。',
+    en: 'Eighteen focused repositories are grouped into five recruiter-facing product lines. They are public development work, not finished commercial releases, and still require broader host, workflow, and usability testing.',
+    zh: '18 个独立仓库按招聘者能够快速理解的方式归入五条产品线。它们是公开开发中的工程作品，不是已经交付的商业产品，仍需补充宿主、工作流与可用性测试。',
   },
-  sourceLabel: { en: 'Inspect source portfolio', zh: '查看作品集源码' },
-  status: { en: 'R24 public package · capture package in progress', zh: 'R24 公开包 · GUI 采集材料持续补全' },
+  sourceLabel: { en: 'Open portfolio index', zh: '打开作品集总入口' },
+  status: { en: 'In development · full validation pending', zh: '开发中 · 待完整测试' },
   facts: [
-    { value: '5', label: { en: 'core workbenches', zh: '个核心工作台' } },
-    { value: '11', label: { en: 'integrated tools and adapters', zh: '个集成工具与适配器' } },
-    { value: '21', label: { en: 'tracked evidence files', zh: '个关键证据文件' } },
-    { value: '14', label: { en: 'presentation route steps', zh: '段展示路线' } },
+    { value: '5', label: { en: 'product lines', zh: '条产品线' } },
+    { value: '18', label: { en: 'independent repositories', zh: '个独立仓库' } },
+    { value: '9', label: { en: 'ArtStation projects', zh: '个 ArtStation 项目' } },
+    { value: 'CN', label: { en: 'Chinese-first presentation', zh: '中文优先展示' } },
   ],
 };
 
@@ -54,66 +53,90 @@ export const career = {
   ],
 };
 
-export const coreTools: CoreTool[] = [
+export const productLines: ProductLine[] = [
   {
-    id: 'asset-protocol', order: '01', title: 'Asset Protocol Workbench',
-    image: '/media/portfolio/asset-protocol.png', imageWidth: 1440, imageHeight: 4667,
-    imageAlt: { en: 'Asset protocol editor with DCC payload, validation, and staged preset evidence.', zh: '包含 DCC Payload、验证结果与分阶段 Preset 证据的资产协议工作台。' },
-    purpose: { en: 'Turns asset intent, aliases, UV and vertex semantics, custom attributes, LOD, and platform budgets into a typed handoff contract.', zh: '把资产意图、别名、UV 与顶点语义、自定义属性、LOD 和平台预算编码为类型化交付合同。' },
-    workflow: { en: 'Author contract → collect Maya facts → compare payload → validate policy → export evidence.', zh: '编写合同 → 采集 Maya 事实 → 对比 Payload → 校验策略 → 导出证据。' },
-    proof: { en: 'Field-level diffs, staged fix preview, DCC evidence report, and public synthetic fixtures.', zh: '字段级 Diff、分阶段修复预览、DCC 证据报告与公开合成样例。' },
-    stack: ['Maya 2024', 'Python', 'AuroraView', 'React'],
-  },
-  {
-    id: 'rule-matrix', order: '02', title: 'Cross-DCC Rule Matrix',
+    id: 'cross-dcc-rules', order: '01',
+    title: { en: 'Cross-DCC asset rules and safe repair', zh: '跨 DCC 资产规范与安全修复系统' },
     image: '/media/portfolio/cross-dcc-rules.png', imageWidth: 1440, imageHeight: 8682,
-    imageAlt: { en: 'Cross-DCC rule authoring, validation heatmap, fix preview, and publish gate.', zh: '跨 DCC 规则编写、验证热图、修复预览和发布门禁。' },
-    purpose: { en: 'Expresses one production policy as a shared rule DSL, then maps it to different DCC facts and safe-fix boundaries.', zh: '用共享规则 DSL 表达同一生产策略，再映射到不同 DCC 事实与安全修复边界。' },
-    workflow: { en: 'Collect → normalize → validate → preview fix → resolve manual cases → publish report.', zh: '采集 → 归一化 → 验证 → 预览修复 → 人工处置 → 发布报告。' },
-    proof: { en: 'Maya, Blender, and 3ds Max adapters with traceable rule inputs and runtime evidence.', zh: 'Maya、Blender 与 3ds Max Adapter，以及可追踪的规则输入和运行证据。' },
-    stack: ['Rule DSL', 'Maya', 'Blender bpy', '3ds Max pymxs'],
+    imageAlt: { en: 'Cross-DCC rule authoring, validation heatmap, repair preview, and publish gate.', zh: '跨 DCC 规则编写、验证热图、修复预览与发布门禁界面。' },
+    purpose: { en: 'Models asset rules once, maps them to host-specific facts, and keeps automated repair previewable and reversible.', zh: '统一建模资产规范，再映射到各 DCC 的事实采集与修复边界，让自动修复始终可预览、可追踪、可回滚。' },
+    workflow: { en: 'Define rules → collect host facts → normalize → validate → preview or apply repair → export evidence.', zh: '定义规则 → 采集宿主事实 → 归一化 → 校验 → 预览或执行修复 → 导出证据。' },
+    proof: { en: 'Shared rule contracts, Maya workbench, and adapters for Blender, 3ds Max, Houdini, and MotionBuilder.', zh: '共享规则合同、Maya 工作台，以及 Blender、3ds Max、Houdini 与 MotionBuilder 适配器。' },
+    stage: { en: 'Architecture and initial implementations exist; cross-version and production-asset testing remains.', zh: '架构与初版实现已存在，仍需补齐跨版本与真实生产资产测试。' },
+    stack: ['Maya', 'Blender', '3ds Max', 'Houdini', 'MotionBuilder', 'Python'],
+    repositories: [
+      { name: 'maya-asset-protocol-workbench', href: 'https://github.com/Ubik42/maya-asset-protocol-workbench' },
+      { name: 'maya-cross-dcc-rule-matrix', href: 'https://github.com/Ubik42/maya-cross-dcc-rule-matrix' },
+      { name: 'blender-rule-repair-adapter', href: 'https://github.com/Ubik42/blender-rule-repair-adapter' },
+      { name: 'max-rule-repair-adapter', href: 'https://github.com/Ubik42/max-rule-repair-adapter' },
+      { name: 'houdini-procedural-rule-adapter', href: 'https://github.com/Ubik42/houdini-procedural-rule-adapter' },
+      { name: 'motionbuilder-animation-rule-adapter', href: 'https://github.com/Ubik42/motionbuilder-animation-rule-adapter' },
+    ],
   },
   {
-    id: 'visual-review', order: '03', title: 'Visual Review Studio',
+    id: 'animation-roundtrip', order: '02',
+    title: { en: 'Maya / Unreal animation round-trip inspection', zh: 'Maya / Unreal 动画与 Sequencer 往返检查' },
     image: '/media/portfolio/visual-review.png', imageWidth: 1440, imageHeight: 11665,
-    imageAlt: { en: 'Visual review workflow with fixed capture setup, review queue, and release evidence.', zh: '包含固定截图设置、评审队列与发布证据的视觉评审流程。' },
-    purpose: { en: 'Makes A/B review repeatable by fixing camera, pass, threshold, asset, and ownership conditions.', zh: '通过固定相机、Pass、阈值、资产与责任人条件，让 A/B 评审可以重复执行。' },
-    workflow: { en: 'Build camera rig → run pass manifest → inspect signals → assign review → seal handoff.', zh: '建立相机组 → 执行 Pass 清单 → 检查信号 → 分配评审 → 封装交接。' },
-    proof: { en: 'Pass run and skip manifest, signal audit, review queue, handoff receipt, and HTML report.', zh: 'Pass 运行与跳过清单、信号审计、评审队列、交接回执与 HTML 报告。' },
-    stack: ['Maya Camera', 'Capture Pass', 'A/B Diff', 'Review Queue'],
+    imageAlt: { en: 'Review workflow with fixed capture conditions, issue queue, and handoff evidence.', zh: '包含固定采集条件、问题队列与交付证据的评审工作流。' },
+    purpose: { en: 'Compares animation and attachment intent across Maya and Unreal, with frame-level evidence for round-trip changes.', zh: '对比 Maya 与 Unreal 之间的动画和挂接意图，用帧级证据检查往返变更。' },
+    workflow: { en: 'Collect source animation → export → inspect Sequencer/runtime result → compare frames and events → record handoff.', zh: '采集源动画 → 导出 → 检查 Sequencer 与运行时结果 → 对比帧和事件 → 记录交付。' },
+    proof: { en: 'Sequence round-trip inspection and controlled socket, animation, and attachment bridge experiments.', zh: 'Sequencer 往返检查，以及 Socket、动画与挂接的受控桥接实验。' },
+    stage: { en: 'Core inspection paths exist; Unreal version, asset variety, and full physical workflow testing remains.', zh: '核心检查链路已建立，仍需补齐 Unreal 版本、资产类型与完整实机工作流测试。' },
+    stack: ['Maya', 'Unreal Engine', 'Sequencer', 'Python', 'C++'],
+    repositories: [
+      { name: 'level-sequence-roundtrip-inspector', href: 'https://github.com/Ubik42/level-sequence-roundtrip-inspector' },
+      { name: 'ue-socket-anim-attach-bridge', href: 'https://github.com/Ubik42/ue-socket-anim-attach-bridge' },
+    ],
   },
   {
-    id: 'texture-delivery', order: '04', title: 'Texture Delivery Console',
+    id: 'character-delivery', order: '03',
+    title: { en: 'Character, groom, and spatial handoff tools', zh: '角色、毛发与空间挂接交付工具' },
+    image: '/media/portfolio/asset-protocol.png', imageWidth: 1440, imageHeight: 4667,
+    imageAlt: { en: 'Typed asset handoff editor with validation and staged evidence.', zh: '包含类型化交付合同、验证结果与分阶段证据的资产工作台。' },
+    purpose: { en: 'Turns character calibration, groom export, sockets, poses, and spatial intent into inspectable handoff data.', zh: '把角色校准、Groom 导出、Socket、Pose 与空间挂接意图整理成可检查的交付数据。' },
+    workflow: { en: 'Collect rig and groom facts → validate calibration → author spatial intent → preview package → hand off.', zh: '采集绑定与毛发事实 → 校验角色标定 → 编写空间意图 → 预览资产包 → 完成交付。' },
+    proof: { en: 'Focused repositories for character calibration, groom export inspection, and spatial authoring.', zh: '角色校准、Groom 导出检查和空间作者工具三个独立工程。' },
+    stage: { en: 'Focused prototypes are separated; representative character and groom test matrices remain incomplete.', zh: '专项原型已完成拆仓，代表性角色与 Groom 测试矩阵仍未完成。' },
+    stack: ['Maya', 'Rigging', 'Groom', 'Control Rig', 'Socket'],
+    repositories: [
+      { name: 'maya-character-calibration-studio', href: 'https://github.com/Ubik42/maya-character-calibration-studio' },
+      { name: 'maya-groom-export-inspector', href: 'https://github.com/Ubik42/maya-groom-export-inspector' },
+      { name: 'maya-spatial-authoring-workbench', href: 'https://github.com/Ubik42/maya-spatial-authoring-workbench' },
+    ],
+  },
+  {
+    id: 'texture-variants', order: '04',
+    title: { en: 'Substance / Unreal texture and platform delivery', zh: 'Substance / Unreal 贴图与平台变体交付' },
     image: '/media/portfolio/texture-delivery.png', imageWidth: 1440, imageHeight: 10941,
     imageAlt: { en: 'Texture delivery console with preset comparison, queue recovery, and package delta.', zh: '包含 Preset 对比、队列恢复与 Package Delta 的贴图交付控制台。' },
-    purpose: { en: 'Controls channel packing, compression presets, SpriteSheet and DDS tasks, and engine-import handoff without hiding mutation risk.', zh: '管理通道打包、压缩 Preset、SpriteSheet、DDS 与引擎导入交接，同时明确修改风险。' },
-    workflow: { en: 'Inspect sources → choose preset → dry run → review delta → approve mutation → export manifest.', zh: '检查源文件 → 选择 Preset → Dry Run → 审查 Delta → 批准修改 → 导出 Manifest。' },
-    proof: { en: 'Versioned presets, recoverable queues, adapter results, publish gate, and fixture delta.', zh: '版本化 Preset、可恢复队列、Adapter 结果、发布门禁与 Fixture Delta。' },
-    stack: ['Texture Pipeline', 'DDS', 'SpriteSheet', 'Unreal Import'],
+    purpose: { en: 'Coordinates texture synchronization and PC/mobile asset variants while keeping budgets and engine writes explicit.', zh: '协调贴图同步与 PC/Mobile 资产变体，同时明确平台预算和引擎写入边界。' },
+    workflow: { en: 'Inspect Substance output → compare platform policy → dry run → review delta → approve Unreal mutation.', zh: '检查 Substance 输出 → 对比平台策略 → Dry Run → 审查 Delta → 批准 Unreal 写入。' },
+    proof: { en: 'Texture synchronization and controlled platform-variant repositories with reviewable manifests.', zh: '贴图同步与平台变体两个独立仓库，以及可审查的 Manifest。' },
+    stage: { en: 'Data contracts and UI studies exist; live Substance and Unreal integration testing remains.', zh: '数据合同与界面研究已存在，仍需完成 Substance 与 Unreal 的真实联调测试。' },
+    stack: ['Substance', 'Unreal Engine', 'Textures', 'LOD', 'PC / Mobile'],
+    repositories: [
+      { name: 'substance-unreal-texture-sync', href: 'https://github.com/Ubik42/substance-unreal-texture-sync' },
+      { name: 'ue-platform-variant-forge', href: 'https://github.com/Ubik42/ue-platform-variant-forge' },
+    ],
   },
   {
-    id: 'orchestrator', order: '05', title: 'Task Orchestrator',
+    id: 'safe-automation', order: '05',
+    title: { en: 'Safe DCC automation and evidence governance', zh: 'DCC 安全自动化与证据治理平台' },
     image: '/media/portfolio/orchestrator.png', imageWidth: 1440, imageHeight: 11775,
     imageAlt: { en: 'Task orchestrator showing tool discovery, dependency impact, evidence, and handoff state.', zh: '展示工具发现、依赖影响、证据与交付状态的任务编排器。' },
-    purpose: { en: 'Connects tool discovery, jobs, asset packages, review receipts, dependency impact, and publish state.', zh: '连接工具发现、任务、资产包、评审回执、依赖影响与发布状态。' },
-    workflow: { en: 'Discover tools → build queue → execute or dry run → aggregate receipts → evaluate release.', zh: '发现工具 → 建立队列 → 执行或 Dry Run → 聚合回执 → 判断发布。' },
-    proof: { en: 'Execution events, run diffs, impact paths, owner signoff, evidence lockfile, and release replay.', zh: '执行事件、Run Diff、影响路径、Owner 签收、证据 Lockfile 与发布回放。' },
-    stack: ['Task State', 'Dependency Graph', 'Evidence Ledger', 'Publish Gate'],
+    purpose: { en: 'Records scene mutations, evidence lineage, approvals, waivers, release gates, and the user context that launched each tool.', zh: '记录场景修改、证据血缘、批准、豁免、发布门禁，以及每次工具启动时的用户上下文。' },
+    workflow: { en: 'Launch in context → preview transaction → execute → record lineage → collect owner decision → gate release.', zh: '按上下文启动 → 预览事务 → 执行 → 记录血缘 → 收集 Owner 决策 → 控制发布。' },
+    proof: { en: 'Independent SDK, lineage viewer, release governor, waiver ledger, and DCC shelf launcher.', zh: '独立的事务 SDK、血缘浏览器、发布治理器、豁免台账与 DCC Shelf 启动器。' },
+    stage: { en: 'Contracts and synthetic evidence flows exist; destructive-operation, recovery, and long-run testing remains.', zh: '合同与合成证据链已建立，仍需补齐破坏性操作、恢复流程与长时间运行测试。' },
+    stack: ['Transactions', 'Rollback', 'Lineage', 'Human approval', 'Release gate'],
+    repositories: [
+      { name: 'dcc-transaction-recorder-sdk', href: 'https://github.com/Ubik42/dcc-transaction-recorder-sdk' },
+      { name: 'aitoolta-asset-lineage-viewer', href: 'https://github.com/Ubik42/aitoolta-asset-lineage-viewer' },
+      { name: 'package-release-governor', href: 'https://github.com/Ubik42/package-release-governor' },
+      { name: 'owner-waiver-ledger', href: 'https://github.com/Ubik42/owner-waiver-ledger' },
+      { name: 'dcc-shelf-context-launcher', href: 'https://github.com/Ubik42/dcc-shelf-context-launcher' },
+    ],
   },
-];
-
-export const integratedTools: IntegratedTool[] = [
-  { title: 'Asset Handoff Gate', family: { en: 'Delivery decision', zh: '交付决策' }, purpose: { en: 'Combines validation, review, texture, and batch evidence into one handoff decision.', zh: '把验证、评审、贴图与批处理证据合成为一次交付决策。' }, runtime: 'Maya', maturity: 'L3' },
-  { title: 'Owner / Engine Decision Packet', family: { en: 'Human approval', zh: '人工批准' }, purpose: { en: 'Records owner decisions, exceptions, and engine-facing acceptance.', zh: '记录 Owner 决策、例外处置与面向引擎的验收结果。' }, runtime: 'Maya', maturity: 'L3' },
-  { title: 'Engine Handoff Preflight', family: { en: 'Engine readiness', zh: '引擎就绪' }, purpose: { en: 'Checks export and engine constraints before a package crosses the DCC boundary.', zh: '在资产包跨出 DCC 边界前检查导出与引擎约束。' }, runtime: 'Maya → Unreal', maturity: 'L3' },
-  { title: 'PC / Mobile Preset Compare', family: { en: 'Platform policy', zh: '平台策略' }, purpose: { en: 'Compares platform presets, facts, waivers, and publish consequences.', zh: '对比 PC / Mobile Preset、事实、Waiver 与发布影响。' }, runtime: 'Maya / Unreal', maturity: 'L3' },
-  { title: 'Scene Transaction Guard', family: { en: 'Mutation safety', zh: '场景修改安全' }, purpose: { en: 'Fingerprints scene changes and previews rollback for created, deleted, and modified rows.', zh: '为场景变更建立指纹，并针对新增、删除与修改项预览回滚。' }, runtime: 'Maya', maturity: 'L3' },
-  { title: 'Maya Preset Fact Reviewer', family: { en: 'Reviewer queue', zh: '评审队列' }, purpose: { en: 'Brings engine preset facts and waiver comparisons back into the Maya review surface.', zh: '把引擎 Preset 事实与 Waiver 对比带回 Maya 评审界面。' }, runtime: 'Maya', maturity: 'L3' },
-  { title: 'Blender Rule Adapter', family: { en: 'DCC adapter', zh: 'DCC 适配器' }, purpose: { en: 'Normalizes object properties, collections, materials, UVs, and collision hints into the shared rule input.', zh: '把对象属性、Collection、材质、UV 与碰撞提示归一化为共享规则输入。' }, runtime: 'Blender bpy', maturity: 'L3' },
-  { title: '3ds Max Rule Adapter', family: { en: 'DCC adapter', zh: 'DCC 适配器' }, purpose: { en: 'Collects user properties, layers, LOD suffixes, map channels, transforms, and collision proxies.', zh: '采集 User Properties、Layer、LOD 后缀、Map Channel、Transform 与碰撞代理。' }, runtime: '3ds Max pymxs', maturity: 'L3' },
-  { title: 'Unreal Handoff Inspector', family: { en: 'Engine adapter', zh: '引擎适配器' }, purpose: { en: 'Verifies registry and engine facts for meshes, materials, presets, and handoff state.', zh: '校验 Mesh、材质、Preset 与交付状态对应的 Registry 和引擎事实。' }, runtime: 'Unreal Python', maturity: 'L3++' },
-  { title: 'Animation Continuity Lab', family: { en: 'Animation evidence', zh: '动画证据' }, purpose: { en: 'Checks animation continuity and produces Maya-side runtime evidence.', zh: '检查动画连续性并生成 Maya 端运行证据。' }, runtime: 'Maya', maturity: 'L3' },
-  { title: 'Unreal Animation Bridge', family: { en: 'Animation handoff', zh: '动画交付' }, purpose: { en: 'Prepares and verifies animation handoff readiness between Maya and Unreal.', zh: '准备并验证 Maya 与 Unreal 之间的动画交付就绪状态。' }, runtime: 'Maya → Unreal', maturity: 'L3 readiness' },
 ];
 
 export interface ArtWork {
