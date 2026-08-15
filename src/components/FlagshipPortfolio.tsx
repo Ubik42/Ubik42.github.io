@@ -21,7 +21,7 @@ export function FlagshipPortfolio() {
           <p>{localize(portfolioOverview.summary, locale)}</p>
           <div className="portfolio-source-row">
             <span><i aria-hidden="true" />{localize(portfolioOverview.status, locale)}</span>
-            <a href="https://github.com/Ubik42/ai-tool-ta-portfolio" target="_blank" rel="noreferrer">{localize(portfolioOverview.sourceLabel, locale)} <span aria-hidden="true">↗</span></a>
+            <a href="https://github.com/Ubik42/AIToolTA_Portfolio" target="_blank" rel="noreferrer">{localize(portfolioOverview.sourceLabel, locale)} <span aria-hidden="true">↗</span></a>
           </div>
         </div>
       </header>
@@ -62,7 +62,7 @@ export function FlagshipPortfolio() {
         </div>
       </div>
 
-      <p className="portfolio-disclaimer">{locale === 'zh' ? '展示口径：仓库链接与现有截图先公开，完成度以各仓 README、测试记录和发布说明为准。页面不会把原型、合成样例或局部验证描述为完整生产交付。' : 'Presentation policy: repository links and existing screenshots are public first. Maturity follows each repository README, test record, and release note; prototypes, synthetic fixtures, and partial validation are not presented as finished production delivery.'}</p>
+      <p className="portfolio-disclaimer">{locale === 'zh' ? '展示口径：页面先列出仓库入口与现有截图，仓库可见范围按发布节奏逐项开放。完成度以各仓 README、测试记录和发布说明为准；原型、合成样例或局部验证不会描述为完整生产交付。' : 'Presentation policy: the page lists repository destinations and current screenshots first, while repository visibility is opened in stages. Maturity follows each README, test record, and release note; prototypes, synthetic fixtures, and partial validation are not presented as finished production delivery.'}</p>
     </section>
   );
 }

@@ -26,11 +26,11 @@ export interface ProductLine {
 export const portfolioOverview = {
   title: { en: 'Five product lines, one technical-art practice', zh: '五条产品线，一套技术美术实践' },
   summary: {
-    en: 'Eighteen focused repositories are grouped into five recruiter-facing product lines. They are public development work, not finished commercial releases, and still require broader host, workflow, and usability testing.',
-    zh: '18 个独立仓库按招聘者能够快速理解的方式归入五条产品线。它们是公开开发中的工程作品，不是已经交付的商业产品，仍需补充宿主、工作流与可用性测试。',
+    en: 'Eighteen focused repositories are grouped into five recruiter-facing product lines. They are engineering work in development, not finished commercial releases; repository visibility and final host validation are still being prepared.',
+    zh: '18 个独立仓库按招聘者能够快速理解的方式归入五条产品线。它们是开发中的工程作品，不是已经交付的商业产品；仓库公开范围与最终宿主测试仍在准备。',
   },
   sourceLabel: { en: 'Open portfolio index', zh: '打开作品集总入口' },
-  status: { en: 'In development · full validation pending', zh: '开发中 · 待完整测试' },
+  status: { en: 'Automated gates passed · manual validation pending', zh: '自动门禁已通过 · 待统一人工测试' },
   facts: [
     { value: '5', label: { en: 'product lines', zh: '条产品线' } },
     { value: '18', label: { en: 'independent repositories', zh: '个独立仓库' } },
