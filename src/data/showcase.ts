@@ -26,11 +26,11 @@ export interface ProductLine {
 export const portfolioOverview = {
   title: { en: 'Five product lines, one technical-art practice', zh: '五条产品线，一套技术美术实践' },
   summary: {
-    en: 'Eighteen focused repositories are grouped into five recruiter-facing product lines. The public foundation and three representative product repositories are now available; visible host validation is still in progress.',
-    zh: '18 个独立仓库按招聘者能够快速理解的方式归入五条产品线。公开基础仓与三个代表性产品仓现已开放，真实宿主的可见验收仍在推进。',
+    en: 'Eighteen focused repositories are grouped into five recruiter-facing product lines. The public foundation and three representative product repositories are online, with visible Maya and Unreal host evidence.',
+    zh: '18 个独立仓库按招聘者能够快速理解的方式归入五条产品线。公开基础仓与三个代表性产品仓现已开放，并已有 Maya 与 Unreal 真实宿主证据。',
   },
   sourceLabel: { en: 'Open portfolio index', zh: '打开作品集总入口' },
-  status: { en: 'Public snapshot online · host validation in progress', zh: '公开快照已上线 · 宿主验收推进中' },
+  status: { en: 'Public snapshot online · Maya + Unreal host-verified', zh: '公开快照已上线 · Maya + Unreal 宿主实测' },
   facts: [
     { value: '5', label: { en: 'product lines', zh: '条产品线' } },
     { value: '18', label: { en: 'independent repositories', zh: '个独立仓库' } },
@@ -57,12 +57,12 @@ export const productLines: ProductLine[] = [
   {
     id: 'cross-dcc-rules', order: '01',
     title: { en: 'Cross-DCC asset rules and safe repair', zh: '跨 DCC 资产规范与安全修复系统' },
-    image: '/media/portfolio/cross-dcc-rules-new.png', imageWidth: 1440, imageHeight: 1000,
-    imageAlt: { en: 'Cross-DCC rule matrix with host coverage, consistency checks, and repair readiness.', zh: '展示宿主覆盖、规则一致性与修复就绪状态的跨 DCC 规则矩阵。' },
+    image: '/media/portfolio/cross-dcc-rules-host.png', imageWidth: 3000, imageHeight: 1735,
+    imageAlt: { en: 'Cross-DCC rule matrix running inside Maya 2024 and auditing the current scene.', zh: '在 Maya 2024 内运行并审计当前场景的跨 DCC 规则矩阵。' },
     purpose: { en: 'Models asset rules once, maps them to host-specific facts, and keeps automated repair previewable and reversible.', zh: '统一建模资产规范，再映射到各 DCC 的事实采集与修复边界，让自动修复始终可预览、可追踪、可回滚。' },
     workflow: { en: 'Define rules → collect host facts → normalize → validate → preview or apply repair → export evidence.', zh: '定义规则 → 采集宿主事实 → 归一化 → 校验 → 预览或执行修复 → 导出证据。' },
-    proof: { en: 'Shared rule contracts, Maya workbench, and adapters for Blender, 3ds Max, Houdini, and MotionBuilder.', zh: '共享规则合同、Maya 工作台，以及 Blender、3ds Max、Houdini 与 MotionBuilder 适配器。' },
-    stage: { en: 'Architecture and initial implementations exist; cross-version and production-asset testing remains.', zh: '架构与初版实现已存在，仍需补齐跨版本与真实生产资产测试。' },
+    proof: { en: 'Maya 2024 host audit reads scene units, meshes, namespaces, and negative scale, then writes a structured receipt without mutating scene data.', zh: 'Maya 2024 宿主审计直接读取单位、Mesh、Namespace 与负缩放，并在不修改场景数据的前提下写出结构化回执。' },
+    stage: { en: 'Maya 2024 visible validation is complete; additional DCC versions and production-asset matrices remain.', zh: 'Maya 2024 可见宿主验收已完成，仍需扩展其他 DCC 版本与生产资产矩阵。' },
     stack: ['Maya', 'Blender', '3ds Max', 'Houdini', 'MotionBuilder', 'Python'],
     repositories: [
       { name: 'maya-asset-protocol-workbench', href: 'https://github.com/Ubik42/maya-asset-protocol-workbench' },
@@ -76,12 +76,12 @@ export const productLines: ProductLine[] = [
   {
     id: 'animation-roundtrip', order: '02',
     title: { en: 'Maya / Unreal animation round-trip inspection', zh: 'Maya / Unreal 动画与 Sequencer 往返检查' },
-    image: '/media/portfolio/animation-roundtrip-new.png', imageWidth: 1440, imageHeight: 1000,
-    imageAlt: { en: 'Level Sequence round-trip inspector comparing animation bindings, timing, and validation evidence.', zh: '对比动画绑定、时序和验证证据的 Level Sequence 往返检查器。' },
+    image: '/media/portfolio/animation-roundtrip-host.png', imageWidth: 2575, imageHeight: 1407,
+    imageAlt: { en: 'Unreal Editor 5.4 showing a passed Level Sequence inspection from the installed AI Tool TA plug-in.', zh: 'Unreal Editor 5.4 中已安装的 AI Tool TA 插件返回 Level Sequence 检查通过结果。' },
     purpose: { en: 'Compares animation and attachment intent across Maya and Unreal, with frame-level evidence for round-trip changes.', zh: '对比 Maya 与 Unreal 之间的动画和挂接意图，用帧级证据检查往返变更。' },
     workflow: { en: 'Collect source animation → export → inspect Sequencer/runtime result → compare frames and events → record handoff.', zh: '采集源动画 → 导出 → 检查 Sequencer 与运行时结果 → 对比帧和事件 → 记录交付。' },
-    proof: { en: 'Sequence round-trip inspection and controlled socket, animation, and attachment bridge experiments.', zh: 'Sequencer 往返检查，以及 Socket、动画与挂接的受控桥接实验。' },
-    stage: { en: 'Core inspection paths exist; Unreal version, asset variety, and full physical workflow testing remains.', zh: '核心检查链路已建立，仍需补齐 Unreal 版本、资产类型与完整实机工作流测试。' },
+    proof: { en: 'The installed Unreal 5.4 plug-in audits the active sequence at 24 fps / 24000 ticks, records bindings and tracks, and produces a zero-production-write receipt.', zh: '安装在 Unreal 5.4 中的插件审计当前序列的 24 fps / 24000 Tick、Binding 与轨道，并生成零生产写入回执。' },
+    stage: { en: 'Unreal 5.4 visible structural inspection is complete; visible animation playback and broader asset coverage remain.', zh: 'Unreal 5.4 可见结构审计已完成，仍需扩展动画播放验收与更多资产类型。' },
     stack: ['Maya', 'Unreal Engine', 'Sequencer', 'Python', 'C++'],
     repositories: [
       { name: 'level-sequence-roundtrip-inspector', href: 'https://github.com/Ubik42/level-sequence-roundtrip-inspector' },
