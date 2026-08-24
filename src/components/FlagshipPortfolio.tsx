@@ -21,7 +21,7 @@ export function FlagshipPortfolio() {
           <p>{localize(portfolioOverview.summary, locale)}</p>
           <div className="portfolio-source-row">
             <span><i aria-hidden="true" />{localize(portfolioOverview.status, locale)}</span>
-            <a href="https://github.com/Ubik42/AIToolTA_Portfolio" target="_blank" rel="noreferrer">{localize(portfolioOverview.sourceLabel, locale)} <span aria-hidden="true">↗</span></a>
+            <a href="https://github.com/Ubik42" target="_blank" rel="noreferrer">{localize(portfolioOverview.sourceLabel, locale)} <span aria-hidden="true">↗</span></a>
           </div>
         </div>
       </header>
