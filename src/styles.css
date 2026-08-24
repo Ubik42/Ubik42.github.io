@@ -288,6 +288,27 @@ p { text-wrap: pretty; }
 .art-work-caption b { font-size: 1.1rem; }
 .artstation-profile-link { display: flex; align-items: center; justify-content: space-between; gap: 2rem; margin-top: clamp(3rem, 6vw, 6rem); padding: 1.25rem 0; border-block: 1px solid oklch(.36 .025 255); color: var(--green); font-family: var(--display); font-size: clamp(1.15rem, 2vw, 1.7rem); font-weight: 800; text-decoration: none; }
 
+.noemancer-section { display: grid; grid-template-columns: minmax(20rem, .72fr) minmax(0, 1.28fr); gap: clamp(3rem, 7vw, 8rem); padding: clamp(5rem, 9vw, 9rem) var(--page); border-bottom: 1px solid color-mix(in oklch, white 18%, var(--ink)); background: var(--ink); color: white; }
+.noemancer-copy { align-self: start; position: sticky; top: 7rem; }
+.noemancer-copy .eyebrow { color: var(--green); }
+.noemancer-copy h2 { margin-bottom: 1.4rem; font-size: clamp(3.5rem, 7vw, 7.5rem); font-stretch: condensed; font-weight: 850; line-height: .82; letter-spacing: -.055em; }
+.noemancer-lead { max-width: 38rem; margin-bottom: 1.7rem; color: color-mix(in oklch, white 78%, var(--ink)); font-size: clamp(1.08rem, 1.45vw, 1.28rem); line-height: 1.68; }
+.noemancer-status { display: flex; flex-direction: column; align-items: flex-start; gap: .35rem; padding-block: 1rem; border-block: 1px solid color-mix(in oklch, white 22%, var(--ink)); }
+.noemancer-status span { color: var(--green); font-family: var(--display); font-size: .86rem; font-weight: 820; letter-spacing: .08em; }
+.noemancer-status small { color: color-mix(in oklch, white 62%, var(--ink)); }
+.noemancer-stack { display: flex; flex-wrap: wrap; gap: .45rem; padding: 0; margin: 1.5rem 0 2rem; list-style: none; }
+.noemancer-stack li { padding: .32rem .58rem; border: 1px solid color-mix(in oklch, white 32%, var(--ink)); color: color-mix(in oklch, white 78%, var(--ink)); font-size: .76rem; }
+.noemancer-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem; }
+.noemancer-actions .text-link { color: var(--green); }
+.noemancer-evidence figure { margin: 0; }
+.noemancer-evidence figure img { width: 100%; aspect-ratio: 16 / 9; border: 1px solid color-mix(in oklch, white 24%, var(--ink)); background: oklch(.1 .015 255); object-fit: cover; object-position: top center; }
+.noemancer-evidence figcaption { margin-top: .75rem; color: color-mix(in oklch, white 58%, var(--ink)); font-size: .84rem; }
+.noemancer-capabilities { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: clamp(2rem, 4vw, 4rem); border-top: 1px solid color-mix(in oklch, white 25%, var(--ink)); border-left: 1px solid color-mix(in oklch, white 25%, var(--ink)); }
+.noemancer-capabilities article { min-height: 16rem; padding: clamp(1.2rem, 2.2vw, 2rem); border-right: 1px solid color-mix(in oklch, white 25%, var(--ink)); border-bottom: 1px solid color-mix(in oklch, white 25%, var(--ink)); }
+.noemancer-capabilities article > span { color: var(--green); font-family: var(--display); font-size: .78rem; font-weight: 820; }
+.noemancer-capabilities h3 { margin: 2.5rem 0 .85rem; font-size: clamp(1.25rem, 1.8vw, 1.75rem); line-height: 1.05; }
+.noemancer-capabilities p { margin: 0; color: color-mix(in oklch, white 64%, var(--ink)); font-size: .94rem; line-height: 1.6; }
+
 @media (max-width: 1050px) {
   .hero { grid-template-columns: 1fr; }
   .hero-copy { min-height: auto; padding-block: 5rem; }
@@ -312,6 +333,8 @@ p { text-wrap: pretty; }
   .integrated-tool-list article { grid-template-columns: minmax(14rem, .8fr) minmax(18rem, 1.2fr); }
   .tool-runtime { grid-column: 2; align-items: flex-start; text-align: left; }
   .art-work, .art-work:nth-child(2), .art-work:nth-child(4), .art-work:nth-child(8), .art-work:nth-child(9) { grid-column: span 6; }
+  .noemancer-section { grid-template-columns: 1fr; }
+  .noemancer-copy { position: static; }
 }
 
 @media (max-width: 760px) {
@@ -370,6 +393,10 @@ p { text-wrap: pretty; }
   .social-list { grid-template-columns: 1fr; }
   .social-list > a:nth-child(odd) { border-right: 0; }
   .site-footer { grid-template-columns: 1fr; }
+  .noemancer-section { padding-block: 4.5rem; }
+  .noemancer-copy h2 { font-size: clamp(3.2rem, 17vw, 5.5rem); }
+  .noemancer-capabilities { grid-template-columns: 1fr; }
+  .noemancer-capabilities article { min-height: auto; }
 }
 
 @media (prefers-reduced-motion: reduce) {
