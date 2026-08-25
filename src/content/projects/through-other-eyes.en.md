@@ -1,10 +1,12 @@
 # Through Other Eyes
 
-A VR experience about navigating a city with restricted vision. I helped build scenes and event logic, rigged and animated the guide dog and character feet, and contributed shaders, VFX, UI, and the opening scene.
+A VR experience about navigating a city with restricted vision. In a two-person team, I worked across programming, technical art, and game design: shaping the core experience, designing the map route and event pacing, building scenes and interaction logic, and producing the guide-dog and foot rigs, shaders, VFX, UI, and opening scene.
 
 ![Project one sheet](/media/projects/through-other-eyes-cover.webp)
 
 ## Route and interaction plan
+
+I translated the theme into a playable route: obstacles control pacing, broadcasts and the phone provide audio cues, while traffic and the guide dog change how the player reads the space. The route plan maps those triggers and events into one continuous experience.
 
 ![Level route and interaction points](/media/projects/through-other-eyes-level.webp)
 
@@ -20,7 +22,7 @@ A VR experience about navigating a city with restricted vision. I helped build s
 
 No suitable VR recording was available, so the page keeps actual headset captures rather than substituting unrelated footage.
 
-## Four-week development
+## From experience design to VR implementation
 
 ![Shader and rendering tests](/media/projects/through-other-eyes-diary/image-000.png)
 
@@ -36,6 +38,4 @@ No suitable VR recording was available, so the page keeps actual headset capture
 
 ![Opening scene](/media/projects/through-other-eyes-diary/image-009.png)
 
-## Reflection
-
-Several early visual experiments did not integrate well because progress was not communicated early enough. Later I helped the team reconcile the technical and visual goals; the key lesson was to surface work sooner and validate direction continuously.
+The project required design, level scripting, programming, and technical art to be considered as one system. A visual effect stayed only when it helped players understand the space and move the event chain forward.

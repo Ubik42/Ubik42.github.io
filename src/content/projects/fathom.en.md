@@ -1,6 +1,6 @@
 # Fathom
 
-Fathom is a submarine co-op game built around a physical control console. I was the primary programmer for Game Mode, player and input systems, task and minigame interfaces, UI/HUD data flow, and the hardware-to-Unreal communication path.
+Fathom is a submarine co-op game built around a physical control console. As primary programmer and gameplay-architecture owner, I organized navigation stages, routine maintenance, emergency faults, sonar minigames, health penalties, and progression into an extensible task loop. I also owned Game Mode, player input, minigame interfaces, UI/HUD data flow, and the complete hardware-to-Unreal path.
 
 ## Task gameplay
 
@@ -8,9 +8,9 @@ Fathom is a submarine co-op game built around a physical control console. I was 
 
 ## Gameplay architecture
 
-`BP_FathomGameMode` owns stages, regular and emergency tasks, success and failure, and progression. `BP_FathomPlayerController` centralizes keyboard, test, and external-controller events. Structs and Data Tables hold task configuration, while `WBP_GameBase` gives minigames a common interface.
+`BP_FathomGameMode` owns submarine stages, task scheduling, timers, success, failure, and progression. `BP_FathomPlayerController` centralizes keyboard, test, and external-controller events. Structs and Data Tables hold task type, duration, objective, and penalty data, while `WBP_GameBase` gives minigames a common enter, resolve, and exit interface.
 
-When task-generation rules changed, I replaced a growing branch chain with a modular data-driven event system and bound its state to the task manager, popups, minigames, and HUD.
+When task-generation rules changed, I replaced a growing branch chain with a modular data-driven event system covering emergency interruption, routine rotation, countdown, resolution, and health penalties. Its state is bound to the task manager, alerts, minigames, and HUD.
 
 ## Physical controller path
 
@@ -19,6 +19,8 @@ Input travels through **Arduino Serial → Python Sender → MQTT → Python Rec
 ## Sonar gameplay
 
 @[video: Sonar minigame capture](/media/projects/fathom-sonar.mp4)
+
+Sonar is a schedulable gameplay module rather than an isolated demo: Game Mode issues the objective, the shared interface owns its state, physical controls drive scanning and confirmation, and the result returns to the task manager and HUD. The same path supports fast keyboard testing and the final exhibition console.
 
 ## Final integration
 

@@ -119,7 +119,6 @@ function ProjectDetail({ project, locale }: { project: SelectedProject; locale: 
     {project.link && <a className="project-dialog-source" href={project.link.href} target="_blank" rel="noreferrer"><span>{projectText(project.link.label, locale)}</span><span aria-hidden="true">↗</span></a>}
     {project.youtubeId && <VideoEmbed youtubeId={project.youtubeId} title={project.title} />}
     {projectStories[project.id] ? <MarkdownStory markdown={projectStories[project.id][locale]} title={project.title} /> : project.story && <section className="project-dialog-story"><h3>{projectText(project.story.title, locale)}</h3><p>{projectText(project.story.intro, locale)}</p><h4>{locale === 'zh' ? '玩法与特色' : 'Gameplay & Features'}</h4><dl>{project.story.features.map((feature) => <div key={feature.title.en}><dt>{projectText(feature.title, locale)}</dt><dd>{projectText(feature.detail, locale)}</dd></div>)}</dl>{project.story.note && <p className="project-dialog-note">{projectText(project.story.note, locale)}</p>}</section>}
-    <div className="project-dialog-details"><div><h3>{locale === 'zh' ? '我具体做了什么' : 'What I built'}</h3><ul>{project.contribution.map((entry) => <li key={entry.en}>{projectText(entry, locale)}</li>)}</ul></div><div><h3>{locale === 'zh' ? '技术与工具' : 'Technology'}</h3><ul className="project-dialog-stack">{project.stack.map((entry) => <li key={entry}>{entry}</li>)}</ul></div></div>
   </>;
 }
 

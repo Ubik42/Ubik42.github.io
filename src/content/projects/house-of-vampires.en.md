@@ -6,7 +6,7 @@ Enter a gothic castle inspired by classic horror films. Use items scattered arou
 
 ## My role and seven-week timeline
 
-I led Blueprint programming and created the first-person hand rig and animation. The work progressed through material tests, swarm VFX, blood-reveal effects, hand assets, animation refinement, the readable pickup system, and final interaction integration.
+I was the primary Blueprint and technical-art developer, integrating first-person exploration, pickup and throwing, readable-item UI, hand animation, and puzzle feedback into a continuous interaction chain. Over seven weeks I also delivered the swarm system, blood-reveal effect, material tests, hand rig, animation refinement, and final gameplay integration.
 
 ![Seven-week timeline and hand asset](/media/projects/hov-diary/image-000.png)
 

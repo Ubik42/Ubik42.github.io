@@ -35,8 +35,8 @@ export const selectedProjects: SelectedProject[] = [
     period: '2026',
     category: { zh: 'Unreal 游戏 / 硬件交互', en: 'Unreal game / hardware interaction' },
     summary: {
-      zh: '面向实体控制器的潜艇协作游戏。我负责主要程序架构、玩法系统、UI 数据联动和外部硬件输入接入。',
-      en: 'A submarine co-op game built around physical controllers. I owned the main gameplay architecture, UI data flow, and external hardware input integration.',
+      zh: '面向实体控制器的潜艇协作游戏。我担任主要程序与玩法架构负责人，完成任务循环、小游戏、UI 数据流和硬件接入。',
+      en: 'A physical-console submarine co-op game. I owned gameplay architecture, task loops, minigames, UI data flow, and hardware integration.',
     },
     contribution: [
       { zh: '搭建 GameMode、角色控制、任务生成、小游戏接口与 UI/HUD 数据绑定。', en: 'Built GameMode, character control, task generation, minigame interfaces, and UI/HUD data binding.' },
@@ -55,8 +55,8 @@ export const selectedProjects: SelectedProject[] = [
     period: '2025',
     category: { zh: 'Unreal 蓝图游戏', en: 'Unreal Blueprint game' },
     summary: {
-      zh: '已经在 itch.io 上线的哥特式恐怖解谜游戏。我集中负责程序开发，同时完成玩家手部绑定与动画。',
-      en: 'A gothic puzzle-horror game released on itch.io. I led programming and also created the player-hand rig and animation.',
+      zh: '已上线 itch.io 的哥特式恐怖解谜游戏。我担任主要蓝图程序与技术美术开发，整合交互、谜题、手部动画和特效。',
+      en: 'A gothic puzzle-horror game released on itch.io. I led Blueprint and technical-art development across interactions, puzzles, hand animation, and VFX.',
     },
     contribution: [
       { zh: '使用 Unreal Blueprint 实现玩法流程、交互、谜题、状态管理与手柄支持。', en: 'Implemented gameplay flow, interaction, puzzles, state management, and controller support in Unreal Blueprints.' },
@@ -102,8 +102,8 @@ export const selectedProjects: SelectedProject[] = [
     period: '2025',
     category: { zh: 'VR 无障碍体验', en: 'VR accessibility experience' },
     summary: {
-      zh: '让玩家以视障者的感知方式穿过城市、寻找导盲犬的 VR 行走模拟。我负责场景搭建、事件交互和狗狗绑定动画。',
-      en: 'A VR walking simulation about navigating a city as a blind person and reuniting with a guide dog. I built scenes, interactions, and the dog rig and animation.',
+      zh: '两人团队完成的 VR 视障体验。我兼任玩法策划、程序与技术美术，负责地图路线、事件设计、场景交互和角色绑定。',
+      en: 'A two-person VR accessibility project. I worked across game design, programming, and technical art, owning routes, events, interactions, and character rigging.',
     },
     contribution: [
       { zh: '协助把关卡规划落成可游玩的 VR 场景，布置道路、障碍和关键交互点。', en: 'Translated the level plan into a playable VR scene with streets, obstacles, and interaction points.' },
@@ -143,8 +143,8 @@ export const selectedProjects: SelectedProject[] = [
     period: '2023',
     category: { zh: 'Web 3D 可视化', en: 'Web 3D visualization' },
     summary: {
-      zh: '基于开源 icegl / TresJS 框架开发的工业 3D 可视化原型；我的工作集中在 FBX 工业模型导入、机械关节控制与参数 UI。',
-      en: 'An industrial 3D visualization prototype built on icegl / TresJS; my work focused on FBX assets, mechanical joint controls, and parameter UI.',
+      zh: '实习期间完成的小型工业数字孪生原型，覆盖 FBX 资产接入、机械关节控制、场景状态与业务参数 UI。',
+      en: 'A compact internship digital-twin prototype covering FBX assets, mechanical joint controls, scene state, and business-facing parameter UI.',
     },
     contribution: [
       { zh: '新增工业 DigitalTwin 页面与配置，导入多组 FBX 机械和场景资产。', en: 'Added the industrial DigitalTwin page and configuration and imported multiple FBX mechanical and scene assets.' },

@@ -1,6 +1,6 @@
 # Retro 3D Arcade Prototype
 
-A retro Unity game based on a Q*bert-like loop. I programmed the gameplay, character and animation state, and level logic, while also exploring a custom shader pipeline and creating part of the 2D character art.
+A retro Unity game based on a Q*bert-like loop. I owned the complete gameplay implementation: character movement and state, animation flow, tile feedback, enemies, level logic, and the loop from start through failure and restart. I also led the custom shader-pipeline experiment and created part of the 2D character art.
 
 ## 3D animation to pixel sprites
 
