@@ -3,7 +3,7 @@ import { startTransition, useEffect, useMemo, useState, type ReactNode } from 'r
 import { siteCopy, type Locale } from '../data/content';
 import { LanguageContext, type LanguageContextValue } from './LanguageContext';
 
-const STORAGE_KEY = 'portfolio.locale.v1';
+const STORAGE_KEY = 'portfolio.locale.v2';
 
 function getInitialLocale(): Locale {
   try {

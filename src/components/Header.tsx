@@ -2,7 +2,7 @@ import { LanguageToggle } from './LanguageToggle';
 import { useLanguage } from '../i18n/LanguageContext';
 
 export function Header() {
-  const { copy } = useLanguage();
+  const { copy, locale } = useLanguage();
 
   return (
     <header className="site-header">
@@ -16,7 +16,7 @@ export function Header() {
           <a href="#portfolio">AI ToolTA</a>
           <a href="#noemancer">Noemancer</a>
           <a href="#career">{copy.nav.practice}</a>
-          <a href="#artstation">ArtStation</a>
+          <a href="#visual-work">{locale === 'zh' ? '视觉作品' : 'Visual work'}</a>
           <a href="#links">{copy.nav.links}</a>
         </nav>
         <LanguageToggle />

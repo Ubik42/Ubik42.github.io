@@ -34,7 +34,7 @@ export const portfolioOverview = {
   facts: [
     { value: '5', label: { en: 'product lines', zh: '条产品线' } },
     { value: '18', label: { en: 'independent repositories', zh: '个独立仓库' } },
-    { value: '9', label: { en: 'ArtStation projects', zh: '个 ArtStation 项目' } },
+    { value: '9', label: { en: 'visual projects', zh: '个视觉作品' } },
     { value: 'CN', label: { en: 'Chinese-first presentation', zh: '中文优先展示' } },
   ],
 };
@@ -137,29 +137,6 @@ export const productLines: ProductLine[] = [
       { name: 'dcc-shelf-context-launcher', href: 'https://github.com/Ubik42/dcc-shelf-context-launcher' },
     ],
   },
-];
-
-export interface ArtWork {
-  title: string;
-  href: string;
-  image: string;
-  imageWidth: number;
-  imageHeight: number;
-  category: Localized;
-  tools: string[];
-  featured?: boolean;
-}
-
-export const artWorks: ArtWork[] = [
-  { title: 'Unreal Engine Stylized World', href: 'https://www.artstation.com/artwork/kNZDbK', image: '/media/artstation/unreal-stylized-world.jpg', imageWidth: 1920, imageHeight: 1954, category: { en: 'Realtime environment', zh: '实时场景' }, tools: ['Unreal Engine', 'Houdini'], featured: true },
-  { title: 'Maya Plugin', href: 'https://www.artstation.com/artwork/XJGnR3', image: '/media/artstation/maya-plugin.jpg', imageWidth: 1920, imageHeight: 1952, category: { en: 'DCC tool development', zh: 'DCC 工具开发' }, tools: ['Maya', 'Python'] },
-  { title: 'Stylized Road Material', href: 'https://www.artstation.com/artwork/Bk918D', image: '/media/artstation/stylized-road-material.jpg', imageWidth: 1920, imageHeight: 1977, category: { en: 'Material study', zh: '材质练习' }, tools: ['Substance Designer'] },
-  { title: 'Rigging & Animation', href: 'https://www.artstation.com/artwork/vb42ev', image: '/media/artstation/rigging-animation.jpg', imageWidth: 1920, imageHeight: 1953, category: { en: 'Rigging study', zh: '绑定练习' }, tools: ['Maya', 'Unreal Engine'], featured: true },
-  { title: 'Unity SDF Shader', href: 'https://www.artstation.com/artwork/XJGnQl', image: '/media/artstation/unity-sdf-shader.jpg', imageWidth: 1920, imageHeight: 1953, category: { en: 'Realtime shader', zh: '实时 Shader' }, tools: ['Unity', 'SDF'] },
-  { title: 'Houdini Interactive Lighting', href: 'https://www.artstation.com/artwork/5W1Xkg', image: '/media/artstation/houdini-lighting.jpg', imageWidth: 1920, imageHeight: 1953, category: { en: 'Procedural lighting', zh: '程序化灯光' }, tools: ['Houdini'] },
-  { title: 'Houdini Interactive Cluster', href: 'https://www.artstation.com/artwork/Zl3GrN', image: '/media/artstation/houdini-cluster.jpg', imageWidth: 1920, imageHeight: 1953, category: { en: 'Procedural interaction', zh: '程序化交互' }, tools: ['Houdini'] },
-  { title: 'Unreal Engine VFX', href: 'https://www.artstation.com/artwork/oJWA5k', image: '/media/artstation/unreal-vfx.jpg', imageWidth: 1920, imageHeight: 1952, category: { en: 'Realtime VFX', zh: '实时特效' }, tools: ['Unreal Engine', 'Niagara'] },
-  { title: 'Houdini PCG Tower', href: 'https://www.artstation.com/artwork/nJWYm1', image: '/media/artstation/houdini-pcg-tower.jpg', imageWidth: 1920, imageHeight: 1954, category: { en: 'Procedural environment', zh: '程序化场景' }, tools: ['Houdini', 'PCG'] },
 ];
 
 export function localize(value: Localized, locale: Locale) {

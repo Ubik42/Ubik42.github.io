@@ -48,7 +48,7 @@ export const siteCopy: Record<Locale, SiteCopy> = {
       linksIntro: 'Code, visual work, demos, and ongoing notes live across these profiles.',
       social: [
         { name: 'GitHub', detail: 'Code, tools, and public engineering evidence.', href: 'https://github.com/Ubik42', mark: 'GH' },
-        { name: 'ArtStation', detail: 'Artwork, breakdowns, and visual practice.', href: 'https://lucasshen2002.artstation.com/', mark: 'AS' },
+        { name: 'Visual work', detail: 'Realtime graphics, materials, shaders, rigging, and procedural work.', href: '#visual-work', mark: 'TA' },
         { name: 'Bilibili', detail: 'Tool demos, tutorials, and longer videos.', href: 'https://space.bilibili.com/12367861?spm_id_from=333.1007.0.0', mark: 'Bi' },
         { name: 'Xiaohongshu', detail: 'Notes, resources, and everyday discoveries.', href: 'https://www.xiaohongshu.com/user/profile/670526b2000000001e001891', mark: 'RED' },
       ],
@@ -88,7 +88,7 @@ export const siteCopy: Record<Locale, SiteCopy> = {
       linksIntro: '代码、视觉作品、演示和持续记录分布在这些公开主页中。',
       social: [
         { name: 'GitHub', detail: '代码、工具与公开工程证据。', href: 'https://github.com/Ubik42', mark: 'GH' },
-        { name: 'ArtStation', detail: '美术作品、拆解与视觉练习。', href: 'https://lucasshen2002.artstation.com/', mark: 'AS' },
+        { name: '视觉作品', detail: '实时场景、材质、Shader、绑定与程序化内容。', href: '#visual-work', mark: 'TA' },
         { name: '哔哩哔哩', detail: '工具演示、教程和长视频。', href: 'https://space.bilibili.com/12367861?spm_id_from=333.1007.0.0', mark: 'Bi' },
         { name: '小红书', detail: '笔记、资源和日常发现。', href: 'https://www.xiaohongshu.com/user/profile/670526b2000000001e001891', mark: 'RED' },
       ],
