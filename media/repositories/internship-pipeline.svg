@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">跨宿主游戏美术工具管线</title>
+  <desc id="desc">从 DCC 和引擎输入经过规则检查、批处理与回归验证后形成可交付资产的抽象流程图</desc>
+  <rect width="1200" height="760" fill="#eef3f7"/>
+  <path d="M0 604C181 535 301 696 484 628c186-70 283-216 488-161 98 26 164 91 228 117v176H0Z" fill="#d6e4ec"/>
+  <g fill="none" stroke="#12364a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M242 338h156m126 0h153m126 0h155"/>
+    <path d="m378 319 20 19-20 19m279-38 20 19-20 19m281-38 20 19-20 19"/>
+  </g>
+  <g font-family="Arial, 'Microsoft YaHei', sans-serif">
+    <text x="76" y="92" fill="#12364a" font-size="34" font-weight="700">DCC / ENGINE / PIPELINE</text>
+    <text x="76" y="139" fill="#466678" font-size="22">PRODUCTION TOOLING · VALIDATION · DELIVERY</text>
+    <g>
+      <rect x="74" y="246" width="260" height="184" rx="14" fill="#ffffff" stroke="#7894a4" stroke-width="3"/>
+      <text x="106" y="298" fill="#12364a" font-size="25" font-weight="700">生产宿主</text>
+      <text x="106" y="346" fill="#466678" font-size="21">Maya · Unreal</text>
+      <text x="106" y="381" fill="#466678" font-size="21">设计协作环境</text>
+    </g>
+    <g>
+      <rect x="466" y="246" width="260" height="184" rx="14" fill="#12364a"/>
+      <text x="498" y="298" fill="#ffffff" font-size="25" font-weight="700">规则与批处理</text>
+      <text x="498" y="346" fill="#c8dce7" font-size="21">检查 · 预设 · 作业队列</text>
+      <text x="498" y="381" fill="#c8dce7" font-size="21">进度 · 重试 · 回读</text>
+    </g>
+    <g>
+      <rect x="858" y="246" width="268" height="184" rx="14" fill="#ffffff" stroke="#7894a4" stroke-width="3"/>
+      <text x="890" y="298" fill="#12364a" font-size="25" font-weight="700">验证与交付</text>
+      <text x="890" y="346" fill="#466678" font-size="21">真实宿主回归</text>
+      <text x="890" y="381" fill="#466678" font-size="21">版本化环境 · CI</text>
+    </g>
+    <text x="76" y="548" fill="#12364a" font-size="42" font-weight="700">游戏美术生产工具与跨宿主管线</text>
+    <text x="78" y="595" fill="#466678" font-size="22">公开版本仅展示工程方法，不包含内部资产与业务信息</text>
+  </g>
+</svg>
