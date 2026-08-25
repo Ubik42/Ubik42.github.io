@@ -10,7 +10,7 @@ export interface RepositoryWork {
   summary: Localized;
   cover: string;
   tags: string[];
-  repositoryUrl: string;
+  repositoryUrl?: string;
   story: Localized;
   images?: Array<{ src: string; alt: Localized }>;
 }
@@ -106,6 +106,56 @@ The portfolio uses real Maya 2024 and Unreal 5.4 captures, public repositories, 
       { src: '/media/repositories/aitoolta.png', alt: { zh: 'Maya 中运行的 AI ToolTA 资产检查工具', en: 'AI ToolTA asset inspection running in Maya' } },
       { src: '/media/portfolio/animation-roundtrip-host.png', alt: { zh: 'Unreal 中运行的动画往返检查工具', en: 'Animation round-trip inspection running in Unreal' } },
     ],
+  },
+  {
+    id: 'internship-art-pipeline',
+    title: '游戏美术生产工具与跨宿主管线（实习）',
+    category: 'pipeline',
+    categoryLabel: { zh: '实习工具管线', en: 'Internship tool pipeline' },
+    summary: {
+      zh: '面向 DCC、游戏引擎与设计协作环境的生产工具开发，覆盖资产检查、批处理、预设、共享工程和可回归交付。',
+      en: 'Production tooling across DCCs, game engines, and design environments, covering asset checks, batch processing, presets, shared foundations, and regression-ready delivery.',
+    },
+    cover: '/media/repositories/internship-pipeline.svg',
+    tags: ['Maya', 'Unreal Engine', 'Python / C++', 'Pipeline'],
+    story: {
+      zh: `# 游戏美术生产工具与跨宿主管线
+
+这项工作来自大型游戏工作室的工具技术美术实习。公开版本只展示可以脱离公司资产理解的工程方法，不包含内部项目名、平台名、账号、接口、业务数据、仓库、路径、截图或录屏。
+
+## DCC 与引擎工具
+
+- 在 Maya 中处理场景层级、命名、材质与贴图检查，将可自动修复的问题和必须人工确认的问题分开，再执行整理与导出。
+- 在 Unreal Editor 中实现可序列化的场景与角色预设，处理多对象恢复、附属关系、重复应用、生命周期和清理边界。
+- 为批量场景与 FBX 处理建立输入契约、版本切换、作业队列和结果回读，检查缺失文件、异常退出与零字节产物。
+
+## 共享工程与交付
+
+- 将宿主逻辑、界面和公共能力拆分，统一插件目录、构建入口、主题、错误状态与使用文档。
+- 通过版本化环境、合并请求、持续集成和真实宿主回归管理发布；长任务保留进度、取消、重试与部分成功结果。
+- AI 只用于受约束的语义理解或候选建议；资源写入、批量修改、版本核验和交付结果仍由确定性程序与人工确认控制。
+
+## 公开边界
+
+原始答辩材料及其中媒体仅作为本地工作记录，不进入公开站点。本页使用重新绘制的抽象封面和脱敏文字，只证明本人负责过的工具类型、技术边界与交付方法。`,
+      en: `# Game-art production tools and cross-host pipelines
+
+This work comes from a technical-art tools internship at a large game studio. The public case study intentionally excludes internal project and platform names, accounts, endpoints, business data, repositories, paths, screenshots, and recordings.
+
+## DCC and engine tools
+
+- Built Maya checks for hierarchy, naming, materials, and textures, separating safe automatic repairs from issues requiring artist confirmation before export.
+- Implemented serializable Unreal Editor presets with multi-object restoration, attachment relationships, repeat application, lifecycle handling, and contained cleanup.
+- Structured batch scene and FBX processing around explicit inputs, host-version switching, job queues, and output validation for missing or invalid artifacts.
+
+## Shared engineering and delivery
+
+- Separated host logic, interface code, and shared packages while standardizing project layout, build entry points, error states, and documentation.
+- Used versioned environments, merge review, continuous integration, and real-host regression checks; long-running work preserved progress, cancellation, retry, and partial success.
+- AI was limited to constrained semantic interpretation or candidate suggestions. Deterministic code and human confirmation remained responsible for writes, version checks, and delivery.
+
+The original presentation and media remain local work records. This page uses a newly drawn abstract cover and sanitized text only.`,
+    },
   },
   {
     id: 'rez-studio-launcher', title: 'Rez Studio', category: 'pipeline',

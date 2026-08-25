@@ -101,7 +101,7 @@ function GalleryDetail({ item, locale, close }: { item: GalleryItem; locale: 'zh
 
 function RepositoryDetail({ work, locale }: { work: RepositoryWork; locale: 'zh' | 'en' }) {
   return <>
-    <a className="project-dialog-source" href={work.repositoryUrl} target="_blank" rel="noreferrer"><span>{locale === 'zh' ? '查看 GitHub 仓库' : 'View GitHub repository'}</span><span aria-hidden="true">↗</span></a>
+    {work.repositoryUrl && <a className="project-dialog-source" href={work.repositoryUrl} target="_blank" rel="noreferrer"><span>{locale === 'zh' ? '查看 GitHub 仓库' : 'View GitHub repository'}</span><span aria-hidden="true">↗</span></a>}
     <MarkdownStory markdown={localize(work.story, locale)} title={work.title} />
     {work.images && <DetailGallery images={work.images.map((image) => ({ src: image.src, alt: localize(image.alt, locale), caption: '' }))} />}
   </>;
