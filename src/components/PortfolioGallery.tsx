@@ -17,10 +17,11 @@ type GalleryItem =
 
 const filters: Array<{ id: 'all' | PortfolioCategory; zh: string; en: string }> = [
   { id: 'all', zh: '全部作品', en: 'All work' },
-  { id: 'engine-tools', zh: '引擎与工具', en: 'Engines & tools' },
-  { id: 'ai-aigc', zh: 'AI 与 AIGC', en: 'AI & AIGC' },
-  { id: 'technical-art', zh: '技术美术', en: 'Technical art' },
-  { id: 'games', zh: '游戏与交互', en: 'Games & interaction' },
+  { id: 'pipeline', zh: '工具管线', en: 'Tool pipelines' },
+  { id: 'ai-agent', zh: 'AI 与 Agent', en: 'AI & Agents' },
+  { id: 'general-ta', zh: '通用技术美术技能', en: 'General technical art' },
+  { id: 'engine-games', zh: '引擎与游戏', en: 'Engines & games' },
+  { id: 'other-tools', zh: '其他工具', en: 'Other tools' },
 ];
 
 export function PortfolioGallery() {
@@ -32,8 +33,8 @@ export function PortfolioGallery() {
 
   const items = useMemo<GalleryItem[]>(() => [
     ...repositoryWorks.map((work) => ({ kind: 'repository' as const, id: work.id, category: work.category, title: work.title, label: localize(work.categoryLabel, locale), summary: localize(work.summary, locale), cover: work.cover, tags: work.tags, value: work })),
-    ...visualWorks.map((work) => ({ kind: 'visual' as const, id: work.id, category: 'technical-art' as const, title: localize(work.title, locale), label: localize(work.category, locale), summary: localize(work.summary, locale), cover: work.cover, tags: work.tools, value: work })),
-    ...selectedProjects.map((project) => ({ kind: 'project' as const, id: project.id, category: 'games' as const, title: project.title, label: projectText(project.category, locale), summary: projectText(project.summary, locale), cover: project.images[0].src, tags: project.stack, value: project })),
+    ...visualWorks.map((work) => ({ kind: 'visual' as const, id: work.id, category: work.portfolioCategory, title: localize(work.title, locale), label: localize(work.category, locale), summary: localize(work.summary, locale), cover: work.cover, tags: work.tools, value: work })),
+    ...selectedProjects.map((project) => ({ kind: 'project' as const, id: project.id, category: project.portfolioCategory, title: project.title, label: projectText(project.category, locale), summary: projectText(project.summary, locale), cover: project.images[0].src, tags: project.stack, value: project })),
   ], [locale]);
 
   const visibleItems = filter === 'all' ? items : items.filter((item) => item.category === filter);

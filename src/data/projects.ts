@@ -1,4 +1,5 @@
 import type { Locale } from './content';
+import type { PortfolioCategory } from './repositoryWorks';
 
 export type ProjectText = Record<Locale, string>;
 
@@ -11,6 +12,7 @@ export interface ProjectImage {
 
 export interface SelectedProject {
   id: string;
+  portfolioCategory: PortfolioCategory;
   title: string;
   period: string;
   category: ProjectText;
@@ -31,6 +33,7 @@ export interface SelectedProject {
 export const selectedProjects: SelectedProject[] = [
   {
     id: 'fathom',
+    portfolioCategory: 'engine-games',
     title: 'Fathom',
     period: '2026',
     category: { zh: 'Unreal 游戏 / 硬件交互', en: 'Unreal game / hardware interaction' },
@@ -51,6 +54,7 @@ export const selectedProjects: SelectedProject[] = [
   },
   {
     id: 'house-of-vampires',
+    portfolioCategory: 'engine-games',
     title: 'House of Vampires',
     period: '2025',
     category: { zh: 'Unreal 蓝图游戏', en: 'Unreal Blueprint game' },
@@ -98,6 +102,7 @@ export const selectedProjects: SelectedProject[] = [
   },
   {
     id: 'through-other-eyes',
+    portfolioCategory: 'engine-games',
     title: 'Through Other Eyes',
     period: '2025',
     category: { zh: 'VR 无障碍体验', en: 'VR accessibility experience' },
@@ -119,6 +124,7 @@ export const selectedProjects: SelectedProject[] = [
   },
   {
     id: 'retro-arcade',
+    portfolioCategory: 'engine-games',
     title: 'Retro 3D Arcade Prototype',
     period: '2025',
     category: { zh: 'Unity 游戏与 Shader', en: 'Unity gameplay and shader' },
@@ -139,6 +145,7 @@ export const selectedProjects: SelectedProject[] = [
   },
   {
     id: 'digital-twin',
+    portfolioCategory: 'other-tools',
     title: 'Industrial Digital Twin',
     period: '2023',
     category: { zh: 'Web 3D 可视化', en: 'Web 3D visualization' },

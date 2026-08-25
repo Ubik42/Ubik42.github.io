@@ -1,6 +1,6 @@
 import type { Localized } from './showcase';
 
-export type PortfolioCategory = 'engine-tools' | 'ai-aigc' | 'technical-art' | 'games';
+export type PortfolioCategory = 'pipeline' | 'ai-agent' | 'general-ta' | 'engine-games' | 'other-tools';
 
 export interface RepositoryWork {
   id: string;
@@ -19,7 +19,7 @@ export const repositoryWorks: RepositoryWork[] = [
   {
     id: 'noemancer',
     title: 'Noemancer',
-    category: 'engine-tools',
+    category: 'engine-games',
     categoryLabel: { zh: '自研游戏引擎', en: 'Custom game engine' },
     summary: { zh: 'C++20 游戏引擎与编辑器，覆盖渲染、物理、动画、C# 脚本、资产烘焙和 Agent 工具层。', en: 'A C++20 engine and editor spanning rendering, physics, animation, C# scripting, asset cooking, and agent tools.' },
     cover: '/media/repositories/noemancer.webp',
@@ -66,7 +66,7 @@ The project is pre-alpha and currently verified end to end on Windows x64. SSR, 
   {
     id: 'aitoolta',
     title: 'AI ToolTA',
-    category: 'technical-art',
+    category: 'pipeline',
     categoryLabel: { zh: 'DCC 与引擎工具管线', en: 'DCC and engine tool pipeline' },
     summary: { zh: '面向 Maya、Unreal、Blender、Houdini 等宿主的技术美术工具合集与共享工程底座。', en: 'A technical-art tool portfolio and shared engineering foundation for Maya, Unreal, Blender, Houdini, and other hosts.' },
     cover: '/media/repositories/aitoolta.png',
@@ -108,7 +108,7 @@ The portfolio uses real Maya 2024 and Unreal 5.4 captures, public repositories, 
     ],
   },
   {
-    id: 'rez-studio-launcher', title: 'Rez Studio', category: 'engine-tools',
+    id: 'rez-studio-launcher', title: 'Rez Studio', category: 'pipeline',
     categoryLabel: { zh: 'DCC 工作站启动器', en: 'DCC workstation launcher' },
     summary: { zh: '根据项目、软件版本和 Rez 包环境启动 Maya 等 DCC 的 Windows 桌面应用。', en: 'A Windows desktop launcher that resolves project, application version, and Rez package context before starting a DCC.' },
     cover: '/media/repositories/rez-studio.png', tags: ['Rez', 'Tauri', 'React', 'Python'], repositoryUrl: 'https://github.com/Ubik42/rez-studio-launcher',
@@ -131,7 +131,7 @@ The Tauri 2 and React desktop application connects to Rez through a Python servi
     images: [{ src: '/media/repositories/rez-studio.png', alt: { zh: 'Rez Studio 项目软件库', en: 'Rez Studio project application library' } }],
   },
   {
-    id: 'maya-indie-tool', title: 'MayaIndieTool', category: 'technical-art',
+    id: 'maya-indie-tool', title: 'MayaIndieTool', category: 'pipeline',
     categoryLabel: { zh: 'Maya 独立工具集', en: 'Maya utility collection' },
     summary: { zh: '早期 Maya 独立脚本与制作辅助工具集合，记录从单点脚本走向完整插件的开发过程。', en: 'An early collection of Maya production scripts documenting the path from focused utilities to full plug-ins.' },
     cover: '/media/repositories/maya-indie.png', tags: ['Maya', 'Python', 'PyMEL'], repositoryUrl: 'https://github.com/Ubik42/MayaIndieTool',
@@ -144,7 +144,7 @@ The Tauri 2 and React desktop application connects to Rez through a Python servi
 An archive of early standalone Maya utilities for modeling, scene organization, and repetitive production operations. It documents the progression from single-file scripts and shelf entries toward modular Maya tooling.` },
   },
   {
-    id: 'mayacraft', title: 'MayaCraft', category: 'technical-art',
+    id: 'mayacraft', title: 'MayaCraft', category: 'pipeline',
     categoryLabel: { zh: 'Maya 综合插件', en: 'Maya production plug-in' },
     summary: { zh: '覆盖绑定、动画、蒙皮和技术调试的 Maya 综合插件与公共工具层。', en: 'A Maya production plug-in spanning rigging, animation, skinning, technical debugging, and shared utilities.' },
     cover: '/media/repositories/mayacraft.png', tags: ['Maya', 'Python', 'PySide', 'Rigging'], repositoryUrl: 'https://github.com/Ubik42/MayaCraft',
@@ -162,7 +162,7 @@ MayaCraft 将角色制作中分散的绑定、动画、蒙皮与技术检查功�
 MayaCraft organizes rigging, animation, skinning, and technical checks into one Maya plug-in with reusable utility layers and production fixtures for poses and rigged characters.` },
   },
   {
-    id: 'pyarsenal', title: 'PyArsenal', category: 'engine-tools',
+    id: 'pyarsenal', title: 'PyArsenal', category: 'other-tools',
     categoryLabel: { zh: 'Python 脚本管理器', en: 'Python script manager' },
     summary: { zh: '通过标签、环境隔离和一键编译管理分散 Python 脚本的桌面工具。', en: 'A desktop tool for organizing scattered Python scripts with tags, isolated environments, and one-click compilation.' },
     cover: '/media/repositories/pyarsenal.png', tags: ['Python', 'Desktop App', 'Script Library'], repositoryUrl: 'https://github.com/Ubik42/PyArsenal',
@@ -175,7 +175,7 @@ PyArsenal 面向需要维护大量零散脚本的 Python 开发者。它把脚�
 PyArsenal is a graphical manager for Python developers who maintain many scripts. It centralizes registration, tags, execution environments, and compilation so a script library remains searchable and deliverable.` },
   },
   {
-    id: 'neothesia', title: 'Neothesia', category: 'engine-tools',
+    id: 'neothesia', title: 'Neothesia', category: 'other-tools',
     categoryLabel: { zh: '钢琴练习应用', en: 'Piano practice application' },
     summary: { zh: '持续维护的钢琴学习分支，加入刻意练习、反馈、曲库、乐谱同步与 Pianoteq 工作流。', en: 'An actively maintained piano-learning fork with deliberate practice, feedback, repertoire, notation, and Pianoteq workflows.' },
     cover: '/media/repositories/neothesia.png', tags: ['Rust', 'WGPU', 'MIDI', 'VST3'], repositoryUrl: 'https://github.com/Ubik42/Neothesia',
@@ -199,7 +199,7 @@ The direct VST3 path is still experimental and the project is currently distribu
     images: [{ src: '/media/repositories/neothesia.png', alt: { zh: 'Neothesia 钢琴练习界面', en: 'Neothesia piano practice interface' } }],
   },
   {
-    id: 'artflow-agent', title: 'ArtFlow Agent', category: 'ai-aigc',
+    id: 'artflow-agent', title: 'ArtFlow Agent', category: 'ai-agent',
     categoryLabel: { zh: 'AIGC + Agent', en: 'AIGC + Agent' },
     summary: { zh: '以 Agent 为控制层、ComfyUI 为生成运行时的游戏美术迭代与可复现交付流程。', en: 'A game-art iteration pipeline using an agent as the control layer and ComfyUI as the generation runtime.' },
     cover: '/media/repositories/artflow.jpg', tags: ['Agent', 'ComfyUI', 'PydanticAI', 'Evaluation'], repositoryUrl: 'https://github.com/Ubik42/ArtFlow-Agent',
@@ -224,7 +224,7 @@ The default path is deterministic and offline. Model-backed planning is opt-in, 
     images: [{ src: '/media/repositories/artflow.jpg', alt: { zh: 'ArtFlow Agent 生成候选接触表', en: 'ArtFlow Agent candidate contact sheet' } }],
   },
   {
-    id: 'comfyui-production-nodes', title: 'ComfyUI Production Nodes', category: 'ai-aigc',
+    id: 'comfyui-production-nodes', title: 'ComfyUI Production Nodes', category: 'ai-agent',
     categoryLabel: { zh: 'ComfyUI 自定义节点', en: 'ComfyUI custom nodes' },
     summary: { zh: '为生成工作流补充约束检查、依赖检查、生成回执和 DCC / 引擎交付清单。', en: 'Custom nodes adding constraint checks, dependency checks, generation receipts, and DCC / engine handoff manifests.' },
     cover: '/media/repositories/comfyui.png', tags: ['ComfyUI', 'Python', 'Provenance', 'Handoff'], repositoryUrl: 'https://github.com/Ubik42/ComfyUI-Production-Nodes',
