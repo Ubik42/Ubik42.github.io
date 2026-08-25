@@ -28,7 +28,7 @@ export function Hero() {
         <p className={`hero-intro ${locale === 'zh' ? 'is-chinese' : ''}`}>{copy.personal.intro}</p>
         <div className="hero-actions">
           <Magnet wrapperClassName="magnet-wrapper" innerClassName="magnet-inner">
-            <a className="action action-primary" href="#projects">{copy.hero.primaryAction}<span aria-hidden="true">↘</span></a>
+            <a className="action action-primary" href="#portfolio">{copy.hero.primaryAction}<span aria-hidden="true">↘</span></a>
           </Magnet>
           <a className="action action-secondary" href="#about">{copy.personal.storyAction}<span aria-hidden="true">↓</span></a>
         </div>

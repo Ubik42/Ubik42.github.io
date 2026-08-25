@@ -3,7 +3,9 @@ import { motion, useReducedMotion } from 'motion/react';
 
 import { localize } from '../data/showcase';
 import { visualWorks, type VisualWork } from '../data/visualWorks';
+import { visualWorkStories } from '../data/visualWorkStories';
 import { useLanguage } from '../i18n/LanguageContext';
+import { MarkdownStory } from './MarkdownStory';
 
 export function VisualWorkArchive() {
   const { locale } = useLanguage();
@@ -88,25 +90,7 @@ export function VisualWorkArchive() {
               </div>
             )}
 
-            <div className="project-dialog-gallery">
-              {activeWork.images.map((image) => (
-                <figure key={image.src}>
-                  <img src={image.src} alt={localize(image.alt, locale)} style={{ objectPosition: image.position }} />
-                  <figcaption>{localize(image.caption, locale)}</figcaption>
-                </figure>
-              ))}
-            </div>
-
-            <div className="project-dialog-details">
-              <div>
-                <h3>{locale === 'zh' ? '制作内容' : 'Production breakdown'}</h3>
-                <ul>{activeWork.process.map((item) => <li key={item.en}>{localize(item, locale)}</li>)}</ul>
-              </div>
-              <div>
-                <h3>{locale === 'zh' ? '软件与技术' : 'Software & techniques'}</h3>
-                <ul className="project-dialog-stack">{activeWork.tools.map((item) => <li key={item}>{item}</li>)}</ul>
-              </div>
-            </div>
+            <MarkdownStory markdown={visualWorkStories[activeWork.id][locale]} title={localize(activeWork.title, locale)} />
           </motion.article>
         )}
       </dialog>

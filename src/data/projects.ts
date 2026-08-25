@@ -84,26 +84,6 @@ export const selectedProjects: SelectedProject[] = [
     ],
   },
   {
-    id: 'maya-toolset',
-    title: "SYY's Maya Toolset",
-    period: '2024',
-    category: { zh: 'DCC 插件开发', en: 'DCC plug-in development' },
-    summary: {
-      zh: '一个覆盖属性、绑定、骨骼、约束、控制器、命名、项目和动画操作的 Maya 综合工具集。',
-      en: 'A Maya toolset spanning attributes, rigging, joints, constraints, controls, naming, project operations, and animation.',
-    },
-    contribution: [
-      { zh: '以 Python / PySide 实现九个功能模块，并支持主题、字号、窗口尺寸和位置记忆。', en: 'Implemented nine Python/PySide modules with themes, font sizing, and persistent window state.' },
-      { zh: '将界面层与 core 工具类拆分，按 Attr、Joint、Rig、Control 等职责组织可扩展代码。', en: 'Separated UI and core utility classes and organized extensible modules by Attr, Joint, Rig, Control, and related domains.' },
-      { zh: '完成 IK/FK、蒙皮权重、骨骼链、批量约束、属性连接和动画 JSON 导入导出等具体功能。', en: 'Delivered concrete IK/FK, skin-weight, joint-chain, batch-constraint, attribute-connection, and animation JSON tools.' },
-    ],
-    stack: ['Maya', 'Python', 'PySide', 'Rigging', 'DCC Tools'],
-    images: [
-      { src: '/media/projects/maya-toolset-cover.webp', alt: { zh: 'Maya Toolset 功能界面', en: 'Maya Toolset interface' }, caption: { zh: '综合工具集界面与功能分区', en: 'Toolset interface and functional modules' }, position: 'top' },
-      { src: '/media/projects/maya-toolset-rig.png', alt: { zh: 'Maya Toolset 的绑定工具页面', en: 'Rigging page in Maya Toolset' }, caption: { zh: 'IK / FK 与批处理绑定工具', en: 'IK / FK and batch rigging tools' }, position: 'center' },
-    ],
-  },
-  {
     id: 'retro-arcade',
     title: 'Retro 3D Arcade Prototype',
     period: '2025',

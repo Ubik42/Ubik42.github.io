@@ -17,7 +17,7 @@ export default function App() {
       <a className="skip-link" href="#main">{locale === 'zh' ? '跳到主要内容' : 'Skip to main content'}</a>
       <span id="top" />
       <Header />
-      <main id="main"><Hero /><ProjectArchive /><FlagshipPortfolio /><NoemancerProject /><CareerFocus /><AboutMe /><VisualWorkArchive /><SocialLinks /></main>
+      <main id="main"><Hero /><FlagshipPortfolio /><NoemancerProject /><CareerFocus /><AboutMe /><VisualWorkArchive /><ProjectArchive /><SocialLinks /></main>
       <Footer />
       <div className="locale-status sr-only" aria-live="polite">{copy.language.changed}</div>
     </div>

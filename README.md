@@ -10,7 +10,7 @@
 
 ## 作品集结构
 
-简历与主页不逐项罗列 18 个子仓，而是将它们组织为五条产品线，第六个展示位置保留 ArtStation 美术作品集。
+简历与主页不逐项罗列 18 个子仓，而是将它们组织为五条产品线。九项技术美术作品使用原 Notion 图文和图片顺序在站内展示，游戏与其他项目排在其后。
 
 | 产品线 | 重点能力 | 独立仓库 |
 | --- | --- | --- |
@@ -19,7 +19,7 @@
 | 角色、毛发与空间挂接交付工具 | 角色标定、Groom、Control Rig、Pose 与空间意图 | [Character Calibration](https://github.com/Ubik42/maya-character-calibration-studio)、[Groom Inspector](https://github.com/Ubik42/maya-groom-export-inspector)、[Spatial Authoring](https://github.com/Ubik42/maya-spatial-authoring-workbench) |
 | Substance / Unreal 贴图与平台变体交付 | 贴图同步、PC/Mobile 预算、LOD 与受控引擎写入 | [Texture Sync](https://github.com/Ubik42/substance-unreal-texture-sync)、[Platform Variant Forge](https://github.com/Ubik42/ue-platform-variant-forge) |
 | DCC 安全自动化与证据治理平台 | 事务、回滚、血缘、人工批准、豁免与发布门禁 | [Transaction SDK](https://github.com/Ubik42/dcc-transaction-recorder-sdk)、[Lineage Viewer](https://github.com/Ubik42/aitoolta-asset-lineage-viewer)、[Release Governor](https://github.com/Ubik42/package-release-governor)、[Waiver Ledger](https://github.com/Ubik42/owner-waiver-ledger)、[Shelf Launcher](https://github.com/Ubik42/dcc-shelf-context-launcher) |
-| ArtStation 美术作品集 | 实时场景、材质、Shader、绑定、动画、特效与程序化内容 | [打开 ArtStation](https://lucasshen2002.artstation.com/) |
+| 技术美术图文作品 | 实时场景、材质、Shader、绑定、动画、特效与程序化内容 | 站内中文详情与内嵌演示视频 |
 
 ![五条产品线聚合界面](docs/screenshots/product-lines-zh.png)
 
@@ -69,7 +69,7 @@ This repository hosts Lucas Shen's bilingual static portfolio for technical-art,
 
 ## Portfolio structure
 
-The résumé and homepage present five recruiter-facing product lines instead of listing eighteen repositories independently. ArtStation occupies the sixth portfolio position.
+The résumé and homepage present five recruiter-facing product lines instead of listing eighteen repositories independently. Nine technical-art works retain their original Notion text-and-image sequence on the site, followed by games and other projects.
 
 | Product line | Primary signal | Repositories |
 | --- | --- | --- |
@@ -78,7 +78,7 @@ The résumé and homepage present five recruiter-facing product lines instead of
 | Character, groom, and spatial handoff tools | Character calibration, groom, Control Rig, pose, and spatial intent | [Character Calibration](https://github.com/Ubik42/maya-character-calibration-studio), [Groom Inspector](https://github.com/Ubik42/maya-groom-export-inspector), [Spatial Authoring](https://github.com/Ubik42/maya-spatial-authoring-workbench) |
 | Substance / Unreal texture and platform delivery | Texture synchronization, PC/mobile budgets, LOD, and controlled engine writes | [Texture Sync](https://github.com/Ubik42/substance-unreal-texture-sync), [Platform Variant Forge](https://github.com/Ubik42/ue-platform-variant-forge) |
 | Safe DCC automation and evidence governance | Transactions, rollback, lineage, approval, waivers, and release gates | [Transaction SDK](https://github.com/Ubik42/dcc-transaction-recorder-sdk), [Lineage Viewer](https://github.com/Ubik42/aitoolta-asset-lineage-viewer), [Release Governor](https://github.com/Ubik42/package-release-governor), [Waiver Ledger](https://github.com/Ubik42/owner-waiver-ledger), [Shelf Launcher](https://github.com/Ubik42/dcc-shelf-context-launcher) |
-| ArtStation visual portfolio | Realtime environments, materials, shaders, rigging, animation, VFX, and procedural work | [Open ArtStation](https://lucasshen2002.artstation.com/) |
+| Technical-art case studies | Realtime environments, materials, shaders, rigging, animation, VFX, and procedural work | On-site Chinese details and embedded demos |
 
 ## Presentation and validation policy
 

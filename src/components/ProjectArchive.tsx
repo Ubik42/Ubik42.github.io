@@ -31,10 +31,10 @@ export function ProjectArchive() {
     <section id="projects" className="project-archive-section" aria-labelledby="project-archive-title">
       <header className="project-archive-header">
         <div>
-          <p className="section-label">Selected work · 06 projects</p>
-          <h2 id="project-archive-title">{locale === 'zh' ? '项目作品' : 'Selected projects'}</h2>
+          <p className="section-label">Games & other work · 05 projects</p>
+          <h2 id="project-archive-title">{locale === 'zh' ? '游戏与其他项目' : 'Games & other projects'}</h2>
         </div>
-        <p>{locale === 'zh' ? '游戏、DCC 插件、实时图形与 Web 3D 项目，包含本人职责、技术实现和过程素材。' : 'Games, DCC plug-ins, realtime graphics, and Web 3D projects, with my role, implementation details, and production material.'}</p>
+        <p>{locale === 'zh' ? '游戏、交互体验与 Web 3D 项目，包含本人职责、技术实现和过程素材。' : 'Games, interactive experiences, and Web 3D projects, with my role, implementation details, and production material.'}</p>
       </header>
 
       <div className="project-archive-grid">
