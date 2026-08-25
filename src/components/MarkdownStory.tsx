@@ -8,10 +8,12 @@ interface MarkdownStoryProps {
 type StoryBlock =
   | { type: 'heading'; level: number; text: string }
   | { type: 'image'; src: string; alt: string }
+  | { type: 'video'; src: string; caption: string }
   | { type: 'list'; ordered: boolean; items: string[] }
   | { type: 'paragraph'; text: string };
 
 const imagePattern = /^!\[(.*?)\]\((.*?)\)$/;
+const videoPattern = /^@\[video(?::\s*(.*?))?\]\((.*?)\)$/;
 const headingPattern = /^(#{1,6})\s+(.+)$/;
 const unorderedPattern = /^\s*-\s+(.+)$/;
 const orderedPattern = /^\s*\d+\.\s+(.+)$/;
@@ -23,7 +25,7 @@ function cleanLine(line: string) {
 
 function isStructural(line: string) {
   const value = cleanLine(line).trim();
-  return !value || value === '<aside>' || value === '</aside>' || imagePattern.test(value) || headingPattern.test(value) || unorderedPattern.test(value) || orderedPattern.test(value);
+  return !value || value === '<aside>' || value === '</aside>' || imagePattern.test(value) || videoPattern.test(value) || headingPattern.test(value) || unorderedPattern.test(value) || orderedPattern.test(value);
 }
 
 function parseMarkdown(markdown: string): StoryBlock[] {
@@ -40,6 +42,13 @@ function parseMarkdown(markdown: string): StoryBlock[] {
     const image = line.match(imagePattern);
     if (image) {
       blocks.push({ type: 'image', alt: image[1], src: image[2] });
+      index += 1;
+      continue;
+    }
+
+    const video = line.match(videoPattern);
+    if (video) {
+      blocks.push({ type: 'video', caption: video[1] ?? '', src: video[2] });
       index += 1;
       continue;
     }
@@ -122,6 +131,14 @@ export function MarkdownStory({ markdown, title }: MarkdownStoryProps) {
           return (
             <figure key={`${block.src}-${index}`}>
               <img src={notionImagePath(block.src)} alt={block.alt || title} loading="lazy" />
+            </figure>
+          );
+        }
+        if (block.type === 'video') {
+          return (
+            <figure className="story-video" key={`${block.src}-${index}`}>
+              <video src={block.src} controls preload="metadata" playsInline />
+              {block.caption && <figcaption>{block.caption}</figcaption>}
             </figure>
           );
         }

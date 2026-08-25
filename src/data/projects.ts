@@ -143,15 +143,15 @@ export const selectedProjects: SelectedProject[] = [
     period: '2023',
     category: { zh: 'Web 3D 可视化', en: 'Web 3D visualization' },
     summary: {
-      zh: '面向工业场景的浏览器数字孪生展示。我独立完成 Web 前后端、Three.js 场景和部分模型资产。',
-      en: 'A browser-based industrial digital twin. I independently built the web front end, back end, Three.js scene, and part of the 3D assets.',
+      zh: '基于开源 icegl / TresJS 框架开发的工业 3D 可视化原型；我的工作集中在 FBX 工业模型导入、机械关节控制与参数 UI。',
+      en: 'An industrial 3D visualization prototype built on icegl / TresJS; my work focused on FBX assets, mechanical joint controls, and parameter UI.',
     },
     contribution: [
-      { zh: '使用 Vue、Express 与 Three.js 搭建可交互的工业场景展示。', en: 'Built an interactive industrial-scene viewer with Vue, Express, and Three.js.' },
-      { zh: '完成建筑数据可视化、显示参数控制与部分模型资产制作。', en: 'Implemented building-data visualization, display controls, and part of the model assets.' },
-      { zh: '参与原 Unity 工程的部分重构，把实时 3D 经验迁移到 Web。', en: 'Helped refactor parts of the original Unity project and transferred realtime 3D practice to the web.' },
+      { zh: '新增工业 DigitalTwin 页面与配置，导入多组 FBX 机械和场景资产。', en: 'Added the industrial DigitalTwin page and configuration and imported multiple FBX mechanical and scene assets.' },
+      { zh: '扩展 TransformControls，用参数驱动机械模型和关节旋转。', en: 'Extended TransformControls to drive mechanical models and joint rotation through parameters.' },
+      { zh: '使用 Tweakpane 与 Element Plus 整理显示参数和工业控制按钮，并明确区分个人修改与上游框架能力。', en: 'Built parameter and industrial controls with Tweakpane and Element Plus while separating personal changes from upstream framework features.' },
     ],
-    stack: ['Vue', 'Express', 'Three.js', 'WebGL', '3D Assets'],
+    stack: ['Vue 3', 'TresJS', 'Three.js', 'TransformControls', 'FBX'],
     images: [
       { src: '/media/projects/digital-twin.png', alt: { zh: '工业数字孪生建筑线框与显示控制面板', en: 'Industrial digital twin with building outlines and display controls' }, caption: { zh: '城市建筑数据与显示参数控制', en: 'Building data and display-parameter controls' }, position: 'center' },
     ],
