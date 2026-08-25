@@ -13,11 +13,11 @@
 .profile-intro { max-width: 46rem; margin: 0 0 0 auto; color: var(--muted); font-size: clamp(1rem, 1.25vw, 1.15rem); }
 .profile-history { display: grid; grid-column: 1 / -1; grid-template-columns: .8fr 1.2fr; gap: clamp(1.5rem, 4vw, 4rem); padding-top: 1.25rem; border-top: 1px solid var(--line); }
 .profile-history section { min-width: 0; }
-.profile-history h2 { margin: 0 0 .65rem; color: var(--blue); font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; }
-.profile-history ul { display: grid; gap: .5rem; margin: 0; padding: 0; list-style: none; }
-.profile-history li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem; align-items: baseline; color: var(--ink); font-size: clamp(.78rem, 1vw, .92rem); }
+.profile-history h2 { margin: 0 0 .75rem; color: var(--blue); font-size: clamp(.95rem, 1.05vw, 1.05rem); letter-spacing: .08em; text-transform: uppercase; }
+.profile-history ul { display: grid; gap: .65rem; margin: 0; padding: 0; list-style: none; }
+.profile-history li { display: flex; flex-wrap: wrap; gap: .15rem .55rem; align-items: baseline; color: var(--ink); font-size: clamp(1rem, 1.25vw, 1.15rem); line-height: 1.42; }
 .profile-history li span { overflow-wrap: anywhere; }
-.profile-history time { color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.profile-history time { color: var(--muted); font-size: .92em; font-variant-numeric: tabular-nums; white-space: nowrap; }
 
 .portfolio-gallery { padding: clamp(3.5rem, 6vw, 6rem) var(--page) clamp(5rem, 9vw, 9rem); background: var(--white); }
 .portfolio-gallery-header { display: flex; align-items: end; justify-content: space-between; gap: 2rem; margin-bottom: 2rem; }
@@ -82,7 +82,6 @@
   .profile-strip { padding-block: 1.4rem; }
   .profile-strip > img { width: 4rem; }
   .profile-name h1 { font-size: 2rem; }
-  .profile-history li { grid-template-columns: 1fr; gap: .1rem; }
   .portfolio-gallery-header { align-items: flex-start; flex-direction: column; }
   .portfolio-grid { grid-template-columns: 1fr; }
   .portfolio-tile-copy > p { min-height: 0; }
