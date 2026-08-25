@@ -78,6 +78,11 @@ export function VisualWorkArchive() {
               <p>{localize(activeWork.summary, locale)}</p>
             </div>
 
+            <a className="project-dialog-source visual-work-source" href={activeWork.artstationUrl} target="_blank" rel="noreferrer">
+              <span>{locale === 'zh' ? '查看原始 ArtStation 项目' : 'View the original ArtStation project'}</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+
             {activeWork.youtubeId && (
               <div className="visual-work-video">
                 <iframe

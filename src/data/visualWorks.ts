@@ -17,12 +17,14 @@ export interface VisualWork {
   tools: string[];
   images: VisualWorkImage[];
   youtubeId?: string;
+  artstationUrl: string;
   featured?: boolean;
 }
 
 export const visualWorks: VisualWork[] = [
   {
     id: 'unreal-stylized-world',
+    artstationUrl: 'https://www.artstation.com/artwork/kNZDbK',
     title: { en: 'Unreal Engine Stylized World', zh: 'Unreal 风格化世界' },
     cover: '/media/artstation/unreal-stylized-world.jpg',
     category: { en: 'Realtime environment', zh: '实时场景' },
@@ -45,6 +47,7 @@ export const visualWorks: VisualWork[] = [
   },
   {
     id: 'maya-plugin',
+    artstationUrl: 'https://www.artstation.com/artwork/XJGnR3',
     title: { en: 'Maya Plugin', zh: 'Maya 综合工具集' },
     cover: '/media/artstation/maya-plugin.jpg',
     category: { en: 'DCC tool development', zh: 'DCC 工具开发' },
@@ -67,6 +70,7 @@ export const visualWorks: VisualWork[] = [
   },
   {
     id: 'stylized-road-material',
+    artstationUrl: 'https://www.artstation.com/artwork/Bk918D',
     title: { en: 'Stylized Road Material', zh: '风格化道路材质' },
     cover: '/media/artstation/stylized-road-material.jpg',
     category: { en: 'Procedural material', zh: '程序化材质' },
@@ -88,6 +92,7 @@ export const visualWorks: VisualWork[] = [
   },
   {
     id: 'rigging-animation',
+    artstationUrl: 'https://www.artstation.com/artwork/vb42ev',
     title: { en: 'Rigging & Animation', zh: '角色绑定与动画' },
     cover: '/media/artstation/rigging-animation.jpg',
     category: { en: 'Rigging and gameplay', zh: '绑定与游戏角色' },
@@ -111,6 +116,7 @@ export const visualWorks: VisualWork[] = [
   },
   {
     id: 'unity-sdf-shader',
+    artstationUrl: 'https://www.artstation.com/artwork/XJGnQl',
     title: { en: 'Unity SDF Shader', zh: 'Unity SDF 体积云 Shader' },
     cover: '/media/artstation/unity-sdf-shader.jpg',
     category: { en: 'Realtime shader', zh: '实时 Shader' },
@@ -132,6 +138,7 @@ export const visualWorks: VisualWork[] = [
   },
   {
     id: 'houdini-lightning',
+    artstationUrl: 'https://www.artstation.com/artwork/5W1Xkg',
     title: { en: 'Houdini Lightning VFX', zh: 'Houdini 闪电特效' },
     cover: '/media/artstation/houdini-lighting.jpg',
     category: { en: 'Procedural VFX', zh: '程序化特效' },
@@ -153,6 +160,7 @@ export const visualWorks: VisualWork[] = [
   },
   {
     id: 'houdini-cluster',
+    artstationUrl: 'https://www.artstation.com/artwork/Zl3GrN',
     title: { en: 'Houdini Interactive Cluster', zh: 'Houdini 交互式花簇' },
     cover: '/media/artstation/houdini-cluster.jpg',
     category: { en: 'Procedural interaction', zh: '程序化交互' },
@@ -173,6 +181,7 @@ export const visualWorks: VisualWork[] = [
   },
   {
     id: 'unreal-vfx',
+    artstationUrl: 'https://www.artstation.com/artwork/oJWA5k',
     title: { en: 'Unreal Engine VFX', zh: 'Unreal 水墨战斗特效' },
     cover: '/media/artstation/unreal-vfx.jpg',
     category: { en: 'Realtime VFX', zh: '实时特效' },
@@ -195,6 +204,7 @@ export const visualWorks: VisualWork[] = [
   },
   {
     id: 'houdini-tower',
+    artstationUrl: 'https://www.artstation.com/artwork/nJWYm1',
     title: { en: 'Houdini PCG Tower', zh: 'Houdini 程序化高塔' },
     cover: '/media/artstation/houdini-pcg-tower.jpg',
     category: { en: 'Procedural modeling', zh: '程序化建模' },

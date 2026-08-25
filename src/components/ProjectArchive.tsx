@@ -76,6 +76,35 @@ export function ProjectArchive() {
                 <h2>{activeProject.title}</h2>
                 <p>{projectText(activeProject.summary, locale)}</p>
               </div>
+              {activeProject.link && (
+                <a className="project-dialog-source" href={activeProject.link.href} target="_blank" rel="noreferrer">
+                  <span>{projectText(activeProject.link.label, locale)}</span><span aria-hidden="true">↗</span>
+                </a>
+              )}
+              {activeProject.youtubeId && (
+                <div className="project-dialog-video">
+                  <iframe
+                    src={`https://www.youtube-nocookie.com/embed/${activeProject.youtubeId}?rel=0`}
+                    title={`${activeProject.title} ${locale === 'zh' ? '演示视频' : 'trailer'}`}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+                </div>
+              )}
+              {activeProject.story && (
+                <section className="project-dialog-story" aria-labelledby={`${activeProject.id}-story-title`}>
+                  <h3 id={`${activeProject.id}-story-title`}>{projectText(activeProject.story.title, locale)}</h3>
+                  <p>{projectText(activeProject.story.intro, locale)}</p>
+                  <h4>{locale === 'zh' ? '玩法与特色' : 'Gameplay & Features'}</h4>
+                  <dl>
+                    {activeProject.story.features.map((feature) => (
+                      <div key={feature.title.en}><dt>{projectText(feature.title, locale)}</dt><dd>{projectText(feature.detail, locale)}</dd></div>
+                    ))}
+                  </dl>
+                  {activeProject.story.note && <p className="project-dialog-note">{projectText(activeProject.story.note, locale)}</p>}
+                </section>
+              )}
               <div className="project-dialog-gallery">
                 {activeProject.images.map((image) => (
                   <figure key={image.src}>
@@ -92,7 +121,6 @@ export function ProjectArchive() {
                 <div>
                   <h3>{locale === 'zh' ? '技术与工具' : 'Technology'}</h3>
                   <ul className="project-dialog-stack">{activeProject.stack.map((item) => <li key={item}>{item}</li>)}</ul>
-                  {activeProject.link && <a href={activeProject.link.href} target="_blank" rel="noreferrer">{projectText(activeProject.link.label, locale)} <span aria-hidden="true">↗</span></a>}
                 </div>
               </div>
             </motion.article>

@@ -19,6 +19,13 @@ export interface SelectedProject {
   stack: string[];
   images: ProjectImage[];
   link?: { label: ProjectText; href: string };
+  youtubeId?: string;
+  story?: {
+    title: ProjectText;
+    intro: ProjectText;
+    features: Array<{ title: ProjectText; detail: ProjectText }>;
+    note?: ProjectText;
+  };
 }
 
 export const selectedProjects: SelectedProject[] = [
@@ -61,6 +68,33 @@ export const selectedProjects: SelectedProject[] = [
       { src: '/media/projects/house-of-vampires.webp', alt: { zh: 'House of Vampires 的 itch.io 项目页与游戏截图', en: 'House of Vampires itch.io page and screenshots' }, caption: { zh: '已上线的 itch.io 页面与实机画面', en: 'Published itch.io page and in-game captures' }, position: 'top' },
     ],
     link: { label: { zh: '打开 itch.io 项目页', en: 'Open the itch.io page' }, href: 'https://musitive.itch.io/hov' },
+    youtubeId: 'aY36FtqdGAw',
+    story: {
+      title: { zh: '你能逃出德古拉的城堡吗？', en: "Can you survive Dracula's Castle?" },
+      intro: {
+        zh: '进入《House of Vampires》中这座受经典恐怖电影启发的哥特式城堡。利用宅邸里散落的物品以及自己的身体，解开逃离城堡所需的谜题。',
+        en: 'Enter the classic horror-inspired gothic castle in House of Vampires! Use items scattered around the mansion as well as your own body to solve the puzzles needed to escape the castle.',
+      },
+      features: [
+        {
+          title: { zh: '多种谜题', en: 'Various Puzzles' },
+          detail: { zh: '要成功逃出城堡，你需要只利用自己能够携带的物品，解决多种不同的谜题。', en: 'To successfully escape the castle, you will need to solve several different puzzles using only what you can carry.' },
+        },
+        {
+          title: { zh: '德古拉', en: 'Dracula' },
+          detail: { zh: '游戏重新塑造了德古拉这一角色；在这个可怕的怪物抓住你之前，你必须设法逃脱。', en: 'Featuring a new take on Dracula as a character, you must escape this terrifying monster before he catches you.' },
+        },
+        {
+          title: { zh: '手柄支持', en: 'Controller Support' },
+          detail: { zh: '游戏完整支持键盘鼠标和 Xbox 手柄。', en: 'The game fully functions with not only Keyboard & Mouse but Xbox Controllers as well.' },
+        },
+        {
+          title: { zh: '经典恐怖电影质感', en: 'Classic Horror Film Look' },
+          detail: { zh: '游戏通过后期处理还原经典恐怖电影的胶片质感。', en: 'Using post-processing, the game captures that film look from classic horror films.' },
+        },
+      ],
+      note: { zh: '建议佩戴耳机游玩。', en: 'Best experienced with headphones.' },
+    },
   },
   {
     id: 'through-other-eyes',
@@ -121,6 +155,7 @@ export const selectedProjects: SelectedProject[] = [
     images: [
       { src: '/media/projects/digital-twin.png', alt: { zh: '工业数字孪生建筑线框与显示控制面板', en: 'Industrial digital twin with building outlines and display controls' }, caption: { zh: '城市建筑数据与显示参数控制', en: 'Building data and display-parameter controls' }, position: 'center' },
     ],
+    link: { label: { zh: '查看 GitHub 仓库', en: 'View the GitHub repository' }, href: 'https://github.com/Ubik42/Vue3_Digital_Twin' },
   },
 ];
 

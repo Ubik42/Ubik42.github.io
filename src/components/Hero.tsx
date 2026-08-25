@@ -30,7 +30,6 @@ export function Hero() {
           <Magnet wrapperClassName="magnet-wrapper" innerClassName="magnet-inner">
             <a className="action action-primary" href="#portfolio">{copy.hero.primaryAction}<span aria-hidden="true">↘</span></a>
           </Magnet>
-          <a className="action action-secondary" href="#about">{copy.personal.storyAction}<span aria-hidden="true">↓</span></a>
         </div>
       </motion.div>
 
