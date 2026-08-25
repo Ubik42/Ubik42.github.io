@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
-  <title id="title">跨宿主游戏美术工具管线</title>
-  <desc id="desc">从 DCC 和引擎输入经过规则检查、批处理与回归验证后形成可交付资产的抽象流程图</desc>
+  <title id="title">游戏美术生产工具与自动化管线</title>
+  <desc id="desc">从 DCC、游戏引擎与设计工具输入，经过规则检查、AI 辅助、批处理与回归验证后形成可交付资产的抽象流程图</desc>
   <rect width="1200" height="760" fill="#eef3f7"/>
   <path d="M0 604C181 535 301 696 484 628c186-70 283-216 488-161 98 26 164 91 228 117v176H0Z" fill="#d6e4ec"/>
   <g fill="none" stroke="#12364a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
@@ -28,7 +28,7 @@
       <text x="890" y="346" fill="#466678" font-size="21">真实宿主回归</text>
       <text x="890" y="381" fill="#466678" font-size="21">版本化环境 · CI</text>
     </g>
-    <text x="76" y="548" fill="#12364a" font-size="42" font-weight="700">游戏美术生产工具与跨宿主管线</text>
+    <text x="76" y="548" fill="#12364a" font-size="42" font-weight="700">游戏美术生产工具与自动化管线</text>
     <text x="78" y="595" fill="#466678" font-size="22">公开版本仅展示工程方法，不包含内部资产与业务信息</text>
   </g>
 </svg>

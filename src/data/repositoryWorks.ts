@@ -109,52 +109,173 @@ The portfolio uses real Maya 2024 and Unreal 5.4 captures, public repositories, 
   },
   {
     id: 'internship-art-pipeline',
-    title: '游戏美术生产工具与跨宿主管线（实习）',
+    title: '游戏美术生产工具、Figma AI 插件与自动化管线（实习）',
     category: 'pipeline',
-    categoryLabel: { zh: '实习工具管线', en: 'Internship tool pipeline' },
+    categoryLabel: { zh: '实习生产管线', en: 'Internship production pipeline' },
     summary: {
-      zh: '面向 DCC、游戏引擎与设计协作环境的生产工具开发，覆盖资产检查、批处理、预设、共享工程和可回归交付。',
-      en: 'Production tooling across DCCs, game engines, and design environments, covering asset checks, batch processing, presets, shared foundations, and regression-ready delivery.',
+      zh: '覆盖 Maya / Unreal 宿主工具、8 个 Figma 插件、FastAPI 数据服务、视觉检索、AIGC 自动化、DCC 批处理与可回归交付。',
+      en: 'Maya and Unreal tools, eight Figma plug-ins, FastAPI data services, visual retrieval, AIGC automation, DCC batch processing, and regression-ready delivery.',
     },
     cover: '/media/repositories/internship-pipeline.svg',
-    tags: ['Maya', 'Unreal Engine', 'Python / C++', 'Pipeline'],
+    tags: ['Maya / Unreal', 'Figma', 'Python / C++', 'React / FastAPI'],
     story: {
-      zh: `# 游戏美术生产工具与跨宿主管线
+      zh: `# 游戏美术生产工具、Figma AI 插件与自动化管线
 
-这项工作来自大型游戏工作室的工具技术美术实习。公开版本只展示可以脱离公司资产理解的工程方法，不包含内部项目名、平台名、账号、接口、业务数据、仓库、路径、截图或录屏。
+这组工作来自大型游戏工作室的 AI 工具技术美术实习。工作范围横跨 Maya、Unreal Editor、Figma 插件沙箱、Python / C++、TypeScript / React、FastAPI、SQLite、视觉向量检索、版本化软件环境和持续集成。公开版本保留实际解决的问题、系统分层和验证方法；内部项目、平台、账号、接口地址、业务数据、资产、仓库路径、原始截图与录屏均已移除。
 
-## DCC 与引擎工具
+## Maya：LOD 材质整理与资产检查
 
-- 在 Maya 中处理场景层级、命名、材质与贴图检查，将可自动修复的问题和必须人工确认的问题分开，再执行整理与导出。
-- 在 Unreal Editor 中实现可序列化的场景与角色预设，处理多对象恢复、附属关系、重复应用、生命周期和清理边界。
-- 为批量场景与 FBX 处理建立输入契约、版本切换、作业队列和结果回读，检查缺失文件、异常退出与零字节产物。
+- 遍历 Maya 场景层级和工程贴图，检查命名、层级、重复对象、贴图缺失及材质连接，把问题划分为“可安全自动修复”和“必须由美术确认”两类。
+- 检查通过后执行统一命名、标准贴图连接、材质整理与导出，避免修复脚本在信息不足时直接改坏资产。
+- Python 继续承担 Maya 宿主逻辑，使用嵌入 Qt 的 Web 前端展示步骤、错误列表、进度与最终结果；前端发送事件，Python 回传结构化状态。
+- 使用正常资产、贴图缺失、错误层级、重复名称和异常导出等样例回归，同时处理窗口重复打开、关闭与刷新、资源路径、宿主线程和异常回传。
 
-## 共享工程与交付
+## Maya：既有烘焙工具的半分辨率贴图扩展
 
-- 将宿主逻辑、界面和公共能力拆分，统一插件目录、构建入口、主题、错误状态与使用文档。
-- 通过版本化环境、合并请求、持续集成和真实宿主回归管理发布；长任务保留进度、取消、重试与部分成功结果。
-- AI 只用于受约束的语义理解或候选建议；资源写入、批量修改、版本核验和交付结果仍由确定性程序与人工确认控制。
+- 在原有贴图烘焙流程中增加原尺寸 / 半尺寸分支，根据输入宽高计算目标分辨率，并处理奇数尺寸、最小值和比例边界。
+- 将新选项接回既有参数保存与任务执行，保持文件格式、Alpha、命名和输出目录规则一致。
+- 分别核对两条分支的尺寸、通道、文件名和目录，并重跑旧流程，确认新增功能没有改变默认导出行为。
+
+## Unreal Editor：多 Actor 拍屏预设
+
+- 从编辑器选择集中读取 Skeletal Mesh Actor，同时记录视口、相机和标准灯光状态；空选择、失效资源和字段缺失在执行前拦截。
+- 使用 C++ 定义可序列化的数据结构，覆盖骨骼网格、Transform、相机焦距、视口、灯光、LOD 与默认值。
+- 使用 Python 编排创建模型、保存预设、读取应用、删除预设、错误提示和执行顺序，再把稳定操作注册到蓝图函数库，接入既有角色选择与构建流程。
+- 原型通过后将预设资源化为 Data Asset，使配置可以共享、提交版本并追溯修改。
+- 对复杂角色维护主角色、武器和挂件的父子关系与相对状态；重复应用时避免附属物重复生成，只清理本次预设创建并登记的对象，保留场景原有内容。
+- 通过“保存—主动修改—恢复—再次应用—清理”的连续测试检查 Outliner 数量、父级、资源引用和单项失败记录。
+
+## Figma AI 工具族：8 个插件的持续开发
+
+### AI 管家
+
+- 递归读取选区中的文本、尺寸、层级、组件和节点关系，将当前页面与选区压缩为结构化摘要，再与用户问题和历史消息共同组成提示词上下文，避免无差别发送整份设计文件。
+- 实现流式回复、停止生成、历史记录、Markdown、长文本滚动、网络中断后的已返回内容保留，以及可控的上下文窗口。
+- 补齐登录、主题、配置、窗口重开、重复监听、流式残留和异常恢复，使 AI 对话从演示能力进入设计师可持续使用的插件。
+
+### AI 翻译
+
+- 遍历选中 Frame 的文本节点，保留原文、节点 ID、目标语言与错误对象，分批调用模型并按 ID 将结果写回对应节点。
+- 将 AI 请求、字体加载和画布写回拆成不同阶段；支持进度、取消、撤销、失败对象单独重试与部分成功保留。
+- 随插件分发所需字体并检测本机缺失状态；写回后自动检查文本溢出、缺字、空结果和原文残留，把“翻译正确”推进到“画布可验收”。
+
+### 任务与交付插件
+
+- 完成登录、项目空间、版本与任务树、本地缓存和重开状态恢复，并加入列表、筛选、右键操作、交付物查看和任务状态回写。
+- 将 Figma 本地文件、任务和交付版本建立绑定；上传成功后保存文件标识、版本和接口响应。
+- 将上传、任务评论和消息通知拆成可恢复步骤：后续通知失败时只重试通知，不重复创建已经完成的版本，界面保留每一步完成时间和失败对象。
+
+### 组件精灵：视觉语义搜索
+
+- 支持文本描述、截图和当前选中节点三种输入，使用 SigLIP 视觉语义特征在大规模组件索引中召回候选。
+- 统一组件元数据、缩略图缓存、向量索引和资源 URL；同文件直接定位，跨文件打开来源，权限允许时依据组件 key 创建保持链接的 Instance。
+- 视觉模型只负责扩大召回范围，来源、权限、组件 key 与发布状态仍由程序确定性核验。
+
+### 组件查重
+
+- 提取缩略图、尺寸、节点类型、层级深度、名称和 Instance 特征，以视觉向量召回外观相似候选，再结合结构特征重新排序。
+- 对远端图片、API 回源与本地缓存建立降级链路，向设计师展示相似度、来源文件、Page / Frame 和元数据，由人工完成最终合并判断。
+
+### 母版更新
+
+- 扫描外部 Instance，读取组件 key、来源文件、更新时间和已发布母版信息；视觉匹配负责召回名称变化或跨文件的相近候选。
+- 用户确认后调用 Figma 原生 Swap，保留变量、Variant 和覆盖关系；批量处理中独立记录失败对象，不回滚已经完成的替换。
+
+### 切图与布局工具
+
+- 切图工具读取矢量轮廓、透明像素、可见内容和选区边界：普通图形计算几何质心，复杂轮廓结合像素分布估计视觉中心，再生成统一 Frame、缩放和对齐内容。
+- 布局工具读取对象边界与相对位置，批量生成水平、垂直间距和尺寸标注，并支持更新、清除与异常对象提示。
+- 图标审核结合可见内容、视觉中心、轮廓占比和安全区规则判断正常、贴边、超界与复杂轮廓，结果写回 Figma 画布供设计师逐项调整。
+
+## 公共后端、插件工程与数据服务
+
+- 八个插件保持独立仓库、独立版本化软件包与单插件回滚边界；统一 app / plugin / scripts 目录、manifest、入口、主题、构建脚本和消息格式。
+- 通过 Python entry point 发现插件包并动态挂载 FastAPI 路由；统一处理 CORS / OPTIONS、认证信息、超时、open-url 和 JSON 错误。单个插件导入失败会被隔离，其余服务仍可启动。
+- FastAPI 服务维护 SQLite 快照、团队空间、缩略图缓存和 REST API fallback；大文件按 Page / Frame 分段拉取并保存断点，调用方根据状态读取实时数据、缓存或本地快照。
+- 多个组件插件共享元数据、缩略图与 SigLIP 向量索引，但运行时仍保持独立交付，避免把全部需求耦合进一个大工程。
+- Figma Webview 无法直接访问部分本地图片路由时，由服务读取资源并返回 base64 data URI；前端按 data URI、远端 URL、默认图标三级降级。
+- 渐进缩略图只在临近视口时入队，限制全局并发；离开视口通过 AbortController 取消请求，组件卸载时回收 Object URL，避免大量图片拖慢文字与视觉搜索。
+- 快速测试脚本扫描插件和公共运行包：未变化时复用构建结果，有变化时增量编译、组装依赖、启动服务，并继续核验插件注册与基础路由。
+
+## AIGC 工作流与生产自动化
+
+- 将任务输入、角色与品牌素材、尺寸、命名和输出目录写成配置，自动创建或复用 Figma 画布、替换素材、生成页面，并输出 Banner、引擎图集、压缩包和交付记录。
+- 对浏览器端生成工作流解析 Workflow JSON，为每个流程准备差异化输入，创建或复用画布、替换资源、触发节点并等待生成。
+- 针对长时间任务记录步骤状态、心跳、日志和结果台账，支持断点续跑、下载和失败定位。
+- 模型负责图片生成、局部编辑或视频节点等不可完全规则化的视觉结果；流程解析、素材替换、命名、尺寸校验、节点执行与产物保存由确定性程序控制，最终质量由人工验收。
+
+## DCC Checker：无界面检查、修复与报告
+
+- 根据扩展名、文件头和配置识别 DCC 类型与版本，路由到对应 Maya / 3ds Max 批处理宿主，区分正常文件、损坏文件和版本不匹配。
+- 无界面运行 Pyblish Pipeline，采集 Context、Instance 和各检查插件结果；对可自动修复项执行修复后重新检查。
+- 输出 JSON 与 HTML 报告，记录宿主、耗时、日志及修复前后状态，并准备命令行和服务两种调用入口。
+- 使用超大场景、编码异常、无引用、损坏资源、多宿主版本和超时退出等样例做压力验证，避免工具只在单一演示文件上成功。
+
+## 跨 Maya 版本的场景与 FBX 批处理
+
+- 将上游输入收敛为业务版本、模型标识和源文件位置，由脚本建立固定目录、生成场景名并检查输入文件。
+- 在不同 Maya 版本中依次生成绑定、召唤、角色配置和多组动作场景，处理宿主版本、路径、命名和输出规则差异。
+- 通过作业队列顺序执行 Maya 任务，批量导出 Mesh 与动画 FBX；结束后回读文件数量、大小、缺失项和零字节产物。
+- 目录生成、宿主处理、批量导出和结果校验已用真实样例跑通；尚未获得正式上游接口时使用 Adapter 模拟调用，并明确保留联调边界。
+
+## 线上维护、发布与文档
+
+- 面对上游接口分页行为变化造成的任务树空白，修正分页策略、加入同条件降级重试并补回归测试。
+- 对外部 AI 服务工作区休眠导致的调用失败完成恢复，并将后端归属、维护入口和故障判断写进 README 与构建配置。
+- 清理多个插件仓的旧分支和失效引用前先生成、验证恢复 Bundle；保留仍有价值的功能分支，保证治理操作可恢复。
+- 把代码评审、持续集成、包构建、入口发现、发布与真实宿主验证固化为检查表；线上问题回写开发日志和本地知识库。
+- 输出新人环境配置、Webhook 联通性测试、一键运行脚本及各插件使用文档，使开发、测试和用户入口形成闭环。
+
+## 对 AI 能力边界的验证
+
+我也尝试过把交互稿自动转换为视觉稿：读取文件结构、判断页面用途、搜索母版、复制或替换节点，并让模型结合截图与节点信息规划下一步。最终没有达到生产质量，问题集中在跨文件写入、业务语义、母版选择、Auto Layout、Instance 与团队视觉规范无法形成稳定映射。
+
+这个方向被主动停止，没有包装成已完成产品。验证后保留下来的结论是：模型适合语义理解、候选召回和局部建议；范围明确的节点操作可以由程序验证；跨文件结构修改、资产写入和视觉决策必须依赖确定性工具、人工确认与真实文件回归。
 
 ## 公开边界
 
-原始答辩材料及其中媒体仅作为本地工作记录，不进入公开站点。本页使用重新绘制的抽象封面和脱敏文字，只证明本人负责过的工具类型、技术边界与交付方法。`,
-      en: `# Game-art production tools and cross-host pipelines
+原始答辩材料与媒体只作为本地工作记录，不进入公开站点。公开页面没有复用内部资产或界面截图，所有名称、数据和接口均经过抽象处理；这里展示的是本人负责过的技术问题、实现方式、验证方法和能力边界。`,
+      en: `# Game-art production tools, Figma AI plug-ins, and automation pipelines
 
-This work comes from a technical-art tools internship at a large game studio. The public case study intentionally excludes internal project and platform names, accounts, endpoints, business data, repositories, paths, screenshots, and recordings.
+This work comes from an AI tools technical-art internship at a large game studio. It covered Maya, Unreal Editor, the Figma plug-in sandbox, Python and C++, TypeScript and React, FastAPI, SQLite, visual-vector retrieval, versioned environments, and CI. The public case keeps the engineering problems and verification methods while removing internal project names, platforms, accounts, endpoints, business data, assets, repositories, paths, screenshots, and recordings.
 
-## DCC and engine tools
+## Maya and Unreal Editor tooling
 
-- Built Maya checks for hierarchy, naming, materials, and textures, separating safe automatic repairs from issues requiring artist confirmation before export.
-- Implemented serializable Unreal Editor presets with multi-object restoration, attachment relationships, repeat application, lifecycle handling, and contained cleanup.
-- Structured batch scene and FBX processing around explicit inputs, host-version switching, job queues, and output validation for missing or invalid artifacts.
+- Built Maya hierarchy, naming, duplicate-object, texture, and material checks, separating safe repairs from artist-confirmed changes before organized export.
+- Kept Maya host logic in Python while an embedded web UI reported structured steps, errors, progress, and results; tested window lifecycle, resource paths, host threads, and exception propagation.
+- Extended an existing baking tool with original and half-resolution branches while preserving format, alpha, naming, directory, saved parameters, and legacy behavior.
+- Designed serializable Unreal preset data in C++ for meshes, transforms, camera, viewport, lighting, LOD, and defaults; orchestrated save/apply/delete flows in Python and exposed stable operations through Blueprint libraries.
+- Productized the preset as a Data Asset and handled nested actors, repeat application, attachment state, partial failure, and cleanup limited to objects created by the preset.
 
-## Shared engineering and delivery
+## Eight Figma production plug-ins
 
-- Separated host logic, interface code, and shared packages while standardizing project layout, build entry points, error states, and documentation.
-- Used versioned environments, merge review, continuous integration, and real-host regression checks; long-running work preserved progress, cancellation, retry, and partial success.
-- AI was limited to constrained semantic interpretation or candidate suggestions. Deterministic code and human confirmation remained responsible for writes, version checks, and delivery.
+- AI assistant: compressed selected text, dimensions, hierarchy, components, and node relationships into bounded context; implemented streaming, stop, retry, history, Markdown, long-text handling, and recovery.
+- AI translation: batched text nodes with stable IDs, separated model calls from font loading and canvas writes, preserved partial success, and checked overflow, missing glyphs, empty output, and untranslated text.
+- Task and delivery tooling: restored login and project state, bound local files to tasks and versions, and split upload, comment, and notification into independently retryable steps.
+- Component search and deduplication: combined SigLIP retrieval with component metadata and structural features, thumbnail caching, REST fallback, source, permission, and publication checks.
+- Master updates: used visual matching only for candidate recall, then required user confirmation before native instance swap so variables, variants, and overrides remained intact.
+- Icon and layout tools: estimated visual centers from vectors, alpha, visible pixels, and silhouette data; generated standard frames, spacing annotations, and safe-area feedback with deterministic canvas output.
 
-The original presentation and media remain local work records. This page uses a newly drawn abstract cover and sanitized text only.`,
+## Shared services and delivery engineering
+
+- Preserved independent repositories, versioned packages, and rollback boundaries while standardizing app/plugin/scripts layout, manifests, entry points, themes, build scripts, and message formats.
+- Discovered plug-in packages through Python entry points and mounted FastAPI routes dynamically, isolating failed imports while standardizing CORS, authentication, timeouts, URLs, and JSON errors.
+- Maintained SQLite snapshots, team-space data, thumbnail caches, segmented REST fallback, checkpoints, and a shared visual-vector index.
+- Added progressive thumbnail queues, bounded concurrency, AbortController cancellation, Object URL cleanup, and multi-level image fallback for constrained Figma webviews.
+- Built an incremental validation path covering source scanning, compilation, dependency assembly, service startup, plug-in discovery, and route checks, then delivered through review, CI, versioned packages, and real-host regression.
+
+## AIGC automation and DCC batch systems
+
+- Automated configuration-driven asset preparation, Figma page generation, AIGC workflow execution, banner and engine-atlas output, size and naming validation, packaging, and delivery records.
+- Parsed workflow JSON and managed long-running generation with explicit step state, heartbeat, checkpoints, resume, downloads, logs, and result ledgers. Models produced visual candidates; deterministic automation controlled execution and humans judged quality.
+- Routed Maya and 3ds Max files into headless Pyblish checks, optional repair and recheck, and JSON/HTML reports, with stress cases for corrupt files, version mismatch, large scenes, encoding, and timeout.
+- Orchestrated multi-version Maya jobs that generated binding, configuration, and animation scenes before batch FBX export and post-run validation for counts, file sizes, missing outputs, and zero-byte artifacts.
+
+## Engineering judgment
+
+An experiment that attempted to turn interaction drafts into finished visual layouts was stopped after real-file testing exposed unstable mappings among screenshot semantics, cross-file components, Auto Layout, instances, and visual standards. The retained boundary was explicit: models can interpret intent and retrieve candidates; deterministic tools must own writes and validation; people remain responsible for high-level visual decisions.
+
+The original presentation and media remain local work records. This public page uses only sanitized technical descriptions and a newly drawn abstract cover.`,
     },
   },
   {
