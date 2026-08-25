@@ -8,4 +8,5 @@
 /.playwright-cli/
 /qa-*.png
 /.vite/
+/assets/
 *.log

@@ -24,10 +24,10 @@ export interface ProductLine {
 }
 
 export const portfolioOverview = {
-  title: { en: 'Five product lines, one technical-art practice', zh: '五条产品线，一套技术美术实践' },
+  title: { en: 'AI ToolTA production pipelines', zh: 'AI ToolTA 工具管线' },
   summary: {
-    en: 'Eighteen focused repositories are grouped into five recruiter-facing product lines. The public foundation and three representative product repositories are online, with visible Maya and Unreal host evidence.',
-    zh: '18 个独立仓库按招聘者能够快速理解的方式归入五条产品线。公开基础仓与三个代表性产品仓现已开放，并已有 Maya 与 Unreal 真实宿主证据。',
+    en: 'Cross-DCC rules, animation round trips, character delivery, texture variants, and automation records, supported by Maya and Unreal host captures and public repositories.',
+    zh: '覆盖跨 DCC 规范、动画往返、角色交付、贴图变体与自动化记录，并配有 Maya、Unreal 宿主截图及公开仓库。',
   },
   sourceLabel: { en: 'Open portfolio index', zh: '打开作品集总入口' },
   status: { en: 'Public snapshot online · Maya + Unreal host-verified', zh: '公开快照已上线 · Maya + Unreal 宿主实测' },

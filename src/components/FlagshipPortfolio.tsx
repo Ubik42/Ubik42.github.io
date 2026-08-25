@@ -62,7 +62,7 @@ export function FlagshipPortfolio() {
         </div>
       </div>
 
-      <p className="portfolio-disclaimer">{locale === 'zh' ? '展示口径：页面先列出仓库入口与现有截图，仓库可见范围按发布节奏逐项开放。完成度以各仓 README、测试记录和发布说明为准；原型、合成样例或局部验证不会描述为完整生产交付。' : 'Presentation policy: the page lists repository destinations and current screenshots first, while repository visibility is opened in stages. Maturity follows each README, test record, and release note; prototypes, synthetic fixtures, and partial validation are not presented as finished production delivery.'}</p>
+      <p className="portfolio-disclaimer">{locale === 'zh' ? '展示内容均附真实宿主截图、公开仓库或运行记录；尚未完成宿主验证的功能标记为原型。' : 'Each item includes host captures, a public repository, or run records; features without host validation are labeled as prototypes.'}</p>
     </section>
   );
 }

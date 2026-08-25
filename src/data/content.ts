@@ -25,15 +25,15 @@ export interface SiteCopy {
 export const siteCopy: Record<Locale, SiteCopy> = {
   en: {
     meta: {
-      title: 'Lucas Shen | AI Tool Technical Artist',
-      description: 'Lucas Shen builds inspectable AI-assisted tools for DCC, engine, and art-production workflows.',
+      title: 'Lucas Shen | AI & Tools Pipeline Technical Artist',
+      description: 'Games, DCC plug-ins, realtime graphics, engine tools, and AI-assisted art pipelines by Lucas Shen.',
     },
-    nav: { work: 'Tools', practice: 'Experience', links: 'Links', aria: 'Primary navigation' },
+    nav: { work: 'Projects', practice: 'Experience', links: 'Links', aria: 'Primary navigation' },
     language: { label: 'Language', english: 'English', changed: 'Language changed to English.' },
-    hero: { role: 'AI Tool Technical Artist', primaryAction: 'Explore five product lines' },
+    hero: { role: 'AI & Tools Pipeline Technical Artist', primaryAction: 'Selected projects' },
     personal: {
-      intro: 'I build AI-assisted tools that connect DCCs, engines, and art-production workflows. I focus on production rules, safe execution, review evidence, and artist-facing usability.',
-      storyAction: 'Meet Lucas',
+      intro: 'My work spans games, DCC plug-ins, realtime graphics, engine tools, and AI-assisted art pipelines, with running builds, project captures, and implementation details.',
+      storyAction: 'About me',
       aboutTitle: 'About me',
       aboutBody: [
         'I’m Lucas, a technical artist from China. My path crosses industrial engineering, game development, realtime graphics, and production tools. That mix helps me move between an artist’s problem and the system behind it.',
@@ -65,15 +65,15 @@ export const siteCopy: Record<Locale, SiteCopy> = {
   },
   zh: {
     meta: {
-      title: '沈裕焱 | AI 工具技术美术',
-      description: '沈裕焱专注于为 DCC、引擎和美术生产流程构建可检查的 AI 辅助工具。',
+      title: '沈裕焱 | AI 与工具管线向技术美术',
+      description: '沈裕焱的游戏、DCC 插件、实时图形、引擎工具与 AI 辅助美术管线作品集。',
     },
-    nav: { work: '工具', practice: '经历', links: '链接', aria: '主导航' },
+    nav: { work: '作品', practice: '经历', links: '链接', aria: '主导航' },
     language: { label: '语言', english: 'English', changed: '语言已切换为中文。' },
-    hero: { role: 'AI 工具技术美术', primaryAction: '查看五条产品线' },
+    hero: { role: 'AI 与工具管线向技术美术', primaryAction: '项目作品' },
     personal: {
-      intro: '我为 DCC、引擎和美术生产流程开发 AI 辅助工具，关注生产规则、安全执行、评审证据与创作者真正使用工具时的体验。',
-      storyAction: '认识我',
+      intro: '作品覆盖游戏、DCC 插件、实时图形、引擎工具与 AI 辅助美术管线，包含运行画面、项目素材和具体实现。',
+      storyAction: '关于我',
       aboutTitle: '关于我',
       aboutBody: [
         '我是沈裕焱，一名来自中国的技术美术。我的经历横跨工业工程、游戏开发、实时图形和生产工具，因此我习惯同时理解创作者遇到的问题，以及问题背后的代码与系统。',

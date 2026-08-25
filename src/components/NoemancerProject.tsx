@@ -26,8 +26,8 @@ export function NoemancerProject() {
         <h2 id="noemancer-title">Noemancer</h2>
         <p className="noemancer-lead">
           {zh
-            ? '一个用 C++20 开发的实验性游戏引擎，目标不是在旧引擎外再包一层聊天工具，而是让编辑、运行、调试和验证从底层就能被人和 Agent 共同理解。'
-            : 'An experimental C++20 game engine designed so editing, runtime inspection, debugging, and validation are understandable to both people and agents—not merely wrapped in a chat interface.'}
+            ? '使用 C++20 开发的实验性游戏引擎，包含编辑器、D3D12 渲染、物理、动画、音频、C# 脚本与资产管线，并通过 JSON、CLI 和 MCP 提供结构化编辑与诊断能力。'
+            : 'An experimental C++20 game engine with an editor, D3D12 rendering, physics, animation, audio, C# scripting, and an asset pipeline, plus structured editing and diagnostics through JSON, CLI, and MCP.'}
         </p>
         <div className="noemancer-status">
           <span>{zh ? 'PRE-ALPHA · 源码预览' : 'PRE-ALPHA · SOURCE PREVIEW'}</span>

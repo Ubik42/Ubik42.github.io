@@ -12,7 +12,8 @@ export function Header() {
       </a>
       <div className="header-actions">
         <nav className="site-nav" aria-label={copy.nav.aria}>
-          <a href="#portfolio">{copy.nav.work}</a>
+          <a href="#projects">{copy.nav.work}</a>
+          <a href="#portfolio">AI ToolTA</a>
           <a href="#noemancer">Noemancer</a>
           <a href="#career">{copy.nav.practice}</a>
           <a href="#artstation">ArtStation</a>
