@@ -34,7 +34,7 @@ export const selectedProjects: SelectedProject[] = [
   {
     id: 'fathom',
     portfolioCategory: 'engine-games',
-    title: 'Fathom',
+    title: '实体控制器潜艇协作游戏',
     period: '2026',
     category: { zh: 'Unreal 游戏 / 硬件交互', en: 'Unreal game / hardware interaction' },
     summary: {
@@ -55,7 +55,7 @@ export const selectedProjects: SelectedProject[] = [
   {
     id: 'house-of-vampires',
     portfolioCategory: 'engine-games',
-    title: 'House of Vampires',
+    title: '哥特式吸血鬼城堡解谜游戏',
     period: '2025',
     category: { zh: 'Unreal 蓝图游戏', en: 'Unreal Blueprint game' },
     summary: {
@@ -103,7 +103,7 @@ export const selectedProjects: SelectedProject[] = [
   {
     id: 'through-other-eyes',
     portfolioCategory: 'engine-games',
-    title: 'Through Other Eyes',
+    title: 'VR 视障体验与无障碍叙事游戏',
     period: '2025',
     category: { zh: 'VR 无障碍体验', en: 'VR accessibility experience' },
     summary: {
@@ -125,7 +125,7 @@ export const selectedProjects: SelectedProject[] = [
   {
     id: 'retro-arcade',
     portfolioCategory: 'engine-games',
-    title: 'Retro 3D Arcade Prototype',
+    title: '复古像素风 3D 街机游戏原型',
     period: '2025',
     category: { zh: 'Unity 游戏与 Shader', en: 'Unity gameplay and shader' },
     summary: {
@@ -146,7 +146,7 @@ export const selectedProjects: SelectedProject[] = [
   {
     id: 'digital-twin',
     portfolioCategory: 'other-tools',
-    title: 'Industrial Digital Twin',
+    title: '工业设备数字孪生交互系统',
     period: '2023',
     category: { zh: 'Web 3D 可视化', en: 'Web 3D visualization' },
     summary: {

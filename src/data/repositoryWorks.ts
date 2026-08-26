@@ -85,7 +85,7 @@ The project is pre-alpha and currently verified end to end on Windows x64. SSR, 
   },
   {
     id: 'art-pipeline-skill',
-    title: 'Art Pipeline Skill',
+    title: '美术生产工具审计与安全调用 Skill',
     category: 'pipeline',
     categoryLabel: { zh: '工具与资产管线审计 Skill', en: 'Tool and asset pipeline audit skill' },
     summary: { zh: '从旧 AIToolTA 体系中收口出的轻量 Skill：登记真实工具能力，校验版本、只读边界与执行证据。', en: 'A focused skill extracted from the retired AIToolTA suite to validate registered tools, versions, read-only boundaries, and execution evidence.' },
@@ -93,7 +93,7 @@ The project is pre-alpha and currently verified end to end on Windows x64. SSR, 
     tags: ['Skill', 'Maya / Unreal', 'JSON Schema', '只读审计'],
     repositoryUrl: 'https://github.com/Ubik42/art-pipeline-skill',
     story: {
-      zh: `# Art Pipeline Skill
+      zh: `# 美术生产工具审计与安全调用 Skill
 
 这是一个面向美术生产工具的轻量 Skill。它不临时生成脚本去改资产，而是为 Codex、ArtFlow Agent 等自动化入口提供一份可核对的“工具目录”：当前有哪些工具、版本是什么、允许读写哪些范围、运行后应返回什么证据。
 
@@ -306,13 +306,13 @@ The original presentation and media remain local work records. This public page 
     },
   },
   {
-    id: 'asset-delivery-organizer', title: 'Asset Delivery Organizer', category: 'pipeline',
+    id: 'asset-delivery-organizer', title: '美术资产交付整理工作台', category: 'pipeline',
     categoryLabel: { zh: '资产交付整理工作台', en: 'Asset delivery workbench' },
     summary: { zh: '面向外包交付的中文桌面工具：只读审计、可编辑整理方案、哈希复检、失败回滚与复检收据。', en: 'A Chinese desktop workbench for read-only delivery audits, editable organization plans, hash rechecks, rollback, and post-audit receipts.' },
     cover: '/media/repositories/production-tools/asset-delivery-plan.png',
     tags: ['PySide6', 'Python', '事务回滚', 'CLI / API'],
     repositoryUrl: 'https://github.com/Ubik42/asset-delivery-organizer',
-    story: { zh: `# Asset Delivery Organizer
+    story: { zh: `# 美术资产交付整理工作台
 
 一批外包资产通常同时包含模型、贴图、UDIM、历史版本和说明文件；人工整理时很容易出现重命名错误、覆盖新文件或遗漏贴图。Asset Delivery Organizer 将交付信息、文件扫描、命名与贴图检查、整理方案、版本归档、复检收据和历史记录放进同一个中文桌面工作台。
 
@@ -337,13 +337,13 @@ A PySide6 desktop workbench for supplier deliveries. Audits are strictly read-on
     ],
   },
   {
-    id: 'maya-scene-checker', title: 'Maya 场景交付检查器', category: 'pipeline',
+    id: 'maya-scene-checker', title: 'Maya 场景质量与交付检查工具', category: 'pipeline',
     categoryLabel: { zh: 'Maya 只读交付门禁', en: 'Read-only Maya delivery gate' },
     summary: { zh: '在 Maya 2025 中扫描拓扑、命名、引用与场景状态，把问题落成可定位 Evidence 和可交付报告。', en: 'A Maya 2025 checker that turns topology, naming, reference, and scene findings into locatable evidence and delivery reports.' },
     cover: '/media/repositories/production-tools/maya-scene-overview.png',
     tags: ['Maya 2025', 'PySide6', '拓扑检查', 'Evidence'],
     repositoryUrl: 'https://github.com/Ubik42/maya-scene-checker',
-    story: { zh: `# Maya 场景交付检查器
+    story: { zh: `# Maya 场景质量与交付检查工具
 
 这是面向模型美术、外包验收和 TA 的 Maya 只读交付检查器。它先对场景建立稳定快照，再用 Rule、Issue 和 Evidence 回答三个问题：哪个对象出错、具体落在哪个面 / 边 / 点、它为什么会阻碍交付。整个检查过程不修改场景。
 
@@ -368,13 +368,13 @@ A read-only Maya 2025 delivery gate that produces versioned rules, issues, locat
     ],
   },
   {
-    id: 'maya-garment-preparation', title: 'Maya Garment Preparation', category: 'pipeline',
+    id: 'maya-garment-preparation', title: 'Maya 服装版片安全传递工具', category: 'pipeline',
     categoryLabel: { zh: 'Maya 服装准备插件', en: 'Maya garment preparation plug-in' },
     summary: { zh: '将基础版片 UV 与高模位置安全传递到重拓扑版片，修改前预检、执行后复检，并支持一次 Undo。', en: 'Safely transfers panel UVs and high-resolution positions to retopology meshes with preflight, post-validation, rollback, and one-step undo.' },
     cover: '/media/repositories/production-tools/maya-garment-host.png',
     tags: ['Maya 2025', 'PySide6', 'transferAttributes', 'Undo'],
     repositoryUrl: 'https://github.com/Ubik42/maya-garment-preparation',
-    story: { zh: `# Maya Garment Preparation
+    story: { zh: `# Maya 服装版片安全传递工具
 
 这是面向 Marvelous Designer 等服装流程进入 Maya 后的版片准备工具。在常见流程中，基础版片提供整齐 UV，高模提供造型，重拓扑网格承接最终制作。工具识别这三类输入，将选择、检查、UV 传递、位置贴合与复检收束成一次可预览、可拒绝、可撤销的操作。
 
@@ -400,13 +400,13 @@ A focused Maya 2025 plug-in for safe UV and position transfer across base panels
     ],
   },
   {
-    id: 'unreal-asset-batch-auditor', title: 'Unreal Asset Batch Auditor', category: 'pipeline',
+    id: 'unreal-asset-batch-auditor', title: 'Unreal 资产批量质量审计工具', category: 'pipeline',
     categoryLabel: { zh: 'Unreal 资产批量审计插件', en: 'Unreal batch asset auditor' },
     summary: { zh: 'UE 5.8.1 原生中文 Slate 面板，批量审计 Static Mesh 预算、LOD、材质槽和 Nanite，并输出证据报告。', en: 'A native UE 5.8.1 Slate panel for batch auditing Static Mesh budgets, LODs, material slots, and Nanite with evidence reports.' },
     cover: '/media/repositories/production-tools/unreal-auditor-run.png',
     tags: ['Unreal 5.8', 'C++ / Python', 'Slate', '只读审计'],
     repositoryUrl: 'https://github.com/Ubik42/unreal-asset-batch-auditor',
-    story: { zh: `# Unreal Asset Batch Auditor
+    story: { zh: `# Unreal 资产批量质量审计工具
 
 这是一个面向 Unreal 项目 Static Mesh 的只读批量审计插件。当美术需要在提交前快速检查一组资产时，插件从 Content Browser 的显式选择中采集三角形、顶点、材质槽、LOD 和 Nanite 信息，并根据项目 Profile 给出可定位的超限结果。
 
@@ -430,11 +430,11 @@ A read-only Unreal 5.8.1 Editor plug-in. Native C++ collects explicitly selected
     ],
   },
   {
-    id: 'rez-studio-launcher', title: 'Rez Studio', category: 'pipeline',
+    id: 'rez-studio-launcher', title: 'DCC 项目环境与插件启动器', category: 'pipeline',
     categoryLabel: { zh: 'DCC 工作站启动器', en: 'DCC workstation launcher' },
     summary: { zh: '面向 Windows 制作工作站的项目感知启动器：按身份、项目、DCC 版本和插件方案解析隔离的 Rez 环境。', en: 'A project-aware Windows workstation launcher resolving isolated Rez environments from identity, project, DCC version, and plug-in scheme.' },
     cover: '/media/repositories/major-updates/rez-overview.png', tags: ['Rez 3.4', 'Tauri 2', 'React 19', 'Python / Rust'], repositoryUrl: 'https://github.com/Ubik42/rez-studio-launcher',
-    story: { zh: `# Rez Studio
+    story: { zh: `# DCC 项目环境与插件启动器
 
 Rez Studio 是一个面向 Windows 制作工作站的项目感知启动器。对美术来说，操作仍然是“选项目、选软件、点击启动”；它在后台根据用户身份、项目成员关系、DCC 版本和插件方案解析 Rez 环境，并在启动前把缺少软件、版本冲突和制品问题说清楚。
 
@@ -505,11 +505,11 @@ MayaIndieTool has evolved into MayaScope, an investigative Maya 2025 workspace f
     ],
   },
   {
-    id: 'mayacraft', title: 'MayaCraft', category: 'pipeline',
+    id: 'mayacraft', title: 'Maya 角色绑定与动画工作台', category: 'pipeline',
     categoryLabel: { zh: 'Maya 角色绑定与动画工具', en: 'Maya character rigging and animation tools' },
     summary: { zh: 'Maya 2025 中文角色工作区：声明式 Rig Graph、形变 MRI、动画重定向、Contact IK 与可撤销验证。', en: 'A Chinese Maya 2025 character workspace for declarative rig graphs, deformation MRI, retargeting, contact IK, and undoable verification.' },
     cover: '/media/repositories/production-tools/mayacraft-workspace.png', tags: ['Maya 2025', 'Rig Graph', 'Retarget', 'Contact IK'], repositoryUrl: 'https://github.com/Ubik42/MayaCraft',
-    story: { zh: `# MayaCraft
+    story: { zh: `# Maya 角色绑定与动画工作台
 
 MayaCraft 是独立开发的 Maya 2025 角色绑定与动画工作区。它把角色发现、Rig 构建、形变诊断、运动分析、重定向和接触修正组织在同一个中文界面中。工作区会从当前场景发现角色，投影关节结构，并与 Maya Selection 双向同步。
 
@@ -534,11 +534,11 @@ MayaCraft is a Chinese Maya 2025 character workspace for scene-aware character d
     ],
   },
   {
-    id: 'pyarsenal', title: 'PyArsenal', category: 'other-tools',
+    id: 'pyarsenal', title: 'Python 脚本整理与运行工具', category: 'other-tools',
     categoryLabel: { zh: 'Python 脚本管理器', en: 'Python script manager' },
     summary: { zh: '通过标签、环境隔离和一键编译管理分散 Python 脚本的桌面工具。', en: 'A desktop tool for organizing scattered Python scripts with tags, isolated environments, and one-click compilation.' },
     cover: '/media/repositories/pyarsenal.png', tags: ['Python', 'Desktop App', 'Script Library'], repositoryUrl: 'https://github.com/Ubik42/PyArsenal',
-    story: { zh: `# PyArsenal
+    story: { zh: `# Python 脚本整理与运行工具
 
 PyArsenal 面向需要维护大量零散脚本的 Python 开发者。它把脚本登记、标签检索、运行环境和编译入口集中到一个图形界面中，减少“脚本在哪、依赖是什么、如何交付”的重复管理成本。
 
@@ -547,11 +547,11 @@ PyArsenal 面向需要维护大量零散脚本的 Python 开发者。它把脚�
 PyArsenal is a graphical manager for Python developers who maintain many scripts. It centralizes registration, tags, execution environments, and compilation so a script library remains searchable and deliverable.` },
   },
   {
-    id: 'neothesia', title: 'Neothesia', category: 'other-tools',
+    id: 'neothesia', title: '钢琴练习与乐谱反馈应用', category: 'other-tools',
     categoryLabel: { zh: '钢琴练习应用', en: 'Piano practice application' },
     summary: { zh: '持续维护的钢琴学习分支，加入刻意练习、反馈、曲库、乐谱同步与 Pianoteq 工作流。', en: 'An actively maintained piano-learning fork with deliberate practice, feedback, repertoire, notation, and Pianoteq workflows.' },
     cover: '/media/repositories/neothesia.png', tags: ['Rust', 'WGPU', 'MIDI', 'VST3'], repositoryUrl: 'https://github.com/Ubik42/Neothesia',
-    story: { zh: `# Neothesia
+    story: { zh: `# 钢琴练习与乐谱反馈应用
 
 这是在开源 Neothesia 基础上持续维护的钢琴学习分支，开发重点从单纯的瀑布流演奏界面扩展到可重复的刻意练习。
 
