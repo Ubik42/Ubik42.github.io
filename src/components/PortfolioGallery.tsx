@@ -24,6 +24,19 @@ const filters: Array<{ id: 'all' | PortfolioCategory; zh: string; en: string }> 
   { id: 'other-tools', zh: '其他工具', en: 'Other tools' },
 ];
 
+const pipelineOrder = new Map([
+  'art-pipeline-skill',
+  'rez-studio-launcher',
+  'internship-art-pipeline',
+  'unreal-asset-batch-auditor',
+  'mayascope',
+  'mayacraft',
+  'asset-delivery-organizer',
+  'maya-scene-checker',
+  'maya-garment-preparation',
+  'maya-plugin',
+].map((id, index) => [id, index]));
+
 export function PortfolioGallery() {
   const { locale } = useLanguage();
   const reducedMotion = useReducedMotion() ?? false;
@@ -31,11 +44,18 @@ export function PortfolioGallery() {
   const [activeItem, setActiveItem] = useState<GalleryItem | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  const items = useMemo<GalleryItem[]>(() => [
-    ...repositoryWorks.map((work) => ({ kind: 'repository' as const, id: work.id, category: work.category, title: work.title, label: localize(work.categoryLabel, locale), summary: localize(work.summary, locale), cover: work.cover, tags: work.tags, value: work })),
-    ...visualWorks.map((work) => ({ kind: 'visual' as const, id: work.id, category: work.portfolioCategory, title: localize(work.title, locale), label: localize(work.category, locale), summary: localize(work.summary, locale), cover: work.cover, tags: work.tools, value: work })),
-    ...selectedProjects.map((project) => ({ kind: 'project' as const, id: project.id, category: project.portfolioCategory, title: project.title, label: projectText(project.category, locale), summary: projectText(project.summary, locale), cover: project.images[0].src, tags: project.stack, value: project })),
-  ], [locale]);
+  const items = useMemo<GalleryItem[]>(() => {
+    const sourceItems: GalleryItem[] = [
+      ...repositoryWorks.map((work) => ({ kind: 'repository' as const, id: work.id, category: work.category, title: work.title, label: localize(work.categoryLabel, locale), summary: localize(work.summary, locale), cover: work.cover, tags: work.tags, value: work })),
+      ...visualWorks.map((work) => ({ kind: 'visual' as const, id: work.id, category: work.portfolioCategory, title: localize(work.title, locale), label: localize(work.category, locale), summary: localize(work.summary, locale), cover: work.cover, tags: work.tools, value: work })),
+      ...selectedProjects.map((project) => ({ kind: 'project' as const, id: project.id, category: project.portfolioCategory, title: project.title, label: projectText(project.category, locale), summary: projectText(project.summary, locale), cover: project.images[0].src, tags: project.stack, value: project })),
+    ];
+    const orderedPipeline = sourceItems
+      .filter((item) => item.category === 'pipeline')
+      .sort((a, b) => (pipelineOrder.get(a.id) ?? Number.MAX_SAFE_INTEGER) - (pipelineOrder.get(b.id) ?? Number.MAX_SAFE_INTEGER));
+    let pipelineIndex = 0;
+    return sourceItems.map((item) => item.category === 'pipeline' ? orderedPipeline[pipelineIndex++] : item);
+  }, [locale]);
 
   const visibleItems = filter === 'all' ? items : items.filter((item) => item.category === filter);
 
