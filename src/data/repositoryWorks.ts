@@ -560,25 +560,6 @@ NotionNexus 是一个本地优先的 Notion 管理工具，用于把散落在文
 NotionNexus is a local-first FastAPI and React application connecting files, Excel data, and Notion. It includes a workspace scanner and shadow database, an Excel mapping wizard, atomic automation actions, file watching, templates, integrations, and a visual task builder.` },
   },
   {
-    id: 'beautiful-slidev', title: '交互演示文稿生成与多端交付工具链', category: 'other-tools',
-    categoryLabel: { zh: 'Slidev 演示与发布研究', en: 'Slidev presentation and delivery research' },
-    summary: { zh: '围绕 Slidev 组织主题、动效、浏览器 QA，以及网页、PPTX、Tauri 和 Electron 多种交付方式。', en: 'A Slidev research and delivery toolchain spanning themes, motion, browser QA, web publishing, PPTX, Tauri, and Electron.' },
-    cover: '/media/repositories/other-tools/beautiful-slidev.svg', tags: ['Slidev', 'GSAP / Three.js', 'PPTX', '暂未公开'],
-    story: { zh: `# 交互演示文稿生成与多端交付工具链
-
-beautiful_slidev 用一套生产流程连接内容、Slidev 工程、浏览器 QA 和多端发布。它不是单份演示模板，而是围绕“怎样把动态网页演示稳定交付给不同环境”建立的工具与研究仓库。
-
-- 维护 Slidev 主题与 Addon 目录、预览和兼容性结果；
-- 用 GSAP 与 Three.js 验证镜头、对象状态和 WebGL 生命周期；
-- 将任意 Slidev 工程输出为静态站点、视觉版或可编辑版 PPTX；
-- 提供依赖系统 WebView2 的 Tauri 单文件壳，以及携带固定 Chromium 的 Electron 分发路径；
-- 对每次交付记录页数、对象统计、文件哈希、兼容性与降级说明。
-
-PPTX 到 Slidev 的高还原转换因对象语义和渲染差异仍不稳定，已经被隔离为实验，不阻塞原创 Slidev 与发布主线。该仓库目前为私有研究仓，因此页面不提供无效的公开 GitHub 跳转。`, en: `# Interactive presentation and multi-target delivery toolchain
-
-beautiful_slidev connects Slidev authoring, theme research, GSAP and Three.js experiments, browser QA, web publishing, PPTX export, and Tauri or Electron desktop delivery. PPTX-to-Slidev conversion remains an isolated experiment. The research repository is currently private.` },
-  },
-  {
     id: 'shadertoy-knowledge-library', title: 'Shader 案例学习、渲染与 AI 检索知识库', category: 'other-tools',
     categoryLabel: { zh: '实时图形知识工程', en: 'Realtime graphics knowledge engineering' },
     summary: { zh: '整理 1000 个 Shadertoy 案例、本地 GLSL 渲染、中文深读、学习路径和可供 AI 调用的检索服务。', en: 'Organizes 1,000 Shadertoy cases with local GLSL rendering, Chinese deep dives, learning paths, and AI-ready retrieval.' },
