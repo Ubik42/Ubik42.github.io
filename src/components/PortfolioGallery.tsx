@@ -37,6 +37,14 @@ const pipelineOrder = new Map([
   'maya-plugin',
 ].map((id, index) => [id, index]));
 
+const categoryOrder = new Map<PortfolioCategory, number>([
+  ['pipeline', 0],
+  ['ai-agent', 1],
+  ['general-ta', 2],
+  ['engine-games', 3],
+  ['other-tools', 4],
+]);
+
 export function PortfolioGallery() {
   const { locale } = useLanguage();
   const reducedMotion = useReducedMotion() ?? false;
@@ -50,11 +58,17 @@ export function PortfolioGallery() {
       ...visualWorks.map((work) => ({ kind: 'visual' as const, id: work.id, category: work.portfolioCategory, title: localize(work.title, locale), label: localize(work.category, locale), summary: localize(work.summary, locale), cover: work.cover, tags: work.tools, value: work })),
       ...selectedProjects.map((project) => ({ kind: 'project' as const, id: project.id, category: project.portfolioCategory, title: project.title, label: projectText(project.category, locale), summary: projectText(project.summary, locale), cover: project.images[0].src, tags: project.stack, value: project })),
     ];
-    const orderedPipeline = sourceItems
-      .filter((item) => item.category === 'pipeline')
-      .sort((a, b) => (pipelineOrder.get(a.id) ?? Number.MAX_SAFE_INTEGER) - (pipelineOrder.get(b.id) ?? Number.MAX_SAFE_INTEGER));
-    let pipelineIndex = 0;
-    return sourceItems.map((item) => item.category === 'pipeline' ? orderedPipeline[pipelineIndex++] : item);
+    return sourceItems
+      .map((item, sourceIndex) => ({ item, sourceIndex }))
+      .sort((a, b) => {
+        const categoryDelta = (categoryOrder.get(a.item.category) ?? Number.MAX_SAFE_INTEGER) - (categoryOrder.get(b.item.category) ?? Number.MAX_SAFE_INTEGER);
+        if (categoryDelta !== 0) return categoryDelta;
+        if (a.item.category === 'pipeline') {
+          return (pipelineOrder.get(a.item.id) ?? Number.MAX_SAFE_INTEGER) - (pipelineOrder.get(b.item.id) ?? Number.MAX_SAFE_INTEGER);
+        }
+        return a.sourceIndex - b.sourceIndex;
+      })
+      .map(({ item }) => item);
   }, [locale]);
 
   const visibleItems = filter === 'all' ? items : items.filter((item) => item.category === filter);
