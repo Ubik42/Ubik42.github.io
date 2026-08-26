@@ -253,11 +253,18 @@ Maya 2024/2025 mayapy and Unreal 5.8.1 command-line host loading have been verif
 - 把代码评审、持续集成、包构建、入口发现、发布与真实宿主验证固化为检查表；线上问题回写开发日志和本地知识库。
 - 输出新人环境配置、Webhook 联通性测试、一键运行脚本及各插件使用文档，使开发、测试和用户入口形成闭环。
 
-## 对 AI 能力边界的验证
+## 失败：Figma 交互稿自动生成视觉稿实验
 
-我也尝试过把交互稿自动转换为视觉稿：读取文件结构、判断页面用途、搜索母版、复制或替换节点，并让模型结合截图与节点信息规划下一步。最终没有达到生产质量，问题集中在跨文件写入、业务语义、母版选择、Auto Layout、Instance 与团队视觉规范无法形成稳定映射。
+这个实验要做的是一个 Figma 插件：读取交互稿的页面结构、节点属性和截图，让模型判断页面用途，从团队组件库中选择合适的母版，再把母版复制到目标文件，自动替换文案、图片和组件，最终生成设计师可以继续编辑的视觉稿，而不是只输出一张扁平图片。
 
-这个方向被主动停止，没有包装成已完成产品。验证后保留下来的结论是：模型适合语义理解、候选召回和局部建议；范围明确的节点操作可以由程序验证；跨文件结构修改、资产写入和视觉决策必须依赖确定性工具、人工确认与真实文件回归。
+真实 Figma 文件测试后，实验没有达到可交付标准，主要失败在：
+
+- **母版选择不稳定**：同一类页面存在多个相似母版，模型能解释页面大意，却无法稳定判断业务状态、信息优先级和应该使用的组件变体；
+- **跨文件复制后结构容易损坏**：组件 ID、字体、变量和资源依赖无法仅凭截图恢复，复制到目标文件后会出现缺失组件或引用关系变化；
+- **Auto Layout 与 Instance 无法可靠写回**：嵌套布局、约束、Variant 和 Instance Override 相互影响，替换文案或图片后经常发生尺寸、层级和对齐错误；
+- **结果看起来像视觉稿，但不能稳定继续编辑**：单次截图可能“看起来差不多”，实际节点结构、团队规范和重复运行结果都不可靠，设计师仍需大量返工。
+
+因此我停止了这个 Figma 自动出视觉稿方向，没有把它包装成完成产品。实验确认了更实际的边界：AI 可以理解页面意图、搜索候选母版并给出局部建议；确定性的 Figma 节点操作可以由插件执行和复检；跨文件资产写入、复杂布局修改与最终视觉决策仍需要明确规则和人工确认。
 
 ## 公开边界
 
@@ -298,9 +305,9 @@ This work comes from an AI tools technical-art internship at a large game studio
 - Routed Maya and 3ds Max files into headless Pyblish checks, optional repair and recheck, and JSON/HTML reports, with stress cases for corrupt files, version mismatch, large scenes, encoding, and timeout.
 - Orchestrated multi-version Maya jobs that generated binding, configuration, and animation scenes before batch FBX export and post-run validation for counts, file sizes, missing outputs, and zero-byte artifacts.
 
-## Engineering judgment
+## Failed Figma experiment: interaction drafts to editable visual layouts
 
-An experiment that attempted to turn interaction drafts into finished visual layouts was stopped after real-file testing exposed unstable mappings among screenshot semantics, cross-file components, Auto Layout, instances, and visual standards. The retained boundary was explicit: models can interpret intent and retrieve candidates; deterministic tools must own writes and validation; people remain responsible for high-level visual decisions.
+The Figma plug-in was intended to read an interaction draft, infer the page purpose, retrieve a team master, copy it into the target file, replace content and components, and leave an editable visual layout. Real-file tests failed at production quality: master selection was inconsistent; cross-file components lost fonts, variables, and references; nested Auto Layout, variants, and instance overrides broke after replacement; and visually plausible screenshots still concealed unusable node structure and large manual rework. The experiment was stopped rather than presented as a finished product. Models remained useful for intent interpretation and candidate retrieval, while deterministic plug-in operations and human review were still required for writes, layout changes, and visual decisions.
 
 The original presentation and media remain local work records. This public page uses only sanitized technical descriptions and a newly drawn abstract cover.`,
     },
