@@ -21,30 +21,44 @@ export const repositoryWorks: RepositoryWork[] = [
     title: 'Noemancer',
     category: 'engine-games',
     categoryLabel: { zh: '自研游戏引擎', en: 'Custom game engine' },
-    summary: { zh: 'C++20 游戏引擎与编辑器，覆盖渲染、物理、动画、C# 脚本、资产烘焙和 Agent 工具层。', en: 'A C++20 engine and editor spanning rendering, physics, animation, C# scripting, asset cooking, and agent tools.' },
-    cover: '/media/repositories/noemancer.webp',
+    summary: { zh: '从原生 Editor、C# Gameplay、资产 Cook 到 D3D12/Vulkan 商业 Raster 和独立 Player 的 C++20 游戏引擎。', en: 'A C++20 game engine spanning a native editor, C# gameplay, asset cooking, D3D12/Vulkan commercial raster rendering, and standalone players.' },
+    cover: '/media/repositories/major-updates/noemancer-sponza-atrium.webp',
     tags: ['C++20', 'D3D12 / Vulkan', 'C#', 'MCP'],
     repositoryUrl: 'https://github.com/Ubik42/Noemancer',
     story: {
       zh: `# Noemancer
 
-Noemancer 不是套在现有引擎外面的编辑器外壳。仓库包含原生 Editor、游戏 Runtime、资产 Cook、独立 Player 打包、C# 项目脚本，以及由 CLI 与 MCP 共享的引擎命令层。
+Noemancer 是一套从底层运行时到内容制作链路都自行实现的 C++20 游戏引擎，不是套在 Unity 或 Unreal 外面的编辑器外壳。当前仓库包含原生 Editor、ECS 游戏 Runtime、D3D12/Vulkan 渲染、物理与动画、C# 项目脚本、离线资产 Cook、独立 Player 打包，以及由 Editor、CLI 与 MCP 共用的命令和事务层。
 
-## 当前可以完成的工作
+## 编辑器与游戏工作流
 
-- 创建和打开项目，编辑场景、输入与项目 UI。
-- 在隔离的 Play World 中运行 C# 游戏逻辑，并选择性 Apply Back。
-- 通过 SDL_GPU 驱动 D3D12 / Vulkan，提供 Forward PBR、阴影、TAA、GTAO、Bloom 与 ACES Tone Mapping。
-- 导入 GLB / FBX，烘焙 Mesh、Animation 与 KTX2 资产，并打包独立 Windows Player。
-- 通过稳定 ID、Schema 与 Revision，让 Editor、CLI 和 MCP 使用同一套命令与 Undo / Redo 事务。
+- Project Hub 可以创建工程、打开工程和恢复最近工作区；Starter 与 Hybrid Pixel 模板共用同一项目服务。
+- Editor 包含 Scene View、World Outliner、声明式 Inspector、Asset Browser、Console、Animation Graph 和 Agent Context。
+- Edit World 与 Play World 隔离，C# Gameplay 在运行世界中热重载，结果可以选择性 Apply Back，并作为一次可撤销场景事务提交。
+- Runtime 使用 Flecs ECS、Jolt 物理、ozz 骨骼动画与 GPU Skinning；项目侧支持 .NET 10 / C#、RmlUi、输入映射、音频、Prefab、存档与 Replay 文档。
+
+## D3D12 / Vulkan 实时渲染
+
+- SDL_GPU 后端让 D3D12 与 Vulkan 共享资源、Shader 和 Render Graph 合同；两端分别保存画面、Pass 时间和结构化回执。
+- 已实现 Forward PBR、split-sum IBL、四级 CSM、Point/Spot 局部阴影、GPU 视锥裁剪、间接绘制和阴影缓存。
+- 默认 Raster 路径已经接入四 LUT 动态天空、Aerial Perspective、共享 HiZ、SSR、SSGI、TAA、GTAO、双边降噪、Bloom、曝光调色与 ACES Tone Mapping。
+- RenderLab 使用 Intel Sponza 2022 和商业 Raster 基准场景验证外部 glTF 依赖闭包、405 个 primitive、材质派生及双后端实时画面；截图来自 Release 隐藏捕获，不是离线渲染。
+- Native Ray Tracing 目前只完成 RTX 4080 上的 D3D12/Vulkan BLAS、TLAS、Barrier、Fence 与释放 Build Probe；它证明底层资源和同步边界，不冒充可见光追画面或 RTGI。
+
+## 资产 Cook 与独立发布
+
+- 导入 GLB、JSON glTF 与 FBX，使用 meshoptimizer 处理几何，烘焙 Mesh、Animation、KTX2、Sprite Atlas 和 Tilemap 数据。
+- Cook 产物由源文件、配方、目标 Profile 和工具版本共同寻址；Runtime 加载前复核范围、Schema 与 SHA-256。
+- 打包后的 Windows Player 只读取运行时资产，不在玩家机器解析源 FBX/GLTF；包中包含 app-local .NET、VC Runtime、Shader Manifest 和第三方 NOTICE。
+- NoemancerPlatformer 已贯通 Project UI/Input、C# Gameplay、Cook、Package 与独立 Player；RenderLab 继续收口大型场景 Cook/Package。
 
 ## Agent 工具层
 
-引擎把场景、项目、资产注册表和运行时诊断公开为结构化状态。自动化流程遵循 **Observe → Plan → Apply → Receipt → Undo / Redo**，先读取事实，再执行受约束的修改。
+引擎的 C++ Command Registry 同时服务 Editor、direct JSON、CLI 和 MCP。场景、项目、资产注册表和运行时诊断以稳定 ID、Schema、Revision 和有限观察结果公开；自动化遵循 **Observe → Plan → Apply → Receipt → Undo / Redo**，连接当前 Editor 的权威 World 与撤销记录，不建立第二份场景数据库，也不把 Flecs、Jolt 或 SDL 句柄暴露给 Agent。
 
 ## 当前边界
 
-项目仍处于 Pre-alpha，当前只完成 Windows x64 端到端验证。SSR、SSGI、硬件光追、动态天空与稳定插件 SDK 仍是后续工作，不作为现成功能展示。`,
+项目仍处于 Pre-alpha，只完整验证 Windows x64。稳定插件 SDK、跨平台发行、生产网络、签名安装器、硬件光追画面、RTGI 与 VSM 仍未完成；README 和页面只展示已经进入真实画面、完整运行链路或结构化证据的能力。`,
       en: `# Noemancer
 
 Noemancer contains a native Editor, game Runtime, asset Cook, standalone Player packaging, C# project scripting, and one command layer shared by CLI and MCP.
@@ -61,7 +75,14 @@ Noemancer contains a native Editor, game Runtime, asset Cook, standalone Player 
 
 The project is pre-alpha and currently verified end to end on Windows x64. SSR, SSGI, hardware ray tracing, dynamic atmosphere, and a stable plug-in SDK are not presented as finished features.`,
     },
-    images: [{ src: '/media/repositories/noemancer.webp', alt: { zh: 'Noemancer 编辑器实机界面', en: 'Noemancer editor running in-engine' } }],
+    images: [
+      { src: '/media/repositories/major-updates/noemancer-editor.webp', alt: { zh: 'Noemancer 中文 Editor：场景、层级、Inspector、资产与 Agent Context', en: 'Noemancer Chinese editor workspace' } },
+      { src: '/media/repositories/major-updates/noemancer-sponza-atrium.webp', alt: { zh: 'D3D12 中实时运行的 Intel Sponza 2022 宫殿中庭', en: 'Intel Sponza 2022 atrium running in real time on D3D12' } },
+      { src: '/media/repositories/major-updates/noemancer-sponza-balcony.webp', alt: { zh: 'Sponza 上层回廊与外部 glTF 材质依赖', en: 'Sponza balcony and external glTF material dependencies' } },
+      { src: '/media/repositories/major-updates/noemancer-commercial-raster.webp', alt: { zh: 'PBR、阴影、Bloom 与 ACES 的商业 Raster 基准', en: 'Commercial raster benchmark with PBR, shadows, Bloom, and ACES' } },
+      { src: '/media/repositories/major-updates/noemancer-sky.webp', alt: { zh: '四 LUT 动态天空、大气与 Aerial Perspective', en: 'Four-LUT dynamic sky, atmosphere, and aerial perspective' } },
+      { src: '/media/repositories/major-updates/noemancer-ssr-ssgi.webp', alt: { zh: 'RenderLab 中启用 SSR、SSGI 与时域处理', en: 'SSR, SSGI, and temporal processing in RenderLab' } },
+    ],
   },
   {
     id: 'art-pipeline-skill',
@@ -398,41 +419,65 @@ A read-only Unreal 5.8.1 Editor plug-in. Native C++ collects explicitly selected
   {
     id: 'rez-studio-launcher', title: 'Rez Studio', category: 'pipeline',
     categoryLabel: { zh: 'DCC 工作站启动器', en: 'DCC workstation launcher' },
-    summary: { zh: '根据项目、软件版本和 Rez 包环境启动 Maya 等 DCC 的 Windows 桌面应用。', en: 'A Windows desktop launcher that resolves project, application version, and Rez package context before starting a DCC.' },
-    cover: '/media/repositories/rez-studio.png', tags: ['Rez', 'Tauri', 'React', 'Python'], repositoryUrl: 'https://github.com/Ubik42/rez-studio-launcher',
+    summary: { zh: '面向 Windows 制作工作站的项目感知启动器：按身份、项目、DCC 版本和插件方案解析隔离的 Rez 环境。', en: 'A project-aware Windows workstation launcher resolving isolated Rez environments from identity, project, DCC version, and plug-in scheme.' },
+    cover: '/media/repositories/major-updates/rez-overview.png', tags: ['Rez 3.4', 'Tauri 2', 'React 19', 'Python / Rust'], repositoryUrl: 'https://github.com/Ubik42/rez-studio-launcher',
     story: { zh: `# Rez Studio
 
-面向 Windows DCC 工作站的项目感知软件启动器。同一台机器进入不同项目时，启动器根据项目配置选择 DCC 版本、插件集合和 Rez 环境，而不是直接打开一个固定 EXE。
+Rez Studio 面向 Windows DCC 工作站，把“启动 Maya”背后的身份、项目权限、软件版本、插件集合、依赖解析和本机检查做成一个艺术家可见的软件库。同一台工作站进入不同项目时，可以获得完全不同的 DCC Profile 与插件方案，而不是直接打开固定 EXE。
 
-## 工作流程
+## 项目级软件交付
 
-- 登录或选择本机用户，读取可访问项目。
-- 从项目软件库选择 Maya 等应用及批准版本。
-- 调用 Rez 解析依赖并检查启动环境。
-- 记录解析、启动与失败信息，便于管线人员定位工作站问题。
+- 本地身份和项目成员关系决定可见项目；Atlas 与 Ember 等演示项目可以为同一 DCC 配置不同版本、工具和状态。
+- 同一项目/DCC 支持“完整制作”“基础工具”“TD 纯净排障”等插件方案，成员身份限制可用组合。
+- 扫描 Maya、Blender、Houdini、Substance Designer、3ds Max、MotionBuilder、Unreal 和 Unity 的常见安装位置，并显示版本与可执行文件来源。
+- 从本机可执行文件提取真实 DCC/Engine 图标，记录来源与 SHA-256；未发现软件时保留明确缺失状态和厂商入口。
+- Rez 3.4 使用项目私有 package path 执行真实 ResolvedContext，把版本请求、依赖、环境变量和插件路径组合成隔离启动环境。
 
-项目使用 Tauri 2 + React 19 构建桌面界面，以 Python 服务连接 Rez 3.4；同时提供 CLI 协议和 Windows 安装包。`, en: `# Rez Studio
+## 插件方案与制品边界
+
+- 演示插件目录包含 Maya USD、BlenderKit、SideFX Labs 和 ParamCopy 的 Release 元数据；
+- 公开制品只允许来自配置白名单，下载后必须经过 SHA-256、Manifest 和 Provenance 复核才能晋升为 Rez 包；
+- Tool Manifest 采用严格 schema 做无副作用发现，宿主加载仍与发现阶段分离；
+- 状态覆盖可启动、缺少 DCC、有更新、待复核和策略阻断，失败原因直接落到当前软件卡片与诊断信息。
+
+## 桌面架构与分发
+
+React 19 负责软件库和状态反馈，Tauri 2 / Rust 负责桌面生命周期与信任边界，Python Sidecar 承载身份、项目目录、制品缓存、DCC 检测和 Rez 领域逻辑。Windows NSIS 安装包内置冻结 Python 服务、Rez Runtime 与演示中央仓，不要求目标机器预装 Python、uv 或 Rez；商业 DCC 本体和许可证不随包分发。
+
+## CLI 与 Agent 接入
+
+rezstudio.cmd 以稳定 JSON 信封提供 project list、profile list/resolve/validate/diff、doctor 和 telemetry status。只读观察和 dry-run 适合交给 Agent；制品晋升、发布与未来写操作仍要求显式确认。UI 与 CLI 复用同一领域能力，避免自动化依赖鼠标点击。
+
+## 当前边界
+
+这是可本地运行的作品集实现，不冒充企业制片管理平台。正式部署仍需要 AD/LDAP/SSO、服务端授权和公司级软件许可证管理；遥测默认只写本机 SQLite，可查看也可关闭。`, en: `# Rez Studio
 
 A project-aware Windows DCC launcher. It selects the approved DCC version, plug-in set, and Rez environment for the current project instead of opening a fixed executable.
 
 The Tauri 2 and React desktop application connects to Rez through a Python service, exposes launch diagnostics, and ships a Windows installer plus a documented CLI protocol.` },
-    images: [{ src: '/media/repositories/rez-studio.png', alt: { zh: 'Rez Studio 项目软件库', en: 'Rez Studio project application library' } }],
+    images: [
+      { src: '/media/repositories/major-updates/rez-overview.png', alt: { zh: 'Rez Studio 项目软件库、DCC 版本与插件方案', en: 'Rez Studio project library, DCC versions, and plug-in schemes' } },
+      { src: '/media/repositories/major-updates/rez-login.png', alt: { zh: 'Rez Studio 本地身份登录与项目入口', en: 'Rez Studio local identity and project entry' } },
+    ],
   },
   {
     id: 'mayascope', title: 'MayaScope', category: 'pipeline',
     categoryLabel: { zh: 'Maya 场景调查与运行时诊断', en: 'Maya scene and runtime observatory' },
-    summary: { zh: '把大型 Maya 场景组织成可查询快照、依赖图、运行时足迹和回归证据，用于定位根因而非只列错误。', en: 'Turns Maya scenes into queryable snapshots, dependency graphs, runtime footprints, and regression evidence for root-cause diagnosis.' },
+    summary: { zh: '由 MayaIndieTool 演进而来的 Maya 场景调查工具：把大型场景组织成可查询快照、依赖图、运行时足迹和回归证据。', en: 'The successor to MayaIndieTool: a Maya scene-investigation workspace built around queryable snapshots, dependency graphs, runtime footprints, and regression evidence.' },
     cover: '/media/repositories/production-tools/mayascope-host.png', tags: ['Maya 2025', 'Scene Graph', 'Profiler', 'Regression'], repositoryUrl: 'https://github.com/Ubik42/MayaIndieTool',
     story: { zh: `# MayaScope
 
-原 MayaIndieTool 已经演化为 MayaScope：面向复杂 Maya 场景的调查工作区。它采集不可变 SceneSnapshot，把引用、依赖关系、未知插件、表达式、scriptJob、回调足迹和性能信号投影到可交互的 Atlas，而不是继续堆放零散按钮。
+MayaScope 是原 MayaIndieTool 的后续项目，定位是复杂 Maya 场景的调查与运行时诊断工作区。它与独立的角色工具 MayaCraft 不是同一个项目：MayaScope 解决“场景为什么慢、脆弱或难以交付”，MayaCraft 解决角色绑定与动画生产问题。
+
+工具将 DG / DAG、引用、插件依赖和运行时足迹采集为不可变 SceneSnapshot，再投影到可交互的 Atlas。调查者因此能从一条 Finding 反向追踪其节点、引用链、所需插件、失败的 reference edit 与脚本行为，而不是在数千条扫描结果中手工翻找。
 
 ## 当前工作区
 
-- Scene Clinic 将规则结果聚合为可追溯 Finding，并支持项目基线与增量回归；
-- Query Kernel 用有界 CSR 图索引执行邻域和根因查询，限制节点、边、深度与 deadline；
+- Scene Clinic 将规则结果聚合为带来源的 Finding，支持项目基线、快照 diff 和增量回归，可用作进入资产库前的 CI 式门禁；
+- Query Kernel 用整数 CSR 图索引与有界 LRU 缓存执行邻域、路径和根因查询，显式限制节点、边、深度与 deadline，防止超大场景把 UI 拖死；
 - Runtime Observatory 区分可观测与不可观测状态，不把 batch 中缺失的 scriptJob 数据写成零；
-- Reference Orbit、Dependency Lineage 和 Plugin Ghost Signal 用于检查引用链、依赖序列和缺失插件影响；
+- Reference Orbit、Dependency Lineage 和 Plugin Ghost Signal 用于检查引用链、失败 edits、unknown nodes、script nodes、孤立动画曲线与缺失插件的影响范围；
+- Atlas 对大规模结果采用虚拟窗口和折叠聚焦，将细节查看与全局结构分开；
 - 真实 Maya GUI 生命周期验证覆盖启动、界面绘制、重复打开、热重载、关闭与回调清理。
 
 项目仍在开发中；Crash Bisect 与部分 Failure Prism 能力明确保留为后续方向。`, en: `# MayaScope
@@ -446,12 +491,12 @@ MayaIndieTool has evolved into MayaScope, an investigative Maya 2025 workspace f
   },
   {
     id: 'mayacraft', title: 'MayaCraft', category: 'pipeline',
-    categoryLabel: { zh: 'Maya 综合插件', en: 'Maya production plug-in' },
+    categoryLabel: { zh: 'Maya 角色绑定与动画工具', en: 'Maya character rigging and animation tools' },
     summary: { zh: 'Maya 2025 中文角色工作区：声明式 Rig Graph、形变 MRI、动画重定向、Contact IK 与可撤销验证。', en: 'A Chinese Maya 2025 character workspace for declarative rig graphs, deformation MRI, retargeting, contact IK, and undoable verification.' },
     cover: '/media/repositories/production-tools/mayacraft-workspace.png', tags: ['Maya 2025', 'Rig Graph', 'Retarget', 'Contact IK'], repositoryUrl: 'https://github.com/Ubik42/MayaCraft',
     story: { zh: `# MayaCraft
 
-MayaCraft 已收口为面向 Maya 2025 的中文角色绑定与动画工作区。首页会从真实场景发现角色、投影关节结构并与 Maya Selection 双向同步；写操作遵循“预览 → 应用 → 读回验证 → Undo”。
+MayaCraft 是独立的 Maya 2025 角色绑定与动画工具，不是 MayaScope 的前身或分支。它把角色发现、Rig 构建、形变诊断、运动分析、重定向与接触修正放进同一个中文工作区。首页会从真实场景发现角色、投影关节结构并与 Maya Selection 双向同步；写操作遵循“预览 → 应用 → 读回验证 → Undo”。
 
 ## 当前展示切片
 
@@ -511,27 +556,59 @@ The direct VST3 path is still experimental and the project is currently distribu
   {
     id: 'artflow-agent', title: 'ArtFlow Agent', category: 'ai-agent',
     categoryLabel: { zh: 'AIGC + Agent', en: 'AIGC + Agent' },
-    summary: { zh: '以 Agent 为控制层、ComfyUI 为生成运行时的游戏美术迭代与可复现交付流程。', en: 'A game-art iteration pipeline using an agent as the control layer and ComfyUI as the generation runtime.' },
-    cover: '/media/repositories/artflow.jpg', tags: ['Agent', 'ComfyUI', 'PydanticAI', 'Evaluation'], repositoryUrl: 'https://github.com/Ubik42/ArtFlow-Agent',
+    summary: { zh: '从 UE 场景事实出发，协调本地 ComfyUI 与 GPT Image 2，完成独立评价、有界修订、失败恢复和可验证回流。', en: 'Starts from Unreal scene facts and coordinates local ComfyUI and GPT Image 2 for independent judging, bounded revision, recovery, and verified return.' },
+    cover: '/media/repositories/major-updates/artflow-delivery.png', tags: ['Agent Harness', 'ComfyUI / GPT Image 2', 'Unreal 5.8', 'Evaluation'], repositoryUrl: 'https://github.com/Ubik42/ArtFlow-Agent',
     story: { zh: `# ArtFlow Agent
 
-ArtFlow Agent 面向游戏美术迭代，把 Agent 放在控制层，把 ComfyUI 作为实际生成运行时。它处理的是从 Brief、环境检查、配方选择、人工批准到候选评估和可复现交付的完整过程，而不是开放式聊天。
+ArtFlow Agent 面向 Unreal Engine 美术生产，不是给 ComfyUI 外面套一个聊天框。它从真实场景的相机、物体 ID、保护区域、可编辑区域和美术目标出发，将这些事实编译为 Scene Package，再协调本地 ComfyUI 与 Codex 内置 GPT Image 2 完成受约束生成、独立评价、有界修订、失败恢复和验证回流。
 
-## 已完成的垂直流程
+## Unreal 到 AIGC 的场景上下文
 
-- 确定性规划，以及可选的 PydanticAI 结构化规划。
-- 检查本地 ComfyUI、上传输入、提交任务、监控状态并下载结果。
-- 使用受约束的工作流 Recipe，阻止 Agent 任意生成未知节点图。
-- 外部保存 Run 状态、审批、事件日志与生成回执。
-- 生成候选 Contact Sheet，进行人工选择、轨迹检查与资产校验。
-- 将最终结果、配置和校验值打包为可复现 Run Package。
+- UE 5.8 场景桥导出固定相机的 beauty、depth、world normal 与 object ID 四 Pass；
+- Scene Package 同时保存受保护轮廓、可编辑区域、对象身份和美术方向，并逐文件记录 SHA-256；
+- Provider 只能执行声明过的能力和 Recipe，不能任意生成未知 ComfyUI 节点图或宿主代码；
+- 本地 ComfyUI 和 GPT Image 2 使用同一份场景约束产生可比较候选，而不是各自自由改写构图。
 
-默认路径离线且确定；只有显式提供模型时才调用 LLM，外部生成也必须先经过人工批准。`, en: `# ArtFlow Agent
+## 独立 Tribunal 与候选采用
+
+生成器不评价自己的结果。确定性的 Constraint Judge 先检查相机、结构和保护区域，多模态 Visual Critic 再评价视觉方向。一个主观表现更强但改变场景结构的负对照会被硬门禁排除；Agent 只能在 hard-eligible 候选中根据已持久化评价做选择。评价分歧、策略版本、候选身份和最终采用依据都会保存在事件中。
+
+## 有界局部修订与 Unreal 回流
+
+确定方向后，编排器使用对象与蒙版边界调用 GPT Image 2 做局部修订。当前主运行的第二次 feathered composite 改变蒙版内 42,803 个像素，蒙版外 1,530,358 个像素保持零变化。验证后的资产由 typed Unreal return tool 导入 /Game/ArtFlow/Returns，并绑定回 ArtFlowDemo 的目标 Actor；九个来源文件哈希全部通过。
+
+## Agent Harness 与失败恢复
+
+- SQLite append-only 事件、哈希链和确定性 Reducer 让页面刷新或进程重启后可以重建相同状态；
+- reserve / submit / reconcile 区分尚未执行、已经完成和结果未知，六个故障注入案例保持重复外部副作用为零；
+- 上下文装配只保留稳定前缀、当前 Reducer 状态、最近观察和来源绑定记忆，排除陈旧观察与无关信息；
+- Capability Registry 记录输入输出、读写域、风险、超时、幂等和验证信号；不可用能力与权限漂移直接失败关闭；
+- episodic、semantic、procedural 三类生产记忆都绑定来源，冲突、伪造来源和越权共享会被拒绝；
+- OpenTelemetry 关联完整 Trace，冻结 Harness 的 20/20 命名案例和恢复/记忆矩阵可以独立复核。
+
+## 可验证发布
+
+作品集发布包只包含声明过的审阅材料，不携带 Prompt、凭据、隐藏推理或完整 SQLite 数据库。随包验证器会重新检查文件哈希、Run 与事件头、Harness、恢复、记忆和 Provenance；任何声明文件被修改都会返回失败。当前 C2PA 只达到 compatible unsigned sidecar，没有签名证书，因此不声称完整加密 Credential。
+
+## 当前边界
+
+目前只用一条项目自有 UE 5.8 场景完成强端到端验证，不等于开放域质量 Benchmark。项目明确不引入没有实际需求的 LangGraph、Temporal、向量数据库或开放式多 Agent 协作；PydanticAI 只承担类型化模型交互，不拥有状态机、策略或执行权限。`, en: `# ArtFlow Agent
 
 ArtFlow Agent uses an agent as the control plane and ComfyUI as the generation runtime for game-art iteration. The implemented slice covers brief validation, environment inspection, reviewed recipes, approval-gated execution, persisted run state, contact sheets, candidate selection, evaluation, and reproducible packaging.
 
 The default path is deterministic and offline. Model-backed planning is opt-in, and generation cannot start before explicit approval.` },
-    images: [{ src: '/media/repositories/artflow.jpg', alt: { zh: 'ArtFlow Agent 生成候选接触表', en: 'ArtFlow Agent candidate contact sheet' } }],
+    images: [
+      { src: '/media/repositories/major-updates/artflow-unreal-scene.png', alt: { zh: 'UE 5.8 原始场景与 beauty、depth、normal、object ID 四 Pass', en: 'UE 5.8 source scene and four-pass scene package' } },
+      { src: '/media/repositories/major-updates/artflow-tribunal.png', alt: { zh: 'ComfyUI 与 GPT Image 2 候选的独立 Tribunal 评价', en: 'Independent tribunal for ComfyUI and GPT Image 2 candidates' } },
+      { src: '/media/repositories/major-updates/artflow-invalid.png', alt: { zh: '视觉吸引力较高但违反结构约束的负对照被拒绝', en: 'Attractive but structurally invalid negative control rejected' } },
+      { src: '/media/repositories/major-updates/artflow-revision.png', alt: { zh: '蒙版限定局部修订与像素级泄漏检查', en: 'Mask-bounded revision and pixel-level leakage check' } },
+      { src: '/media/repositories/major-updates/artflow-recovery.png', alt: { zh: '六种提交中断与回执丢失的恢复矩阵', en: 'Recovery matrix for six submission and receipt failures' } },
+      { src: '/media/repositories/major-updates/artflow-memory.png', alt: { zh: '带来源绑定的 Agent 生产记忆', en: 'Source-bound production memory' } },
+      { src: '/media/repositories/major-updates/artflow-harness.png', alt: { zh: '20/20 Agent Harness 评估面板', en: '20/20 Agent harness evaluation panel' } },
+      { src: '/media/repositories/major-updates/artflow-unreal-return.png', alt: { zh: '修订资产回流 Unreal 5.8 并绑定目标 Actor', en: 'Revised asset returned to Unreal 5.8 and bound to the target actor' } },
+      { src: '/media/repositories/major-updates/artflow-delivery.png', alt: { zh: '来源、约束、评价、恢复和交付的最终验证总览', en: 'Final verified overview of provenance, constraints, judging, recovery, and delivery' } },
+      { src: '/media/repositories/major-updates/artflow-mobile.png', alt: { zh: 'ArtFlow 可验证交付面板的移动端布局', en: 'Mobile layout of the verified ArtFlow delivery panel' } },
+    ],
   },
   {
     id: 'comfyui-production-nodes', title: 'ComfyUI Production Nodes', category: 'ai-agent',
