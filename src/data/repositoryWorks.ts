@@ -541,6 +541,81 @@ MayaCraft is a Chinese Maya 2025 character workspace for scene-aware character d
     ],
   },
   {
+    id: 'notion-nexus', title: 'Notion 本地工作区与自动化中枢', category: 'other-tools',
+    categoryLabel: { zh: '本地数据与 Notion 自动化', en: 'Local data and Notion automation' },
+    summary: { zh: '把本地文件、Excel 与 Notion 工作区连接起来，提供空间扫描、字段映射、文件监听和可视化自动化编排。', en: 'Connects local files and Excel data with Notion through workspace scanning, field mapping, file watching, and visual automation.' },
+    cover: '/media/repositories/other-tools/notion-nexus.svg', tags: ['Notion API', 'FastAPI', 'React', 'SQLite'], repositoryUrl: 'https://github.com/Ubik42/NotionNexus',
+    story: { zh: `# Notion 本地工作区与自动化中枢
+
+NotionNexus 是一个本地优先的 Notion 管理工具，用于把散落在文件系统和 Excel 中的数据接入 Notion，而不是依赖手工复制和逐项维护。
+
+- FastAPI 后端负责集成认证、工作区扫描、同步任务、模板和自动化路由；
+- Scanner 抓取 Notion 页面结构并建立本地影子数据库，前端可以用树形视图快速浏览和选择页面；
+- Excel 同步向导读取本地表格、映射列与数据库属性，再执行批量同步；
+- 自动化引擎把 page.create、block.append 等操作登记为原子 Action，并按流程组合执行；
+- 文件监听器监控本地 Markdown 与文本模板的变化，使本地内容可以进入统一的模板管理流程。
+
+前端使用 React / Vite 提供 Dashboard、集成管理、空间扫描、Excel 映射、自动化编排和模板管理页面。`, en: `# Notion local workspace and automation hub
+
+NotionNexus is a local-first FastAPI and React application connecting files, Excel data, and Notion. It includes a workspace scanner and shadow database, an Excel mapping wizard, atomic automation actions, file watching, templates, integrations, and a visual task builder.` },
+  },
+  {
+    id: 'beautiful-slidev', title: '交互演示文稿生成与多端交付工具链', category: 'other-tools',
+    categoryLabel: { zh: 'Slidev 演示与发布研究', en: 'Slidev presentation and delivery research' },
+    summary: { zh: '围绕 Slidev 组织主题、动效、浏览器 QA，以及网页、PPTX、Tauri 和 Electron 多种交付方式。', en: 'A Slidev research and delivery toolchain spanning themes, motion, browser QA, web publishing, PPTX, Tauri, and Electron.' },
+    cover: '/media/repositories/other-tools/beautiful-slidev.svg', tags: ['Slidev', 'GSAP / Three.js', 'PPTX', '暂未公开'],
+    story: { zh: `# 交互演示文稿生成与多端交付工具链
+
+beautiful_slidev 用一套生产流程连接内容、Slidev 工程、浏览器 QA 和多端发布。它不是单份演示模板，而是围绕“怎样把动态网页演示稳定交付给不同环境”建立的工具与研究仓库。
+
+- 维护 Slidev 主题与 Addon 目录、预览和兼容性结果；
+- 用 GSAP 与 Three.js 验证镜头、对象状态和 WebGL 生命周期；
+- 将任意 Slidev 工程输出为静态站点、视觉版或可编辑版 PPTX；
+- 提供依赖系统 WebView2 的 Tauri 单文件壳，以及携带固定 Chromium 的 Electron 分发路径；
+- 对每次交付记录页数、对象统计、文件哈希、兼容性与降级说明。
+
+PPTX 到 Slidev 的高还原转换因对象语义和渲染差异仍不稳定，已经被隔离为实验，不阻塞原创 Slidev 与发布主线。该仓库目前为私有研究仓，因此页面不提供无效的公开 GitHub 跳转。`, en: `# Interactive presentation and multi-target delivery toolchain
+
+beautiful_slidev connects Slidev authoring, theme research, GSAP and Three.js experiments, browser QA, web publishing, PPTX export, and Tauri or Electron desktop delivery. PPTX-to-Slidev conversion remains an isolated experiment. The research repository is currently private.` },
+  },
+  {
+    id: 'shadertoy-knowledge-library', title: 'Shader 案例学习、渲染与 AI 检索知识库', category: 'other-tools',
+    categoryLabel: { zh: '实时图形知识工程', en: 'Realtime graphics knowledge engineering' },
+    summary: { zh: '整理 1000 个 Shadertoy 案例、本地 GLSL 渲染、中文深读、学习路径和可供 AI 调用的检索服务。', en: 'Organizes 1,000 Shadertoy cases with local GLSL rendering, Chinese deep dives, learning paths, and AI-ready retrieval.' },
+    cover: '/media/repositories/other-tools/shadertoy-library.svg', tags: ['GLSL', 'WebGL', '知识检索', 'AI Context'], repositoryUrl: 'https://github.com/Ubik42/shadertoy-lib',
+    story: { zh: `# Shader 案例学习、渲染与 AI 检索知识库
+
+这个工程将 Shadertoy 案例从零散收藏整理为可以搜索、渲染、学习和被 AI 调用的本地知识库。
+
+- 抓取并标准化 1000 个高质量 Shader，拆分 Image、Buffer 和 Common 等 GLSL Pass，同时镜像必要媒体资源；
+- 使用本地 Web 查看器渲染 Shader，浏览源码、元数据、中文分析和逐篇深读；
+- 从 1000 篇报告和 1812 个 GLSL Pass 构建机制分类、技术前置关系与分阶段学习路径；
+- 提供中英术语扩展、相似案例、主题与预览能力过滤，以及适合直接交给 AI 的 Context Pack；
+- 用 Schema 校验、检索回归、随机端口服务 Smoke Test 和渲染报告检查知识库质量。
+
+它既是 Shader 学习工具，也是面向技术美术和图形开发任务的案例检索基础设施。`, en: `# Shader learning, rendering, and AI retrieval library
+
+This project turns 1,000 Shadertoy cases and 1,812 GLSL passes into a local renderer, Chinese deep-reading corpus, mechanism taxonomy, staged learning path, similarity index, and AI-ready context service with validation and retrieval regression tests.` },
+  },
+  {
+    id: 'shortcut-manager', title: '跨软件快捷键采集与查询工具', category: 'other-tools',
+    categoryLabel: { zh: '桌面效率资料工具', en: 'Desktop productivity reference tool' },
+    summary: { zh: '集中采集常用软件快捷键来源、截图与 OCR 结果，整理为 Markdown，并接入可视化键盘映射项目。', en: 'Collects shortcut sources, screenshots, OCR results, Markdown references, and a visual keyboard-mapping subproject.' },
+    cover: '/media/repositories/other-tools/shortcut-manager.svg', tags: ['OCR', 'Markdown', '快捷键', 'Git Submodule'], repositoryUrl: 'https://github.com/Ubik42/ShortcutManager',
+    story: { zh: `# 跨软件快捷键采集与查询工具
+
+ShortcutManager 用于集中维护不同软件的快捷键资料，减少截图、网页和个人笔记分散后无法检索的问题。
+
+- 保存快捷键来源、界面截图、OCR 结果和采集脚本；
+- 将已经整理的内容统一输出为便于搜索和版本管理的 Markdown；
+- 通过 Git 子模块接入可视化 ShortcutMapper，用键盘布局展示按键与组合键；
+- 将原始证据、文字整理和可视化界面分层，便于继续补充更多软件。
+
+项目重点不是重新发明快捷键，而是把资料采集、文字校对、版本维护和可视化查询组成一条可持续更新的流程。`, en: `# Cross-application shortcut collection and query tool
+
+ShortcutManager collects shortcut sources, screenshots, OCR output, and acquisition scripts, normalizes reviewed material into searchable Markdown, and integrates a visual ShortcutMapper through a Git submodule.` },
+  },
+  {
     id: 'pyarsenal', title: 'Python 脚本整理与运行工具', category: 'other-tools',
     categoryLabel: { zh: 'Python 脚本管理器', en: 'Python script manager' },
     summary: { zh: '通过标签、环境隔离和一键编译管理分散 Python 脚本的桌面工具。', en: 'A desktop tool for organizing scattered Python scripts with tags, isolated environments, and one-click compilation.' },

@@ -21,7 +21,7 @@ const filters: Array<{ id: 'all' | PortfolioCategory; zh: string; en: string }> 
   { id: 'ai-agent', zh: 'AI 与 Agent', en: 'AI & Agents' },
   { id: 'general-ta', zh: '通用技术美术技能', en: 'General technical art' },
   { id: 'engine-games', zh: '引擎与游戏', en: 'Engines & games' },
-  { id: 'other-tools', zh: '其他工具', en: 'Other tools' },
+  { id: 'other-tools', zh: '部分其他工具', en: 'Selected other tools' },
 ];
 
 const pipelineOrder = new Map([
