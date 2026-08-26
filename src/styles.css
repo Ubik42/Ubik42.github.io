@@ -258,6 +258,8 @@ p { text-wrap: pretty; }
 .project-dialog-gallery figure:only-child { grid-column: 1 / -1; min-height: clamp(30rem, 56vw, 52rem); }
 .project-dialog-gallery figure:nth-child(3) { grid-column: 1 / -1; }
 .project-dialog-gallery img { width: 100%; height: 100%; object-fit: cover; }
+.project-dialog-gallery.is-contain figure { background: oklch(.17 .018 255); }
+.project-dialog-gallery.is-contain img { padding: clamp(.75rem, 1.5vw, 1.5rem); object-fit: contain; }
 .project-dialog-gallery figcaption { position: absolute; right: 1rem; bottom: 1rem; left: 1rem; width: fit-content; max-width: calc(100% - 2rem); padding: .55rem .75rem; background: color-mix(in oklch, var(--ink) 86%, transparent); color: white; font-size: .82rem; }
 .project-dialog-details { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(16rem, .65fr); gap: clamp(3rem, 7vw, 8rem); padding: clamp(2rem, 5vw, 5rem); }
 .project-dialog-details h3 { margin-bottom: 1.2rem; font-size: clamp(1.5rem, 2.4vw, 2.5rem); }

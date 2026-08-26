@@ -103,7 +103,7 @@ function RepositoryDetail({ work, locale }: { work: RepositoryWork; locale: 'zh'
   return <>
     {work.repositoryUrl && <a className="project-dialog-source" href={work.repositoryUrl} target="_blank" rel="noreferrer"><span>{locale === 'zh' ? '查看 GitHub 仓库' : 'View GitHub repository'}</span><span aria-hidden="true">↗</span></a>}
     <MarkdownStory markdown={localize(work.story, locale)} title={work.title} />
-    {work.images && <DetailGallery images={work.images.map((image) => ({ src: image.src, alt: localize(image.alt, locale), caption: '' }))} />}
+    {work.images && <DetailGallery fit="contain" images={work.images.map((image) => ({ src: image.src, alt: localize(image.alt, locale), caption: localize(image.alt, locale) }))} />}
   </>;
 }
 
@@ -127,6 +127,6 @@ function VideoEmbed({ youtubeId, title }: { youtubeId: string; title: string }) 
   return <div className="project-dialog-video"><iframe src={`https://www.youtube-nocookie.com/embed/${youtubeId}?rel=0`} title={`${title} demo video`} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen /></div>;
 }
 
-function DetailGallery({ images }: { images: Array<{ src: string; alt: string; caption: string; position?: string }> }) {
-  return <div className="project-dialog-gallery">{images.map((image) => <figure key={image.src}><img src={image.src} alt={image.alt} style={{ objectPosition: image.position }} loading="lazy" />{image.caption && <figcaption>{image.caption}</figcaption>}</figure>)}</div>;
+function DetailGallery({ images, fit = 'cover' }: { images: Array<{ src: string; alt: string; caption: string; position?: string }>; fit?: 'cover' | 'contain' }) {
+  return <div className={`project-dialog-gallery ${fit === 'contain' ? 'is-contain' : ''}`}>{images.map((image) => <figure key={image.src}><img src={image.src} alt={image.alt} style={{ objectPosition: image.position }} loading="lazy" />{image.caption && <figcaption>{image.caption}</figcaption>}</figure>)}</div>;
 }
