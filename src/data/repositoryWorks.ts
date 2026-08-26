@@ -18,7 +18,7 @@ export interface RepositoryWork {
 export const repositoryWorks: RepositoryWork[] = [
   {
     id: 'noemancer',
-    title: 'Noemancer',
+    title: '最最 AI 友好的高性能引擎',
     category: 'engine-games',
     categoryLabel: { zh: '自研游戏引擎', en: 'Custom game engine' },
     summary: { zh: '从原生 Editor、C# Gameplay、资产 Cook 到 D3D12/Vulkan 商业 Raster 和独立 Player 的 C++20 游戏引擎。', en: 'A C++20 game engine spanning a native editor, C# gameplay, asset cooking, D3D12/Vulkan commercial raster rendering, and standalone players.' },
@@ -26,7 +26,7 @@ export const repositoryWorks: RepositoryWork[] = [
     tags: ['C++20', 'D3D12 / Vulkan', 'C#', 'MCP'],
     repositoryUrl: 'https://github.com/Ubik42/Noemancer',
     story: {
-      zh: `# Noemancer
+      zh: `# 最最 AI 友好的高性能引擎
 
 Noemancer 是我从零开发的 C++20 游戏引擎。它已经不只是一个渲染 Demo：当前可以在原生 Editor 中组织场景、运行 C# Gameplay、导入并 Cook 资产，最后打包为不依赖 Editor 的 Windows Player。这条链路之下是自研的 ECS Runtime、D3D12/Vulkan 渲染、物理、动画、资产格式与编辑器事务系统。
 
@@ -476,11 +476,11 @@ The Tauri 2 and React desktop application connects to Rez through a Python servi
     ],
   },
   {
-    id: 'mayascope', title: 'MayaScope', category: 'pipeline',
+    id: 'mayascope', title: 'Maya 场景调查与运行时诊断工具', category: 'pipeline',
     categoryLabel: { zh: 'Maya 场景调查与运行时诊断', en: 'Maya scene and runtime observatory' },
     summary: { zh: '由 MayaIndieTool 演进而来的 Maya 场景调查工具：把大型场景组织成可查询快照、依赖图、运行时足迹和回归证据。', en: 'The successor to MayaIndieTool: a Maya scene-investigation workspace built around queryable snapshots, dependency graphs, runtime footprints, and regression evidence.' },
-    cover: '/media/repositories/production-tools/mayascope-host.png', tags: ['Maya 2025', 'Scene Graph', 'Profiler', 'Regression'], repositoryUrl: 'https://github.com/Ubik42/MayaIndieTool',
-    story: { zh: `# MayaScope
+    cover: '/media/repositories/production-tools/mayascope-host.png', tags: ['Maya 2025', 'Scene Graph', 'Profiler', 'Regression'], repositoryUrl: 'https://github.com/Ubik42/MayaScope',
+    story: { zh: `# Maya 场景调查与运行时诊断工具
 
 MayaScope 由原 MayaIndieTool 演进而来，是一个面向复杂 Maya 场景的调查与运行时诊断工作区。它处理的不是某一条孤立检查规则，而是“这个场景为什么变慢、变得脆弱，或者换一台机器就无法正常打开”。项目与角色绑定工具 MayaCraft 彼此独立。
 
@@ -571,11 +571,11 @@ The direct VST3 path is still experimental and the project is currently distribu
     images: [{ src: '/media/repositories/neothesia.png', alt: { zh: 'Neothesia 钢琴练习界面', en: 'Neothesia piano practice interface' } }],
   },
   {
-    id: 'artflow-agent', title: 'ArtFlow Agent', category: 'ai-agent',
+    id: 'artflow-agent', title: '面向引擎接入的新时代 AIGC 框架', category: 'ai-agent',
     categoryLabel: { zh: 'AIGC + Agent', en: 'AIGC + Agent' },
     summary: { zh: '从 UE 场景事实出发，协调本地 ComfyUI 与 GPT Image 2，完成独立评价、有界修订、失败恢复和可验证回流。', en: 'Starts from Unreal scene facts and coordinates local ComfyUI and GPT Image 2 for independent judging, bounded revision, recovery, and verified return.' },
     cover: '/media/repositories/major-updates/artflow-delivery.png', tags: ['Agent Harness', 'ComfyUI / GPT Image 2', 'Unreal 5.8', 'Evaluation'], repositoryUrl: 'https://github.com/Ubik42/ArtFlow-Agent',
-    story: { zh: `# ArtFlow Agent
+    story: { zh: `# 面向引擎接入的新时代 AIGC 框架
 
 ArtFlow Agent 是一条面向 Unreal 美术迭代的 AIGC 生产链路。它从真实 UE 5.8 场景提取相机、物体 ID、深度、法线、保护区域和美术目标，组织为可复核的 Scene Package；Agent 再调度本地 ComfyUI 和 GPT Image 2 生成候选，完成约束判定、视觉评审、局部修订、失败恢复与 Unreal 回流。
 
