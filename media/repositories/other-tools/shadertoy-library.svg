@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#16102f"/><stop offset=".5" stop-color="#5b2aa8"/><stop offset="1" stop-color="#12a6a6"/></linearGradient></defs>
+  <rect width="1600" height="1000" fill="url(#g)"/>
+  <g fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="3">
+    <circle cx="800" cy="420" r="260"/><circle cx="800" cy="420" r="185"/><circle cx="800" cy="420" r="105"/>
+    <path d="M250 420h1100M800 80v680M360 180l880 480M360 660l880-480"/>
+  </g>
+  <circle cx="800" cy="420" r="52" fill="#fff"/>
+  <text x="120" y="830" fill="#ffffff" font-family="Arial, Microsoft YaHei, sans-serif" font-size="84" font-weight="800">Shader 学习、渲染与 AI 检索知识库</text>
+  <text x="124" y="910" fill="#8fffea" font-family="Arial, sans-serif" font-size="34" font-weight="700">1000 CASES · 1812 GLSL PASSES · LOCAL RENDERER</text>
+</svg>

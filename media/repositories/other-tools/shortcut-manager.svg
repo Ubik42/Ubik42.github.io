@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <rect width="1600" height="1000" fill="#f0f3f7"/>
+  <g transform="translate(150 150)" fill="#ffffff" stroke="#101827" stroke-width="6">
+    <rect width="1300" height="540" rx="28" fill="#dce3ec"/>
+    <g transform="translate(70 70)">
+      <rect width="150" height="120" rx="14"/><rect x="175" width="150" height="120" rx="14"/><rect x="350" width="150" height="120" rx="14"/><rect x="525" width="150" height="120" rx="14"/><rect x="700" width="150" height="120" rx="14"/><rect x="875" width="150" height="120" rx="14"/><rect x="1050" width="140" height="120" rx="14"/>
+      <rect y="145" width="210" height="120" rx="14"/><rect x="235" y="145" width="150" height="120" rx="14" fill="#b9c8ff"/><rect x="410" y="145" width="150" height="120" rx="14"/><rect x="585" y="145" width="150" height="120" rx="14"/><rect x="760" y="145" width="150" height="120" rx="14"/><rect x="935" y="145" width="255" height="120" rx="14"/>
+      <rect y="290" width="260" height="120" rx="14"/><rect x="285" y="290" width="150" height="120" rx="14"/><rect x="460" y="290" width="420" height="120" rx="14" fill="#b9c8ff"/><rect x="905" y="290" width="285" height="120" rx="14"/>
+    </g>
+  </g>
+  <text x="150" y="815" fill="#101827" font-family="Arial, Microsoft YaHei, sans-serif" font-size="88" font-weight="800">跨软件快捷键采集与查询工具</text>
+  <text x="154" y="900" fill="#2155ff" font-family="Arial, sans-serif" font-size="34" font-weight="700">OCR · MARKDOWN · VISUAL KEYBOARD MAPPING</text>
+</svg>
