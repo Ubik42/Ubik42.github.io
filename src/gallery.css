@@ -48,6 +48,8 @@
 .unified-dialog .project-dialog-close { border-color: var(--ink); background: var(--white); color: var(--ink); }
 .unified-dialog .notion-story h3, .unified-dialog .notion-story h4 { border-color: var(--line); color: var(--ink); }
 .unified-dialog .notion-story p, .unified-dialog .notion-story li { color: var(--muted); }
+.unified-dialog .notion-story > p:first-of-type { max-width: 64ch; color: var(--ink); font-size: clamp(1.08rem, 1.45vw, 1.28rem); line-height: 1.72; }
+.unified-dialog .notion-story li::marker { color: var(--blue); font-weight: 800; }
 .unified-dialog .notion-story strong { color: var(--ink); }
 .unified-dialog .notion-story code { background: color-mix(in oklch, var(--blue) 7%, var(--white)); color: var(--blue-deep); }
 .unified-dialog .notion-story a { color: var(--blue); }
@@ -67,6 +69,11 @@
   text-align: center;
 }
 .unified-dialog .project-dialog-source:hover { background: var(--blue-deep); color: var(--white); }
+.project-dialog-lead-media { position: relative; width: 100%; aspect-ratio: 16 / 7; margin: 0; overflow: hidden; border-block: 1px solid var(--ink); background: oklch(.12 .018 255); }
+.project-dialog-lead-media::after { position: absolute; inset: 0; border: 1px solid color-mix(in oklch, white 18%, transparent); pointer-events: none; content: ''; }
+.project-dialog-lead-media img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.project-dialog-lead-media.is-contain { padding: clamp(1rem, 2.5vw, 2.5rem); background: oklch(.16 .018 255); }
+.project-dialog-lead-media.is-contain img { object-fit: contain; }
 .notion-story .story-video { padding: 0; overflow: hidden; }
 .notion-story .story-video video { display: block; width: 100%; aspect-ratio: 16 / 9; background: black; }
 .notion-story .story-video figcaption { padding: .7rem .9rem; color: var(--muted); font-size: .84rem; }
@@ -85,4 +92,6 @@
   .portfolio-gallery-header { align-items: flex-start; flex-direction: column; }
   .portfolio-grid { grid-template-columns: 1fr; }
   .portfolio-tile-copy > p { min-height: 0; }
+  .project-dialog-lead-media { aspect-ratio: 4 / 3; }
+  .project-dialog-lead-media.is-contain { padding: .65rem; }
 }

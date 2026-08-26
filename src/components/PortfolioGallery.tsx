@@ -44,6 +44,7 @@ export function PortfolioGallery() {
     if (!dialog) return;
     if (activeItem) {
       if (!dialog.open) dialog.showModal();
+      dialog.scrollTop = 0;
       document.body.classList.add('has-project-dialog');
     } else {
       if (dialog.open) dialog.close();
@@ -100,10 +101,13 @@ function GalleryDetail({ item, locale, close }: { item: GalleryItem; locale: 'zh
 }
 
 function RepositoryDetail({ work, locale }: { work: RepositoryWork; locale: 'zh' | 'en' }) {
+  const galleryImages = work.images?.filter((image) => image.src !== work.cover) ?? [];
+  const leadFit = work.id === 'noemancer' || work.id === 'artflow-agent' ? 'cover' : 'contain';
   return <>
     {work.repositoryUrl && <a className="project-dialog-source" href={work.repositoryUrl} target="_blank" rel="noreferrer"><span>{locale === 'zh' ? '查看 GitHub 仓库' : 'View GitHub repository'}</span><span aria-hidden="true">↗</span></a>}
+    <DetailLeadMedia src={work.cover} alt={`${work.title} ${locale === 'zh' ? '项目画面' : 'project view'}`} fit={leadFit} />
     <MarkdownStory markdown={localize(work.story, locale)} title={work.title} />
-    {work.images && <DetailGallery fit="contain" images={work.images.map((image) => ({ src: image.src, alt: localize(image.alt, locale), caption: localize(image.alt, locale) }))} />}
+    {galleryImages.length > 0 && <DetailGallery fit="contain" images={galleryImages.map((image) => ({ src: image.src, alt: localize(image.alt, locale), caption: localize(image.alt, locale) }))} />}
   </>;
 }
 
@@ -121,6 +125,10 @@ function ProjectDetail({ project, locale }: { project: SelectedProject; locale: 
     {project.youtubeId && <VideoEmbed youtubeId={project.youtubeId} title={project.title} />}
     {projectStories[project.id] ? <MarkdownStory markdown={projectStories[project.id][locale]} title={project.title} /> : project.story && <section className="project-dialog-story"><h3>{projectText(project.story.title, locale)}</h3><p>{projectText(project.story.intro, locale)}</p><h4>{locale === 'zh' ? '玩法与特色' : 'Gameplay & Features'}</h4><dl>{project.story.features.map((feature) => <div key={feature.title.en}><dt>{projectText(feature.title, locale)}</dt><dd>{projectText(feature.detail, locale)}</dd></div>)}</dl>{project.story.note && <p className="project-dialog-note">{projectText(project.story.note, locale)}</p>}</section>}
   </>;
+}
+
+function DetailLeadMedia({ src, alt, fit }: { src: string; alt: string; fit: 'cover' | 'contain' }) {
+  return <figure className={`project-dialog-lead-media ${fit === 'contain' ? 'is-contain' : ''}`}><img src={src} alt={alt} /></figure>;
 }
 
 function VideoEmbed({ youtubeId, title }: { youtubeId: string; title: string }) {

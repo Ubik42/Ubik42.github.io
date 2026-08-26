@@ -28,37 +28,36 @@ export const repositoryWorks: RepositoryWork[] = [
     story: {
       zh: `# Noemancer
 
-Noemancer 是一套从底层运行时到内容制作链路都自行实现的 C++20 游戏引擎，不是套在 Unity 或 Unreal 外面的编辑器外壳。当前仓库包含原生 Editor、ECS 游戏 Runtime、D3D12/Vulkan 渲染、物理与动画、C# 项目脚本、离线资产 Cook、独立 Player 打包，以及由 Editor、CLI 与 MCP 共用的命令和事务层。
+Noemancer 是我从零开发的 C++20 游戏引擎。它已经不只是一个渲染 Demo：当前可以在原生 Editor 中组织场景、运行 C# Gameplay、导入并 Cook 资产，最后打包为不依赖 Editor 的 Windows Player。这条链路之下是自研的 ECS Runtime、D3D12/Vulkan 渲染、物理、动画、资产格式与编辑器事务系统。
 
-## 编辑器与游戏工作流
+## 从建立工程到独立运行
 
-- Project Hub 可以创建工程、打开工程和恢复最近工作区；Starter 与 Hybrid Pixel 模板共用同一项目服务。
-- Editor 包含 Scene View、World Outliner、声明式 Inspector、Asset Browser、Console、Animation Graph 和 Agent Context。
-- Edit World 与 Play World 隔离，C# Gameplay 在运行世界中热重载，结果可以选择性 Apply Back，并作为一次可撤销场景事务提交。
-- Runtime 使用 Flecs ECS、Jolt 物理、ozz 骨骼动画与 GPU Skinning；项目侧支持 .NET 10 / C#、RmlUi、输入映射、音频、Prefab、存档与 Replay 文档。
+- Project Hub 管理创建、打开和恢复工程；Scene View、Outliner、Inspector、Asset Browser、Console 与 Animation Graph 组成完整编辑工作区。
+- Edit World 与 Play World 互相隔离，运行时改动不会污染编辑场景；需要的结果可选择性 Apply Back，并进入同一套 Undo / Redo。
+- Gameplay 层使用 .NET 10 / C# 热重载；Runtime 集成 Flecs ECS、Jolt 物理、ozz 骨骼动画、GPU Skinning、RmlUi、输入、音频、VFX、Prefab 和存档。
+- NoemancerPlatformer 已经贯通“项目 UI / 输入 → C# Gameplay → Cook → Package → 独立 Player”，用于验证游戏侧的完整生命周期。
 
-## D3D12 / Vulkan 实时渲染
+## D3D12 / Vulkan 渲染管线
 
-- SDL_GPU 后端让 D3D12 与 Vulkan 共享资源、Shader 和 Render Graph 合同；两端分别保存画面、Pass 时间和结构化回执。
-- 已实现 Forward PBR、split-sum IBL、四级 CSM、Point/Spot 局部阴影、GPU 视锥裁剪、间接绘制和阴影缓存。
-- 默认 Raster 路径已经接入四 LUT 动态天空、Aerial Perspective、共享 HiZ、SSR、SSGI、TAA、GTAO、双边降噪、Bloom、曝光调色与 ACES Tone Mapping。
-- RenderLab 使用 Intel Sponza 2022 和商业 Raster 基准场景验证外部 glTF 依赖闭包、405 个 primitive、材质派生及双后端实时画面；截图来自 Release 隐藏捕获，不是离线渲染。
-- Native Ray Tracing 目前只完成 RTX 4080 上的 D3D12/Vulkan BLAS、TLAS、Barrier、Fence 与释放 Build Probe；它证明底层资源和同步边界，不冒充可见光追画面或 RTGI。
+- SDL_GPU 后端让 D3D12 与 Vulkan 共享资源、Shader 和 Render Graph 合同，同时保留各后端的 Pass 时间与诊断回执。
+- Raster 主路径包含 Forward PBR、split-sum IBL、四级 CSM、Point/Spot 阴影、GPU 视锥裁剪与间接绘制。
+- 画面管线已接入四 LUT 动态天空、Aerial Perspective、共享 HiZ、SSR、SSGI、TAA、GTAO、双边降噪、Bloom、曝光调色和 ACES Tone Mapping。
+- RenderLab 使用 Intel Sponza 2022 进行实时验证：约 205 万顶点、1124 万索引、405 个 primitive 和 72 张纹理。页面中的画面均来自 Release 运行捕获。
+- RTX 4080 上已完成 D3D12/Vulkan 的 BLAS / TLAS 构建、Barrier、Fence 和释放测试；当前阶段用于确认底层资源边界，可见光追与 RTGI 仍在后续路线中。
 
-## 资产 Cook 与独立发布
+## 资产 Cook 与发布
 
 - 导入 GLB、JSON glTF 与 FBX，使用 meshoptimizer 处理几何，烘焙 Mesh、Animation、KTX2、Sprite Atlas 和 Tilemap 数据。
 - Cook 产物由源文件、配方、目标 Profile 和工具版本共同寻址；Runtime 加载前复核范围、Schema 与 SHA-256。
-- 打包后的 Windows Player 只读取运行时资产，不在玩家机器解析源 FBX/GLTF；包中包含 app-local .NET、VC Runtime、Shader Manifest 和第三方 NOTICE。
-- NoemancerPlatformer 已贯通 Project UI/Input、C# Gameplay、Cook、Package 与独立 Player；RenderLab 继续收口大型场景 Cook/Package。
+- Windows Player 只带运行时资产、app-local .NET、VC Runtime、Shader Manifest 和第三方 NOTICE，不会在玩家机器上临时解析源 FBX / glTF。
 
-## Agent 工具层
+## 编辑器与 Agent 共用命令系统
 
 引擎的 C++ Command Registry 同时服务 Editor、direct JSON、CLI 和 MCP。场景、项目、资产注册表和运行时诊断以稳定 ID、Schema、Revision 和有限观察结果公开；自动化遵循 **Observe → Plan → Apply → Receipt → Undo / Redo**，连接当前 Editor 的权威 World 与撤销记录，不建立第二份场景数据库，也不把 Flecs、Jolt 或 SDL 句柄暴露给 Agent。
 
-## 当前边界
+## 当前状态
 
-项目仍处于 Pre-alpha，只完整验证 Windows x64。稳定插件 SDK、跨平台发行、生产网络、签名安装器、硬件光追画面、RTGI 与 VSM 仍未完成；README 和页面只展示已经进入真实画面、完整运行链路或结构化证据的能力。`,
+项目处于 Pre-alpha，目前主要验证 Windows x64。可稳定对外的插件 SDK、跨平台发行、生产网络、签名安装器、可见硬件光追、RTGI 与 VSM 仍在后续计划中。当前展示重点是已经真正跑通的 Editor—Runtime—Cook—Player 链路与实时渲染结果。`,
       en: `# Noemancer
 
 Noemancer contains a native Editor, game Runtime, asset Cook, standalone Player packaging, C# project scripting, and one command layer shared by CLI and MCP.
@@ -96,19 +95,21 @@ The project is pre-alpha and currently verified end to end on Windows x64. SSR, 
     story: {
       zh: `# Art Pipeline Skill
 
-旧 AIToolTA 母仓和“万能管线 Agent”方向已经停止。当前项目被收口为一个轻量、可审计的领域 Skill：它不临时生成脚本修改资产，而是让 Codex、ArtFlow Agent 等调用已经登记、具备版本和能力合同的真实工具。
+这是一个面向美术生产工具的轻量 Skill。它不临时生成脚本去改资产，而是为 Codex、ArtFlow Agent 等自动化入口提供一份可核对的“工具目录”：当前有哪些工具、版本是什么、允许读写哪些范围、运行后应返回什么证据。
 
-## 当前职责
+它由旧 AIToolTA 体系中收口而来，目标是把已经存在的 Maya / Unreal / 资产交付工具稳定接给 Agent，而不是继续维护一个包办所有事情的大型 Agent 母仓。
 
-- 校验工具与插件身份、版本、Profile、Manifest 和报告时效；
-- 只允许调用登记过的能力，未知字段、版本漂移和新增写权限全部失败关闭；
-- 保存 correlation ID、配置哈希、工具版本、只读声明与执行回执；
+## 一次调用会经过什么
+
+- 先核对工具身份、版本、Profile、Manifest 和报告时效；
+- 再根据能力合同限定输入、输出和读写域；未知字段、版本漂移或权限扩张会直接阻止调用；
+- 执行后保存 correlation ID、配置哈希、工具版本、只读声明和运行回执；
 - 为 Maya Scene Checker、Unreal Asset Batch Auditor 和 Asset Delivery Organizer 提供明确的能力握手；
 - 失败后保持幂等步骤身份，从下一次 attempt 恢复，不重复已经成功的工作。
 
 ## 宿主边界与验证
 
-Maya 2024/2025 的 mayapy 与 UE 5.8.1 UnrealEditor-Cmd 已完成真实加载验证。两个宿主桥只报告状态，不执行任意 Maya Python、Unreal Console Command，也不加载、保存或重建资产。仓库中的中文演示页面使用确定性合成数据，并明确标为模拟状态，不冒充真实宿主截图。
+Maya 2024/2025 的 mayapy 与 UE 5.8.1 UnrealEditor-Cmd 已完成真实加载验证。两个宿主桥当前只报告状态，不执行任意 Maya Python 或 Unreal Console Command，也不加载、保存或重建资产。页面中的中文协议界面使用确定性演示数据，用来展示能力握手、版本不匹配和阻止状态。
 
 当前公开基线包含 54 项自动化测试；旧 AIToolTA 的迁移与退役证据保留在仓库文档中。`,
       en: `# Art Pipeline Skill
@@ -137,7 +138,17 @@ Maya 2024/2025 mayapy and Unreal 5.8.1 command-line host loading have been verif
     story: {
       zh: `# 光子 AI 工具向实习内容总结
 
-这组工作来自大型游戏工作室的 AI 工具技术美术实习。工作范围横跨 Maya、Unreal Editor、Figma 插件沙箱、Python / C++、TypeScript / React、FastAPI、SQLite、视觉向量检索、版本化软件环境和持续集成。公开版本保留实际解决的问题、系统分层和验证方法；内部项目、平台、账号、接口地址、业务数据、资产、仓库路径、原始截图与录屏均已移除。
+这是我在腾讯光子担任 AI 工具技术美术实习生期间的工作总结。工作范围横跨 Maya、Unreal Editor、Figma 插件沙箱、Python / C++、TypeScript / React、FastAPI、SQLite、视觉检索、AIGC 长时任务、版本化软件环境和持续集成。
+
+## 工作重点
+
+- 在 Maya 和 Unreal Editor 中开发直接服务于美术生产的宿主工具，处理场景状态、资源引用、可撤销写入与真实宿主回归；
+- 持续开发 8 个 Figma 插件，覆盖 AI 对话、批量翻译、任务交付、视觉语义搜索、组件查重、母版更新、切图与布局标注；
+- 建立共用 FastAPI 数据服务、SQLite 快照、缩略图缓存和 SigLIP 向量索引，同时保持各插件独立版本化与回滚边界；
+- 将 AIGC、DCC 批处理与多版本 Maya 任务做成有进度、日志、心跳、断点和结果台账的长时流程；
+- 参与工具的 Rez 打包、依赖解析、增量构建、持续集成、宿主验收和面向项目组的迭代交付。
+
+下方保留了具体技术实现与验证方法。为避免暴露生产信息，项目名、平台、账号、接口地址、业务数据、资产、仓库路径、原始截图与录屏已移除。
 
 ## Maya：LOD 材质整理与资产检查
 
@@ -303,9 +314,9 @@ The original presentation and media remain local work records. This public page 
     repositoryUrl: 'https://github.com/Ubik42/asset-delivery-organizer',
     story: { zh: `# Asset Delivery Organizer
 
-一批外包资产通常同时包含模型、贴图、UDIM、历史版本和说明文件。这个中文桌面工作台把交付信息、文件扫描、命名与贴图检查、安全整理、版本归档、复检收据和历史记录放进同一条可审查流程。
+一批外包资产通常同时包含模型、贴图、UDIM、历史版本和说明文件；人工整理时很容易出现重命名错误、覆盖新文件或遗漏贴图。Asset Delivery Organizer 将交付信息、文件扫描、命名与贴图检查、整理方案、版本归档、复检收据和历史记录放进同一个中文桌面工作台。
 
-## 从只读审计到安全整理
+## 实际使用流程
 
 - 递归扫描文件，记录稳定相对路径、SHA-256、媒体类型和命名字段；
 - 检查命名格式、必需贴图通道和旧版本，同时拦截大小写冲突、路径穿越与符号链接逃逸；
@@ -334,9 +345,9 @@ A PySide6 desktop workbench for supplier deliveries. Audits are strictly read-on
     repositoryUrl: 'https://github.com/Ubik42/maya-scene-checker',
     story: { zh: `# Maya 场景交付检查器
 
-这是面向模型美术、外包验收和 TA 的 Maya 只读交付门禁。它不会发现问题就直接修改场景，而是先生成稳定快照，再用 Rule、Issue 与 Evidence 说明“哪个对象、哪个组件、为什么不合规”。
+这是面向模型美术、外包验收和 TA 的 Maya 只读交付检查器。它先对场景建立稳定快照，再用 Rule、Issue 和 Evidence 回答三个问题：哪个对象出错、具体落在哪个面 / 边 / 点、它为什么会阻碍交付。整个检查过程不修改场景。
 
-## 已完成能力
+## 从扫描到定位与报告
 
 - 检查 N 边面、非流形边、Lamina Face、零面积面、退化边、命名、引用与场景级状态；
 - 按严重度筛选问题，选中问题即可定位到 Maya 对象、面、边或点，并能恢复原选择；
@@ -365,9 +376,9 @@ A read-only Maya 2025 delivery gate that produces versioned rules, issues, locat
     repositoryUrl: 'https://github.com/Ubik42/maya-garment-preparation',
     story: { zh: `# Maya Garment Preparation
 
-面向 Marvelous Designer 等服装流程进入 Maya 后的版片准备工作。工具识别基础 UV 版片、高模与重拓扑版片三类输入，将多次高风险手工操作收束为可预览、可拒绝、可复检、可一次撤销的工作流。
+这是面向 Marvelous Designer 等服装流程进入 Maya 后的版片准备工具。在常见流程中，基础版片提供整齐 UV，高模提供造型，重拓扑网格承接最终制作。工具识别这三类输入，将选择、检查、UV 传递、位置贴合与复检收束成一次可预览、可拒绝、可撤销的操作。
 
-## 当前 0.2.0 工作流
+## 0.2.0 工作流
 
 - 检查选择顺序、Mesh 类型、空拓扑、非流形、重叠面、UV、引用状态和既有 History；
 - 通过 Maya transferAttributes 依次传递 UV 与顶点位置；
@@ -397,7 +408,9 @@ A focused Maya 2025 plug-in for safe UV and position transfer across base panels
     repositoryUrl: 'https://github.com/Ubik42/unreal-asset-batch-auditor',
     story: { zh: `# Unreal Asset Batch Auditor
 
-面向 Unreal 项目 Static Mesh 的只读批量审计插件。项目 Profile 定义实际预算，Editor-only C++ 模块从显式选择中采集元数据，Python 负责编排规则与 JSON 报告；扫描不会保存资产、重建网格或自动修改 Nanite。
+这是一个面向 Unreal 项目 Static Mesh 的只读批量审计插件。当美术需要在提交前快速检查一组资产时，插件从 Content Browser 的显式选择中采集三角形、顶点、材质槽、LOD 和 Nanite 信息，并根据项目 Profile 给出可定位的超限结果。
+
+Editor-only C++ 负责真实宿主数据采集与原生 Slate 界面，Python 负责规则编排和 JSON 报告。扫描过程不会保存资产、重建网格或自动改动 Nanite。
 
 ## 三步工作流
 
@@ -423,24 +436,26 @@ A read-only Unreal 5.8.1 Editor plug-in. Native C++ collects explicitly selected
     cover: '/media/repositories/major-updates/rez-overview.png', tags: ['Rez 3.4', 'Tauri 2', 'React 19', 'Python / Rust'], repositoryUrl: 'https://github.com/Ubik42/rez-studio-launcher',
     story: { zh: `# Rez Studio
 
-Rez Studio 面向 Windows DCC 工作站，把“启动 Maya”背后的身份、项目权限、软件版本、插件集合、依赖解析和本机检查做成一个艺术家可见的软件库。同一台工作站进入不同项目时，可以获得完全不同的 DCC Profile 与插件方案，而不是直接打开固定 EXE。
+Rez Studio 是一个面向 Windows 制作工作站的项目感知启动器。对美术来说，操作仍然是“选项目、选软件、点击启动”；它在后台根据用户身份、项目成员关系、DCC 版本和插件方案解析 Rez 环境，并在启动前把缺少软件、版本冲突和制品问题说清楚。
 
-## 项目级软件交付
+这个项目的核心是让“某个项目应该用哪套 Maya 和插件”成为可版本化、可诊断的项目配置，而不是每台电脑各自维护一组快捷方式和环境变量。
 
-- 本地身份和项目成员关系决定可见项目；Atlas 与 Ember 等演示项目可以为同一 DCC 配置不同版本、工具和状态。
+## 美术家看到的工作流
+
+- 登录后只显示当前用户可访问的项目；Atlas 与 Ember 等演示项目会为同一 DCC 给出不同版本、工具与状态。
 - 同一项目/DCC 支持“完整制作”“基础工具”“TD 纯净排障”等插件方案，成员身份限制可用组合。
 - 扫描 Maya、Blender、Houdini、Substance Designer、3ds Max、MotionBuilder、Unreal 和 Unity 的常见安装位置，并显示版本与可执行文件来源。
-- 从本机可执行文件提取真实 DCC/Engine 图标，记录来源与 SHA-256；未发现软件时保留明确缺失状态和厂商入口。
+- 从本机可执行文件提取真实 DCC / Engine 图标，同时记录来源与 SHA-256；未发现软件时显示明确原因与厂商入口。
 - Rez 3.4 使用项目私有 package path 执行真实 ResolvedContext，把版本请求、依赖、环境变量和插件路径组合成隔离启动环境。
 
-## 插件方案与制品边界
+## 插件方案与可追溯制品
 
 - 演示插件目录包含 Maya USD、BlenderKit、SideFX Labs 和 ParamCopy 的 Release 元数据；
 - 公开制品只允许来自配置白名单，下载后必须经过 SHA-256、Manifest 和 Provenance 复核才能晋升为 Rez 包；
 - Tool Manifest 采用严格 schema 做无副作用发现，宿主加载仍与发现阶段分离；
-- 状态覆盖可启动、缺少 DCC、有更新、待复核和策略阻断，失败原因直接落到当前软件卡片与诊断信息。
+- 界面区分可启动、缺少 DCC、有更新、待复核和策略阻断，失败原因直接落在对应软件与诊断页，不需要美术去翻终端日志。
 
-## 桌面架构与分发
+## 桌面实现与分发
 
 React 19 负责软件库和状态反馈，Tauri 2 / Rust 负责桌面生命周期与信任边界，Python Sidecar 承载身份、项目目录、制品缓存、DCC 检测和 Rez 领域逻辑。Windows NSIS 安装包内置冻结 Python 服务、Rez Runtime 与演示中央仓，不要求目标机器预装 Python、uv 或 Rez；商业 DCC 本体和许可证不随包分发。
 
@@ -450,7 +465,7 @@ rezstudio.cmd 以稳定 JSON 信封提供 project list、profile list/resolve/va
 
 ## 当前边界
 
-这是可本地运行的作品集实现，不冒充企业制片管理平台。正式部署仍需要 AD/LDAP/SSO、服务端授权和公司级软件许可证管理；遥测默认只写本机 SQLite，可查看也可关闭。`, en: `# Rez Studio
+当前完成的是一套可本地安装、可启动演示 DCC Profile、可运行 CLI 诊断的作品集实现。进入真实企业环境后，身份层需要接入 AD / LDAP / SSO、服务端授权和公司软件许可证管理。遥测默认仅写入本机 SQLite，用户可查看和关闭。`, en: `# Rez Studio
 
 A project-aware Windows DCC launcher. It selects the approved DCC version, plug-in set, and Rez environment for the current project instead of opening a fixed executable.
 
@@ -467,20 +482,20 @@ The Tauri 2 and React desktop application connects to Rez through a Python servi
     cover: '/media/repositories/production-tools/mayascope-host.png', tags: ['Maya 2025', 'Scene Graph', 'Profiler', 'Regression'], repositoryUrl: 'https://github.com/Ubik42/MayaIndieTool',
     story: { zh: `# MayaScope
 
-MayaScope 是原 MayaIndieTool 的后续项目，定位是复杂 Maya 场景的调查与运行时诊断工作区。它与独立的角色工具 MayaCraft 不是同一个项目：MayaScope 解决“场景为什么慢、脆弱或难以交付”，MayaCraft 解决角色绑定与动画生产问题。
+MayaScope 由原 MayaIndieTool 演进而来，是一个面向复杂 Maya 场景的调查与运行时诊断工作区。它处理的不是某一条孤立检查规则，而是“这个场景为什么变慢、变得脆弱，或者换一台机器就无法正常打开”。项目与角色绑定工具 MayaCraft 彼此独立。
 
-工具将 DG / DAG、引用、插件依赖和运行时足迹采集为不可变 SceneSnapshot，再投影到可交互的 Atlas。调查者因此能从一条 Finding 反向追踪其节点、引用链、所需插件、失败的 reference edit 与脚本行为，而不是在数千条扫描结果中手工翻找。
+工具先将 DG / DAG、引用、插件依赖和运行时足迹采集为不可变 SceneSnapshot，再投影到可交互 Atlas。调查者可以从一条 Finding 反向追到具体节点、引用链、所需插件、失败的 reference edit 与脚本行为，从“看到问题”继续走到“找到问题从哪里传过来”。
 
-## 当前工作区
+## 主要调查能力
 
-- Scene Clinic 将规则结果聚合为带来源的 Finding，支持项目基线、快照 diff 和增量回归，可用作进入资产库前的 CI 式门禁；
+- Scene Clinic 将规则结果聚合为带来源的 Finding，支持项目基线、快照 diff 和增量回归，可用于资产入库前的自动检查；
 - Query Kernel 用整数 CSR 图索引与有界 LRU 缓存执行邻域、路径和根因查询，显式限制节点、边、深度与 deadline，防止超大场景把 UI 拖死；
 - Runtime Observatory 区分可观测与不可观测状态，不把 batch 中缺失的 scriptJob 数据写成零；
 - Reference Orbit、Dependency Lineage 和 Plugin Ghost Signal 用于检查引用链、失败 edits、unknown nodes、script nodes、孤立动画曲线与缺失插件的影响范围；
 - Atlas 对大规模结果采用虚拟窗口和折叠聚焦，将细节查看与全局结构分开；
 - 真实 Maya GUI 生命周期验证覆盖启动、界面绘制、重复打开、热重载、关闭与回调清理。
 
-项目仍在开发中；Crash Bisect 与部分 Failure Prism 能力明确保留为后续方向。`, en: `# MayaScope
+当前展示版已完成 Maya GUI 中的启动、界面绘制、重复打开、热重载、关闭和回调清理验证。Crash Bisect 与 Failure Prism 的更完整调查链路仍在开发中。`, en: `# MayaScope
 
 MayaIndieTool has evolved into MayaScope, an investigative Maya 2025 workspace for immutable scene snapshots, reference and dependency lineage, runtime footprints, bounded graph queries, project baselines, and regression evidence. Crash bisect remains under development.` },
     images: [
@@ -496,9 +511,11 @@ MayaIndieTool has evolved into MayaScope, an investigative Maya 2025 workspace f
     cover: '/media/repositories/production-tools/mayacraft-workspace.png', tags: ['Maya 2025', 'Rig Graph', 'Retarget', 'Contact IK'], repositoryUrl: 'https://github.com/Ubik42/MayaCraft',
     story: { zh: `# MayaCraft
 
-MayaCraft 是独立的 Maya 2025 角色绑定与动画工具，不是 MayaScope 的前身或分支。它把角色发现、Rig 构建、形变诊断、运动分析、重定向与接触修正放进同一个中文工作区。首页会从真实场景发现角色、投影关节结构并与 Maya Selection 双向同步；写操作遵循“预览 → 应用 → 读回验证 → Undo”。
+MayaCraft 是独立开发的 Maya 2025 角色绑定与动画工作区。它把角色发现、Rig 构建、形变诊断、运动分析、重定向和接触修正组织在同一个中文界面中。工作区会从当前场景发现角色，投影关节结构，并与 Maya Selection 双向同步。
 
-## 当前展示切片
+对于实际修改，工具统一采用“预览 → 应用 → 读回验证 → Undo”的操作节奏，让绑定和动画工具不仅能产生结果，也能在写入前看到差异、写入后核对结果。
+
+## 当前可演示的角色流程
 
 - 声明式 Rig Graph 使用 Module、Socket、Node 和物理行为合同生成结构 diff，再增量构建真实 FK / RP IK / Pole 与基础 Space Switch；
 - Deformation MRI 从 skinCluster 读取权重，显示归一化、熵、碎片与缺失 influence，并支持可撤销修复；
@@ -506,7 +523,7 @@ MayaCraft 是独立的 Maya 2025 角色绑定与动画工具，不是 MayaScope 
 - Retarget 工作区处理 namespace、比例、轴空间和 jointOrient 差异，以 Ghost Pose 预览并写入独立 Animation Layer；
 - Contact IK 通过 FABRIK 和共同骨盆补偿形成零写入预览，应用后逐帧验证脚底锚点。
 
-当前展示版已在 Maya 2025 完成真实 GUI 生命周期验证。Face PSD/RBF、完整 FK/IK 无跳变匹配和拓扑变化蒙皮迁移仍属于后续路线。`, en: `# MayaCraft
+展示版已在 Maya 2025 完成真实 GUI 生命周期验证。Face PSD / RBF、完整 FK / IK 无跳变匹配以及拓扑变化后的蒙皮迁移仍在后续路线中。`, en: `# MayaCraft
 
 MayaCraft is a Chinese Maya 2025 character workspace for scene-aware character discovery, declarative rig graphs, deformation diagnostics, motion analysis, retarget previews, contact IK, read-back validation, and single-transaction undo.` },
     images: [
@@ -560,39 +577,40 @@ The direct VST3 path is still experimental and the project is currently distribu
     cover: '/media/repositories/major-updates/artflow-delivery.png', tags: ['Agent Harness', 'ComfyUI / GPT Image 2', 'Unreal 5.8', 'Evaluation'], repositoryUrl: 'https://github.com/Ubik42/ArtFlow-Agent',
     story: { zh: `# ArtFlow Agent
 
-ArtFlow Agent 面向 Unreal Engine 美术生产，不是给 ComfyUI 外面套一个聊天框。它从真实场景的相机、物体 ID、保护区域、可编辑区域和美术目标出发，将这些事实编译为 Scene Package，再协调本地 ComfyUI 与 Codex 内置 GPT Image 2 完成受约束生成、独立评价、有界修订、失败恢复和验证回流。
+ArtFlow Agent 是一条面向 Unreal 美术迭代的 AIGC 生产链路。它从真实 UE 5.8 场景提取相机、物体 ID、深度、法线、保护区域和美术目标，组织为可复核的 Scene Package；Agent 再调度本地 ComfyUI 和 GPT Image 2 生成候选，完成约束判定、视觉评审、局部修订、失败恢复与 Unreal 回流。
 
-## Unreal 到 AIGC 的场景上下文
+项目重点验证的不只是生成画面的质量，还包括结果能否保持原场景结构、说清选择依据、在中断后继续运行，并作为可追溯资产回到引擎。
+
+## 1. 将 Unreal 场景变成可执行约束
 
 - UE 5.8 场景桥导出固定相机的 beauty、depth、world normal 与 object ID 四 Pass；
 - Scene Package 同时保存受保护轮廓、可编辑区域、对象身份和美术方向，并逐文件记录 SHA-256；
-- Provider 只能执行声明过的能力和 Recipe，不能任意生成未知 ComfyUI 节点图或宿主代码；
-- 本地 ComfyUI 和 GPT Image 2 使用同一份场景约束产生可比较候选，而不是各自自由改写构图。
+- 生成器只能执行已登记的 Provider 能力与 Recipe；ComfyUI 和 GPT Image 2 共用同一份场景约束，候选结果因此可以在同一基准上比较。
 
-## 独立 Tribunal 与候选采用
+## 2. 生成与评价分离
 
-生成器不评价自己的结果。确定性的 Constraint Judge 先检查相机、结构和保护区域，多模态 Visual Critic 再评价视觉方向。一个主观表现更强但改变场景结构的负对照会被硬门禁排除；Agent 只能在 hard-eligible 候选中根据已持久化评价做选择。评价分歧、策略版本、候选身份和最终采用依据都会保存在事件中。
+确定性 Constraint Judge 先检查相机、主体轮廓、结构和保护区域；通过硬约束的候选再交给多模态 Visual Critic 评价风格与完成度。展示样例中，一张视觉表现更强但改动了场景结构的负对照被直接排除。评价结果、策略版本、候选身份与最终选择都保存在事件日志中。
 
-## 有界局部修订与 Unreal 回流
+## 3. 只修改指定区域，再回流 Unreal
 
-确定方向后，编排器使用对象与蒙版边界调用 GPT Image 2 做局部修订。当前主运行的第二次 feathered composite 改变蒙版内 42,803 个像素，蒙版外 1,530,358 个像素保持零变化。验证后的资产由 typed Unreal return tool 导入 /Game/ArtFlow/Returns，并绑定回 ArtFlowDemo 的目标 Actor；九个来源文件哈希全部通过。
+确定方向后，编排器根据对象 ID 和蒙版调用 GPT Image 2 做局部修订。当前主运行的第二次 feathered composite 改变了蒙版内 42,803 个像素，蒙版外 1,530,358 个像素保持零变化。通过验证的资产导入 /Game/ArtFlow/Returns，并绑定回目标 Actor；本次闭环的 9 个来源文件哈希全部匹配。
 
-## Agent Harness 与失败恢复
+## 4. 长时任务、中断与恢复
 
 - SQLite append-only 事件、哈希链和确定性 Reducer 让页面刷新或进程重启后可以重建相同状态；
-- reserve / submit / reconcile 区分尚未执行、已经完成和结果未知，六个故障注入案例保持重复外部副作用为零；
+- reserve / submit / reconcile 区分“尚未执行”“已完成”和“结果未知”；6 组故障注入测试中没有发生重复外部写入；
 - 上下文装配只保留稳定前缀、当前 Reducer 状态、最近观察和来源绑定记忆，排除陈旧观察与无关信息；
 - Capability Registry 记录输入输出、读写域、风险、超时、幂等和验证信号；不可用能力与权限漂移直接失败关闭；
 - episodic、semantic、procedural 三类生产记忆都绑定来源，冲突、伪造来源和越权共享会被拒绝；
 - OpenTelemetry 关联完整 Trace，冻结 Harness 的 20/20 命名案例和恢复/记忆矩阵可以独立复核。
 
-## 可验证发布
+## 5. 可复核的作品集交付
 
-作品集发布包只包含声明过的审阅材料，不携带 Prompt、凭据、隐藏推理或完整 SQLite 数据库。随包验证器会重新检查文件哈希、Run 与事件头、Harness、恢复、记忆和 Provenance；任何声明文件被修改都会返回失败。当前 C2PA 只达到 compatible unsigned sidecar，没有签名证书，因此不声称完整加密 Credential。
+发布包只保留审阅所需的画面、评价、来源和恢复证据，排除 Prompt、凭据、隐藏推理和完整 SQLite 数据库。随包验证器会重新检查文件哈希、Run / Event 头、Harness、恢复矩阵、记忆与 Provenance。当前 C2PA 为 compatible unsigned sidecar，尚未接入签名证书。
 
 ## 当前边界
 
-目前只用一条项目自有 UE 5.8 场景完成强端到端验证，不等于开放域质量 Benchmark。项目明确不引入没有实际需求的 LangGraph、Temporal、向量数据库或开放式多 Agent 协作；PydanticAI 只承担类型化模型交互，不拥有状态机、策略或执行权限。`, en: `# ArtFlow Agent
+目前的强端到端验证集中在一条项目自有 UE 5.8 场景，还不是开放域生成质量 Benchmark。PydanticAI 只承担类型化模型交互；状态、策略、执行权限和恢复逻辑由项目本身的确定性系统管理。`, en: `# ArtFlow Agent
 
 ArtFlow Agent uses an agent as the control plane and ComfyUI as the generation runtime for game-art iteration. The implemented slice covers brief validation, environment inspection, reviewed recipes, approval-gated execution, persisted run state, contact sheets, candidate selection, evaluation, and reproducible packaging.
 
@@ -617,7 +635,9 @@ The default path is deterministic and offline. Model-backed planning is opt-in, 
     cover: '/media/repositories/comfyui.png', tags: ['ComfyUI', 'Python', 'Provenance', 'Handoff'], repositoryUrl: 'https://github.com/Ubik42/ComfyUI-Production-Nodes',
     story: { zh: `# ComfyUI Production Nodes
 
-ComfyUI 已经负责图像生成；这个节点包补足生成前后的生产环节。它可以在昂贵任务开始前检查尺寸、Denoise、批量预算、模型和自定义节点依赖，并在完成后写出生成回执与 DCC / 引擎交付清单。
+ComfyUI Production Nodes 是 ArtFlow Agent 之外可以独立使用的自定义节点包。ComfyUI 继续负责图像生成，这个包专门补足生成前后的生产环节：在昂贵任务开始前检查尺寸、Denoise、批量预算、模型和自定义节点依赖，完成后写出生成回执与 DCC / 引擎交付清单。
+
+对普通 ComfyUI 用户，它是一组可直接插入现有 Workflow 的生产节点；对 ArtFlow Agent，它提供可以被自动化系统读取的 Contract、Receipt 与 Handoff Manifest。
 
 ## 自定义节点
 
