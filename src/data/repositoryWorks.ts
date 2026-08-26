@@ -629,32 +629,47 @@ The default path is deterministic and offline. Model-backed planning is opt-in, 
     ],
   },
   {
-    id: 'comfyui-production-nodes', title: 'ComfyUI Production Nodes', category: 'ai-agent',
-    categoryLabel: { zh: 'ComfyUI 自定义节点', en: 'ComfyUI custom nodes' },
-    summary: { zh: '为生成工作流补充约束检查、依赖检查、生成回执和 DCC / 引擎交付清单。', en: 'Custom nodes adding constraint checks, dependency checks, generation receipts, and DCC / engine handoff manifests.' },
-    cover: '/media/repositories/comfyui.png', tags: ['ComfyUI', 'Python', 'Provenance', 'Handoff'], repositoryUrl: 'https://github.com/Ubik42/ComfyUI-Production-Nodes',
-    story: { zh: `# ComfyUI Production Nodes
+    id: 'comfyui-production-nodes', title: 'ComfyUI 生产检查与交付节点', category: 'ai-agent',
+    categoryLabel: { zh: 'AIGC 生产节点', en: 'ComfyUI custom nodes' },
+    summary: { zh: '插入现有 ComfyUI 工作流，在生成前检查参数与依赖，生成后记录收据并整理 DCC、引擎交付信息。', en: 'Custom nodes adding constraint checks, dependency checks, generation receipts, and DCC / engine handoff manifests.' },
+    cover: '/media/repositories/comfyui-production-nodes/workflow-overview.png', tags: ['ComfyUI', 'Python', '工作流检查', 'DCC / 引擎交付'], repositoryUrl: 'https://github.com/Ubik42/ComfyUI-Production-Nodes',
+    story: { zh: `# ComfyUI 生产检查与交付节点
 
-ComfyUI Production Nodes 是 ArtFlow Agent 之外可以独立使用的自定义节点包。ComfyUI 继续负责图像生成，这个包专门补足生成前后的生产环节：在昂贵任务开始前检查尺寸、Denoise、批量预算、模型和自定义节点依赖，完成后写出生成回执与 DCC / 引擎交付清单。
+这是一套可以直接安装到 ComfyUI 的自定义节点。它不替换采样器和模型，而是补齐生成任务前后的制作流程：任务开始前检查尺寸、批量、Denoise、像素预算、模型与自定义节点依赖；生成完成后记录 Prompt、Seed、模型、LoRA 和工作流信息，并整理交给 Maya、Blender、Houdini、Unreal Engine 或 Unity 的资产清单。
 
-对普通 ComfyUI 用户，它是一组可直接插入现有 Workflow 的生产节点；对 ArtFlow Agent，它提供可以被自动化系统读取的 Contract、Receipt 与 Handoff Manifest。
+## 一套可直接插入现有工作流的节点
 
-## 自定义节点
+当前版本包含 8 个节点，分为三组：
 
-- Production Constraint Check：检查尺寸、批量、Denoise 与百万像素预算。
-- Production Dependency Check 与 ComfyUI Inventory：发现本地模型和节点并报告缺失项。
-- Workflow Contract Check：按可移植 Contract 校验输入 Slot 与参数范围。
-- Generation Receipt 与 Receipt Writer：记录模型、Prompt、Seed、工作流与 Schema，并安全写入 JSON。
-- Batch Handoff Manifest：为 Unreal、Unity、Maya、Blender、Houdini 等目标生成可移植交付元数据。
+- **生成前检查**：扫描本机 ComfyUI 环境，一次列出缺失的模型与自定义节点；检查宽高、Batch、Denoise 和总像素预算，避免错误参数进入昂贵任务。
+- **工作流约定**：检查必须提供的输入和参数范围，让团队模板在换机器、换操作者后仍能发现缺项。
+- **结果记录与交付**：生成可复查的任务收据，在指定工作区内安全写入 JSON，并为 DCC 与引擎整理文件角色、坐标系、单位和来源编号。
 
-仓库包含本机 ComfyUI 的真实生成结果、对应 API Workflow 和节点写出的 Receipt；节点本身不绑定具体模型，也不接管渲染器。`, en: `# ComfyUI Production Nodes
+## 中文生产模板
+
+仓库提供“生产预检与下游交接”模板。画布按照真实操作顺序分成环境检查、参数预算、工作流检查、生成收据和 DCC / 引擎交付几部分；检查报告可以直接显示在 ComfyUI 画布中，不需要离开节点图查看日志。
+
+示例专门保留了三类可复现问题：缺少依赖、Batch 与像素预算超限、必需输入为空且 Steps 越界。节点会集中返回全部问题，而不是修正一个后再暴露下一个。
+
+## 安全写入与可移交信息
+
+只有“收据安全写入”节点会修改磁盘。它只能写入用户指定工作区中的相对 JSON 路径，拒绝绝对路径、目录穿越和默认覆盖。批次交接清单不复制资产，而是明确记录目标软件、项目、坐标系、单位、文件角色与 Receipt ID，方便后续工具继续处理。
+
+## 真实运行与验证
+
+页面中的界面截图来自加载当前仓库代码的独立 ComfyUI 实例；本地生成图来自 RTX 4080 上的真实 ComfyUI 任务。仓库同时保存对应的 API Workflow 与 Generation Receipt。版本 1.1.0 已验证 8 个节点发现、模板导入、CPU 集成流程、受限写入和交付元数据链路。`, en: `# ComfyUI Production Nodes
 
 This package adds production checks around an existing ComfyUI graph: dimensions and budget validation, dependency inventory, workflow contracts, generation receipts, contained JSON writes, and portable DCC / engine handoff manifests.
 
 The repository includes a real local ComfyUI output, its API workflow, and the receipt written by the package. The nodes remain model- and renderer-independent.` },
     images: [
-      { src: '/media/repositories/comfyui.png', alt: { zh: '本机 ComfyUI 生成结果', en: 'Locally generated ComfyUI output' } },
-      { src: '/media/repositories/comfyui-workflow.png', alt: { zh: 'ComfyUI 自定义节点工作流', en: 'ComfyUI custom-node workflow' } },
+      { src: '/media/repositories/comfyui-production-nodes/workflow-overview.png', alt: { zh: '中文生产预检与下游交接工作流总览', en: 'Chinese production workflow overview' } },
+      { src: '/media/repositories/comfyui-production-nodes/dependency-check.png', alt: { zh: '环境清单与依赖预检通过', en: 'Environment inventory and dependency check' } },
+      { src: '/media/repositories/comfyui-production-nodes/budget-validation.png', alt: { zh: '批量与像素预算超限被集中拦截', en: 'Batch and pixel budget validation' } },
+      { src: '/media/repositories/comfyui-production-nodes/contract-validation.png', alt: { zh: '工作流必需输入与参数范围检查', en: 'Workflow input and parameter validation' } },
+      { src: '/media/repositories/comfyui-production-nodes/receipt-writer.png', alt: { zh: '生成收据预览与受限工作区写入', en: 'Generation receipt and contained write' } },
+      { src: '/media/repositories/comfyui-production-nodes/dcc-handoff.png', alt: { zh: '面向 DCC 与引擎的批次交接清单', en: 'DCC and engine batch handoff manifest' } },
+      { src: '/media/repositories/comfyui-production-nodes/local-generation.png', alt: { zh: '本机 ComfyUI 真实生成结果', en: 'Locally generated ComfyUI output' } },
     ],
   },
 ];
