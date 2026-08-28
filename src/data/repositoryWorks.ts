@@ -85,43 +85,41 @@ The project is pre-alpha and currently verified end to end on Windows x64. SSR, 
   },
   {
     id: 'art-pipeline-skill',
-    title: '美术生产工具审计与安全调用 Skill',
+    title: '可验证的跨 DCC 美术管线审计 Skill',
     category: 'pipeline',
-    categoryLabel: { zh: '工具与资产管线审计 Skill', en: 'Tool and asset pipeline audit skill' },
-    summary: { zh: '从旧 AIToolTA 体系中收口出的轻量 Skill：登记真实工具能力，校验版本、只读边界与执行证据。', en: 'A focused skill extracted from the retired AIToolTA suite to validate registered tools, versions, read-only boundaries, and execution evidence.' },
-    cover: '/media/repositories/production-tools/art-pipeline-overview.png',
-    tags: ['Skill', 'Maya / Unreal', 'JSON Schema', '只读审计'],
+    categoryLabel: { zh: '跨工具审计与 Agent 能力边界', en: 'Cross-tool audit and agent capability boundaries' },
+    summary: { zh: '把供应商目录、Maya 场景与 Unreal 资产检查串成可追溯、可恢复、默认只读的组合审计，并复核版本、Schema、哈希与零写入证据。', en: 'Combines supplier delivery, Maya scene, and Unreal asset checks into a traceable, recoverable, read-only audit with version, schema, hash, and zero-write verification.' },
+    cover: '/media/repositories/production-tools/art-pipeline-composite.png',
+    tags: ['Skill', 'Maya / Unreal', 'Pydantic / JSON Schema', '幂等恢复'],
     repositoryUrl: 'https://github.com/Ubik42/art-pipeline-skill',
-    story: {
-      zh: `# 美术生产工具审计与安全调用 Skill
+    story: { zh: `# 可验证的跨 DCC 美术管线审计 Skill
 
-这是一个面向美术生产工具的轻量 Skill。它不临时生成脚本去改资产，而是为 Codex、ArtFlow Agent 等自动化入口提供一份可核对的“工具目录”：当前有哪些工具、版本是什么、允许读写哪些范围、运行后应返回什么证据。
+这个项目不让 Agent 临时拼脚本碰生产资产，而是把三个已经独立发布的确定性工具接入同一条审计链：供应商交付目录扫描、Maya 场景检查和 Unreal Static Mesh 批量审计。Skill 只负责编排、验证和汇总，不复制兄弟工具的业务规则。
 
-它由旧 AIToolTA 体系中收口而来，目标是把已经存在的 Maya / Unreal / 资产交付工具稳定接给 Agent，而不是继续维护一个包办所有事情的大型 Agent 母仓。
+## 一次黄金审计
 
-## 一次调用会经过什么
+- 先锁定三个工具的发布版本、Git commit、能力声明和关键合同文件；
+- 分别核验供应商目录、Maya 2025 后台扫描和 UE 5.8.1 后台审计；
+- 用 Pydantic 模型和版本化 JSON Schema 拒绝未知字段、过期报告和格式漂移；
+- 对输入目录、Maya 场景和 Unreal 资产复算 SHA-256，证明审计期间没有写入；
+- 将三个工具的结果汇成同一份机器报告和中文摘要。
 
-- 先核对工具身份、版本、Profile、Manifest 和报告时效；
-- 再根据能力合同限定输入、输出和读写域；未知字段、版本漂移或权限扩张会直接阻止调用；
-- 执行后保存 correlation ID、配置哈希、工具版本、只读声明和运行回执；
-- 为 Maya Scene Checker、Unreal Asset Batch Auditor 和 Asset Delivery Organizer 提供明确的能力握手；
-- 失败后保持幂等步骤身份，从下一次 attempt 恢复，不重复已经成功的工作。
+固定黄金路径实际得到 21 个检查发现、2 个采集失败、0 次输入写入。采集失败不会被伪装成“零问题”，发现也只代表需要 TA 复核，不替团队擅自作出交付结论。
 
-## 宿主边界与验证
+## Agent 边界与恢复
 
-Maya 2024/2025 的 mayapy 与 UE 5.8.1 UnrealEditor-Cmd 已完成真实加载验证。两个宿主桥当前只报告状态，不执行任意 Maya Python 或 Unreal Console Command，也不加载、保存或重建资产。页面中的中文协议界面使用确定性演示数据，用来展示能力握手、版本不匹配和阻止状态。
+Agent 只能调用注册表中已经声明版本、输入范围和风险等级的能力。任意 Python、Shell、Maya 命令或 Unreal Console Command 都不会被直接暴露。Workflow Plan、Checkpoint、幂等键和步骤级收据使流程能从故障点恢复，并跳过已经成功的步骤。
 
-当前公开基线包含 54 项自动化测试；旧 AIToolTA 的迁移与退役证据保留在仓库文档中。`,
-      en: `# Art Pipeline Skill
+这也是项目被设计成 Skill 而不是专用聊天 Agent 的原因：通用 Agent 理解意图，Skill 约束领域流程，独立工具负责确定性执行，薄宿主桥只提供必要的宿主身份与状态。`, en: `# Verifiable Cross-DCC Art Pipeline Audit Skill
 
-The former AIToolTA umbrella and general-purpose pipeline agent have been retired. This repository is now a focused domain skill that validates registered tools, versions, read-only capabilities, report contracts, and execution receipts before an agent can use them.
+This project composes three independently released deterministic tools—supplier delivery scanning, Maya scene checking, and Unreal Static Mesh auditing—into one traceable, recoverable, read-only workflow.
 
-Maya 2024/2025 mayapy and Unreal 5.8.1 command-line host loading have been verified. The host bridges expose status only and cannot execute arbitrary host commands or modify assets.`,
-    },
+The golden run produced 21 findings and 2 collection failures with zero writes to the inputs. Versioned Pydantic contracts, JSON Schema, pinned release commits, SHA-256 identities, capability handshakes, checkpoints, and idempotent receipts prevent an agent from turning the workflow into arbitrary host scripting.` },
     images: [
-      { src: '/media/repositories/production-tools/art-pipeline-overview.png', alt: { zh: 'Art Pipeline Skill 两个宿主桥与工具能力连接总览', en: 'Art Pipeline Skill host bridge overview' } },
-      { src: '/media/repositories/production-tools/art-pipeline-maya.png', alt: { zh: 'Maya 场景检查能力的模拟协议状态', en: 'Simulated Maya scene-check capability state' } },
-      { src: '/media/repositories/production-tools/art-pipeline-blocked.png', alt: { zh: '工具版本不一致时的失败关闭界面', en: 'Fail-closed state for a tool version mismatch' } },
+      { src: '/media/repositories/production-tools/art-pipeline-composite.png', alt: { zh: '三工具组合黄金审计：21 个发现、2 个采集失败、0 次输入写入', en: 'Composite audit with 21 findings, 2 collection failures, and zero input writes' } },
+      { src: '/media/repositories/production-tools/art-pipeline-overview-v2.png', alt: { zh: '供应商目录、Maya 与 Unreal 三类工具连接总览', en: 'Connection overview for delivery, Maya, and Unreal tools' } },
+      { src: '/media/repositories/production-tools/art-pipeline-unreal.png', alt: { zh: 'Unreal 批量审计的版本、宿主与证据状态', en: 'Version, host, and evidence state for Unreal batch auditing' } },
+      { src: '/media/repositories/production-tools/art-pipeline-blocked-v2.png', alt: { zh: '工具版本漂移时失败关闭', en: 'Fail-closed behavior on tool version drift' } },
     ],
   },
   {
@@ -314,33 +312,35 @@ The original presentation and media remain local work records. This public page 
   },
   {
     id: 'asset-delivery-organizer', title: '美术资产交付整理工作台', category: 'pipeline',
-    categoryLabel: { zh: '资产交付整理工作台', en: 'Asset delivery workbench' },
-    summary: { zh: '面向外包交付的中文桌面工具：只读审计、可编辑整理方案、哈希复检、失败回滚与复检收据。', en: 'A Chinese desktop workbench for read-only delivery audits, editable organization plans, hash rechecks, rollback, and post-audit receipts.' },
-    cover: '/media/repositories/production-tools/asset-delivery-plan.png',
-    tags: ['PySide6', 'Python', '事务回滚', 'CLI / API'],
+    categoryLabel: { zh: '外包资产审计与安全整理', en: 'Supplier asset audit and safe organization' },
+    summary: { zh: '七工作区中文桌面工具：可视化配置项目规则，检查目录、格式、命名、贴图和版本，并以 dry-run、哈希复检、回滚与收据安全整理交付。', en: 'A seven-workspace desktop tool for visual project rules, delivery auditing, dry-run organization, hash rechecks, rollback, and receipts.' },
+    cover: '/media/repositories/production-tools/asset-delivery-profile.png',
+    tags: ['PySide6', '可视化 Profile', '事务回滚', 'Windows Release'],
     repositoryUrl: 'https://github.com/Ubik42/asset-delivery-organizer',
     story: { zh: `# 美术资产交付整理工作台
 
-一批外包资产通常同时包含模型、贴图、UDIM、历史版本和说明文件；人工整理时很容易出现重命名错误、覆盖新文件或遗漏贴图。Asset Delivery Organizer 将交付信息、文件扫描、命名与贴图检查、整理方案、版本归档、复检收据和历史记录放进同一个中文桌面工作台。
+真实外包交付往往同时包含模型、贴图、UDIM、历史版本和供应商说明。这个工具把交付设置、项目规则、文件浏览、问题审查、整理方案、审计记录和报告导出组织成七个中文工作区，让 TA 能从“制定项目标准”一直走到“完成复检并留下收据”。
 
-## 实际使用流程
+## 不再手写 JSON 规则
 
-- 递归扫描文件，记录稳定相对路径、SHA-256、媒体类型和命名字段；
-- 检查命名格式、必需贴图通道和旧版本，同时拦截大小写冲突、路径穿越与符号链接逃逸；
-- 先生成可编辑的 dry-run 整理方案，用户可以取消单项操作或修改目标路径；
-- 执行前重新核对全部源哈希和目标冲突，失败时逆序回滚；
-- 完成后重新扫描，并把计划、执行结果和剩余人工问题写入外部 JSON 收据。
+用户可以从环境资产或角色资产模板创建 Profile，在界面中配置允许目录、文件格式、命名正则、贴图通道和版本保留策略。字段即时校验，危险路径和无效正则在保存前就会阻断；保存后的 Profile 仍是严格、可被 CLI、Skill 和 CI 共用的版本化合同。
 
-## 可复现演示
+## 安全整理闭环
 
-仓库提供四组 CC0 确定性合成场景，共 100 个文件，覆盖干净交付、错误命名、缺失贴图、UDIM 批量和多供应商嵌套目录。推荐演示场景会从 12 个文件中识别 5 个问题，生成三项可执行整理计划；两个缺失贴图问题会如实保留给人工处理，不会由工具伪造资源。`, en: `# Asset Delivery Organizer
+- 审计阶段严格只读，记录稳定相对路径、SHA-256、媒体类型和命名字段；
+- 检查目录边界、格式白名单、命名、贴图完整性和旧版本，同时防止路径穿越、符号链接逃逸和大小写冲突；
+- 整理前必须生成可编辑 dry-run 方案，并重新核对全部源哈希和目标冲突；
+- 执行失败会逆序回滚，完成后再次扫描，并在交付目录外写入 JSON 收据；
+- Windows 1.1.0 可移植发行包不要求安装 Python，桌面、CLI 与 API 复用同一业务核心。
 
-A PySide6 desktop workbench for supplier deliveries. Audits are strictly read-only; organization requires an editable dry-run plan, source-hash and collision checks, explicit approval, rollback, post-audit, and an external receipt. Four deterministic CC0 scenarios cover clean, faulty, UDIM, and multi-vendor deliveries.` },
+仓库提供 5 组不可变合成场景，共 109 个文件。推荐案例从 12 个文件中识别 5 个问题并生成 3 项整理计划；缺失贴图会如实保留给人工处理，不会被工具伪造。`, en: `# Asset Delivery Organizer
+
+A Chinese PySide6 workbench spanning delivery setup, visual profile editing, file browsing, issue review, organization plans, audit history, and report export. Audits remain read-only; approved organization uses source hashes, collision and boundary checks, rollback, post-audit, and external receipts. A verified Windows 1.1.0 portable release runs without Python.` },
     images: [
-      { src: '/media/repositories/production-tools/asset-delivery-plan.png', alt: { zh: '资产整理方案与执行前预检', en: 'Asset organization plan and preflight' } },
-      { src: '/media/repositories/production-tools/asset-delivery-issues.png', alt: { zh: '外包交付问题证据与筛选界面', en: 'Supplier delivery issue evidence' } },
-      { src: '/media/repositories/production-tools/asset-delivery-receipt.png', alt: { zh: '整理完成后的复检记录与执行收据', en: 'Post-audit record and execution receipt' } },
-      { src: '/media/repositories/production-tools/asset-delivery-blocked.png', alt: { zh: '目标文件冲突时禁用执行', en: 'Execution blocked by a destination collision' } },
+      { src: '/media/repositories/production-tools/asset-delivery-profile.png', alt: { zh: '无需手写 JSON 的项目规则编辑器', en: 'Visual project profile editor without hand-written JSON' } },
+      { src: '/media/repositories/production-tools/asset-delivery-boundary.png', alt: { zh: '交付目录白名单问题与可定位证据', en: 'Delivery path allowlist issues and locatable evidence' } },
+      { src: '/media/repositories/production-tools/asset-delivery-plan-v2.png', alt: { zh: '可编辑整理方案与执行前预检', en: 'Editable organization plan and preflight' } },
+      { src: '/media/repositories/production-tools/asset-delivery-portable.png', alt: { zh: 'Windows 1.1.0 可移植程序真实运行', en: 'Verified Windows 1.1.0 portable application' } },
     ],
   },
   {
@@ -375,72 +375,77 @@ A read-only Maya 2025 delivery gate that produces versioned rules, issues, locat
     ],
   },
   {
-    id: 'maya-garment-preparation', title: 'Maya 服装版片安全传递工具', category: 'pipeline',
-    categoryLabel: { zh: 'Maya 服装准备插件', en: 'Maya garment preparation plug-in' },
-    summary: { zh: '将基础版片 UV 与高模位置安全传递到重拓扑版片，修改前预检、执行后复检，并支持一次 Undo。', en: 'Safely transfers panel UVs and high-resolution positions to retopology meshes with preflight, post-validation, rollback, and one-step undo.' },
-    cover: '/media/repositories/production-tools/maya-garment-host.png',
-    tags: ['Maya 2025', 'PySide6', 'transferAttributes', 'Undo'],
+    id: 'maya-garment-preparation', title: 'Maya 服装传递与厚度准备工具', category: 'pipeline',
+    categoryLabel: { zh: 'Maya 服装生产准备插件', en: 'Maya garment production preparation plug-in' },
+    summary: { zh: '把三输入 UV/位置传递与开放服装 Mesh 厚度生成收束成可预检、可预览、可复检、可一次撤销的 Maya 2025 流程。', en: 'Combines three-input UV/position transfer and open-garment thickness generation into previewable, validated, one-undo Maya 2025 workflows.' },
+    cover: '/media/repositories/production-tools/maya-garment-public-result.png',
+    tags: ['Maya 2025', 'UV / 位置传递', '厚度生成', 'Undo'],
     repositoryUrl: 'https://github.com/Ubik42/maya-garment-preparation',
-    story: { zh: `# Maya 服装版片安全传递工具
+    story: { zh: `# Maya 服装传递与厚度准备工具
 
-这是面向 Marvelous Designer 等服装流程进入 Maya 后的版片准备工具。在常见流程中，基础版片提供整齐 UV，高模提供造型，重拓扑网格承接最终制作。工具识别这三类输入，将选择、检查、UV 传递、位置贴合与复检收束成一次可预览、可拒绝、可撤销的操作。
+服装进入 Maya 后常有两段高风险手工操作：从基础版片保留 UV、从高模取得造型并传给重拓扑网格，以及把单层薄面生成可控厚度。0.3.1 将两者做成同一个中文插件，但仍保持两条边界清晰的工作流。
 
-## 0.2.0 工作流
+## 两条生产路径
 
-- 检查选择顺序、Mesh 类型、空拓扑、非流形、重叠面、UV、引用状态和既有 History；
-- 通过 Maya transferAttributes 依次传递 UV 与顶点位置；
-- 所有写操作进入单个 Undo Chunk，执行失败或读回复检失败时自动撤销；
-- 只管理本次运行创建的 History 节点，不粗暴删除目标既有 History；
-- 分析单边界环的对应、绕序、轮廓误差与对称歧义，多解时拒绝猜测；
-- 提供可停靠中文工作台、Shelf 入口、结构化执行收据和七组 CC0 演示场景。
+- UV / 位置传递会校验三类输入、选择顺序、拓扑、UV、引用和既有 History，再分两步调用 transferAttributes；
+- 厚度准备支持向外、向内与双向居中，生成内外层和边界侧壁，并实测最终厚度；
+- Preview 全程零写入，真正修改只发生在单个 Undo Chunk 中；
+- 只管理本次创建的节点，不执行 Delete All History，也不在多解时猜测对应关系；
+- 执行异常或读回复检失败会整体回滚。
 
-## 当前状态
+## 真实服装证据
 
-MVP 已有公开仓库与 0.2.0 文档；最新中文工作台已经在真实 Maya 2025 GUI 中完成首次打开、重复打开、热重载和关闭清理验证。厚度生成、自动缝边和重叠清理仍未完成，因此没有写成现有能力。`, en: `# Maya Garment Preparation
+除 13 套确定性演示场景外，仓库还使用公开 CC0 挂脖连衣裙验证真实服装轮廓、多开口和 2031 顶点网格。输入、Maya 2025 Viewport 2 结果、素材来源、哈希和机器证据均公开保存；它证明的是已验证案例，不冒充对任意商业服装的全面支持。`, en: `# Maya Garment Transfer and Thickness Preparation
 
-A focused Maya 2025 plug-in for safe UV and position transfer across base panels, high-resolution garments, and retopology panels. The 0.2.0 workflow performs preflight, one-chunk execution, read-back validation, rollback, boundary ambiguity checks, and deterministic CC0 demo scenes.` },
+Version 0.3.1 provides two Maya 2025 workflows: safe three-input UV/position transfer and controllable thickness generation for open garment meshes. Both use zero-write previews, a single undo chunk, read-back validation, and automatic rollback. A redistributable CC0 halter dress provides real garment evidence in addition to deterministic demo scenes.` },
     images: [
-      { src: '/media/repositories/production-tools/maya-garment-host.png', alt: { zh: 'Maya 2025 中停靠的服装准备工作台与演示 Mesh', en: 'Garment preparation workspace docked in Maya 2025' } },
-      { src: '/media/repositories/production-tools/maya-garment-ready.png', alt: { zh: '服装准备工作台的输入与操作总览', en: 'Garment preparation input and action overview' } },
-      { src: '/media/repositories/production-tools/maya-garment-blocked.png', alt: { zh: '拓扑问题在执行前被安全拦截', en: 'Topology issue blocked before execution' } },
-      { src: '/media/repositories/production-tools/maya-garment-complete.png', alt: { zh: 'UV 与位置传递后的复检和执行收据', en: 'Post-validation and receipt after transfer' } },
+      { src: '/media/repositories/production-tools/maya-garment-public-input.png', alt: { zh: '公开 CC0 挂脖连衣裙输入', en: 'Public CC0 halter dress input' } },
+      { src: '/media/repositories/production-tools/maya-garment-public-result.png', alt: { zh: '厚度生成后的领口侧壁与真实服装轮廓', en: 'Generated opening sidewalls on the real garment silhouette' } },
+      { src: '/media/repositories/production-tools/maya-garment-thickness-preview.png', alt: { zh: '双向居中厚度的零写入预览', en: 'Zero-write centered thickness preview' } },
+      { src: '/media/repositories/production-tools/maya-garment-thickness-complete.png', alt: { zh: '厚度执行完成、实测结果与本次 History', en: 'Completed thickness operation with measured results and owned history' } },
     ],
   },
   {
     id: 'unreal-asset-batch-auditor', title: 'Unreal 资产批量质量审计工具', category: 'pipeline',
-    categoryLabel: { zh: 'Unreal 资产批量审计插件', en: 'Unreal batch asset auditor' },
-    summary: { zh: 'UE 5.8.1 原生中文 Slate 面板，批量审计 Static Mesh 预算、LOD、材质槽和 Nanite，并输出证据报告。', en: 'A native UE 5.8.1 Slate panel for batch auditing Static Mesh budgets, LODs, material slots, and Nanite with evidence reports.' },
-    cover: '/media/repositories/production-tools/unreal-auditor-run.png',
-    tags: ['Unreal 5.8', 'C++ / Python', 'Slate', '只读审计'],
+    categoryLabel: { zh: 'Unreal 资产批量审计与团队交付', en: 'Unreal batch asset audit and team handoff' },
+    summary: { zh: 'UE 5.8.1 原生中文 Slate 工作台：按项目 Profile 审计几何、LOD、碰撞、Lightmap、命名与目录，支持可取消批处理、回归比较和离线团队包。', en: 'A native UE 5.8.1 Slate workbench for profile-driven geometry, LOD, collision, lightmap, naming, and path audits with cancellable batches, regression, and offline handoff packages.' },
+    cover: '/media/repositories/production-tools/unreal-auditor-v08-overview.png',
+    tags: ['Unreal 5.8', 'C++ / Python', 'Slate', '回归与团队包'],
     repositoryUrl: 'https://github.com/Ubik42/unreal-asset-batch-auditor',
     story: { zh: `# Unreal 资产批量质量审计工具
 
-这是一个面向 Unreal 项目 Static Mesh 的只读批量审计插件。当美术需要在提交前快速检查一组资产时，插件从 Content Browser 的显式选择中采集三角形、顶点、材质槽、LOD 和 Nanite 信息，并根据项目 Profile 给出可定位的超限结果。
+这是面向 Unreal 项目 Static Mesh 的只读审计工作台。Editor-only C++ 批量读取原生元数据，Python 负责项目规则、任务编排和版本化 JSON Report，中文 Slate UI 只呈现真实领域状态，不把规则偷偷塞进界面。
 
-Editor-only C++ 负责真实宿主数据采集与原生 Slate 界面，Python 负责规则编排和 JSON 报告。扫描过程不会保存资产、重建网格或自动改动 Nanite。
+## 三步完成项目审计
 
-## 三步工作流
+1. 选择内置的桌面、移动端或宽松复核 Profile，也可以导入项目自己的规则；
+2. 从 Content Browser 读取显式选择，分批采集几何预算、LOD、材质槽、Nanite、碰撞、Lightmap、命名和目录证据；
+3. 在资产总览、问题明细和回归对比中查看通过、需处理、采集失败、新增、持续与已解决问题。
 
-1. 在中文 Slate 面板选择桌面、移动端或宽松复核规则，也可以导入项目自定义 Profile；
-2. 从 Content Browser 读取显式选择，分批采集 LOD0 三角形、顶点、材质槽、LOD 数量和 Nanite 状态；
-3. 搜索与筛选 Issue，查看实测值、阈值和 Evidence，并打开版本化 JSON Report。
+## 生产可靠性与交付
 
-## 真实宿主证据
+- 每个 Editor Tick 最多推进一个批次，界面显示阶段、对象进度和已完成批次数；
+- 取消只在批次边界生效，已完成结果会保存为合法的部分 Report，但不会被误用作回归基线；
+- 历史会话按稳定 asset path + rule id 比较修复前后变化；
+- 一键导出中文单文件 HTML、Excel 可读 CSV 和 SHA-256 清单，未安装 Unreal 的制片、主美或外包同事也能复核；
+- v0.8.0 发布 ZIP 已完成全新项目安装、升级、卸载和两轮独立 UE 5.8.1 宿主验证。
 
-插件已在 UE 5.8.1 完成 Win64 Development Editor 构建、命令行真实宿主运行和可见 Static Mesh Editor 复核。仓库 Demo 会从本机 Engine 内容确定性生成 24 个项目资产；测试前后九个 Engine BasicShapes 的 SHA-256 保持不变。分批进度、取消和部分失败汇总也已在真实宿主验证。`, en: `# Unreal Asset Batch Auditor
+扫描接口不会保存资产、重建网格或修改 Nanite。24 个项目 Demo 资产与 Engine Static Mesh 的真实宿主证据、任务状态和报告哈希都保存在仓库中。`, en: `# Unreal Asset Batch Auditor
 
-A read-only Unreal 5.8.1 Editor plug-in. Native C++ collects explicitly selected Static Mesh metadata, Python applies versioned profiles, and the Chinese Slate panel produces evidence-backed JSON reports without saving assets, rebuilding meshes, or changing Nanite.` },
+A read-only Unreal 5.8.1 Editor plug-in. Native C++ collects Static Mesh metadata, Python applies versioned profiles and produces reports, and the Chinese Slate workbench exposes geometry, LOD, Nanite, collision, lightmap, naming, and path evidence. Version 0.8 adds cancellable bounded batches, immutable session history, regression comparison, offline HTML/CSV handoff packages, and a verified installable release.` },
     images: [
-      { src: '/media/repositories/production-tools/unreal-auditor-profile.png', alt: { zh: 'Unreal 插件中的项目审计规则选择', en: 'Audit profile selection in Unreal' } },
-      { src: '/media/repositories/production-tools/unreal-auditor-run.png', alt: { zh: '批量资产审计结果、阈值与证据', en: 'Batch audit results, thresholds, and evidence' } },
-      { src: '/media/repositories/production-tools/unreal-auditor-report.png', alt: { zh: '可追溯 JSON 审计报告', en: 'Traceable JSON audit report' } },
+      { src: '/media/repositories/production-tools/unreal-auditor-v08-overview.png', alt: { zh: '24 个 Static Mesh 的资产总览、通过项和问题项', en: 'Overview of 24 Static Mesh assets with passing and failing states' } },
+      { src: '/media/repositories/production-tools/unreal-auditor-v08-issues.png', alt: { zh: '规则、实测值、阈值与中文 Evidence', en: 'Rules, measured values, thresholds, and localized evidence' } },
+      { src: '/media/repositories/production-tools/unreal-auditor-v08-running.png', alt: { zh: '可观察、可在批次间安全取消的审计任务', en: 'Observable audit task with safe cancellation between batches' } },
+      { src: '/media/repositories/production-tools/unreal-auditor-v08-regression.png', alt: { zh: '同一 Profile 下修复前后的回归比较', en: 'Before-and-after regression under the same profile' } },
+      { src: '/media/repositories/production-tools/unreal-auditor-v08-handoff.png', alt: { zh: '无需 Unreal 即可阅读的中文团队交接报告', en: 'Chinese team handoff report readable without Unreal' } },
     ],
   },
   {
     id: 'rez-studio-launcher', title: 'DCC 项目环境与插件启动器', category: 'pipeline',
-    categoryLabel: { zh: 'DCC 工作站启动器', en: 'DCC workstation launcher' },
-    summary: { zh: '面向 Windows 制作工作站的项目感知启动器：按身份、项目、DCC 版本和插件方案解析隔离的 Rez 环境。', en: 'A project-aware Windows workstation launcher resolving isolated Rez environments from identity, project, DCC version, and plug-in scheme.' },
-    cover: '/media/repositories/major-updates/rez-overview.png', tags: ['Rez 3.4', 'Tauri 2', 'React 19', 'Python / Rust'], repositoryUrl: 'https://github.com/Ubik42/rez-studio-launcher',
+    categoryLabel: { zh: '项目环境、插件与 DCC 工具运行时', en: 'Project environment, plug-in, and DCC tool runtime' },
+    summary: { zh: '按项目解析隔离的 Rez 环境，并把插件方案、工具清单、宿主装载和诊断日志组织成可追溯的 DCC 工作站入口。', en: 'Resolves isolated Rez environments per project and manages plug-in schemes, tool manifests, host loading, and diagnostics as one traceable DCC workstation entry point.' },
+    cover: '/media/repositories/major-updates/rez-overview.png', tags: ['Rez 3.4', 'Maya 2025', 'Tool Runtime', 'Tauri 2'], repositoryUrl: 'https://github.com/Ubik42/rez-studio-launcher',
     story: { zh: `# DCC 项目环境与插件启动器
 
 Rez Studio 是一个面向 Windows 制作工作站的项目感知启动器。对美术来说，操作仍然是“选项目、选软件、点击启动”；它在后台根据用户身份、项目成员关系、DCC 版本和插件方案解析 Rez 环境，并在启动前把缺少软件、版本冲突和制品问题说清楚。
@@ -470,52 +475,58 @@ React 19 负责软件库和状态反馈，Tauri 2 / Rust 负责桌面生命周�
 
 rezstudio.cmd 以稳定 JSON 信封提供 project list、profile list/resolve/validate/diff、doctor 和 telemetry status。只读观察和 dry-run 适合交给 Agent；制品晋升、发布与未来写操作仍要求显式确认。UI 与 CLI 复用同一领域能力，避免自动化依赖鼠标点击。
 
+## 真实 DCC 工具运行时
+
+v0.4 将启动器从“打开正确版本的软件”推进到“在正确环境里装载正确工具”。严格的 tool-manifest/1 描述工具入口、宿主兼容性和生命周期；Rez Profile 解析完成后，运行时会在 Maya 2025 主线程创建 workspaceControl 面板，并统一处理首次装载、重复打开、热重载与关闭清理。一次启动同时留下解析、宿主、工具与会话四类 JSONL 日志，便于定位环境问题究竟发生在 Rez、宿主适配层还是工具本身。
+
 ## 当前边界
 
-当前完成的是一套可本地安装、可启动演示 DCC Profile、可运行 CLI 诊断的作品集实现。进入真实企业环境后，身份层需要接入 AD / LDAP / SSO、服务端授权和公司软件许可证管理。遥测默认仅写入本机 SQLite，用户可查看和关闭。`, en: `# Rez Studio
+当前完成的是一套可本地安装、可启动演示 DCC Profile、可装载真实 Maya 工具并运行 CLI 诊断的作品集实现。AI 能力仍停留在 v0.5 规划中的只读诊断层，当前版本没有接入模型。进入真实企业环境后，身份层需要接入 AD / LDAP / SSO、服务端授权和公司软件许可证管理。遥测默认仅写入本机 SQLite，用户可查看和关闭。`, en: `# Rez Studio
 
 A project-aware Windows DCC launcher. It selects the approved DCC version, plug-in set, and Rez environment for the current project instead of opening a fixed executable.
 
 The Tauri 2 and React desktop application connects to Rez through a Python service, exposes launch diagnostics, and ships a Windows installer plus a documented CLI protocol.` },
     images: [
       { src: '/media/repositories/major-updates/rez-overview.png', alt: { zh: 'Rez Studio 项目软件库、DCC 版本与插件方案', en: 'Rez Studio project library, DCC versions, and plug-in schemes' } },
+      { src: '/media/repositories/major-updates/rez-maya-runtime.png', alt: { zh: '由 Rez Profile 装载到 Maya 2025 的真实工具运行时面板', en: 'A real tool runtime panel loaded into Maya 2025 through a Rez profile' } },
       { src: '/media/repositories/major-updates/rez-login.png', alt: { zh: 'Rez Studio 本地身份登录与项目入口', en: 'Rez Studio local identity and project entry' } },
     ],
   },
   {
-    id: 'mayascope', title: 'Maya 场景调查与运行时诊断工具', category: 'pipeline',
-    categoryLabel: { zh: 'Maya 场景调查与运行时诊断', en: 'Maya scene and runtime observatory' },
-    summary: { zh: '由 MayaIndieTool 演进而来的 Maya 场景调查工具：把大型场景组织成可查询快照、依赖图、运行时足迹和回归证据。', en: 'The successor to MayaIndieTool: a Maya scene-investigation workspace built around queryable snapshots, dependency graphs, runtime footprints, and regression evidence.' },
-    cover: '/media/repositories/production-tools/mayascope-host.png', tags: ['Maya 2025', 'Scene Graph', 'Profiler', 'Regression'], repositoryUrl: 'https://github.com/Ubik42/MayaScope',
+    id: 'mayascope', title: 'Maya 场景根因调查与运行时诊断工具', category: 'pipeline',
+    categoryLabel: { zh: '大型 Maya 场景调查工作区', en: 'Large-scale Maya scene investigation workspace' },
+    summary: { zh: '用 Scene Atlas、根因镜头、依赖谱系与运行时证据调查复杂 Maya 场景，并以签名快照、回归比较和可恢复队列交付结论。', en: 'Investigates complex Maya scenes through Scene Atlas, Root Cause Lens, dependency lineage, and runtime evidence, then delivers signed snapshots, regression comparisons, and recoverable queues.' },
+    cover: '/media/repositories/production-tools/mayascope-root-cause.png', tags: ['Maya 2025', 'Root Cause Lens', 'Runtime Observatory', 'Signed Audit'], repositoryUrl: 'https://github.com/Ubik42/MayaScope',
     story: { zh: `# Maya 场景调查与运行时诊断工具
 
 MayaScope 由原 MayaIndieTool 演进而来，是一个面向复杂 Maya 场景的调查与运行时诊断工作区。它处理的不是某一条孤立检查规则，而是“这个场景为什么变慢、变得脆弱，或者换一台机器就无法正常打开”。项目与角色绑定工具 MayaCraft 彼此独立。
 
 工具先将 DG / DAG、引用、插件依赖和运行时足迹采集为不可变 SceneSnapshot，再投影到可交互 Atlas。调查者可以从一条 Finding 反向追到具体节点、引用链、所需插件、失败的 reference edit 与脚本行为，从“看到问题”继续走到“找到问题从哪里传过来”。
 
-## 主要调查能力
+## 从发现异常到解释根因
 
-- Scene Clinic 将规则结果聚合为带来源的 Finding，支持项目基线、快照 diff 和增量回归，可用于资产入库前的自动检查；
-- Query Kernel 用整数 CSR 图索引与有界 LRU 缓存执行邻域、路径和根因查询，显式限制节点、边、深度与 deadline，防止超大场景把 UI 拖死；
-- Runtime Observatory 区分可观测与不可观测状态，不把 batch 中缺失的 scriptJob 数据写成零；
-- Reference Orbit、Dependency Lineage 和 Plugin Ghost Signal 用于检查引用链、失败 edits、unknown nodes、script nodes、孤立动画曲线与缺失插件的影响范围；
-- Atlas 对大规模结果采用虚拟窗口和折叠聚焦，将细节查看与全局结构分开；
-- 真实 Maya GUI 生命周期验证覆盖启动、界面绘制、重复打开、热重载、关闭与回调清理。
+- Scene Clinic 将规则、项目基线和快照差异聚合为带来源的 Finding；Root Cause Lens 再沿图关系追踪最可能的上游诱因，而不是只列一张问题清单；
+- Reference Orbit、Dependency Lineage 与 Plugin Ghost Signal 展示引用来源、失败 edits、外部文件、unknown nodes、script nodes 和缺失插件如何共同影响当前场景；
+- Counterfactual 用只读模拟回答“临时忽略这个引用或插件后，哪些问题会消失”；Failure Prism 将崩溃与失败证据按宿主、插件、引用和脚本维度交叉比较；
+- Runtime Observatory 明确区分“值为零”和“当前宿主不可观测”，避免把 batch 模式缺失数据误判为正常；
+- 每次调查可以导出签名快照与回归报告。项目队列支持安全暂停、批次门控、取消与继续，长时间扫描中断后不需要从头开始。
 
-当前展示版已完成 Maya GUI 中的启动、界面绘制、重复打开、热重载、关闭和回调清理验证。Crash Bisect 与 Failure Prism 的更完整调查链路仍在开发中。`, en: `# MayaScope
+底层 Query Kernel 使用整数 CSR 图索引、有界 LRU 缓存和 deadline 限制邻域、路径与根因查询；Scene Atlas 对百万级结果使用虚拟窗口和折叠聚焦。当前 v3.0.0 展示版已在 Maya 2025 验证启动、重复打开、热重载、关闭、回调清理以及项目队列恢复。`, en: `# MayaScope
 
-MayaIndieTool has evolved into MayaScope, an investigative Maya 2025 workspace for immutable scene snapshots, reference and dependency lineage, runtime footprints, bounded graph queries, project baselines, and regression evidence. Crash bisect remains under development.` },
+MayaIndieTool has evolved into MayaScope, an investigative Maya 2025 workspace for Scene Atlas, Root Cause Lens, dependency lineage, runtime observability, counterfactual queries, signed regression evidence, and recoverable project queues. Version 3.0.0 is validated through a real Maya 2025 GUI lifecycle.` },
     images: [
-      { src: '/media/repositories/production-tools/mayascope-host.png', alt: { zh: 'Maya 2025 中运行的 MayaScope 调查工作区', en: 'MayaScope running in Maya 2025' } },
-      { src: '/media/repositories/production-tools/mayascope-dependency.png', alt: { zh: 'MayaScope 依赖序列与关系证据', en: 'MayaScope dependency lineage evidence' } },
-      { src: '/media/repositories/production-tools/mayascope-plugin.png', alt: { zh: '缺失插件与未知节点影响分析', en: 'Missing plug-in and unknown-node impact analysis' } },
+      { src: '/media/repositories/production-tools/mayascope-root-cause.png', alt: { zh: 'Root Cause Lens 将问题追溯到上游场景关系', en: 'Root Cause Lens tracing findings to upstream scene relationships' } },
+      { src: '/media/repositories/production-tools/mayascope-dependency-v2.png', alt: { zh: '外部文件、引用与插件的依赖谱系', en: 'Dependency lineage across external files, references, and plug-ins' } },
+      { src: '/media/repositories/production-tools/mayascope-reference.png', alt: { zh: 'Reference Orbit 引用关系与失败 edit 证据', en: 'Reference Orbit with reference relationships and failed-edit evidence' } },
+      { src: '/media/repositories/production-tools/mayascope-project-queue.png', alt: { zh: '支持安全暂停、取消和恢复的项目调查队列', en: 'Recoverable project investigation queue with safe pause and cancellation' } },
+      { src: '/media/repositories/production-tools/mayascope-million-window.png', alt: { zh: '面向超大场景的虚拟化 Scene Atlas 窗口', en: 'Virtualized Scene Atlas window for very large scenes' } },
     ],
   },
   {
     id: 'mayacraft', title: 'Maya 角色绑定与动画工作台', category: 'pipeline',
     categoryLabel: { zh: 'Maya 角色绑定与动画工具', en: 'Maya character rigging and animation tools' },
-    summary: { zh: 'Maya 2025 中文角色工作区：声明式 Rig Graph、形变 MRI、动画重定向、Contact IK 与可撤销验证。', en: 'A Chinese Maya 2025 character workspace for declarative rig graphs, deformation MRI, retargeting, contact IK, and undoable verification.' },
-    cover: '/media/repositories/production-tools/mayacraft-workspace.png', tags: ['Maya 2025', 'Rig Graph', 'Retarget', 'Contact IK'], repositoryUrl: 'https://github.com/Ubik42/MayaCraft',
+    summary: { zh: 'Maya 2025 中文角色工作区：四元数 Twist、带时间语义的 FK/IK 无跳变匹配、受保护空间切换，以及绑定、形变和重定向诊断。', en: 'A Chinese Maya 2025 character workspace for quaternion Twist, time-aware no-pop FK/IK matching, protected space switching, rigging, deformation, and retarget diagnostics.' },
+    cover: '/media/repositories/production-tools/mayacraft-twist-verified.png', tags: ['Maya 2025', 'Quaternion Twist', 'FK / IK Match', 'Retarget'], repositoryUrl: 'https://github.com/Ubik42/MayaCraft',
     story: { zh: `# Maya 角色绑定与动画工作台
 
 MayaCraft 是独立开发的 Maya 2025 角色绑定与动画工作区。它把角色发现、Rig 构建、形变诊断、运动分析、重定向和接触修正组织在同一个中文界面中。工作区会从当前场景发现角色，投影关节结构，并与 Maya Selection 双向同步。
@@ -530,14 +541,22 @@ MayaCraft 是独立开发的 Maya 2025 角色绑定与动画工作区。它把�
 - Retarget 工作区处理 namespace、比例、轴空间和 jointOrient 差异，以 Ghost Pose 预览并写入独立 Animation Layer；
 - Contact IK 通过 FABRIK 和共同骨盆补偿形成零写入预览，应用后逐帧验证脚底锚点。
 
-展示版已在 Maya 2025 完成真实 GUI 生命周期验证。Face PSD / RBF、完整 FK / IK 无跳变匹配以及拓扑变化后的蒙皮迁移仍在后续路线中。`, en: `# MayaCraft
+## 最新角色动画能力
 
-MayaCraft is a Chinese Maya 2025 character workspace for scene-aware character discovery, declarative rig graphs, deformation diagnostics, motion analysis, retarget previews, contact IK, read-back validation, and single-transaction undo.` },
+- v2.2 使用四元数 swing-twist 分解驱动 Twist 关节，预览分布、应用后读回并验证真实关节旋转，避免欧拉角拆分在复杂姿态下翻转；
+- FK / IK Match 读取指定时间点的世界空间姿态，计算控制器目标后生成差异预览，再在同一事务中写入并校验，减少切换帧跳变；
+- Space Switch 在保护世界空间姿态的前提下切换父空间并处理关键帧，操作前后都保留可比较证据；
+- 所有 Hero 操作继续遵循“零写入预览 → 单事务应用 → 宿主读回验证 → 一步 Undo”。
+
+展示版已在 Maya 2025 完成真实 GUI 生命周期、Twist、FK/IK Match 和 Space Switch 验证。Face PSD / RBF 与拓扑变化后的蒙皮迁移仍在后续路线中。`, en: `# MayaCraft
+
+MayaCraft is a Chinese Maya 2025 character workspace for scene-aware character discovery, declarative rig graphs, deformation diagnostics, quaternion swing-twist joints, time-aware no-pop FK/IK matching, protected space switching, read-back validation, and single-transaction undo.` },
     images: [
       { src: '/media/repositories/production-tools/mayacraft-workspace.png', alt: { zh: 'MayaCraft 角色工作区与场景角色投影', en: 'MayaCraft character workspace' } },
-      { src: '/media/repositories/production-tools/mayacraft-rig.png', alt: { zh: '声明式 Rig Graph 与构建差异', en: 'Declarative rig graph and build diff' } },
-      { src: '/media/repositories/production-tools/mayacraft-deformation.png', alt: { zh: 'Deformation MRI 蒙皮权重诊断', en: 'Deformation MRI skin-weight diagnostics' } },
-      { src: '/media/repositories/production-tools/mayacraft-retarget.png', alt: { zh: '动画重定向与 Contact IK 工作区', en: 'Retarget and Contact IK workspace' } },
+      { src: '/media/repositories/production-tools/mayacraft-twist-preview.png', alt: { zh: '四元数 Twist 分解与关节分布预览', en: 'Quaternion Twist decomposition and joint-distribution preview' } },
+      { src: '/media/repositories/production-tools/mayacraft-twist-verified.png', alt: { zh: 'Twist 应用后的 Maya 真实场景读回验证', en: 'Read-back verification from the real Maya scene after applying Twist' } },
+      { src: '/media/repositories/production-tools/mayacraft-match-preview.png', alt: { zh: '指定时间点的 FK/IK 无跳变匹配预览', en: 'Time-aware no-pop FK/IK match preview' } },
+      { src: '/media/repositories/production-tools/mayacraft-match-verified.png', alt: { zh: 'FK/IK 匹配应用与误差验证', en: 'Applied FK/IK match with error verification' } },
     ],
   },
   {
@@ -635,16 +654,23 @@ The direct VST3 path is still experimental and the project is currently distribu
   },
   {
     id: 'artflow-agent', title: '面向引擎接入的新时代 AIGC 框架', category: 'ai-agent',
-    categoryLabel: { zh: 'AIGC + Agent', en: 'AIGC + Agent' },
-    summary: { zh: '从 UE 场景事实出发，协调本地 ComfyUI 与 GPT Image 2，完成独立评价、有界修订、失败恢复和可验证回流。', en: 'Starts from Unreal scene facts and coordinates local ComfyUI and GPT Image 2 for independent judging, bounded revision, recovery, and verified return.' },
-    cover: '/media/repositories/major-updates/artflow-delivery.png', tags: ['Agent Harness', 'ComfyUI / GPT Image 2', 'Unreal 5.8', 'Evaluation'], repositoryUrl: 'https://github.com/Ubik42/ArtFlow-Agent',
+    categoryLabel: { zh: '引擎场景 AIGC 智能体框架', en: 'Engine-scene AIGC agent framework' },
+    summary: { zh: '把 Unreal 场景事实编译成类型化变更计划，协调 ComfyUI、GPT Image 2 与图生 3D，在候选关卡中完成执行、评价、定向纠正和发布。', en: 'Compiles Unreal scene facts into typed change plans and coordinates ComfyUI, GPT Image 2, and image-to-3D providers for execution, judging, targeted correction, and publishing in candidate levels.' },
+    cover: '/media/repositories/major-updates/artflow-scene-lab-3d.png', tags: ['Unreal 5.8', 'ComfyUI / GPT Image 2', 'Image-to-3D', 'Scene Agent'], repositoryUrl: 'https://github.com/Ubik42/ArtFlow-Agent',
     story: { zh: `# 面向引擎接入的新时代 AIGC 框架
 
-ArtFlow Agent 是一条面向 Unreal 美术迭代的 AIGC 生产链路。它从真实 UE 5.8 场景提取相机、物体 ID、深度、法线、保护区域和美术目标，组织为可复核的 Scene Package；Agent 再调度本地 ComfyUI 和 GPT Image 2 生成候选，完成约束判定、视觉评审、局部修订、失败恢复与 Unreal 回流。
+ArtFlow Agent 是位于生成模型与 Unreal 之间的受约束场景智能体控制层。它读取真实 UE 5.8 场景、生成类型化 SceneChangePlan，并把材质、资产、PCG、灯光与布局变更落到候选关卡；源关卡不被直接覆盖，所有外部生成物都要经过来源、格式、预算和场景约束验证。
 
-项目重点验证的不只是生成画面的质量，还包括结果能否保持原场景结构、说清选择依据、在中断后继续运行，并作为可追溯资产回到引擎。
+项目重点不是再封装一个聊天界面，而是让 AIGC 结果成为可执行、可评价、可纠正、可恢复并能安全回到引擎的生产变更。
 
-## 1. 将 Unreal 场景变成可执行约束
+## 四个真实生产案例
+
+- **参考图到可用 3D 资产**：GPT Image 2 生成参考图，图生 3D Provider 返回 GLB；系统依次检查许可、URI、文件格式、几何体、材质与三角面预算，再通过 Unreal Interchange 导入候选关卡。
+- **PBR 材质闭环**：ComfyUI 生成 Base Color、Normal、Roughness、Metallic、AO 五通道材质，通道语义、尺寸与来源验证通过后自动创建材质实例并绑定目标对象。
+- **多域场景改造**：同一计划协调材质、PCG、灯光与资产调整，以依赖 DAG 控制执行顺序；演示案例完成 12 处 PCG 变更，同时保持保护区域零侵入。
+- **只修失败域**：技术评审与视觉评审分离。若候选只在灯光上失败，Agent 仅生成灯光纠正计划；回执丢失时通过 reconcile 恢复，避免重复导入和重复写场景。
+
+## 1. 场景数字孪生与执行约束
 
 - UE 5.8 场景桥导出固定相机的 beauty、depth、world normal 与 object ID 四 Pass；
 - Scene Package 同时保存受保护轮廓、可编辑区域、对象身份和美术方向，并逐文件记录 SHA-256；
@@ -673,22 +699,15 @@ ArtFlow Agent 是一条面向 Unreal 美术迭代的 AIGC 生产链路。它从�
 
 ## 当前边界
 
-目前的强端到端验证集中在一条项目自有 UE 5.8 场景，还不是开放域生成质量 Benchmark。PydanticAI 只承担类型化模型交互；状态、策略、执行权限和恢复逻辑由项目本身的确定性系统管理。`, en: `# ArtFlow Agent
+当前四个生产案例覆盖图生 3D、PBR、多域场景变更和定向纠正，但还不是开放域生成质量 Benchmark。PydanticAI 只承担类型化模型交互；状态、策略、执行权限和恢复逻辑由项目本身的确定性系统管理。`, en: `# ArtFlow Agent
 
-ArtFlow Agent uses an agent as the control plane and ComfyUI as the generation runtime for game-art iteration. The implemented slice covers brief validation, environment inspection, reviewed recipes, approval-gated execution, persisted run state, contact sheets, candidate selection, evaluation, and reproducible packaging.
-
-The default path is deterministic and offline. Model-backed planning is opt-in, and generation cannot start before explicit approval.` },
+ArtFlow Agent is a constrained scene-agent control plane between generation providers and Unreal. It compiles scene facts into typed change plans and coordinates ComfyUI, GPT Image 2, image-to-3D providers, Unreal Interchange, judging, targeted correction, recovery, and candidate-level publishing. Four production cases cover image-to-3D, five-channel PBR, multi-domain scene changes, and correction of the failed domain only.` },
     images: [
-      { src: '/media/repositories/major-updates/artflow-unreal-scene.png', alt: { zh: 'UE 5.8 原始场景与 beauty、depth、normal、object ID 四 Pass', en: 'UE 5.8 source scene and four-pass scene package' } },
-      { src: '/media/repositories/major-updates/artflow-tribunal.png', alt: { zh: 'ComfyUI 与 GPT Image 2 候选的独立 Tribunal 评价', en: 'Independent tribunal for ComfyUI and GPT Image 2 candidates' } },
-      { src: '/media/repositories/major-updates/artflow-invalid.png', alt: { zh: '视觉吸引力较高但违反结构约束的负对照被拒绝', en: 'Attractive but structurally invalid negative control rejected' } },
-      { src: '/media/repositories/major-updates/artflow-revision.png', alt: { zh: '蒙版限定局部修订与像素级泄漏检查', en: 'Mask-bounded revision and pixel-level leakage check' } },
-      { src: '/media/repositories/major-updates/artflow-recovery.png', alt: { zh: '六种提交中断与回执丢失的恢复矩阵', en: 'Recovery matrix for six submission and receipt failures' } },
-      { src: '/media/repositories/major-updates/artflow-memory.png', alt: { zh: '带来源绑定的 Agent 生产记忆', en: 'Source-bound production memory' } },
-      { src: '/media/repositories/major-updates/artflow-harness.png', alt: { zh: '20/20 Agent Harness 评估面板', en: '20/20 Agent harness evaluation panel' } },
-      { src: '/media/repositories/major-updates/artflow-unreal-return.png', alt: { zh: '修订资产回流 Unreal 5.8 并绑定目标 Actor', en: 'Revised asset returned to Unreal 5.8 and bound to the target actor' } },
-      { src: '/media/repositories/major-updates/artflow-delivery.png', alt: { zh: '来源、约束、评价、恢复和交付的最终验证总览', en: 'Final verified overview of provenance, constraints, judging, recovery, and delivery' } },
-      { src: '/media/repositories/major-updates/artflow-mobile.png', alt: { zh: 'ArtFlow 可验证交付面板的移动端布局', en: 'Mobile layout of the verified ArtFlow delivery panel' } },
+      { src: '/media/repositories/major-updates/artflow-scene-lab-3d.png', alt: { zh: '参考图生成、GLB 验证与 Unreal 候选关卡导入', en: 'Reference generation, GLB validation, and Unreal candidate-level import' } },
+      { src: '/media/repositories/major-updates/artflow-scene-lab-pbr.png', alt: { zh: 'ComfyUI 五通道 PBR 生成与材质实例回流', en: 'Five-channel ComfyUI PBR generation and material-instance return' } },
+      { src: '/media/repositories/major-updates/artflow-scene-lab-multi.png', alt: { zh: '材质、PCG、灯光和资产的多域场景变更', en: 'Multi-domain scene changes across materials, PCG, lighting, and assets' } },
+      { src: '/media/repositories/major-updates/artflow-scene-lab-correction.png', alt: { zh: '只针对失败域执行定向纠正与恢复', en: 'Targeted correction and recovery for the failed domain only' } },
+      { src: '/media/repositories/major-updates/artflow-architecture.png', alt: { zh: '场景智能体控制层、能力注册与候选关卡架构', en: 'Scene-agent control plane, capability registry, and candidate-level architecture' } },
     ],
   },
   {
