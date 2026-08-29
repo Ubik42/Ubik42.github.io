@@ -11,6 +11,8 @@
 - AIGC、Agent 与 ComfyUI 工作流；
 - Shader、程序化内容、绑定、动画和实时特效。
 
+新增的 [CPU 软件光栅化实验室](https://github.com/Ubik42/NoemancerSoftwareRasterizer) 以 C++20 在 CPU 上显式完成三角形覆盖、透视正确插值、Z-Buffer 与逐像素着色，并通过十张真实输出展示基础缓冲、风格化 Shader 和 Overdraw 诊断。项目基于 MIT 许可的 TinyRenderer 教学实现扩展，主页与仓库均保留来源和素材授权边界。
+
 ![个人主页中文首屏](docs/screenshots/homepage-zh.png)
 
 ## 当前工具体系
