@@ -113,6 +113,45 @@ The project is pre-alpha and currently verified end to end on Windows x64. SSR, 
     ],
   },
   {
+    id: 'resonance-forge',
+    title: 'UE × Wwise 物理声源与 MIDI 工作台',
+    category: 'engine-games',
+    categoryLabel: { zh: 'Unreal 技术音频与引擎工具', en: 'Unreal technical audio and engine tool' },
+    summary: {
+      zh: '在 UE 5.8 中把场景碰撞、模态共振、数字波导弦、MIDI 表演和 Wwise Event / RTPC 连接成可试听、可复检的物理声源工作流。',
+      en: 'A UE 5.8 physical-audio workflow connecting scene collisions, modal resonance, digital waveguide strings, MIDI performance, and Wwise Events and RTPCs.',
+    },
+    cover: '/media/repositories/resonance-forge/workshop.png',
+    tags: ['Unreal 5.8', 'Wwise 2025.1', '物理音频', 'MIDI'],
+    repositoryUrl: 'https://github.com/Ubik42/resonance-forge',
+    story: {
+      zh: `# UE × Wwise 物理声源与 MIDI 工作台
+
+Resonance Forge 是一套运行在 Unreal Engine 5.8.1 中的技术音频实验工具。它把“物体受到怎样的激励、如何产生共振、怎样把声音发布到游戏音频中”组织成一条可以现场试听和复检的工作流，而不是只播放预先录好的采样。
+
+## 两类实时物理声源
+
+- **模态冲击体**根据碰撞冲量、相对速度与物体尺寸驱动多组衰减振型，用于表现材质受到敲击后的音高、明亮度和余振；
+- **数字波导弦**支持 8 复音演奏，以延迟线和反馈滤波模拟拨弦，并让 MIDI Note On 控制音高和力度、CC1 控制音色明亮度；
+- 场景碰撞和 MIDI 输入都能直接激励声源，方便在真实关卡中比较不同参数与材质反馈。
+
+## Unreal 与 Wwise 接入
+
+- 中文 Slate 面板按照“选择对象 → 配置激励 → 调整共振 → 发布”的顺序组织参数和操作；
+- Unreal 原生合成路径用于即时试听，同时可触发 Wwise Event，并将冲击能量、音色明亮度和物体尺寸写入 3 条 RTPC；
+- 工程附带可复现的测试音频、PBR 材质、演示地图与验证报告，便于从场景行为追溯到最终声音结果。
+
+当前版本已在 Windows Editor 中完成构建、地图重载和试听验证。Cook / Shipping、多平台发行以及 Wwise SDK 的再分发不在当前展示范围内。`,
+      en: `# UE × Wwise Physical Audio and MIDI Workbench
+
+Resonance Forge is a UE 5.8.1 technical-audio tool with two real-time sources: a modal impact body and an eight-voice digital waveguide string. Scene collisions and MIDI input drive the sound, while a Chinese Slate workflow publishes the result through native Unreal synthesis or a Wwise Event with three RTPC values. The repository includes reproducible audio, PBR assets, demo maps, and verification reports.`,
+    },
+    images: [
+      { src: '/media/repositories/resonance-forge/workshop.png', alt: { zh: 'Resonance Forge 物理声源演示工坊', en: 'Resonance Forge physical-audio workshop' } },
+      { src: '/media/repositories/resonance-forge/overview.png', alt: { zh: 'Unreal 场景中的中文物理声源工作台', en: 'Chinese physical-audio workbench inside Unreal' } },
+    ],
+  },
+  {
     id: 'art-pipeline-skill',
     title: '可验证的跨 DCC 美术管线审计 Skill',
     category: 'pipeline',
@@ -586,6 +625,79 @@ MayaCraft is a Chinese Maya 2025 character workspace for scene-aware character d
       { src: '/media/repositories/production-tools/mayacraft-twist-verified.png', alt: { zh: 'Twist 应用后的 Maya 真实场景读回验证', en: 'Read-back verification from the real Maya scene after applying Twist' } },
       { src: '/media/repositories/production-tools/mayacraft-match-preview.png', alt: { zh: '指定时间点的 FK/IK 无跳变匹配预览', en: 'Time-aware no-pop FK/IK match preview' } },
       { src: '/media/repositories/production-tools/mayacraft-match-verified.png', alt: { zh: 'FK/IK 匹配应用与误差验证', en: 'Applied FK/IK match with error verification' } },
+    ],
+  },
+  {
+    id: 'tinyhttpd',
+    title: '从 Socket 到 CGI 的轻量 HTTP 服务器',
+    category: 'other-tools',
+    categoryLabel: { zh: 'C 网络与系统编程', en: 'C networking and systems programming' },
+    summary: {
+      zh: '以经典 tinyhttpd 为基线，重做 C11 / POSIX HTTP 服务器：有界线程池、静态文件、受限 CGI、路径安全与自动化验证。',
+      en: 'A C11/POSIX modernization of classic tinyhttpd with a bounded thread pool, static files, restricted CGI, path safety, and automated verification.',
+    },
+    cover: '/media/repositories/tinyhttpd/home-desktop.png',
+    tags: ['C11', 'POSIX Socket', '线程池', 'CGI'],
+    repositoryUrl: 'https://github.com/Ubik42/tinyhttpd',
+    story: {
+      zh: `# 从 Socket 到 CGI 的轻量 HTTP 服务器
+
+这个项目以 J. David Blackstone 在 1999 年发布的 tinyhttpd 为历史基线，保留其教学价值和 GPL-3.0 来源说明，同时把不足 500 行的示例重新整理为一套可构建、可测试、可解释的 C11 / POSIX 网络工程。
+
+## 现代化的请求处理链
+
+- 支持 GET、HEAD、POST，处理 HTTP/1.0 核心语义和常见的 HTTP/1.1 单请求；
+- 默认使用有界线程池调度连接，并保留“一连接一线程”的对照模式；
+- 以阻塞 Socket、超时和可靠读写完成连接生命周期，提供静态文件、MIME、Content-Length 与 HEAD 响应；
+- CGI 只允许从受限目录执行，通过 fork、execve 和管道传递请求，并设置执行超时。
+
+## 安全与工程验证
+
+路径会先规范化并检查长度和目录穿越，CGI 不通过 Shell 字符串拼接执行。工程使用 CMake / CTest、结构化日志和 Sanitizer；在 Ubuntu 24.04、GCC 与真实 Socket / CGI 环境中完成 3/3 测试、48 并发请求以及 ASan、UBSan、LeakSanitizer 验证。
+
+它是一项网络与系统编程练习，不被包装成可直接暴露在公网的生产级服务器。`,
+      en: `# Lightweight HTTP Server from Socket to CGI
+
+This project modernizes the GPL-3.0 tinyhttpd teaching server as a C11/POSIX codebase. It adds a bounded thread pool, static-file and HEAD handling, restricted CGI through fork/execve and pipes, path normalization, timeouts, CMake/CTest, structured logging, and sanitizer-backed validation. It is presented as a systems-programming study rather than a production public server.`,
+    },
+    images: [
+      { src: '/media/repositories/tinyhttpd/home-desktop.png', alt: { zh: 'tinyhttpd 桌面端验证主页与运行指标', en: 'tinyhttpd desktop validation page and metrics' } },
+      { src: '/media/repositories/tinyhttpd/cgi-panel.png', alt: { zh: '真实 CGI 表单与响应演示', en: 'Real CGI form and response demonstration' } },
+      { src: '/media/repositories/tinyhttpd/home-mobile.png', alt: { zh: '移动端响应式页面', en: 'Responsive mobile page' } },
+    ],
+  },
+  {
+    id: 'xv6-riscv-labs',
+    title: 'RISC-V 操作系统核心机制实验',
+    category: 'other-tools',
+    categoryLabel: { zh: '操作系统与底层机制', en: 'Operating systems and low-level mechanisms' },
+    summary: {
+      zh: '围绕页表、Trap、线程切换、写时复制和 mmap 完成五组 xv6 实验，在真实 RISC-V / QEMU 环境取得 451 / 451，并公开验证证据与中文笔记。',
+      en: 'Five xv6 labs covering page tables, traps, thread switching, copy-on-write, and mmap, with a verified 451/451 score on RISC-V/QEMU.',
+    },
+    cover: '/media/repositories/xv6-riscv-labs/grade-report.png',
+    tags: ['RISC-V', 'xv6', '虚拟内存', '451 / 451'],
+    repositoryUrl: 'https://github.com/Ubik42/xv6-riscv-labs',
+    story: {
+      zh: `# RISC-V 操作系统核心机制实验
+
+这组工程以 MIT xv6 RISC-V 为实验环境，沿着进程如何进入内核、如何切换执行上下文、如何管理和共享虚拟内存的主线完成五组实验。验证环境为 Ubuntu 24.04、RISC-V GCC 13.3 与 QEMU 8.2.2。
+
+## 五组机制实验
+
+- **Page Tables（46 / 46）**：页表打印、用户页表映射与页访问检测；
+- **Traps（95 / 95）**：系统调用回溯、Alarm 与中断后的上下文恢复；
+- **Thread（60 / 60）**：用户级线程上下文切换和并发同步；
+- **Copy-on-Write（110 / 110）**：延迟复制、写缺页处理、引用计数和并发释放；
+- **mmap（140 / 140）**：文件映射、懒分配、脏页回写与 unmap 生命周期。
+
+五组官方评分合计 **451 / 451**。公开仓库保留实验说明、中文机制笔记、评分摘要和可复查证据；完整解答代码仍保留在本地实验分支，避免把课程答案直接公开。`,
+      en: `# RISC-V Operating-System Core Labs
+
+This portfolio repository documents five MIT xv6 RISC-V labs: page tables, traps, user-level thread switching, copy-on-write fork, and mmap. The work was validated on Ubuntu 24.04 with RISC-V GCC 13.3 and QEMU 8.2.2 for a combined official score of 451/451. Public material contains technical notes and evidence while full solution branches remain private.`,
+    },
+    images: [
+      { src: '/media/repositories/xv6-riscv-labs/grade-report.png', alt: { zh: 'xv6 五组实验 451 / 451 验证总览', en: 'Verified 451/451 overview for five xv6 labs' } },
     ],
   },
   {
