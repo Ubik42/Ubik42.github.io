@@ -145,24 +145,24 @@ export const selectedProjects: SelectedProject[] = [
   },
   {
     id: 'digital-twin',
-    portfolioCategory: 'other-tools',
-    title: '工业设备数字孪生交互系统',
+    portfolioCategory: 'engine-games',
+    title: '火力发电检测 Unity 数字孪生客户端',
     period: '2023',
-    category: { zh: 'Web 3D 可视化', en: 'Web 3D visualization' },
+    category: { zh: 'Unity 客户端开发', en: 'Unity client development' },
     summary: {
-      zh: '实习期间完成的小型工业数字孪生原型，覆盖 FBX 资产接入、机械关节控制、场景状态与业务参数 UI。',
-      en: 'A compact internship digital-twin prototype covering FBX assets, mechanical joint controls, scene state, and business-facing parameter UI.',
+      zh: '面向火力发电检测业务开发的 Unity 数字孪生客户端，覆盖完整仿真流程、设备状态同步、监测 UI、输入交互与配套 Web 展示端。',
+      en: 'A Unity digital-twin client for thermal-power inspection, covering simulation flows, device-state synchronization, monitoring UI, input, and a companion Web viewer.',
     },
     contribution: [
-      { zh: '新增工业 DigitalTwin 页面与配置，导入多组 FBX 机械和场景资产。', en: 'Added the industrial DigitalTwin page and configuration and imported multiple FBX mechanical and scene assets.' },
-      { zh: '扩展 TransformControls，用参数驱动机械模型和关节旋转。', en: 'Extended TransformControls to drive mechanical models and joint rotation through parameters.' },
-      { zh: '使用 Tweakpane 与 Element Plus 整理显示参数和工业控制按钮，并明确区分个人修改与上游框架能力。', en: 'Built parameter and industrial controls with Tweakpane and Element Plus while separating personal changes from upstream framework features.' },
+      { zh: '使用 C# 与组件化架构实现火力发电设备启停、运行状态、参数监测、告警联动和巡检流程。', en: 'Implemented startup, operating state, telemetry, alarm, and inspection flows for thermal-power equipment with C# and a component-based architecture.' },
+      { zh: '通过 HTTP/WebSocket 组织设备状态同步与异常恢复，并完成 uGUI 监测面板、相机漫游、键鼠输入和异步资源加载。', en: 'Handled device synchronization and recovery over HTTP/WebSocket and built uGUI monitoring, camera navigation, input, and asynchronous asset loading.' },
+      { zh: '使用 Vue 3、Three.js 与 Express 搭建配套 Web 全栈展示端，完成工业资产接入、参数控制和接口联调。', en: 'Built a companion full-stack Web viewer with Vue 3, Three.js, and Express for industrial assets, parameter controls, and API integration.' },
     ],
-    stack: ['Vue 3', 'TresJS', 'Three.js', 'TransformControls', 'FBX'],
+    stack: ['Unity', 'C#', 'uGUI', 'WebSocket', 'Addressables', 'Vue 3 / Three.js'],
     images: [
       { src: '/media/projects/digital-twin.png', alt: { zh: '工业数字孪生建筑线框与显示控制面板', en: 'Industrial digital twin with building outlines and display controls' }, caption: { zh: '城市建筑数据与显示参数控制', en: 'Building data and display-parameter controls' }, position: 'center' },
     ],
-    link: { label: { zh: '查看 GitHub 仓库', en: 'View the GitHub repository' }, href: 'https://github.com/Ubik42/Vue3_Digital_Twin' },
+    link: { label: { zh: '查看 Web 展示端仓库', en: 'View the Web viewer repository' }, href: 'https://github.com/Ubik42/Vue3_Digital_Twin' },
   },
 ];
 
