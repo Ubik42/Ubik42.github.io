@@ -84,6 +84,46 @@ The project is pre-alpha and currently verified end to end on Windows x64. SSR, 
     ],
   },
   {
+    id: 'siggraph-physics-lab',
+    title: 'UE5 SIGGRAPH 物理复现实验室',
+    category: 'engine-games',
+    categoryLabel: { zh: 'UE 物理与论文复现', en: 'UE physics and paper reproduction' },
+    summary: {
+      zh: '围绕布料、软体、流体、可微物理和物理角色控制，把 SIGGRAPH 研究中的求解思想接入 UE 5.4、Chaos 与真实引擎资产。',
+      en: 'Five UE 5.4 studies connect SIGGRAPH research on cloth, soft bodies, fluids, differentiable physics, and physical character control to Chaos and real engine assets.',
+    },
+    cover: '/media/repositories/siggraph-physics-lab/cover.png',
+    tags: ['UE 5.4.4', 'Chaos', 'RDG / D3D12', 'Physics'],
+    repositoryUrl: 'https://github.com/Ubik42/ue5-siggraph-physics-lab',
+    story: {
+      zh: `# UE5 SIGGRAPH 物理复现实验室
+
+这是我的个人 UE 物理实验室。我从近年的 SIGGRAPH / SIGGRAPH Asia 物理论文中选择适合实时验证的部分，把公式里的状态、约束和求解过程接到 UE 5.4.4、Lyra、Chaos 与真实资产工作流中。
+
+项目由五个独立 Case 组成：
+
+- **接触感知 GPU 布料**：读取 Assassin 的 Clothing 拓扑、动画蒙皮目标与 Physics Asset，在 RDG Compute 中实现 Jacobi、低频模态、NDB、rank-one 接触和 CCD，并与 Chaos Cloth 共用输入。
+- **多尺度 GPU 软体**：用四面体 XPBD 研究高分辨率下的局部传播停滞，以两模态全局校正改善中高档收敛，再通过体积 Cage 驱动 Dragon 表面。
+- **Particle Flow Map 流体**：实现 2D MAC 网格、粒子 Flow Map、Jacobian 输运和压力投影，让 Chaos 刚体成为实时运动边界。
+- **可微物理与反向设计**：对离散动力学推进前向切线，用有限差分验证梯度，并把反演参数送回 Chaos Constraint 重放。
+- **物理驱动角色**：连接 Chaos 多刚体、Physics Control、ALS 起身动画与 Lyra 服务器权威，处理跌倒、恢复判据和物理—动画交接。
+
+每个 Case 都保留标准结果、单变量失败、固定步数据、GPU 或 CPU 计时和自动化验证。公开仓库不重新分发 Fab 商业资产，只提交个人源码、Shader、文档和运行截图。`,
+      en: `# UE5 SIGGRAPH Physics Lab
+
+This is my personal Unreal physics laboratory. Five independent cases bring selected ideas from recent SIGGRAPH and SIGGRAPH Asia papers into UE 5.4.4, Lyra, Chaos, RDG compute, and real engine asset workflows.
+
+The cases cover contact-aware GPU cloth, multiscale tetrahedral soft bodies, particle flow-map fluids, differentiable inverse design, and physics-driven character recovery. Each case keeps a normal run, a controlled failure, fixed-step measurements, and explicit reproduction boundaries.`,
+    },
+    images: [
+      { src: '/media/repositories/siggraph-physics-lab/case01-cloth.png', alt: { zh: 'Case01 Assassin Clothing 与 Chaos Cloth 同输入的 GPU 布料实验', en: 'Case01 GPU cloth using the same Assassin inputs as Chaos Cloth' } },
+      { src: '/media/repositories/siggraph-physics-lab/case02-softbody.png', alt: { zh: 'Case02 Dragon 表面与四面体 Cage 的 GPU 软体接触实验', en: 'Case02 Dragon surface driven by a tetrahedral GPU cage' } },
+      { src: '/media/repositories/siggraph-physics-lab/case03-flowmap.png', alt: { zh: 'Case03 Particle Flow Map 流体与 Chaos 运动边界', en: 'Case03 particle flow-map fluid with a live Chaos boundary' } },
+      { src: '/media/repositories/siggraph-physics-lab/case04-inverse.png', alt: { zh: 'Case04 可微反演模型与 Chaos Constraint 参数重放', en: 'Case04 differentiable inversion and Chaos Constraint replay' } },
+      { src: '/media/repositories/siggraph-physics-lab/case05-character.png', alt: { zh: 'Case05 Chaos 多刚体与 Physics Control 角色恢复', en: 'Case05 Chaos rigid bodies and Physics Control character recovery' } },
+    ],
+  },
+  {
     id: 'noemancer-software-rasterizer',
     title: 'CPU 软件光栅化实验室',
     category: 'engine-games',
