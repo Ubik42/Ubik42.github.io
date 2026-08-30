@@ -150,15 +150,15 @@ export const selectedProjects: SelectedProject[] = [
     period: '2023',
     category: { zh: 'Unity 客户端开发', en: 'Unity client development' },
     summary: {
-      zh: '面向火力发电检测业务开发的 Unity 数字孪生客户端，覆盖完整仿真流程、设备状态同步、监测 UI、输入交互与配套 Web 展示端。',
-      en: 'A Unity digital-twin client for thermal-power inspection, covering simulation flows, device-state synchronization, monitoring UI, input, and a companion Web viewer.',
+      zh: '面向火力发电检测业务的 Unity / Web 双客户端数字孪生系统，由公司服务器协调三端低时延双向数据与操作同步。',
+      en: 'A Unity/Web dual-client digital-twin system for thermal-power inspection, with a company server coordinating low-latency bidirectional state and operation synchronization.',
     },
     contribution: [
       { zh: '使用 C# 与组件化架构实现火力发电设备启停、运行状态、参数监测、告警联动和巡检流程。', en: 'Implemented startup, operating state, telemetry, alarm, and inspection flows for thermal-power equipment with C# and a component-based architecture.' },
-      { zh: '通过 HTTP/WebSocket 组织设备状态同步与异常恢复，并完成 uGUI 监测面板、相机漫游、键鼠输入和异步资源加载。', en: 'Handled device synchronization and recovery over HTTP/WebSocket and built uGUI monitoring, camera navigation, input, and asynchronous asset loading.' },
-      { zh: '使用 Vue 3、Three.js 与 Express 搭建配套 Web 全栈展示端，完成工业资产接入、参数控制和接口联调。', en: 'Built a companion full-stack Web viewer with Vue 3, Three.js, and Express for industrial assets, parameter controls, and API integration.' },
+      { zh: '把 Unity 的组件化、状态机、事件总线和分层设计迁移到 Vue 3 / Three.js Web 端，复用设备 ID、状态模型与指令协议。', en: 'Transferred Unity component, state-machine, event-bus, and layered patterns to Vue 3 / Three.js while sharing device IDs, state models, and command contracts.' },
+      { zh: '以公司服务器为权威状态源，通过 HTTP + WebSocket 实现 Unity / Server / Web 三端低时延双向同步、操作回传与异常恢复。', en: 'Used the company server as the authoritative state source for low-latency Unity-server-Web synchronization, operation relay, and recovery over HTTP and WebSocket.' },
     ],
-    stack: ['Unity', 'C#', 'uGUI', 'WebSocket', 'Addressables', 'Vue 3 / Three.js'],
+    stack: ['Unity / C#', 'Vue 3 / Three.js', 'Node.js / Express', 'WebSocket', '状态同步'],
     images: [
       { src: '/media/projects/digital-twin.png', alt: { zh: '工业数字孪生建筑线框与显示控制面板', en: 'Industrial digital twin with building outlines and display controls' }, caption: { zh: '城市建筑数据与显示参数控制', en: 'Building data and display-parameter controls' }, position: 'center' },
     ],
