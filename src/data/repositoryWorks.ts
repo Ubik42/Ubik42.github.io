@@ -118,7 +118,7 @@ The project is pre-alpha and currently verified end to end on Windows x64. SSR, 
     category: 'pipeline',
     categoryLabel: { zh: '跨工具审计与 Agent 能力边界', en: 'Cross-tool audit and agent capability boundaries' },
     summary: { zh: '把供应商目录、Maya 场景与 Unreal 资产检查串成可追溯、可恢复、默认只读的组合审计，并复核版本、Schema、哈希与零写入证据。', en: 'Combines supplier delivery, Maya scene, and Unreal asset checks into a traceable, recoverable, read-only audit with version, schema, hash, and zero-write verification.' },
-    cover: '/media/repositories/production-tools/art-pipeline-skill-cover.png',
+    cover: '/media/repositories/production-tools/art-pipeline-skill-cover.svg',
     tags: ['Skill', 'Maya / Unreal', 'Pydantic / JSON Schema', '幂等恢复'],
     repositoryUrl: 'https://github.com/Ubik42/art-pipeline-skill',
     story: { zh: `# 可验证的跨 DCC 美术管线审计 Skill
