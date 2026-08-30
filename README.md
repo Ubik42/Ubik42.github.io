@@ -11,8 +11,6 @@
 - AIGC、Agent 与 ComfyUI 工作流；
 - Shader、程序化内容、绑定、动画和实时特效。
 
-新增的 [共振铸造台 Resonance Forge](https://github.com/Ubik42/resonance-forge) 面向 Unreal 客户端音频开发：将钢、木、玻璃的物理碰撞转换为模态共振，并同步驱动 Wwise Event、三项 RTPC 与 MIDI 表演输入。项目卡使用 UE 5.8.1 真实运行截图，公开仓库保留中文 Slate 工具、可重复生成素材、演示地图和自动化验证，同时不重新分发 Wwise SDK 与官方 Integration。
-
 新增的 [CPU 软件光栅化实验室](https://github.com/Ubik42/NoemancerSoftwareRasterizer) 以 C++20 在 CPU 上显式完成三角形覆盖、透视正确插值、Z-Buffer 与逐像素着色，并通过十张真实输出展示基础缓冲、风格化 Shader 和 Overdraw 诊断。项目基于 MIT 许可的 TinyRenderer 教学实现扩展，主页与仓库均保留来源和素材授权边界。
 
 ![个人主页中文首屏](docs/screenshots/homepage-zh.png)

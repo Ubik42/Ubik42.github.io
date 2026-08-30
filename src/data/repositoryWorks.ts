@@ -17,47 +17,6 @@ export interface RepositoryWork {
 
 export const repositoryWorks: RepositoryWork[] = [
   {
-    id: 'resonance-forge',
-    title: '共振铸造台：UE × Wwise 物理材质声源工具',
-    category: 'engine-games',
-    categoryLabel: { zh: 'Unreal 客户端音频工具', en: 'Unreal client audio tooling' },
-    summary: {
-      zh: '把钢、木、玻璃的物理碰撞转换为可演奏的模态共振，并同步驱动 Wwise Event、三项 RTPC 与 MIDI 表演输入。',
-      en: 'Turns physical impacts on steel, wood, and glass into playable modal resonance while driving a Wwise Event, three RTPCs, and MIDI input.',
-    },
-    cover: '/media/repositories/resonance-forge/overview.png',
-    tags: ['Unreal 5.8', 'Wwise', 'C++ / Slate', 'MIDI / 物理音频'],
-    repositoryUrl: 'https://github.com/Ubik42/resonance-forge',
-    story: {
-      zh: `# 共振铸造台 Resonance Forge
-
-这是一个面向 Unreal 客户端音频开发岗位的物理材质声源工作台。它不是把固定音效简单挂到碰撞事件上，而是读取碰撞冲量、相对速度与物体尺寸，生成钢、木、玻璃三种不同的模态共振响应，再把同一组参数送入 Wwise 的正式游戏音频管线。
-
-## 从可见材质到可听参数
-
-- 三种实验共振体使用独立的拉丝钢、硬木和磨砂玻璃贴图与声音预设；
-- 物理冲量映射撞击能量，相对速度映射明亮度，尺寸映射共振尺度；
-- 中文 Slate 工作台可以切换视觉材质与共振预设、调整参数并触发实时预听；
-- 场景中的三条发光信号轨把材质声源明确连接到 Wwise Event 与 RTPC，便于演示和调试。
-
-## UE、Wwise 与 MIDI 联动
-
-运行时模块使用 UE USynthComponent 完成模态合成；独立 Wwise 桥接模块同步触发 Play_RF_Impact_Metal，并更新 RF_ImpactEnergy、RF_ImpactBrightness、RF_ObjectSize。MIDI Note On 力度控制撞击能量，CC1 控制音色明亮度，因此场景中的共振体也可以作为现场演奏乐器。
-
-## 可重复的作品集 Demo
-
-演示地图、三种 1024×1024 材质贴图和三档撞击 WAV 都由确定性脚本生成。后台复检会重新加载磁盘地图，确认三颗 18 kg 落球的 Movable、重力、碰撞和物理模拟状态。当前 Windows Editor 构建与 4 项自动化测试已经通过；Wwise SDK 与官方 Unreal Integration 需要使用者自行通过 Audiokinetic Launcher 安装，不随公开仓库重新分发。`,
-      en: `# Resonance Forge
-
-Resonance Forge is an Unreal client-audio workbench that maps impact impulse, relative speed, object size, and MIDI performance data into modal resonance. Steel, wood, and glass use distinct visual materials and resonance presets, while the same signal drives the Wwise event Play_RF_Impact_Metal and three RTPCs.
-
-The repository includes a Chinese Slate editor panel, the physical instrument actor, native UE synthesis, Wwise integration, deterministic demo textures and audio, a generated showcase level, and backend verification. Wwise SDK and the official Unreal Integration are intentionally not redistributed.`,
-    },
-    images: [
-      { src: '/media/repositories/resonance-forge/overview.png', alt: { zh: 'Unreal Engine 中的共振铸造台实验场景与中文插件工作台', en: 'Resonance Forge scene and Chinese editor workbench in Unreal Engine' } },
-    ],
-  },
-  {
     id: 'noemancer',
     title: '最最 AI 友好的高性能引擎',
     category: 'engine-games',
