@@ -72,6 +72,33 @@ export function PortfolioGallery() {
 
   const visibleItems = filter === 'all' ? items : items.filter((item) => item.category === filter);
 
+  const updateWorkUrl = (workId: string | null, mode: 'push' | 'replace' = 'replace') => {
+    const url = new URL(window.location.href);
+    if (workId) url.searchParams.set('work', workId);
+    else url.searchParams.delete('work');
+    window.history[mode === 'push' ? 'pushState' : 'replaceState']({}, '', `${url.pathname}${url.search}${url.hash}`);
+  };
+
+  const openItem = (item: GalleryItem) => {
+    updateWorkUrl(item.id, 'push');
+    setActiveItem(item);
+  };
+
+  const closeItem = () => {
+    updateWorkUrl(null);
+    setActiveItem(null);
+  };
+
+  useEffect(() => {
+    const syncFromUrl = () => {
+      const workId = new URLSearchParams(window.location.search).get('work');
+      setActiveItem(workId ? items.find((item) => item.id === workId) ?? null : null);
+    };
+    syncFromUrl();
+    window.addEventListener('popstate', syncFromUrl);
+    return () => window.removeEventListener('popstate', syncFromUrl);
+  }, [items]);
+
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
@@ -103,7 +130,7 @@ export function PortfolioGallery() {
 
       <div className="portfolio-grid">
         {visibleItems.map((item) => (
-          <motion.button key={`${item.kind}-${item.id}`} type="button" className="portfolio-tile" onClick={() => setActiveItem(item)} whileHover={reducedMotion ? undefined : { y: -4 }} transition={{ duration: .18 }}>
+          <motion.button key={`${item.kind}-${item.id}`} type="button" className="portfolio-tile" onClick={() => openItem(item)} whileHover={reducedMotion ? undefined : { y: -4 }} transition={{ duration: .18 }}>
             <figure><img src={item.cover} alt="" loading="eager" /></figure>
             <div className="portfolio-tile-copy">
               <small>{item.label}</small><h3>{item.title}</h3><p>{item.summary}</p>
@@ -113,8 +140,8 @@ export function PortfolioGallery() {
         ))}
       </div>
 
-      <dialog ref={dialogRef} className={`project-dialog unified-dialog ${activeItem?.kind === 'visual' ? 'visual-work-dialog' : ''}`} onCancel={(event) => { event.preventDefault(); setActiveItem(null); }} onClose={() => setActiveItem(null)} onClick={(event) => { if (event.target === event.currentTarget) setActiveItem(null); }}>
-        {activeItem && <GalleryDetail item={activeItem} locale={locale} close={() => setActiveItem(null)} />}
+      <dialog ref={dialogRef} className={`project-dialog unified-dialog ${activeItem?.kind === 'visual' ? 'visual-work-dialog' : ''}`} onCancel={(event) => { event.preventDefault(); closeItem(); }} onClose={closeItem} onClick={(event) => { if (event.target === event.currentTarget) closeItem(); }}>
+        {activeItem && <GalleryDetail item={activeItem} locale={locale} close={closeItem} />}
       </dialog>
     </section>
   );
