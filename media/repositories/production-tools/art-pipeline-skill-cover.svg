@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Art Pipeline Skill 跨 DCC 美术管线审计流程</title>
+  <desc id="desc">通用 Agent 通过 Art Pipeline Skill 调用供应商目录、Maya 与 Unreal 三种独立工具，经过可信注册、版本合同、哈希与零写入校验后生成组合审计报告；异常进入失败关闭并从 Checkpoint 恢复。</desc>
+
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#DCE2E4" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow-dark" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#16232C"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1769E0"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5C8D27"/>
+    </marker>
+    <style>
+      text { font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", Arial, sans-serif; fill: #16232C; }
+      .eyebrow { font-size: 18px; font-weight: 800; letter-spacing: 3px; }
+      .section { font-size: 15px; font-weight: 800; letter-spacing: 2px; fill: #65727A; }
+      .node-title { font-size: 27px; font-weight: 800; }
+      .node-sub { font-size: 17px; font-weight: 600; fill: #65727A; }
+      .small { font-size: 15px; font-weight: 700; }
+      .metric { font-size: 33px; font-weight: 850; }
+      .line-dark { fill: none; stroke: #16232C; stroke-width: 4; marker-end: url(#arrow-dark); }
+      .line-blue { fill: none; stroke: #1769E0; stroke-width: 5; marker-end: url(#arrow-blue); }
+      .line-green { fill: none; stroke: #5C8D27; stroke-width: 4; marker-end: url(#arrow-green); }
+      .line-dashed { fill: none; stroke: #76838A; stroke-width: 3; stroke-dasharray: 10 9; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="1000" fill="#F5F4EF"/>
+  <rect x="34" y="34" width="1532" height="932" rx="26" fill="url(#grid)" stroke="#16232C" stroke-width="3"/>
+
+  <g transform="translate(78 72)">
+    <rect width="302" height="44" rx="22" fill="#C9F36A"/>
+    <circle cx="24" cy="22" r="7" fill="#16232C"/>
+    <text x="45" y="29" class="eyebrow">VERIFIABLE PIPELINE</text>
+    <text x="0" y="92" font-size="40" font-weight="850">跨 DCC 美术管线审计</text>
+    <text x="0" y="125" class="node-sub">注册能力 · 并行检查 · 证据闭环 · 失败恢复</text>
+  </g>
+
+  <text x="80" y="252" class="section">01 / REQUEST</text>
+  <text x="500" y="252" class="section">02 / ORCHESTRATE</text>
+  <text x="900" y="252" class="section">03 / EXECUTE</text>
+  <text x="1260" y="252" class="section">04 / VERIFY</text>
+
+  <!-- Agent request -->
+  <g transform="translate(78 294)">
+    <rect width="292" height="138" rx="18" fill="#FFFFFF" stroke="#16232C" stroke-width="3"/>
+    <circle cx="54" cy="48" r="22" fill="#1769E0"/>
+    <circle cx="47" cy="43" r="4" fill="#FFFFFF"/>
+    <circle cx="61" cy="43" r="4" fill="#FFFFFF"/>
+    <path d="M45 56 Q54 63 63 56" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+    <text x="91" y="46" class="node-title">通用 Agent</text>
+    <text x="91" y="74" class="node-sub">Codex / 任意运行时</text>
+    <text x="28" y="112" class="small">只提出审计意图，不获得任意脚本权限</text>
+  </g>
+
+  <!-- Trust registry -->
+  <g transform="translate(478 82)">
+    <rect width="350" height="128" rx="18" fill="#FFFFFF" stroke="#1769E0" stroke-width="3"/>
+    <rect x="22" y="22" width="66" height="66" rx="12" fill="#DCEBFF"/>
+    <path d="M38 43h34M38 56h34M38 69h22" stroke="#1769E0" stroke-width="5" stroke-linecap="round"/>
+    <text x="110" y="48" class="node-title">可信注册</text>
+    <text x="110" y="76" class="node-sub">版本 · Commit · 能力声明</text>
+    <rect x="110" y="92" width="96" height="22" rx="11" fill="#DCEBFF"/>
+    <text x="126" y="108" class="small" fill="#1769E0">FAIL CLOSED</text>
+  </g>
+
+  <!-- Checkpoint -->
+  <g transform="translate(884 82)">
+    <rect width="316" height="128" rx="18" fill="#FFFFFF" stroke="#5C8D27" stroke-width="3"/>
+    <circle cx="57" cy="55" r="32" fill="#E4F5BE"/>
+    <path d="M57 35v22l16 10M43 88h65" fill="none" stroke="#5C8D27" stroke-width="5" stroke-linecap="round"/>
+    <text x="108" y="48" class="node-title">Checkpoint</text>
+    <text x="108" y="76" class="node-sub">幂等键 · 步骤收据</text>
+    <text x="108" y="104" class="small" fill="#5C8D27">仅恢复失败步骤</text>
+  </g>
+
+  <!-- Skill core -->
+  <g transform="translate(470 300)">
+    <rect width="360" height="186" rx="22" fill="#16232C"/>
+    <rect x="20" y="20" width="76" height="76" rx="18" fill="#C9F36A"/>
+    <path d="M40 58h36M58 40v36" stroke="#16232C" stroke-width="7" stroke-linecap="round"/>
+    <text x="120" y="60" font-size="33" font-weight="850" fill="#FFFFFF">Art Pipeline</text>
+    <text x="120" y="96" font-size="33" font-weight="850" fill="#C9F36A">Skill</text>
+    <line x1="24" y1="120" x2="336" y2="120" stroke="#52616A" stroke-width="2"/>
+    <text x="24" y="151" font-size="17" font-weight="700" fill="#FFFFFF">验证身份与合同</text>
+    <text x="205" y="151" font-size="17" font-weight="700" fill="#FFFFFF">编排与恢复</text>
+    <circle cx="188" cy="146" r="3" fill="#C9F36A"/>
+  </g>
+
+  <!-- Evidence hub -->
+  <g transform="translate(1242 294)">
+    <rect width="278" height="248" rx="22" fill="#1769E0"/>
+    <path d="M139 32l43 16v34c0 35-19 60-43 72-24-12-43-37-43-72V48z" fill="#FFFFFF"/>
+    <path d="M117 86l15 15 30-35" fill="none" stroke="#1769E0" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="30" y="185" font-size="28" font-weight="850" fill="#FFFFFF">证据校验</text>
+    <text x="30" y="215" font-size="17" font-weight="700" fill="#DCEBFF">Schema · SHA-256</text>
+    <text x="30" y="238" font-size="17" font-weight="700" fill="#DCEBFF">时效 · 零写入收据</text>
+  </g>
+
+  <!-- Execution tool cluster -->
+  <g transform="translate(78 600)">
+    <rect width="350" height="172" rx="18" fill="#FFFFFF" stroke="#16232C" stroke-width="3"/>
+    <rect width="350" height="12" rx="6" fill="#C9F36A"/>
+    <rect x="24" y="38" width="64" height="56" rx="8" fill="#F0F2EC" stroke="#16232C" stroke-width="2"/>
+    <path d="M32 51h48v12H32zM32 69h31v16H32z" fill="#C9F36A" stroke="#16232C" stroke-width="2"/>
+    <text x="108" y="58" class="node-title">供应商目录</text>
+    <text x="108" y="87" class="node-sub">Asset Delivery Organizer</text>
+    <text x="24" y="130" class="small">12 文件</text>
+    <text x="133" y="130" class="small">5 个发现</text>
+    <text x="252" y="130" class="small" fill="#5C8D27">0 写入</text>
+    <line x1="24" y1="145" x2="326" y2="145" stroke="#DCE2E4" stroke-width="2"/>
+  </g>
+
+  <g transform="translate(478 632)">
+    <rect width="350" height="172" rx="18" fill="#FFFFFF" stroke="#16232C" stroke-width="3"/>
+    <rect width="350" height="12" rx="6" fill="#72A8FF"/>
+    <circle cx="57" cy="69" r="31" fill="#DCEBFF" stroke="#1769E0" stroke-width="3"/>
+    <path d="M41 75l16-24 17 24M45 69h25" fill="none" stroke="#1769E0" stroke-width="4" stroke-linecap="round"/>
+    <text x="108" y="58" class="node-title">Maya 场景</text>
+    <text x="108" y="87" class="node-sub">Scene Checker · Maya 2025</text>
+    <text x="24" y="130" class="small">真实后台扫描</text>
+    <text x="169" y="130" class="small">12 个发现</text>
+    <text x="272" y="130" class="small" fill="#5C8D27">0 写入</text>
+    <line x1="24" y1="145" x2="326" y2="145" stroke="#DCE2E4" stroke-width="2"/>
+  </g>
+
+  <g transform="translate(878 600)">
+    <rect width="350" height="172" rx="18" fill="#FFFFFF" stroke="#16232C" stroke-width="3"/>
+    <rect width="350" height="12" rx="6" fill="#1769E0"/>
+    <path d="M28 42h58v52H28z" fill="#DCEBFF" stroke="#1769E0" stroke-width="3"/>
+    <path d="M38 52h38v10H38zM38 70h16v14H38zM60 70h16v14H60z" fill="#1769E0"/>
+    <text x="108" y="58" class="node-title">Unreal 资产</text>
+    <text x="108" y="87" class="node-sub">Batch Auditor · UE 5.8.1</text>
+    <text x="24" y="130" class="small">4 个 Issue</text>
+    <text x="143" y="130" class="small">2 采集失败</text>
+    <text x="272" y="130" class="small" fill="#5C8D27">0 写入</text>
+    <line x1="24" y1="145" x2="326" y2="145" stroke="#DCE2E4" stroke-width="2"/>
+  </g>
+
+  <!-- Final report -->
+  <g transform="translate(1242 620)">
+    <rect width="278" height="220" rx="22" fill="#FFFFFF" stroke="#16232C" stroke-width="3"/>
+    <text x="24" y="38" class="section">COMPOSITE REPORT</text>
+    <text x="24" y="85" class="metric">21</text>
+    <text x="93" y="84" class="node-sub">检查发现</text>
+    <text x="24" y="128" class="metric" fill="#1769E0">2</text>
+    <text x="73" y="127" class="node-sub">采集失败</text>
+    <rect x="22" y="151" width="234" height="46" rx="10" fill="#E4F5BE"/>
+    <circle cx="47" cy="174" r="9" fill="#5C8D27"/>
+    <text x="67" y="181" font-size="21" font-weight="850" fill="#375D19">0 次输入写入</text>
+  </g>
+
+  <!-- Fail closed -->
+  <g transform="translate(816 855)">
+    <rect width="312" height="72" rx="16" fill="#F5F4EF" stroke="#16232C" stroke-width="3" stroke-dasharray="9 7"/>
+    <path d="M29 51l20-32 20 32z" fill="#FFCF5A" stroke="#16232C" stroke-width="3"/>
+    <text x="85" y="31" font-size="20" font-weight="850">版本 / 证据不一致</text>
+    <text x="85" y="55" class="node-sub">失败关闭，不生成伪完整报告</text>
+  </g>
+
+  <!-- Connectors: control plane -->
+  <path d="M370 363 C420 363 430 393 470 393" class="line-blue"/>
+  <text x="388" y="346" class="small" fill="#1769E0">审计请求</text>
+  <path d="M653 210 C653 248 650 263 650 300" class="line-blue"/>
+  <path d="M1010 210 C1010 246 955 260 830 342" class="line-green"/>
+  <path d="M830 426 C900 454 982 490 1018 600" class="line-dashed"/>
+  <text x="900" y="467" class="small" fill="#65727A">步骤状态</text>
+
+  <!-- Connectors: Skill fan-out -->
+  <path d="M546 486 C520 530 360 532 263 600" class="line-dark"/>
+  <path d="M650 486 C650 536 653 568 653 632" class="line-dark"/>
+  <path d="M756 486 C786 528 978 533 1053 600" class="line-dark"/>
+  <text x="505" y="548" class="small">固定能力调用</text>
+
+  <!-- Connectors: evidence convergence -->
+  <path d="M428 676 C650 548 1012 517 1242 438" class="line-green"/>
+  <path d="M828 702 C990 658 1110 565 1242 468" class="line-green"/>
+  <path d="M1228 666 C1260 620 1298 580 1320 542" class="line-green"/>
+  <path d="M1381 542 L1381 620" class="line-blue"/>
+  <text x="1398" y="588" class="small" fill="#1769E0">通过</text>
+
+  <!-- Failure and recovery loop -->
+  <path d="M1242 504 C1168 544 1150 725 1118 855" class="line-dashed"/>
+  <path d="M816 891 C716 892 707 851 707 804" class="line-dashed"/>
+  <path d="M970 855 C958 810 1038 768 1060 210" class="line-green"/>
+  <text x="1018" y="823" class="small" fill="#5C8D27">只重试失败步骤</text>
+
+  <!-- Tiny legend -->
+  <g transform="translate(78 881)">
+    <circle cx="8" cy="8" r="8" fill="#1769E0"/>
+    <text x="27" y="14" class="small">控制与验证</text>
+    <circle cx="160" cy="8" r="8" fill="#C9F36A"/>
+    <text x="179" y="14" class="small">确定性执行</text>
+    <line x1="310" y1="8" x2="356" y2="8" stroke="#76838A" stroke-width="3" stroke-dasharray="8 7"/>
+    <text x="370" y="14" class="small">恢复与异常路径</text>
+  </g>
+
+  <text x="1518" y="922" text-anchor="end" class="eyebrow" fill="#65727A">ART PIPELINE SKILL / 01</text>
+</svg>
+
