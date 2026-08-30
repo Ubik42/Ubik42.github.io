@@ -28,12 +28,11 @@ const pipelineOrder = new Map([
   'art-pipeline-skill',
   'rez-studio-launcher',
   'internship-art-pipeline',
-  'unreal-asset-batch-auditor',
+  'maya-garment-preparation',
   'mayascope',
   'mayacraft',
   'asset-delivery-organizer',
   'maya-scene-checker',
-  'maya-garment-preparation',
   'maya-plugin',
 ].map((id, index) => [id, index]));
 

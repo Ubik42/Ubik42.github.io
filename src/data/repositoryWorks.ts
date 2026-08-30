@@ -118,7 +118,7 @@ The project is pre-alpha and currently verified end to end on Windows x64. SSR, 
     category: 'pipeline',
     categoryLabel: { zh: '跨工具审计与 Agent 能力边界', en: 'Cross-tool audit and agent capability boundaries' },
     summary: { zh: '把供应商目录、Maya 场景与 Unreal 资产检查串成可追溯、可恢复、默认只读的组合审计，并复核版本、Schema、哈希与零写入证据。', en: 'Combines supplier delivery, Maya scene, and Unreal asset checks into a traceable, recoverable, read-only audit with version, schema, hash, and zero-write verification.' },
-    cover: '/media/repositories/production-tools/art-pipeline-composite.png',
+    cover: '/media/repositories/production-tools/art-pipeline-skill-cover.png',
     tags: ['Skill', 'Maya / Unreal', 'Pydantic / JSON Schema', '幂等恢复'],
     repositoryUrl: 'https://github.com/Ubik42/art-pipeline-skill',
     story: { zh: `# 可验证的跨 DCC 美术管线审计 Skill
@@ -160,7 +160,7 @@ The golden run produced 21 findings and 2 collection failures with zero writes t
       zh: '覆盖 Maya / Unreal 宿主工具、8 个 Figma 插件、FastAPI 数据服务、视觉检索、AIGC 自动化、DCC 批处理与可回归交付。',
       en: 'Maya and Unreal tools, eight Figma plug-ins, FastAPI data services, visual retrieval, AIGC automation, DCC batch processing, and regression-ready delivery.',
     },
-    cover: '/media/repositories/internship-pipeline.svg',
+    cover: '/media/repositories/production-tools/photon-ai-internship-cover.png',
     tags: ['Maya / Unreal', 'Figma', 'Python / C++', 'React / FastAPI'],
     story: {
       zh: `# 光子 AI 工具向实习内容总结
@@ -435,10 +435,10 @@ Version 0.3.1 provides two Maya 2025 workflows: safe three-input UV/position tra
     ],
   },
   {
-    id: 'unreal-asset-batch-auditor', title: 'Unreal 资产批量质量审计工具', category: 'pipeline',
+    id: 'unreal-asset-batch-auditor', title: 'Unreal 资产批量质量审计工具', category: 'engine-games',
     categoryLabel: { zh: 'Unreal 资产批量审计与团队交付', en: 'Unreal batch asset audit and team handoff' },
     summary: { zh: 'UE 5.8.1 原生中文 Slate 工作台：按项目 Profile 审计几何、LOD、碰撞、Lightmap、命名与目录，支持可取消批处理、回归比较和离线团队包。', en: 'A native UE 5.8.1 Slate workbench for profile-driven geometry, LOD, collision, lightmap, naming, and path audits with cancellable batches, regression, and offline handoff packages.' },
-    cover: '/media/repositories/production-tools/unreal-auditor-v08-overview.png',
+    cover: '/media/repositories/production-tools/unreal-auditor-v08-running.png',
     tags: ['Unreal 5.8', 'C++ / Python', 'Slate', '回归与团队包'],
     repositoryUrl: 'https://github.com/Ubik42/unreal-asset-batch-auditor',
     story: { zh: `# Unreal 资产批量质量审计工具
@@ -525,7 +525,7 @@ The Tauri 2 and React desktop application connects to Rez through a Python servi
     id: 'mayascope', title: 'Maya 场景根因调查与运行时诊断工具', category: 'pipeline',
     categoryLabel: { zh: '大型 Maya 场景调查工作区', en: 'Large-scale Maya scene investigation workspace' },
     summary: { zh: '用 Scene Atlas、根因镜头、依赖谱系与运行时证据调查复杂 Maya 场景，并以签名快照、回归比较和可恢复队列交付结论。', en: 'Investigates complex Maya scenes through Scene Atlas, Root Cause Lens, dependency lineage, and runtime evidence, then delivers signed snapshots, regression comparisons, and recoverable queues.' },
-    cover: '/media/repositories/production-tools/mayascope-root-cause.png', tags: ['Maya 2025', 'Root Cause Lens', 'Runtime Observatory', 'Signed Audit'], repositoryUrl: 'https://github.com/Ubik42/MayaScope',
+    cover: '/media/repositories/production-tools/mayascope-project-queue.png', tags: ['Maya 2025', 'Root Cause Lens', 'Runtime Observatory', 'Signed Audit'], repositoryUrl: 'https://github.com/Ubik42/MayaScope',
     story: { zh: `# Maya 场景调查与运行时诊断工具
 
 MayaScope 由原 MayaIndieTool 演进而来，是一个面向复杂 Maya 场景的调查与运行时诊断工作区。它处理的不是某一条孤立检查规则，而是“这个场景为什么变慢、变得脆弱，或者换一台机器就无法正常打开”。项目与角色绑定工具 MayaCraft 彼此独立。
