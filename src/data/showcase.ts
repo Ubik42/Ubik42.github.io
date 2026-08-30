@@ -41,7 +41,7 @@ export const portfolioOverview = {
 
 export const career = {
   eyebrow: { en: 'Hiring focus', zh: '求职方向' },
-  title: { en: 'AI / pipeline technical art and engine tools', zh: 'AI / 工具管线向 TA 与引擎工具开发' },
+  title: { en: 'AI tool-pipeline TA and engine tool development', zh: 'AI 工具管线 TA & 引擎工具开发' },
   intro: {
     en: 'I translate art-production knowledge into tools that artists can inspect, run, and iterate on across DCCs, engines, and AI-assisted workflows.',
     zh: '我把美术生产知识转化为创作者可以检查、运行和持续迭代的工具，连接 DCC、引擎与 AI 辅助工作流。',

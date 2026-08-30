@@ -25,12 +25,12 @@ export interface SiteCopy {
 export const siteCopy: Record<Locale, SiteCopy> = {
   en: {
     meta: {
-      title: 'Lucas Shen | AI & Tools Pipeline Technical Artist',
+      title: 'Lucas Shen | AI Tool-Pipeline TA & Engine Tools',
       description: 'Games, DCC plug-ins, realtime graphics, engine tools, and AI-assisted art pipelines by Lucas Shen.',
     },
     nav: { work: 'Projects', practice: 'Experience', links: 'Links', aria: 'Primary navigation' },
     language: { label: 'Language', english: 'English', changed: 'Language changed to English.' },
-    hero: { role: 'AI & Tools Pipeline Technical Artist', primaryAction: 'Selected projects' },
+    hero: { role: 'AI Tool-Pipeline TA & Engine Tool Development', primaryAction: 'Selected projects' },
     personal: {
       intro: 'My work spans games, DCC plug-ins, realtime graphics, engine tools, and AI-assisted art pipelines, with running builds, project captures, and implementation details.',
       storyAction: 'About me',
@@ -56,21 +56,21 @@ export const siteCopy: Record<Locale, SiteCopy> = {
     practice: {
       title: 'Experience and education',
       items: [
-        { period: '2026.03 – now', title: 'AI Tool Technical Artist Intern', place: 'Tencent Photon', detail: 'Building AI-assisted art-production tools across DCC, engine, and design workflows, with explicit rules and review boundaries.' },
+        { period: '2026.03 – 2026.08', title: 'AI Tool Technical Artist Intern', place: 'Tencent Photon', detail: 'Built AI-assisted production tools across DCC, engine, and design workflows, with explicit execution and review boundaries.' },
         { period: '2025.08 – 2027.05', title: 'M.S. in EAE, Technical Art', place: 'University of Utah', detail: 'Studying realtime graphics, tools, pipelines, and collaborative game production in Entertainment Arts and Engineering.' },
-        { period: '2020.09 – 2024.06', title: 'B.S. in Industrial Engineering', place: 'Shanghai Jiao Tong University', detail: 'Built a systems and optimization foundation, then applied it through game systems, Unity client work, and industrial digital twins.' },
+        { period: '2020.09 – 2024.06', title: 'B.S. in Industrial Engineering', place: 'Shanghai Jiao Tong University', detail: 'Built a systems and optimization foundation, then applied it through game systems, UE5 client work, and industrial digital twins.' },
       ],
     },
     footer: { copyright: 'Lucas (Yuyan) Shen / 沈裕焱' },
   },
   zh: {
     meta: {
-      title: '沈裕焱 | AI 与工具管线向技术美术',
+      title: '沈裕焱 | AI 工具管线 TA & 引擎工具开发',
       description: '沈裕焱的游戏、DCC 插件、实时图形、引擎工具与 AI 辅助美术管线作品集。',
     },
     nav: { work: '作品', practice: '经历', links: '链接', aria: '主导航' },
     language: { label: '语言', english: 'English', changed: '语言已切换为中文。' },
-    hero: { role: 'AI 与工具管线向技术美术', primaryAction: '项目作品' },
+    hero: { role: 'AI 工具管线 TA & 引擎工具开发', primaryAction: '项目作品' },
     personal: {
       intro: '作品覆盖游戏、DCC 插件、实时图形、引擎工具与 AI 辅助美术管线，包含运行画面、项目素材和具体实现。',
       storyAction: '关于我',
@@ -96,9 +96,9 @@ export const siteCopy: Record<Locale, SiteCopy> = {
     practice: {
       title: '经历与教育',
       items: [
-        { period: '2026.03 – 至今', title: 'AI 工具技术美术实习生', place: '腾讯光子', detail: '围绕 DCC、引擎与设计流程构建 AI 辅助美术生产工具，明确规则、执行与人工审查的边界。' },
+        { period: '2026.03 – 2026.08', title: 'AI 工具技术美术实习生', place: '腾讯光子', detail: '围绕 DCC、引擎与设计流程开发 AI 辅助美术生产工具，覆盖工具接入、执行边界与人工审查。' },
         { period: '2025.08 – 2027.05', title: 'EAE 技术美术硕士', place: '犹他大学', detail: '在 Entertainment Arts and Engineering 项目中学习实时图形、工具、管线与协作式游戏生产。' },
-        { period: '2020.09 – 2024.06', title: '工业工程学士', place: '上海交通大学', detail: '建立优化与系统方法基础，并逐步扩展到游戏系统、Unity 客户端与工业数字孪生开发。' },
+        { period: '2020.09 – 2024.06', title: '工业工程学士', place: '上海交通大学', detail: '建立优化与系统方法基础，并逐步扩展到游戏系统、UE5 客户端与工业数字孪生开发。' },
       ],
     },
     footer: { copyright: 'Lucas (Yuyan) Shen / 沈裕焱' },
