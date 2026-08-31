@@ -925,30 +925,6 @@ PyArsenal 面向需要维护大量零散脚本的 Python 开发者。它把脚�
 PyArsenal is a graphical manager for Python developers who maintain many scripts. It centralizes registration, tags, execution environments, and compilation so a script library remains searchable and deliverable.` },
   },
   {
-    id: 'neothesia', title: '钢琴练习与乐谱反馈应用', category: 'other-tools',
-    categoryLabel: { zh: '钢琴练习应用', en: 'Piano practice application' },
-    summary: { zh: '持续维护的钢琴学习分支，加入刻意练习、反馈、曲库、乐谱同步与 Pianoteq 工作流。', en: 'An actively maintained piano-learning fork with deliberate practice, feedback, repertoire, notation, and Pianoteq workflows.' },
-    cover: '/media/repositories/neothesia.png', tags: ['Rust', 'WGPU', 'MIDI', 'VST3'], repositoryUrl: 'https://github.com/Ubik42/Neothesia',
-    story: { zh: `# 钢琴练习与乐谱反馈应用
-
-这是在开源 Neothesia 基础上持续维护的钢琴学习分支，开发重点从单纯的瀑布流演奏界面扩展到可重复的刻意练习。
-
-## 本分支的主要工作
-
-- 等待正确音符、左右手选择、循环、小节号、节拍细分、Count-in 与自适应速度。
-- 按音高、时值、力度、踏板、左右手和小节生成练习反馈，并保存练习记录与建议。
-- 本地曲库、监视文件夹、搜索、收藏、练习队列、来源与许可记录。
-- MIDI 与 MusicXML / MXL 对齐、分页乐谱跟随和演奏高亮。
-- 外部 MIDI 路由以及 Windows 下直接加载 Pianoteq VST3 的实验性乐器路径。
-
-项目仍处于源码开发阶段，VST3 广泛兼容性、安装更新和更多实体设备长时间测试仍在推进。`, en: `# Neothesia
-
-This independently maintained fork extends Neothesia from a falling-note visualizer into a deliberate-practice application with looping, hand selection, count-in, adaptive tempo, detailed feedback, a local repertoire library, synchronized MusicXML notation, and Pianoteq workflows.
-
-The direct VST3 path is still experimental and the project is currently distributed as source rather than a packaged end-user release.` },
-    images: [{ src: '/media/repositories/neothesia.png', alt: { zh: 'Neothesia 钢琴练习界面', en: 'Neothesia piano practice interface' } }],
-  },
-  {
     id: 'artflow-agent', title: '面向引擎接入的新时代 AIGC 框架', category: 'engine-games',
     categoryLabel: { zh: '引擎场景 AIGC 智能体框架', en: 'Engine-scene AIGC agent framework' },
     summary: { zh: '把 Unreal 场景事实编译成类型化变更计划，协调 ComfyUI、GPT Image 2 与图生 3D，在候选关卡中完成执行、评价、定向纠正和发布。', en: 'Compiles Unreal scene facts into typed change plans and coordinates ComfyUI, GPT Image 2, and image-to-3D providers for execution, judging, targeted correction, and publishing in candidate levels.' },
