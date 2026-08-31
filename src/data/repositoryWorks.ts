@@ -58,7 +58,7 @@ An in-progress multiplayer hero-shooter project built on Unreal Engine 5.7 and L
     category: 'engine-games',
     categoryLabel: { zh: 'UE 性能分析与优化', en: 'UE performance analysis and optimization' },
     summary: {
-      zh: '在大量真实角色同时运行 AI、寻路、动画、渲染和网络行为时定位瓶颈，为每个方向建立独立、可归因并带质量条件的前后对比。',
+      zh: '在固定地图和角色负载下，分别比较 AI、寻路、动画、渲染与网络调整前后的性能指标和场景状态。',
       en: 'Independent, attributable before-and-after studies across AI, navigation, animation, rendering, and networking under high multi-character load.',
     },
     cover: '/media/repositories/lyra-hero-arena/workbench-render.png',
@@ -67,7 +67,7 @@ An in-progress multiplayer hero-shooter project built on Unreal Engine 5.7 and L
     story: {
       zh: `# 多角色高负载场景性能优化
 
-这项作品研究大量角色同时拥有 AI、寻路、动画、渲染和网络行为时的可归因性能问题。固定地图、随机种子、镜头、画质、RHI 和角色负载用于构造稳定压力；200 个真实 Lyra Pawn 是一组标准负载，而不是作品名称。每次实验只改变一个变量，并同时检查负载与质量条件，避免用减少角色、停止行为或不可接受的降质换取漂亮数字。
+这项作品研究大量角色同时运行 AI、寻路、动画、渲染和网络行为时的性能开销。实验固定地图、随机种子、镜头、画质、RHI 和角色负载；200 个真实 Lyra Pawn 是其中一组标准配置。每个案例分别采集修改前后的性能数据和场景状态。
 
 ## 可复现的性能实验
 
@@ -78,7 +78,7 @@ An in-progress multiplayer hero-shooter project built on Unreal Engine 5.7 and L
 - Networking：服务器出站、空间相关性与多客户端拓扑；
 - Physics / VFX：先通过 Profile 找到明确热点，再建立独立案例。
 
-角色存活、移动、到达率、请求失败、最长等待、近景动画质量、阴影保留和连接数都会参与结果判断。质量条件不成立的候选不会被写成成功优化。`,
+比较结果同时列出角色存活、移动、到达率、请求失败、最长等待、近景动画更新、阴影数量和连接数，用于确认两组运行的负载与表现条件一致。`,
       en: `# Multi-Character Performance Optimization
 
 Fixed maps, seeds, viewpoints, graphics settings, RHI, and character loads create repeatable single-variable studies across AI, navigation, animation, rendering, and networking. Performance gains are accepted only when behavior and visual quality conditions remain valid.`,
@@ -110,9 +110,9 @@ Fixed maps, seeds, viewpoints, graphics settings, RHI, and character loads creat
 - 用版本化 Preset 保存地图、Experience、负载、种子、RHI、画质、采样时长与进程拓扑；
 - 从 Editor 启动单机、服务器和多个客户端，统一运行编号与输出目录；
 - 汇集 CSV Profiler、AI、Navigation、Animation、Rendering 与 Network 指标；
-- 以 Required Guard 拒绝负载不足、条件不一致、画质退化或网络拓扑失真的样本；
-- 聚合同一合同下的 Baseline 3 次与 Optimized 3 次，展示中位数、P95、变化率与质量代价；
-- 对缺失样本、不可比较结果、失败条件和潜在回归给出明确说明，不自动宣称优化成功。
+- 以 Required Guard 检查角色负载、运行条件、画质与网络拓扑，未满足条件的样本标记为不可比较；
+- 聚合同一合同下的 Baseline 3 次与 Optimized 3 次，展示中位数、P95、变化率以及相应的行为和画质指标；
+- 显示缺失样本、不可比较结果、失败条件和回归提示，并保留原始 CSV 与运行配置。
 
 运行时 PerformanceLab 负责压力、采样和结果文件，Editor 侧 PerformanceWorkbench 只负责实验编排与比较。游戏逻辑不依赖性能 UI，两者通过 JSON 实验合同和结果连接。`,
       en: `# UE Performance Workbench
