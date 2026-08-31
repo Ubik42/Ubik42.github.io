@@ -93,17 +93,17 @@ Fixed maps, seeds, and 200 real Lyra Pawns create repeatable single-variable stu
   },
   {
     id: 'noemancer',
-    title: '最最 AI 友好的高性能引擎',
+    title: 'Noemancer：面向人与 AI 协作的现代高性能自研游戏引擎',
     category: 'engine-games',
     categoryLabel: { zh: '自研游戏引擎', en: 'Custom game engine' },
-    summary: { zh: '从原生 Editor、C# Gameplay、资产 Cook 到 D3D12/Vulkan 商业 Raster 和独立 Player 的 C++20 游戏引擎。', en: 'A C++20 game engine spanning a native editor, C# gameplay, asset cooking, D3D12/Vulkan commercial raster rendering, and standalone players.' },
+    summary: { zh: 'Noemancer 是一款覆盖现代 PBR 渲染、Jolt 物理、ozz 动画、GPU 粒子、音频、C# Gameplay、声明式 UI、资产 Cook/打包及完整编辑器工作流，并以统一语义数据层让人类与 AI Agent 共同编辑、调试和开发游戏的高性能 AI 原生引擎。', en: 'Noemancer is a high-performance AI-native engine spanning modern PBR rendering, Jolt physics, ozz animation, GPU particles, audio, C# gameplay, declarative UI, asset cooking and packaging, and a complete editor workflow, with a shared semantic data layer for human-AI game development.' },
     cover: '/media/repositories/major-updates/noemancer-sponza-atrium.webp',
     tags: ['C++20', 'D3D12 / Vulkan', 'C#', 'MCP'],
     repositoryUrl: 'https://github.com/Ubik42/Noemancer',
     story: {
-      zh: `# 最最 AI 友好的高性能引擎
+      zh: `# Noemancer：面向人与 AI 协作的现代高性能自研游戏引擎
 
-Noemancer 是我从零开发的 C++20 游戏引擎。它已经不只是一个渲染 Demo：当前可以在原生 Editor 中组织场景、运行 C# Gameplay、导入并 Cook 资产，最后打包为不依赖 Editor 的 Windows Player。这条链路之下是自研的 ECS Runtime、D3D12/Vulkan 渲染、物理、动画、资产格式与编辑器事务系统。
+Noemancer 是一款覆盖现代 PBR 渲染、Jolt 物理、ozz 动画、GPU 粒子、音频、C# Gameplay、声明式 UI、资产 Cook/打包及完整编辑器工作流，并以统一语义数据层让人类与 AI Agent 共同编辑、调试和开发游戏的高性能 AI 原生引擎。
 
 ## 从建立工程到独立运行
 
