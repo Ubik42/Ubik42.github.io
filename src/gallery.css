@@ -25,9 +25,14 @@
 .portfolio-gallery-header h2 { margin: 0; font-size: clamp(2.8rem, 5vw, 5.5rem); line-height: .85; letter-spacing: -.05em; }
 .portfolio-gallery-header span { color: var(--blue); font-family: var(--display); font-weight: 800; }
 .portfolio-gallery-header p { max-width: 32rem; margin: 0; color: var(--muted); }
-.portfolio-filters { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: .65rem; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--ink); }
-.portfolio-filters button { display: grid; min-height: 3.25rem; padding: .7rem .8rem; place-items: center; border: 1px solid var(--line); background: var(--white); color: var(--muted); cursor: pointer; font-size: clamp(.92rem, 1.08vw, 1.08rem); font-weight: 760; line-height: 1.2; }
-.portfolio-filters button:hover, .portfolio-filters button.is-active { border-color: var(--ink); background: var(--ink); color: white; }
+.portfolio-filters { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .8rem; margin-bottom: 2.25rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--ink); }
+.portfolio-filters button { --filter-color: oklch(.28 .02 255); display: grid; min-height: 4.35rem; padding: 1rem 1.15rem; place-items: center; border: 2px solid color-mix(in oklch, var(--filter-color) 58%, white); background: color-mix(in oklch, var(--filter-color) 9%, white); color: var(--filter-color); cursor: pointer; font-size: clamp(1.08rem, 1.35vw, 1.32rem); font-weight: 820; line-height: 1.15; transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease, transform 160ms ease; }
+.portfolio-filters button[data-filter='pipeline'] { --filter-color: oklch(.47 .15 246); }
+.portfolio-filters button[data-filter='engine-games'] { --filter-color: oklch(.47 .15 48); }
+.portfolio-filters button[data-filter='general-ta'] { --filter-color: oklch(.43 .12 151); }
+.portfolio-filters button[data-filter='other-tools'] { --filter-color: oklch(.46 .14 305); }
+.portfolio-filters button:hover, .portfolio-filters button.is-active { border-color: var(--filter-color); background: var(--filter-color); color: white; transform: translateY(-2px); }
+.portfolio-filters button:focus-visible { outline: 3px solid color-mix(in oklch, var(--filter-color) 34%, transparent); outline-offset: 3px; }
 .portfolio-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(1rem, 1.7vw, 1.75rem); align-items: stretch; }
 .portfolio-tile { display: flex; min-width: 0; height: 100%; flex-direction: column; padding: 0; overflow: hidden; border: 1px solid var(--line); background: var(--white); color: var(--ink); cursor: pointer; text-align: left; }
 .portfolio-tile figure { position: relative; width: 100%; aspect-ratio: 16 / 10; margin: 0; overflow: hidden; border-bottom: 1px solid var(--line); background: oklch(.13 .02 255); }

@@ -19,7 +19,6 @@ const filters: Array<{ id: 'all' | PortfolioCategory; zh: string; en: string }> 
   { id: 'all', zh: '全部作品', en: 'All work' },
   { id: 'pipeline', zh: '工具管线', en: 'Tool pipelines' },
   { id: 'engine-games', zh: '引擎与游戏', en: 'Engines & games' },
-  { id: 'ai-agent', zh: 'AI 与 Agent', en: 'AI & Agents' },
   { id: 'general-ta', zh: '通用技术美术技能', en: 'General technical art' },
   { id: 'other-tools', zh: '部分其他工具', en: 'Selected other tools' },
 ];
@@ -30,10 +29,23 @@ const pipelineOrder = new Map([
   'internship-art-pipeline',
   'maya-garment-preparation',
   'mayascope',
+  'comfyui-production-nodes',
   'mayacraft',
   'asset-delivery-organizer',
   'maya-scene-checker',
   'maya-plugin',
+].map((id, index) => [id, index]));
+
+const engineGamesOrder = new Map([
+  'lyra-hero-arena',
+  'siggraph-physics-lab',
+  'lyra-performance-lab',
+  'artflow-agent',
+  'ue-performance-workbench',
+  'noemancer',
+  'unreal-asset-batch-auditor',
+  'noemancer-software-rasterizer',
+  'resonance-forge',
 ].map((id, index) => [id, index]));
 
 const categoryOrder = new Map<PortfolioCategory, number>([
@@ -64,6 +76,9 @@ export function PortfolioGallery() {
         if (categoryDelta !== 0) return categoryDelta;
         if (a.item.category === 'pipeline') {
           return (pipelineOrder.get(a.item.id) ?? Number.MAX_SAFE_INTEGER) - (pipelineOrder.get(b.item.id) ?? Number.MAX_SAFE_INTEGER);
+        }
+        if (a.item.category === 'engine-games') {
+          return (engineGamesOrder.get(a.item.id) ?? Number.MAX_SAFE_INTEGER) - (engineGamesOrder.get(b.item.id) ?? Number.MAX_SAFE_INTEGER);
         }
         return a.sourceIndex - b.sourceIndex;
       })
@@ -122,7 +137,7 @@ export function PortfolioGallery() {
 
       <div className="portfolio-filters" role="group" aria-label={locale === 'zh' ? '筛选作品' : 'Filter work'}>
         {filters.map((item) => (
-          <button key={item.id} type="button" className={filter === item.id ? 'is-active' : ''} aria-pressed={filter === item.id} onClick={() => setFilter(item.id)}>
+          <button key={item.id} type="button" data-filter={item.id} className={filter === item.id ? 'is-active' : ''} aria-pressed={filter === item.id} onClick={() => setFilter(item.id)}>
             {locale === 'zh' ? item.zh : item.en}
           </button>
         ))}

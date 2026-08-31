@@ -942,7 +942,7 @@ The direct VST3 path is still experimental and the project is currently distribu
     images: [{ src: '/media/repositories/neothesia.png', alt: { zh: 'Neothesia 钢琴练习界面', en: 'Neothesia piano practice interface' } }],
   },
   {
-    id: 'artflow-agent', title: '面向引擎接入的新时代 AIGC 框架', category: 'ai-agent',
+    id: 'artflow-agent', title: '面向引擎接入的新时代 AIGC 框架', category: 'engine-games',
     categoryLabel: { zh: '引擎场景 AIGC 智能体框架', en: 'Engine-scene AIGC agent framework' },
     summary: { zh: '把 Unreal 场景事实编译成类型化变更计划，协调 ComfyUI、GPT Image 2 与图生 3D，在候选关卡中完成执行、评价、定向纠正和发布。', en: 'Compiles Unreal scene facts into typed change plans and coordinates ComfyUI, GPT Image 2, and image-to-3D providers for execution, judging, targeted correction, and publishing in candidate levels.' },
     cover: '/media/repositories/major-updates/artflow-scene-lab-3d.png', tags: ['Unreal 5.8', 'ComfyUI / GPT Image 2', 'Image-to-3D', 'Scene Agent'], repositoryUrl: 'https://github.com/Ubik42/ArtFlow-Agent',
@@ -1000,7 +1000,7 @@ ArtFlow Agent is a constrained scene-agent control plane between generation prov
     ],
   },
   {
-    id: 'comfyui-production-nodes', title: 'ComfyUI 生产检查与交付节点', category: 'ai-agent',
+    id: 'comfyui-production-nodes', title: 'ComfyUI 生产检查与交付节点', category: 'pipeline',
     categoryLabel: { zh: 'AIGC 生产节点', en: 'ComfyUI custom nodes' },
     summary: { zh: '插入现有 ComfyUI 工作流，在生成前检查参数与依赖，生成后记录收据并整理 DCC、引擎交付信息。', en: 'Custom nodes adding constraint checks, dependency checks, generation receipts, and DCC / engine handoff manifests.' },
     cover: '/media/repositories/comfyui-production-nodes/workflow-overview.png', tags: ['ComfyUI', 'Python', '工作流检查', 'DCC / 引擎交付'], repositoryUrl: 'https://github.com/Ubik42/ComfyUI-Production-Nodes',
