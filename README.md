@@ -6,12 +6,14 @@
 
 当前页面重点展示四类内容：
 
-- 游戏引擎、Gameplay 与客户端开发；
+- 游戏引擎、多人 Gameplay 与性能开发；
 - Maya、Unreal 和桌面生产工具；
 - AIGC、Agent 与 ComfyUI 工作流；
 - Shader、程序化内容、绑定、动画和实时特效。
 
 新增的 [CPU 软件光栅化实验室](https://github.com/Ubik42/NoemancerSoftwareRasterizer) 以 C++20 在 CPU 上显式完成三角形覆盖、透视正确插值、Z-Buffer 与逐像素着色，并通过十张真实输出展示基础缓冲、风格化 Shader 和 Overdraw 诊断。项目基于 MIT 许可的 TinyRenderer 教学实现扩展，主页与仓库均保留来源和素材授权边界。
+
+Unreal 方向新增三项独立作品：[Lyra Hero Arena 五英雄多人对战游戏](https://github.com/Ubik42/LyraHeroArena)、[多角色高负载场景性能优化](https://github.com/Ubik42/LyraHeroArena/tree/main/Plugins/PerformanceLab) 与 [UE Performance Workbench 性能实验工作台](https://github.com/Ubik42/LyraHeroArena/tree/main/Plugins/PerformanceWorkbench)。它们共享同一套真实 Lyra 工程，但分别展示游戏流程、优化方法和 Editor 工具开发能力。
 
 ![个人主页中文首屏](docs/screenshots/homepage-zh.png)
 

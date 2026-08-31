@@ -18,9 +18,9 @@ export interface RepositoryWork {
 export const repositoryWorks: RepositoryWork[] = [
   {
     id: 'lyra-hero-arena',
-    title: 'UE5 Lyra 英雄射击客户端',
+    title: 'Lyra Hero Arena：五英雄多人对战游戏',
     category: 'engine-games',
-    categoryLabel: { zh: '多人 Gameplay 与客户端架构', en: 'Multiplayer gameplay and client architecture' },
+    categoryLabel: { zh: '多人游戏与 Gameplay 架构', en: 'Multiplayer game and gameplay architecture' },
     summary: {
       zh: '基于 UE5 Lyra 扩展五英雄射击玩法，以 GAS、Game Feature、PawnData 与服务器权威状态组织选人、战斗、死亡、重生和结算；项目仍在持续开发。',
       en: 'An in-progress UE5 Lyra hero shooter using GAS, Game Features, PawnData, and server-authoritative state for selection, combat, death, respawn, and results.',
@@ -29,11 +29,11 @@ export const repositoryWorks: RepositoryWork[] = [
     tags: ['UE 5.7', 'Lyra', 'C++ / GAS', 'Game Features'],
     repositoryUrl: 'https://github.com/Ubik42/LyraHeroArena',
     story: {
-      zh: `# UE5 Lyra 英雄射击客户端
+      zh: `# Lyra Hero Arena：五英雄多人对战游戏
 
 这是一个基于 Unreal Engine 5.7 与 Lyra Starter Game 持续开发的多人英雄射击项目。当前重点不是复制 Lyra 示例内容，而是在它已有的武器、队伍、GAS、PawnData、CommonUI 和网络框架上建立一套可扩展的英雄与比赛循环。
 
-## 客户端与 Gameplay 架构
+## 游戏与 Gameplay 架构
 
 - 五名英雄以 AbilitySet、装备和数据定义组合差异，不复制整套 Pawn；
 - 服务器保存并校验英雄选择，客户端只提交意图，避免本地状态成为比赛权威；
@@ -44,7 +44,7 @@ export const repositoryWorks: RepositoryWork[] = [
 ## 当前状态
 
 仓库公开的是自研 C++ 模块、结构说明和真实运行截图，不重新分发 Lyra、Fab 或 Unreal Engine 资产。核心架构与主要比赛环节已经落地，但角色内容、玩法平衡、界面表现和完整发布流程仍在继续开发。`,
-      en: `# UE5 Lyra Hero Shooter Client
+      en: `# Lyra Hero Arena
 
 An in-progress multiplayer hero-shooter project built on Unreal Engine 5.7 and Lyra. Five heroes are composed from Ability Sets, equipment, and data definitions, while server-authoritative selection and a HeroArena Game Feature keep gameplay boundaries explicit. The repository publishes original C++ modules and real screenshots without redistributing Lyra or Fab assets.`,
     },
@@ -54,20 +54,20 @@ An in-progress multiplayer hero-shooter project built on Unreal Engine 5.7 and L
   },
   {
     id: 'lyra-performance-lab',
-    title: 'UE5 200 人群性能优化实验室',
+    title: '多角色高负载场景性能优化',
     category: 'engine-games',
-    categoryLabel: { zh: '客户端性能分析与实验工具', en: 'Client performance analysis and experiment tooling' },
+    categoryLabel: { zh: 'UE 性能分析与优化', en: 'UE performance analysis and optimization' },
     summary: {
-      zh: '用固定 200 个 Lyra Pawn 对 AI、寻路、动画、渲染和网络做单变量 A/B；由中文 Editor 工作台编排进程、校验负载并聚合 3+3 结果。',
-      en: 'Single-variable A/B studies across AI, navigation, animation, rendering, and networking with 200 fixed Lyra Pawns and an Editor workbench that validates and aggregates 3+3 runs.',
+      zh: '在大量真实角色同时运行 AI、寻路、动画、渲染和网络行为时定位瓶颈，为每个方向建立独立、可归因并带质量条件的前后对比。',
+      en: 'Independent, attributable before-and-after studies across AI, navigation, animation, rendering, and networking under high multi-character load.',
     },
     cover: '/media/repositories/lyra-hero-arena/workbench-render.png',
     tags: ['Unreal Insights', 'CSV Profiler', 'Slate', 'A/B Benchmark'],
     repositoryUrl: 'https://github.com/Ubik42/LyraHeroArena/tree/main/Plugins/PerformanceLab',
     story: {
-      zh: `# UE5 200 人群性能优化实验室
+      zh: `# 多角色高负载场景性能优化
 
-这个项目用固定地图、固定随机种子和 200 个真实 Lyra Pawn 构造稳定压力，研究 AI 决策、路径重规划、动画更新、角色渲染和多人网络中的可归因性能问题。每次实验只改变一个变量，并同时检查负载与画质 Guard，避免用减少角色、停掉行为或不可接受的降质换取漂亮数字。
+这项作品研究大量角色同时拥有 AI、寻路、动画、渲染和网络行为时的可归因性能问题。固定地图、随机种子、镜头、画质、RHI 和角色负载用于构造稳定压力；200 个真实 Lyra Pawn 是一组标准负载，而不是作品名称。每次实验只改变一个变量，并同时检查负载与质量条件，避免用减少角色、停止行为或不可接受的降质换取漂亮数字。
 
 ## 可复现的性能实验
 
@@ -75,20 +75,53 @@ An in-progress multiplayer hero-shooter project built on Unreal Engine 5.7 and L
 - Navigation：路径请求、重规划、拥堵和到达率；
 - Animation：骨骼更新、IK、远景 LOD 与可见性策略；
 - Rendering：角色材质、阴影、附件和可见距离；
-- Networking：服务器出站、空间相关性与多客户端拓扑。
+- Networking：服务器出站、空间相关性与多客户端拓扑；
+- Physics / VFX：先通过 Profile 找到明确热点，再建立独立案例。
 
-## UE Editor 性能工作台
+角色存活、移动、到达率、请求失败、最长等待、近景动画质量、阴影保留和连接数都会参与结果判断。质量条件不成立的候选不会被写成成功优化。`,
+      en: `# Multi-Character Performance Optimization
 
-中文 Slate 工作台负责启动压力地图，编排单机、服务器和多客户端进程，采集 CSV Profiler、渲染、网络、AI、Navigation 与 Animation 指标；每个样本绑定引擎版本、Git 提交、地图、Experience、人数、种子、RHI 和拓扑。只有 Required Guard 与实验合同一致的样本才进入 3+3 聚合，并展示中位数、P95、变化率及质量代价。
-
-Gameplay、运行时实验模块与 Editor 工作台保持单向依赖：游戏逻辑不依赖性能 UI，工作台只消费版本化实验合同和结果。`,
-      en: `# UE5 Crowd 200 Performance Lab
-
-Fixed maps, seeds, and 200 real Lyra Pawns create repeatable single-variable studies across AI, navigation, animation, rendering, and networking. A Chinese Slate workbench launches standalone, server, and client processes, captures profiler data, validates required guards, and aggregates matched 3+3 samples with medians, P95 values, deltas, and quality costs.`,
+Fixed maps, seeds, viewpoints, graphics settings, RHI, and character loads create repeatable single-variable studies across AI, navigation, animation, rendering, and networking. Performance gains are accepted only when behavior and visual quality conditions remain valid.`,
     },
     images: [
       { src: '/media/repositories/lyra-hero-arena/workbench-network.png', alt: { zh: '网络优化实验的 Baseline 与 Optimized 对比', en: 'Baseline and optimized comparison for the networking experiment' } },
       { src: '/media/repositories/lyra-hero-arena/gameplay.jpg', alt: { zh: '性能压力实验所依托的 Lyra Gameplay 场景', en: 'Lyra gameplay environment used by the performance stress studies' } },
+    ],
+  },
+  {
+    id: 'ue-performance-workbench',
+    title: 'UE Performance Workbench：性能实验工作台',
+    category: 'engine-games',
+    categoryLabel: { zh: 'Unreal Editor 性能工具', en: 'Unreal Editor performance tooling' },
+    summary: {
+      zh: '在 Unreal Editor 内启动单机、服务器和多客户端实验，校验负载与质量条件，并聚合同一实验的 Baseline / Optimized 正式结果。',
+      en: 'An Unreal Editor workbench for launching standalone and networked experiments, validating load and quality conditions, and aggregating formal baseline/optimized results.',
+    },
+    cover: '/media/repositories/lyra-hero-arena/workbench-network.png',
+    tags: ['UE 5.7', 'Slate', 'CSV Profiler', 'Multi-process'],
+    repositoryUrl: 'https://github.com/Ubik42/LyraHeroArena/tree/main/Plugins/PerformanceWorkbench',
+    story: {
+      zh: `# UE Performance Workbench：性能实验工作台
+
+这是一个运行在 Unreal Editor 内的中文性能实验工具。它把零散的启动参数、Profile 命令和结果表格整理成一条可复跑的工程流程，既服务多角色高负载实验，也用于验证 Lyra Hero Arena 开发过程中对渲染、网络和 Gameplay 架构的改进。
+
+## 从实验定义到正式结论
+
+- 用版本化 Preset 保存地图、Experience、负载、种子、RHI、画质、采样时长与进程拓扑；
+- 从 Editor 启动单机、服务器和多个客户端，统一运行编号与输出目录；
+- 汇集 CSV Profiler、AI、Navigation、Animation、Rendering 与 Network 指标；
+- 以 Required Guard 拒绝负载不足、条件不一致、画质退化或网络拓扑失真的样本；
+- 聚合同一合同下的 Baseline 3 次与 Optimized 3 次，展示中位数、P95、变化率与质量代价；
+- 对缺失样本、不可比较结果、失败条件和潜在回归给出明确说明，不自动宣称优化成功。
+
+运行时 PerformanceLab 负责压力、采样和结果文件，Editor 侧 PerformanceWorkbench 只负责实验编排与比较。游戏逻辑不依赖性能 UI，两者通过 JSON 实验合同和结果连接。`,
+      en: `# UE Performance Workbench
+
+A Chinese Unreal Editor tool that turns profiling setup into repeatable experiments. Versioned presets define maps, loads, seeds, RHI, graphics settings, capture duration, and process topology. The workbench launches standalone, server, and client processes, validates required load and quality conditions, and aggregates matched 3+3 baseline and optimized samples with medians, P95 values, deltas, and quality costs.`,
+    },
+    images: [
+      { src: '/media/repositories/lyra-hero-arena/workbench-render.png', alt: { zh: '渲染实验的正式结果对比', en: 'Formal rendering experiment comparison' } },
+      { src: '/media/repositories/lyra-hero-arena/workbench-network.png', alt: { zh: '网络实验的多进程结果对比', en: 'Multi-process network experiment comparison' } },
     ],
   },
   {
