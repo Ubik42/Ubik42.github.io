@@ -262,41 +262,45 @@ The cases cover contact-aware GPU cloth, multiscale tetrahedral soft bodies, par
   },
   {
     id: 'resonance-forge',
-    title: 'UE × Wwise 物理声源与 MIDI 工作台',
+    title: '共振铸造台 Resonance Forge',
     category: 'engine-games',
-    categoryLabel: { zh: 'Unreal 技术音频与引擎工具', en: 'Unreal technical audio and engine tool' },
+    categoryLabel: { zh: 'UE 技术音频与编辑器工具', en: 'UE technical audio and editor tooling' },
     summary: {
-      zh: '在 UE 5.8 中把场景碰撞、模态共振、数字波导弦、MIDI 表演和 Wwise Event / RTPC 连接成可试听、可复检的物理声源工作流。',
-      en: 'A UE 5.8 physical-audio workflow connecting scene collisions, modal resonance, digital waveguide strings, MIDI performance, and Wwise Events and RTPCs.',
+      zh: '在 UE 场景里把碰撞与 MIDI 变成可调声音：标定冲量，塑造模态或波导共振，再交给 Wwise、WAV 与可复用配方。',
+      en: 'Turns scene collisions and MIDI into tunable sound in UE: calibrate impact, shape modal or waveguide resonance, then deliver through Wwise, WAV, and reusable recipes.',
     },
-    cover: '/media/repositories/resonance-forge/workshop.png',
-    tags: ['Unreal 5.8', 'Wwise 2025.1', '物理音频', 'MIDI'],
+    cover: '/media/repositories/resonance-forge/workbench.png',
+    tags: ['UE 5.8 / C++', 'Wwise 2025.1', 'Modal / Waveguide', 'MIDI'],
     repositoryUrl: 'https://github.com/Ubik42/resonance-forge',
     story: {
-      zh: `# UE × Wwise 物理声源与 MIDI 工作台
+      zh: `# 共振铸造台：UE × Wwise 物理声源工作台
 
-Resonance Forge 是一套运行在 Unreal Engine 5.8.1 中的技术音频实验工具。它把“物体受到怎样的激励、如何产生共振、怎样把声音发布到游戏音频中”组织成一条可以现场试听和复检的工作流，而不是只播放预先录好的采样。
+共振铸造台是一套运行在 Unreal Engine 5.8.1 中的技术音频工具。它从场景对象出发，把“这次碰撞有多重、物体如何共振、声音从哪条出口离开”放进同一个中文工作台里。
 
-## 两类实时物理声源
+## 从一次碰撞开始
 
-- **模态冲击体**根据碰撞冲量、相对速度与物体尺寸驱动多组衰减振型，用于表现材质受到敲击后的音高、明亮度和余振；
-- **数字波导弦**支持 8 复音演奏，以延迟线和反馈滤波模拟拨弦，并让 MIDI Note On 控制音高和力度、CC1 控制音色明亮度；
-- 场景碰撞和 MIDI 输入都能直接激励声源，方便在真实关卡中比较不同参数与材质反馈。
+冲量标定砧尺把静默门槛、半响、满响和最近的碰撞标在同一条刻度上。每个场景对象保留自己的 12 次碰撞拓印；采到足够的弱碰与强碰后，可以按样本范围重算门槛和灵敏度，并把结果写回编辑地图中的对象。相对速度单独进入明亮度，不会因为调响度而一起改变音色。
 
-## Unreal 与 Wwise 接入
+## 两种声源，同一套演奏入口
 
-- 中文 Slate 面板按照“选择对象 → 配置激励 → 调整共振 → 发布”的顺序组织参数和操作；
-- Unreal 原生合成路径用于即时试听，同时可触发 Wwise Event，并将冲击能量、音色明亮度和物体尺寸写入 3 条 RTPC；
-- 工程附带可复现的测试音频、PBR 材质、演示地图与验证报告，便于从场景行为追溯到最终声音结果。
+- 模态撞击体把钢、木、玻璃的共振峰做成可编辑齿列，敲击位置会重新分配各模态的能量；
+- 八复音数字波导弦共享音高、阻尼、箱体耦合与拾音位置，支持指腹、拨片、锤击和持续弓擦；
+- 没有 MIDI 键盘时，可以直接使用十三键试音床和弓行轨；接入硬件后，Note、Velocity、CC1 与 Aftertouch 进入同一条演奏链。
 
-当前版本已在 Windows Editor 中完成构建、地图重载和试听验证。Cook / Shipping、多平台发行以及 Wwise SDK 的再分发不在当前展示范围内。`,
-      en: `# UE × Wwise Physical Audio and MIDI Workbench
+## 从试听到交付
 
-Resonance Forge is a UE 5.8.1 technical-audio tool with two real-time sources: a modal impact body and an eight-voice digital waveguide string. Scene collisions and MIDI input drive the sound, while a Chinese Slate workflow publishes the result through native Unreal synthesis or a Wwise Event with three RTPC values. The repository includes reproducible audio, PBR assets, demo maps, and verification reports.`,
+监听闸门可以在 UE 原声、Wwise 出口和双路叠听之间切换。Wwise 路由资产只管理 3 个材质 Event 与 Energy、Brightness、ObjectSize 三条 RTPC；声学配方则单独保存模态、弦床和演奏状态。调好的声音可以 A/B 往返、压入本地配方槽、保存为 Content 资产，或离线铸成 48 kHz WAV 与 JSON 声源铭牌。
+
+仓库包含插件源码、独立演示工程、可重建的测试声音与 PBR 材质，以及插件自身导出的多张实机截图。当前交付范围是 Windows Editor；Wwise SDK 与 Unreal Integration 需要使用者通过 Audiokinetic Launcher 自行安装。`,
+      en: `# Resonance Forge: UE × Wwise Physical Audio Workbench
+
+Resonance Forge is a UE 5.8.1 technical-audio tool that turns scene collisions and MIDI gestures into tunable sound. Its impulse ruler records per-object collision samples and can recalibrate impact thresholds; editable modal bodies and an eight-voice digital waveguide string share a mouse/MIDI performance layer. A monitoring gate compares native UE synthesis with Wwise Events and three RTPCs, while acoustic recipes and Wwise routing remain separate assets. Finished sounds can be compared, stored, exported as 48 kHz WAV plus JSON recipe labels, or saved as reusable Content assets.`,
     },
     images: [
-      { src: '/media/repositories/resonance-forge/workshop.png', alt: { zh: 'Resonance Forge 物理声源演示工坊', en: 'Resonance Forge physical-audio workshop' } },
-      { src: '/media/repositories/resonance-forge/overview.png', alt: { zh: 'Unreal 场景中的中文物理声源工作台', en: 'Chinese physical-audio workbench inside Unreal' } },
+      { src: '/media/repositories/resonance-forge/wwise-route.png', alt: { zh: 'Wwise 路由织机、共享配方与声源铸样区', en: 'Wwise routing loom, shared recipes, and sample export area' } },
+      { src: '/media/repositories/resonance-forge/mode-rack.png', alt: { zh: '可编辑模态齿列与敲击位置塑形', en: 'Editable modal rack and strike-position shaping' } },
+      { src: '/media/repositories/resonance-forge/keybed.png', alt: { zh: '鼠标试音键床、弓行轨与力度曲线', en: 'Mouse keybed, bowing rail, and velocity curves' } },
+      { src: '/media/repositories/resonance-forge/workbench-details.png', alt: { zh: '声源铭牌、余响拓片与配方回炉', en: 'Sample labels, decay print, and recipe recall' } },
     ],
   },
   {

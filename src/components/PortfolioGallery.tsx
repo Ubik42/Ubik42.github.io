@@ -42,10 +42,10 @@ const engineGamesOrder = new Map([
   'lyra-performance-lab',
   'artflow-agent',
   'ue-performance-workbench',
+  'resonance-forge',
   'noemancer',
   'unreal-asset-batch-auditor',
   'noemancer-software-rasterizer',
-  'resonance-forge',
 ].map((id, index) => [id, index]));
 
 const categoryOrder = new Map<PortfolioCategory, number>([
