@@ -623,20 +623,26 @@ Version 0.3.1 provides two Maya 2025 workflows: safe three-input UV/position tra
   },
   {
     id: 'unreal-asset-batch-auditor', title: 'Unreal 资产批量质量审计工具', category: 'engine-games',
-    categoryLabel: { zh: 'Unreal 资产批量审计与团队交付', en: 'Unreal batch asset audit and team handoff' },
-    summary: { zh: 'UE 5.8.1 原生中文 Slate 工作台：按项目 Profile 审计几何、LOD、碰撞、Lightmap、命名与目录，支持可取消批处理、回归比较和离线团队包。', en: 'A native UE 5.8.1 Slate workbench for profile-driven geometry, LOD, collision, lightmap, naming, and path audits with cancellable batches, regression, and offline handoff packages.' },
-    cover: '/media/repositories/production-tools/unreal-auditor-editor-overview.png',
-    tags: ['Unreal 5.8', 'C++ / Python', 'Slate', '回归与团队包'],
+    categoryLabel: { zh: 'Unreal 资产验收与交付证据', en: 'Unreal asset acceptance and delivery evidence' },
+    summary: { zh: 'UE 5.8.1 原生中文 Slate 工作台：用项目 Profile 分别审计模型、纹理与材质，并把混合交付汇总为可下钻、可追溯的三轨验收结论。', en: 'A native UE 5.8.1 Slate workbench that audits meshes, textures, and materials under project profiles, then summarizes mixed deliveries as traceable, drill-down acceptance results.' },
+    cover: '/media/repositories/production-tools/unreal-auditor-current.png',
+    tags: ['Unreal 5.8', 'C++ / Python', 'Slate', '版本化证据'],
     repositoryUrl: 'https://github.com/Ubik42/unreal-asset-batch-auditor',
     story: { zh: `# Unreal 资产批量质量审计工具
 
-这是面向 Unreal 项目 Static Mesh 的只读审计工作台。Editor-only C++ 批量读取原生元数据，Python 负责项目规则、任务编排和版本化 JSON Report，中文 Slate UI 只呈现真实领域状态，不把规则偷偷塞进界面。
+这是面向 Unreal 美术交付的只读验收工作台。Editor-only C++ 读取宿主元数据，Python 负责项目规则、任务编排和版本化 JSON Report，中文 Slate UI 只呈现领域状态，不在界面层复制规则判断。
 
-## 三步完成项目审计
+## 三条专业轨道
 
-1. 选择内置的桌面、移动端或宽松复核 Profile，也可以导入项目自己的规则；
-2. 从 Content Browser 读取显式选择，分批采集几何预算、LOD、材质槽、Nanite、碰撞、Lightmap、命名和目录证据；
-3. 在资产总览、问题明细和回归对比中查看通过、需处理、采集失败、新增、持续与已解决问题。
+- 模型轨道检查几何预算、LOD、材质槽、Nanite、碰撞、Lightmap、命名与目录；
+- 纹理轨道检查尺寸、Mip、Texture Group、压缩、色彩空间、Virtual Texture 与流送状态；
+- 材质轨道检查 Domain、Blend、双面、Shading、父级链和纹理负载。
+
+内置规则只作为格式与演示样例。项目 Profile 可复制到工程配置后评审和修改；Issue 始终保留实测值、期望值、规则指针与 Evidence ID。
+
+## 混合交付总检
+
+“交付包总检”一次读取 Content Browser 的混合选择，稳定分类为模型、纹理、材质三条泳道。每条泳道使用自己的 Profile、任务状态和原始 Report；总摘要只汇总覆盖、通过、需处理、阻断问题与风险热区，并允许下钻回专业台账。未知类型明确列为未纳入，不自动扩展依赖。
 
 ## 生产可靠性与交付
 
@@ -644,12 +650,13 @@ Version 0.3.1 provides two Maya 2025 workflows: safe three-input UV/position tra
 - 取消只在批次边界生效，已完成结果会保存为合法的部分 Report，但不会被误用作回归基线；
 - 历史会话按稳定 asset path + rule id 比较修复前后变化；
 - 一键导出中文单文件 HTML、Excel 可读 CSV 和 SHA-256 清单，未安装 Unreal 的制片、主美或外包同事也能复核；
-- v0.8.0 发布 ZIP 已完成全新项目安装、升级、卸载和两轮独立 UE 5.8.1 宿主验证。
+- v0.10.0 发布 ZIP 已完成全新项目安装、升级、卸载和独立 UE 5.8.1 宿主验证；主开发线的三轨与项目标准工作台处于下一版本开发阶段。
 
-扫描接口不会保存资产、重建网格或修改 Nanite。24 个项目 Demo 资产与 Engine Static Mesh 的真实宿主证据、任务状态和报告哈希都保存在仓库中。`, en: `# Unreal Asset Batch Auditor
+扫描接口不会保存资产、重建网格、修改 Nanite 或改写材质图。仓库保留真实 UE 宿主截图、Demo 生成方法、任务状态与报告哈希，并把离线 fixture 与真实 Unreal 验证明确区分。`, en: `# Unreal Asset Batch Auditor
 
-A read-only Unreal 5.8.1 Editor plug-in. Native C++ collects Static Mesh metadata, Python applies versioned profiles and produces reports, and the Chinese Slate workbench exposes geometry, LOD, Nanite, collision, lightmap, naming, and path evidence. Version 0.8 adds cancellable bounded batches, immutable session history, regression comparison, offline HTML/CSV handoff packages, and a verified installable release.` },
+A read-only Unreal 5.8.1 Editor plug-in. Native C++ collects host metadata while Python applies versioned profiles and produces reports. Dedicated mesh, texture, and material tracks retain their own evidence; a mixed-delivery summary exposes coverage, blocking issues, hotspots, and drill-down links without modifying production assets.` },
     images: [
+      { src: '/media/repositories/production-tools/unreal-auditor-current.png', alt: { zh: 'UE 5.8.1 中按项目 Profile 执行批量资产验收', en: 'Profile-driven batch asset acceptance in UE 5.8.1' } },
       { src: '/media/repositories/production-tools/unreal-auditor-v08-overview.png', alt: { zh: '24 个 Static Mesh 的资产总览、通过项和问题项', en: 'Overview of 24 Static Mesh assets with passing and failing states' } },
       { src: '/media/repositories/production-tools/unreal-auditor-v08-issues.png', alt: { zh: '规则、实测值、阈值与中文 Evidence', en: 'Rules, measured values, thresholds, and localized evidence' } },
       { src: '/media/repositories/production-tools/unreal-auditor-v08-running.png', alt: { zh: '可观察、可在批次间安全取消的审计任务', en: 'Observable audit task with safe cancellation between batches' } },

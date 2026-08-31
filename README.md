@@ -27,7 +27,7 @@ Unreal 方向新增三项独立作品：[Lyra Hero Arena 五英雄多人对战�
 | [Asset Delivery Organizer](https://github.com/Ubik42/asset-delivery-organizer) | 外包资产扫描、规则检查、dry-run 整理、回滚、复检与收据 | 四组 CC0 合成交付、桌面工作台、多状态截图 |
 | [Maya 场景交付检查器](https://github.com/Ubik42/maya-scene-checker) | Maya 拓扑、命名、引用和场景状态的只读检查与组件定位 | Maya 2025.3.3 可见宿主验收、五组场景、八张中文截图 |
 | [Maya Garment Preparation](https://github.com/Ubik42/maya-garment-preparation) | 服装版片 UV/位置传递、修改前预检、执行后复检与单次 Undo | 七组 CC0 Maya 场景、真实 Maya 2025 工作台截图 |
-| [Unreal Asset Batch Auditor](https://github.com/Ubik42/unreal-asset-batch-auditor) | Static Mesh 预算、LOD、材质槽和 Nanite 的只读批量审计 | UE 5.8.1 原生 Slate 面板、24 资产 Demo、JSON Evidence |
+| [Unreal Asset Batch Auditor](https://github.com/Ubik42/unreal-asset-batch-auditor) | 模型、纹理、材质三轨只读验收与混合交付汇总 | UE 5.8.1 原生 Slate、项目 Profile、版本化 Report 与宿主截图 |
 | [Rez Studio](https://github.com/Ubik42/rez-studio-launcher) | 根据项目、软件版本、插件方案和 Rez 环境启动 DCC | Windows 桌面端、项目软件库、解析与启动诊断 |
 | [MayaScope](https://github.com/Ubik42/MayaIndieTool) | 大型 Maya 场景快照、依赖关系、运行时足迹和回归调查 | Maya 2025 GUI 生命周期验证、依赖与插件诊断截图 |
 | [MayaCraft](https://github.com/Ubik42/MayaCraft) | 角色工作区、Rig Graph、形变诊断、动画重定向与 Contact IK | Maya 2025 中文工作区和四组真实界面截图 |
