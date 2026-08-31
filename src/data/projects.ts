@@ -154,7 +154,7 @@ export const selectedProjects: SelectedProject[] = [
       en: 'A UE5/Web dual-client digital-twin system for thermal-power inspection, with a company server coordinating low-latency bidirectional state and operation synchronization.',
     },
     contribution: [
-      { zh: '使用 C++、Blueprint 与组件化架构实现火力发电设备启停、运行状态、参数监测、告警联动和巡检流程。', en: 'Implemented startup, operating state, telemetry, alarm, and inspection flows for thermal-power equipment with C++, Blueprint, and a component-based architecture.' },
+      { zh: '使用 C++、Blueprint 与组件化架构实现锅炉、汽轮机、发电机及监测设备的启停、联锁、参数变化、告警联动和巡检流程。', en: 'Implemented startup, interlocks, telemetry changes, alarms, and inspection flows for boilers, steam turbines, generators, and monitoring equipment with C++, Blueprint, and a component-based architecture.' },
       { zh: '把 UE5 的组件化、状态机、事件总线和分层设计迁移到 Vue 3 / Three.js Web 端，复用设备 ID、状态模型与指令协议。', en: 'Transferred UE5 component, state-machine, event-bus, and layered patterns to Vue 3 / Three.js while sharing device IDs, state models, and command contracts.' },
       { zh: '以公司服务器为权威状态源，通过 HTTP + WebSocket 实现 UE5 / Server / Web 三端低时延双向同步、操作回传与异常恢复。', en: 'Used the company server as the authoritative state source for low-latency UE5-server-Web synchronization, operation relay, and recovery over HTTP and WebSocket.' },
     ],

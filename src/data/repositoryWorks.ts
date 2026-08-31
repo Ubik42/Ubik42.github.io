@@ -17,6 +17,81 @@ export interface RepositoryWork {
 
 export const repositoryWorks: RepositoryWork[] = [
   {
+    id: 'lyra-hero-arena',
+    title: 'UE5 Lyra 英雄射击客户端',
+    category: 'engine-games',
+    categoryLabel: { zh: '多人 Gameplay 与客户端架构', en: 'Multiplayer gameplay and client architecture' },
+    summary: {
+      zh: '基于 UE5 Lyra 扩展五英雄射击玩法，以 GAS、Game Feature、PawnData 与服务器权威状态组织选人、战斗、死亡、重生和结算；项目仍在持续开发。',
+      en: 'An in-progress UE5 Lyra hero shooter using GAS, Game Features, PawnData, and server-authoritative state for selection, combat, death, respawn, and results.',
+    },
+    cover: '/media/repositories/lyra-hero-arena/hero-select.jpg',
+    tags: ['UE 5.7', 'Lyra', 'C++ / GAS', 'Game Features'],
+    repositoryUrl: 'https://github.com/Ubik42/LyraHeroArena',
+    story: {
+      zh: `# UE5 Lyra 英雄射击客户端
+
+这是一个基于 Unreal Engine 5.7 与 Lyra Starter Game 持续开发的多人英雄射击项目。当前重点不是复制 Lyra 示例内容，而是在它已有的武器、队伍、GAS、PawnData、CommonUI 和网络框架上建立一套可扩展的英雄与比赛循环。
+
+## 客户端与 Gameplay 架构
+
+- 五名英雄以 AbilitySet、装备和数据定义组合差异，不复制整套 Pawn；
+- 服务器保存并校验英雄选择，客户端只提交意图，避免本地状态成为比赛权威；
+- 自有玩法放在 HeroArena Game Feature 中，减少主工程对具体模式的反向依赖；
+- 选人、出生、交战、目标、死亡、重生、换人与结算沿用同一状态路径；
+- 伤害、治疗、队伍、库存和武器 TargetData 尽量复用 Lyra 原有边界。
+
+## 当前状态
+
+仓库公开的是自研 C++ 模块、结构说明和真实运行截图，不重新分发 Lyra、Fab 或 Unreal Engine 资产。核心架构与主要比赛环节已经落地，但角色内容、玩法平衡、界面表现和完整发布流程仍在继续开发。`,
+      en: `# UE5 Lyra Hero Shooter Client
+
+An in-progress multiplayer hero-shooter project built on Unreal Engine 5.7 and Lyra. Five heroes are composed from Ability Sets, equipment, and data definitions, while server-authoritative selection and a HeroArena Game Feature keep gameplay boundaries explicit. The repository publishes original C++ modules and real screenshots without redistributing Lyra or Fab assets.`,
+    },
+    images: [
+      { src: '/media/repositories/lyra-hero-arena/gameplay.jpg', alt: { zh: 'Lyra 英雄射击实际交战场景', en: 'Live combat in the Lyra hero shooter' } },
+    ],
+  },
+  {
+    id: 'lyra-performance-lab',
+    title: 'UE5 200 人群性能优化实验室',
+    category: 'engine-games',
+    categoryLabel: { zh: '客户端性能分析与实验工具', en: 'Client performance analysis and experiment tooling' },
+    summary: {
+      zh: '用固定 200 个 Lyra Pawn 对 AI、寻路、动画、渲染和网络做单变量 A/B；由中文 Editor 工作台编排进程、校验负载并聚合 3+3 结果。',
+      en: 'Single-variable A/B studies across AI, navigation, animation, rendering, and networking with 200 fixed Lyra Pawns and an Editor workbench that validates and aggregates 3+3 runs.',
+    },
+    cover: '/media/repositories/lyra-hero-arena/workbench-render.png',
+    tags: ['Unreal Insights', 'CSV Profiler', 'Slate', 'A/B Benchmark'],
+    repositoryUrl: 'https://github.com/Ubik42/LyraHeroArena/tree/main/Plugins/PerformanceLab',
+    story: {
+      zh: `# UE5 200 人群性能优化实验室
+
+这个项目用固定地图、固定随机种子和 200 个真实 Lyra Pawn 构造稳定压力，研究 AI 决策、路径重规划、动画更新、角色渲染和多人网络中的可归因性能问题。每次实验只改变一个变量，并同时检查负载与画质 Guard，避免用减少角色、停掉行为或不可接受的降质换取漂亮数字。
+
+## 可复现的性能实验
+
+- AI：目标查询、共享战场事实与决策更新；
+- Navigation：路径请求、重规划、拥堵和到达率；
+- Animation：骨骼更新、IK、远景 LOD 与可见性策略；
+- Rendering：角色材质、阴影、附件和可见距离；
+- Networking：服务器出站、空间相关性与多客户端拓扑。
+
+## UE Editor 性能工作台
+
+中文 Slate 工作台负责启动压力地图，编排单机、服务器和多客户端进程，采集 CSV Profiler、渲染、网络、AI、Navigation 与 Animation 指标；每个样本绑定引擎版本、Git 提交、地图、Experience、人数、种子、RHI 和拓扑。只有 Required Guard 与实验合同一致的样本才进入 3+3 聚合，并展示中位数、P95、变化率及质量代价。
+
+Gameplay、运行时实验模块与 Editor 工作台保持单向依赖：游戏逻辑不依赖性能 UI，工作台只消费版本化实验合同和结果。`,
+      en: `# UE5 Crowd 200 Performance Lab
+
+Fixed maps, seeds, and 200 real Lyra Pawns create repeatable single-variable studies across AI, navigation, animation, rendering, and networking. A Chinese Slate workbench launches standalone, server, and client processes, captures profiler data, validates required guards, and aggregates matched 3+3 samples with medians, P95 values, deltas, and quality costs.`,
+    },
+    images: [
+      { src: '/media/repositories/lyra-hero-arena/workbench-network.png', alt: { zh: '网络优化实验的 Baseline 与 Optimized 对比', en: 'Baseline and optimized comparison for the networking experiment' } },
+      { src: '/media/repositories/lyra-hero-arena/gameplay.jpg', alt: { zh: '性能压力实验所依托的 Lyra Gameplay 场景', en: 'Lyra gameplay environment used by the performance stress studies' } },
+    ],
+  },
+  {
     id: 'noemancer',
     title: '最最 AI 友好的高性能引擎',
     category: 'engine-games',
@@ -517,7 +592,7 @@ Version 0.3.1 provides two Maya 2025 workflows: safe three-input UV/position tra
     id: 'unreal-asset-batch-auditor', title: 'Unreal 资产批量质量审计工具', category: 'engine-games',
     categoryLabel: { zh: 'Unreal 资产批量审计与团队交付', en: 'Unreal batch asset audit and team handoff' },
     summary: { zh: 'UE 5.8.1 原生中文 Slate 工作台：按项目 Profile 审计几何、LOD、碰撞、Lightmap、命名与目录，支持可取消批处理、回归比较和离线团队包。', en: 'A native UE 5.8.1 Slate workbench for profile-driven geometry, LOD, collision, lightmap, naming, and path audits with cancellable batches, regression, and offline handoff packages.' },
-    cover: '/media/repositories/production-tools/unreal-auditor-v08-running.png',
+    cover: '/media/repositories/production-tools/unreal-auditor-editor-overview.png',
     tags: ['Unreal 5.8', 'C++ / Python', 'Slate', '回归与团队包'],
     repositoryUrl: 'https://github.com/Ubik42/unreal-asset-batch-auditor',
     story: { zh: `# Unreal 资产批量质量审计工具
@@ -676,7 +751,7 @@ MayaCraft is a Chinese Maya 2025 character workspace for scene-aware character d
       zh: '以经典 tinyhttpd 为基线，重做 C11 / POSIX HTTP 服务器：有界线程池、静态文件、受限 CGI、路径安全与自动化验证。',
       en: 'A C11/POSIX modernization of classic tinyhttpd with a bounded thread pool, static files, restricted CGI, path safety, and automated verification.',
     },
-    cover: '/media/repositories/tinyhttpd/home-desktop.png',
+    cover: '/media/repositories/tinyhttpd/github-readme.png',
     tags: ['C11', 'POSIX Socket', '线程池', 'CGI'],
     repositoryUrl: 'https://github.com/Ubik42/tinyhttpd',
     story: {
