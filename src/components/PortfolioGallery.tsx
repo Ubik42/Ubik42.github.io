@@ -145,7 +145,7 @@ export function PortfolioGallery() {
 
       <div className="portfolio-grid">
         {visibleItems.map((item) => (
-          <motion.button key={`${item.kind}-${item.id}`} type="button" className="portfolio-tile" onClick={() => openItem(item)} whileHover={reducedMotion ? undefined : { y: -4 }} transition={{ duration: .18 }}>
+          <motion.button key={`${item.kind}-${item.id}`} type="button" className="portfolio-tile" data-category={item.category} onClick={() => openItem(item)} whileHover={reducedMotion ? undefined : { y: -4 }} transition={{ duration: .18 }}>
             <figure><img src={item.cover} alt="" loading="eager" /></figure>
             <div className="portfolio-tile-copy">
               <small>{item.label}</small><h3>{item.title}</h3><p>{item.summary}</p>

@@ -34,17 +34,22 @@
 .portfolio-filters button:hover, .portfolio-filters button.is-active { border-color: var(--filter-color); background: var(--filter-color); color: white; transform: translateY(-2px); }
 .portfolio-filters button:focus-visible { outline: 3px solid color-mix(in oklch, var(--filter-color) 34%, transparent); outline-offset: 3px; }
 .portfolio-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(1rem, 1.7vw, 1.75rem); align-items: stretch; }
-.portfolio-tile { display: flex; min-width: 0; height: 100%; flex-direction: column; padding: 0; overflow: hidden; border: 1px solid var(--line); background: var(--white); color: var(--ink); cursor: pointer; text-align: left; }
-.portfolio-tile figure { position: relative; width: 100%; aspect-ratio: 16 / 10; margin: 0; overflow: hidden; border-bottom: 1px solid var(--line); background: oklch(.13 .02 255); }
+.portfolio-tile { --category-color: oklch(.28 .02 255); display: flex; min-width: 0; height: 100%; flex-direction: column; padding: 0; overflow: hidden; border: 1px solid color-mix(in oklch, var(--category-color) 42%, var(--line)); border-top: 4px solid var(--category-color); background: linear-gradient(180deg, color-mix(in oklch, var(--category-color) 5%, white), var(--white) 40%); color: var(--ink); cursor: pointer; text-align: left; transition: border-color 160ms ease, box-shadow 160ms ease; }
+.portfolio-tile[data-category='pipeline'] { --category-color: oklch(.47 .15 246); }
+.portfolio-tile[data-category='engine-games'] { --category-color: oklch(.47 .15 48); }
+.portfolio-tile[data-category='general-ta'] { --category-color: oklch(.43 .12 151); }
+.portfolio-tile[data-category='other-tools'] { --category-color: oklch(.46 .14 305); }
+.portfolio-tile:hover { border-color: var(--category-color); box-shadow: 0 .8rem 1.8rem color-mix(in oklch, var(--category-color) 14%, transparent); }
+.portfolio-tile figure { position: relative; width: 100%; aspect-ratio: 16 / 10; margin: 0; overflow: hidden; border-bottom: 1px solid color-mix(in oklch, var(--category-color) 45%, var(--line)); background: oklch(.13 .02 255); }
 .portfolio-tile figure::after { position: absolute; inset: 0; border: 1px solid color-mix(in oklch, white 20%, transparent); pointer-events: none; content: ''; }
 .portfolio-tile figure img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: scale 420ms var(--ease-out); }
 .portfolio-tile:hover figure img { scale: 1.025; }
 .portfolio-tile-copy { display: flex; flex: 1; flex-direction: column; padding: 1rem; }
-.portfolio-tile-copy small { color: var(--blue); font-size: .76rem; font-weight: 800; }
+.portfolio-tile-copy small { color: var(--category-color); font-size: .76rem; font-weight: 800; }
 .portfolio-tile-copy h3 { margin: .35rem 0 .55rem; font-size: clamp(1.2rem, 1.55vw, 1.55rem); line-height: 1.08; }
 .portfolio-tile-copy > p { display: -webkit-box; min-height: 4.5em; margin: 0 0 1rem; overflow: hidden; color: var(--muted); font-size: .9rem; line-height: 1.5; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
 .portfolio-tile-copy > div { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: auto; }
-.portfolio-tile-copy > div span { padding: .2rem .4rem; border: 1px solid var(--line); color: var(--muted); font-size: .68rem; }
+.portfolio-tile-copy > div span { padding: .2rem .4rem; border: 1px solid color-mix(in oklch, var(--category-color) 35%, var(--line)); background: color-mix(in oklch, var(--category-color) 6%, white); color: color-mix(in oklch, var(--category-color) 72%, var(--ink)); font-size: .68rem; }
 .unified-dialog { background: var(--white); color: var(--ink); }
 .unified-dialog .notion-story { color: var(--ink); }
 .unified-dialog .project-dialog-heading { border-color: var(--ink); }
