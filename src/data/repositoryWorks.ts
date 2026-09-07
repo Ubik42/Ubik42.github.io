@@ -929,6 +929,60 @@ PyArsenal 面向需要维护大量零散脚本的 Python 开发者。它把脚�
 PyArsenal is a graphical manager for Python developers who maintain many scripts. It centralizes registration, tags, execution environments, and compilation so a script library remains searchable and deliverable.` },
   },
   {
+    id: 'comfyui-workflow-lab', title: 'ComfyUI 工作流智能推荐 Agent', category: 'ai-agent',
+    categoryLabel: { zh: '本地工作流检索与推荐 Agent', en: 'Local workflow retrieval and recommendation agent' },
+    summary: { zh: '从 617 个官方工作流中结合中文需求、参考图、本机模型、节点、版本、16GB 显存与许可证约束，返回最多三个可解释候选，并在确认后安全导出。', en: 'Recommends up to three explainable candidates from 617 official workflows using the request, reference image, local models, nodes, versions, VRAM, and license constraints.' },
+    cover: '/media/repositories/comfyui-workflow-lab/reference-recommendation.png',
+    tags: ['ComfyUI', 'Agent Skill', '多模态检索', '本地兼容检查'],
+    repositoryUrl: 'https://github.com/Ubik42/ComfyUI-Workflow-Lab',
+    story: { zh: `# ComfyUI 工作流智能推荐 Agent
+
+面对数量不断增长的 ComfyUI 模板，真正费时间的往往不是点击“运行”，而是判断哪个工作流符合当前生成目标、参考图、本机模型、已安装节点、ComfyUI 版本、16GB 显存和使用许可证。这个项目把工作流选型做成一个中文优先、本地优先、结果可解释的推荐 Agent，而不是再做一个让模型随意拼接节点的聊天入口。
+
+## 从 617 个官方工作流中先筛选，再解释
+
+系统将 617 个官方工作流整理为带来源 revision 的 Workflow Card，记录任务类型、输入模态、模型、节点、显存、许可证和兼容要求。用户输入中文需求并可附参考图后，Agent 会形成 SearchIntent 与 VisualIntent：任务、输入和许可证等事实作为硬约束，中文词项、离线字符 Embedding 与参考图视觉特征用于软排序。
+
+最终只返回最多三个候选，并逐项说明推荐原因、所需模型与节点、许可证、本机可运行性和风险。视觉相似度只能调整通过硬约束后的顺序，不会覆盖缺失依赖或许可证事实。
+
+## 推荐前读取真实本机环境
+
+项目会检查本机 ComfyUI、模型目录、自定义节点、版本和 16GB 显存条件，把候选区分为：
+
+- 可以直接使用；
+- 缺少模型或节点；
+- 当前需求没有可信匹配；
+- 已选择候选，等待用户确认导出。
+
+缺少依赖时直接列出差异，不伪装成“推荐成功”；没有可信结果时保留空结果，也不会为了凑满三个候选降低硬约束。
+
+## 写入前确认，保持推荐工具的安全边界
+
+推荐阶段只读。只有用户明确选择候选后，系统才把工作流和说明导出到受限目录。它不会自动下载大型模型、安装未知节点或提交 ComfyUI 队列，避免一次选型操作在后台改变环境。
+
+同一套能力通过稳定 CLI、结构化 JSON、可安装 Agent Skill 和中文 Web 界面交付，可以被 Codex 等 Agent 调用，也能独立运行。接口层与检索内核分离，方便后续替换 UI 或接入其他 Harness。
+
+## 真实 ComfyUI 验证
+
+展示案例不是静态 Mock：候选工作流已经在 RTX 4080 16GB 环境中加载并使用 Z-Image-Turbo 完成真实生成。项目保留推荐结果、环境检查、失败状态、写入确认、ComfyUI 载入和最终产物，形成从自然语言需求到可运行工作流的完整证据链。
+
+## 项目边界
+
+它负责可信地回答“当前应该选哪个工作流、为什么、这台机器能否运行”，不试图取代 ComfyUI 本身，也不把官方模板重新包装成私有资产。下一阶段重点是用固定查询集评估 Top-k 命中、约束违反率、依赖诊断和解释正确率，而不是无限增加控制工具。`, en: `# ComfyUI workflow recommendation agent
+
+This Chinese-first, offline-first agent recommends up to three explainable candidates from a revisioned catalog of 617 official ComfyUI workflows. It combines natural-language intent and an optional reference image with hard constraints for task, input, license, local models, custom nodes, version, and 16 GB VRAM.
+
+It exposes honest ready, missing-dependency, no-match, and confirmation states. Recommendation is read-only; export occurs only after explicit confirmation, while model downloads, node installation, and queue submission remain outside its scope. The same core is delivered through a CLI, structured JSON, an installable Agent Skill, and a Web UI. A selected Z-Image-Turbo workflow was loaded and executed on a real RTX 4080 16 GB environment.` },
+    images: [
+      { src: '/media/repositories/comfyui-workflow-lab/reference-recommendation.png', alt: { zh: '结合中文需求与参考图返回三个可解释工作流候选', en: 'Three explainable workflow candidates from a Chinese request and reference image' } },
+      { src: '/media/repositories/comfyui-workflow-lab/missing-dependencies.png', alt: { zh: '模型与自定义节点缺失诊断', en: 'Missing model and custom-node diagnostics' } },
+      { src: '/media/repositories/comfyui-workflow-lab/no-match.png', alt: { zh: '硬约束下没有可信候选的明确状态', en: 'Explicit no-match state under hard constraints' } },
+      { src: '/media/repositories/comfyui-workflow-lab/confirm-before-export.png', alt: { zh: '选择候选后、写入工作区前的确认步骤', en: 'Confirmation after selection and before workspace export' } },
+      { src: '/media/repositories/comfyui-workflow-lab/comfyui-real-generation.png', alt: { zh: '候选工作流在本机 ComfyUI 中真实运行', en: 'Recommended workflow running in local ComfyUI' } },
+      { src: '/media/repositories/comfyui-workflow-lab/z-image-turbo-real-4080.png', alt: { zh: 'RTX 4080 16GB 上的 Z-Image-Turbo 真实生成结果', en: 'Real Z-Image-Turbo result generated on an RTX 4080 16 GB' } },
+    ],
+  },
+  {
     id: 'artflow-agent', title: '面向引擎接入的新时代 AIGC 框架', category: 'ai-agent',
     categoryLabel: { zh: '引擎场景 AIGC 智能体框架', en: 'Engine-scene AIGC agent framework' },
     summary: { zh: '把 Unreal 场景事实编译成类型化变更计划，协调 ComfyUI、GPT Image 2 与图生 3D，在候选关卡中完成执行、评价、定向纠正和发布。', en: 'Compiles Unreal scene facts into typed change plans and coordinates ComfyUI, GPT Image 2, and image-to-3D providers for execution, judging, targeted correction, and publishing in candidate levels.' },

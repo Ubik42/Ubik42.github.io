@@ -18,7 +18,7 @@ type GalleryItem =
 const filters: Array<{ id: 'all' | PortfolioCategory; zh: string; en: string }> = [
   { id: 'all', zh: '全部作品', en: 'All work' },
   { id: 'pipeline', zh: '工具管线', en: 'Tool pipelines' },
-  { id: 'ai-agent', zh: 'AIGC', en: 'AIGC' },
+  { id: 'ai-agent', zh: 'AIGC & Agent', en: 'AIGC & Agent' },
   { id: 'engine-games', zh: '引擎与游戏', en: 'Engines & games' },
   { id: 'general-ta', zh: '通用技术美术技能', en: 'General technical art' },
   { id: 'other-tools', zh: '部分其他工具', en: 'Selected other tools' },
@@ -49,6 +49,7 @@ const engineGamesOrder = new Map([
 
 const aigcOrder = new Map([
   'artflow-agent',
+  'comfyui-workflow-lab',
   'comfyui-production-nodes',
 ].map((id, index) => [id, index]));
 
