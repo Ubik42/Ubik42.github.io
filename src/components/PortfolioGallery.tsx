@@ -18,6 +18,7 @@ type GalleryItem =
 const filters: Array<{ id: 'all' | PortfolioCategory; zh: string; en: string }> = [
   { id: 'all', zh: '全部作品', en: 'All work' },
   { id: 'pipeline', zh: '工具管线', en: 'Tool pipelines' },
+  { id: 'ai-agent', zh: 'AIGC', en: 'AIGC' },
   { id: 'engine-games', zh: '引擎与游戏', en: 'Engines & games' },
   { id: 'general-ta', zh: '通用技术美术技能', en: 'General technical art' },
   { id: 'other-tools', zh: '部分其他工具', en: 'Selected other tools' },
@@ -29,7 +30,6 @@ const pipelineOrder = new Map([
   'internship-art-pipeline',
   'maya-garment-preparation',
   'mayascope',
-  'comfyui-production-nodes',
   'mayacraft',
   'asset-delivery-organizer',
   'maya-scene-checker',
@@ -40,7 +40,6 @@ const engineGamesOrder = new Map([
   'lyra-hero-arena',
   'siggraph-physics-lab',
   'lyra-performance-lab',
-  'artflow-agent',
   'ue-performance-workbench',
   'resonance-forge',
   'noemancer',
@@ -48,10 +47,15 @@ const engineGamesOrder = new Map([
   'noemancer-software-rasterizer',
 ].map((id, index) => [id, index]));
 
+const aigcOrder = new Map([
+  'artflow-agent',
+  'comfyui-production-nodes',
+].map((id, index) => [id, index]));
+
 const categoryOrder = new Map<PortfolioCategory, number>([
   ['pipeline', 0],
-  ['engine-games', 1],
-  ['ai-agent', 2],
+  ['ai-agent', 1],
+  ['engine-games', 2],
   ['general-ta', 3],
   ['other-tools', 4],
 ]);
@@ -79,6 +83,9 @@ export function PortfolioGallery() {
         }
         if (a.item.category === 'engine-games') {
           return (engineGamesOrder.get(a.item.id) ?? Number.MAX_SAFE_INTEGER) - (engineGamesOrder.get(b.item.id) ?? Number.MAX_SAFE_INTEGER);
+        }
+        if (a.item.category === 'ai-agent') {
+          return (aigcOrder.get(a.item.id) ?? Number.MAX_SAFE_INTEGER) - (aigcOrder.get(b.item.id) ?? Number.MAX_SAFE_INTEGER);
         }
         return a.sourceIndex - b.sourceIndex;
       })

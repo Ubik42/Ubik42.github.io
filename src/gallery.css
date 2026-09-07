@@ -25,9 +25,10 @@
 .portfolio-gallery-header h2 { margin: 0; font-size: clamp(2.8rem, 5vw, 5.5rem); line-height: .85; letter-spacing: -.05em; }
 .portfolio-gallery-header span { color: var(--blue); font-family: var(--display); font-weight: 800; }
 .portfolio-gallery-header p { max-width: 32rem; margin: 0; color: var(--muted); }
-.portfolio-filters { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .8rem; margin-bottom: 2.25rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--ink); }
+.portfolio-filters { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: .8rem; margin-bottom: 2.25rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--ink); }
 .portfolio-filters button { --filter-color: oklch(.28 .02 255); display: grid; min-height: 4.35rem; padding: 1rem 1.15rem; place-items: center; border: 2px solid color-mix(in oklch, var(--filter-color) 58%, white); background: color-mix(in oklch, var(--filter-color) 9%, white); color: var(--filter-color); cursor: pointer; font-size: clamp(1.08rem, 1.35vw, 1.32rem); font-weight: 820; line-height: 1.15; transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease, transform 160ms ease; }
 .portfolio-filters button[data-filter='pipeline'] { --filter-color: oklch(.47 .15 246); }
+.portfolio-filters button[data-filter='ai-agent'] { --filter-color: oklch(.5 .19 345); }
 .portfolio-filters button[data-filter='engine-games'] { --filter-color: oklch(.47 .15 48); }
 .portfolio-filters button[data-filter='general-ta'] { --filter-color: oklch(.43 .12 151); }
 .portfolio-filters button[data-filter='other-tools'] { --filter-color: oklch(.46 .14 305); }
@@ -36,6 +37,7 @@
 .portfolio-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(1rem, 1.7vw, 1.75rem); align-items: stretch; }
 .portfolio-tile { --category-color: oklch(.28 .02 255); --category-ink: color-mix(in oklch, var(--category-color) 82%, var(--ink)); display: flex; min-width: 0; height: 100%; flex-direction: column; padding: 0; overflow: hidden; border: 2px solid color-mix(in oklch, var(--category-color) 68%, var(--line)); border-top: 7px solid var(--category-color); background: linear-gradient(180deg, color-mix(in oklch, var(--category-color) 13%, white), color-mix(in oklch, var(--category-color) 5%, white) 52%, var(--white)); color: var(--ink); cursor: pointer; text-align: left; transition: border-color 160ms ease, box-shadow 160ms ease; }
 .portfolio-tile[data-category='pipeline'] { --category-color: oklch(.47 .15 246); }
+.portfolio-tile[data-category='ai-agent'] { --category-color: oklch(.5 .19 345); }
 .portfolio-tile[data-category='engine-games'] { --category-color: oklch(.47 .15 48); }
 .portfolio-tile[data-category='general-ta'] { --category-color: oklch(.43 .12 151); }
 .portfolio-tile[data-category='other-tools'] { --category-color: oklch(.46 .14 305); }
