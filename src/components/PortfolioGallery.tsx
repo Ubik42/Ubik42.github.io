@@ -29,6 +29,7 @@ const pipelineOrder = new Map([
   'rez-studio-launcher',
   'internship-art-pipeline',
   'maya-garment-preparation',
+  'advanced-skeleton-python-refactor',
   'mayascope',
   'mayacraft',
   'asset-delivery-organizer',
