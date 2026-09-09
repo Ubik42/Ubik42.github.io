@@ -722,30 +722,36 @@ The Tauri 2 and React desktop application connects to Rez through a Python servi
   {
     id: 'advanced-skeleton-python-refactor', title: 'AdvancedSkeleton Python 架构重构', category: 'pipeline',
     categoryLabel: { zh: 'Maya 角色绑定架构与跨 DCC 迁移研究', en: 'Maya rigging architecture and cross-DCC migration research' },
-    summary: { zh: '以 Maya-first、Blender-second 路线，将授权环境中的单体 MEL 行为重构为纯 Python Core、用例层与宿主适配器；当前完成 90 个 Maya 切片和 272 项回归验证。', en: 'A Maya-first, Blender-second study that restructures monolithic MEL behavior into a pure-Python core, application use cases, and host adapters, with 90 Maya slices and 272 regression checks completed.' },
+    summary: { zh: 'v0.95.0 采用 Maya-first、Blender-second 路线，将授权环境中的单体 MEL 行为拆分为纯 Python Core、用例层与宿主适配器；当前完成 90 个 Maya 切片和 272 项回归测试。', en: 'Version 0.95.0 follows a Maya-first, Blender-second path, separating licensed MEL behavior into a pure-Python core, application use cases, and host adapters; 90 Maya slices and 272 regression tests are complete.' },
     cover: '/media/repositories/production-tools/advanced-skeleton-python-refactor.svg',
-    tags: ['Maya 2024', 'Python Architecture', '90 Maya Slices', '272 Tests'],
+    tags: ['v0.95.0', 'Maya 2024', '90 Maya Slices', '272 Tests'],
     story: { zh: `# AdvancedSkeleton Python 架构重构
 
-这是一个围绕本机已授权 AdvancedSkeleton 安装开展的私有研究与迁移工程。目标不是公开复制原始 MEL，而是先在 Maya 中理解并重建可验证的绑定行为，再把稳定语义沉淀为 DCC 无关的 Python 合同，为第二阶段迁移到 Blender 建立边界清晰的基础。
+这是一个围绕本机已授权 AdvancedSkeleton 安装开展的私有研究与迁移工程。v0.95.0 先在 Maya 中重建绑定行为，再把稳定语义整理为 DCC 无关的 Python 合同。Blender 是第二阶段目标，当前不与 Maya 主线并行扩展。
 
-## Maya-first 的分层重构
+## 当前结果
 
-- 纯 Python Core 保存 Rig 计划、数据模型、命名与预检规则，不依赖 \`maya.cmds\` 或 \`bpy\`；
-- Application 层组织用例、事务、读回复检与失败回滚；
-- Maya Adapter 负责真实场景写入，所有修改先预检，并在单一 Undo 事务中提交；
-- 当前 90 个纵向切片覆盖 Fit、30/70 关节 Body、Arm/Leg/Hand FK/IK、Skin、Root Motion、FBX 与 MoCap 临时驱动；
-- 272 项 Python 回归测试与 Maya 2024 standalone 验证覆盖当前交付基线。
+- 90 个 Maya 纵向切片覆盖 Fit、Body、Arm / Leg / Hand FK/IK、Skin、Root Motion、FBX 与 MoCap 临时驱动；
+- 自生成素材覆盖 30 关节基础 Body、70 关节五指 Body 和 31 关节独立导出骨架；
+- FitSkeleton、Hand Pose 与 Skin Weight 使用路径无关的 JSON 文档和 SHA-256 内容摘要；
+- 272 项纯 Python 回归测试通过，仓库包含 79 个 Maya / Blender 宿主 smoke 脚本；
+- Maya 2024 standalone 已验证当前 MoCap 连接、跨帧驱动、断开与两级 Undo。
 
-## 可移植性与当前边界
+## 已完成的工作流
 
-31 关节独立导出骨架、显式 FBX Profile、路径无关姿态与权重文档，以及 MoCap 显式映射，都通过宿主无关合同表达。Blender 是重要的第二目标宿主，但当前阶段不与 Maya 主线并行扩展：只保留早期可行性代码，等待 Maya 语义和验收标准稳定后再迁移。
+- Fit 与 Body：FitSkeleton 创建、导入、导出和安全增量合并，30/70 关节 Body 构建及 provenance / ReBuild 检查；
+- 角色控制与蒙皮：双臂、双腿和双手控制，FK/IK 匹配、stretch、twist、volume、reverse-foot，以及显式蒙皮权重工作流；
+- 动画与导出：Root Motion、独立 Export Skeleton、完整 TRS bake、显式 FBX Profile，以及 MoCap 来源检查、映射和临时驱动。
 
-仓库保持私有，不包含 AdvancedSkeleton 原始 MEL、模板、图标、场景或文档；展示内容只描述独立实现、合成测试素材和验证结果。`, en: `# AdvancedSkeleton Python Architecture Refactor
+## 分层与写入边界
 
-A private, clean-room research and migration project around a locally licensed AdvancedSkeleton installation. The work follows a strict Maya-first, Blender-second sequence: behavior is first rebuilt and verified in Maya, then stable semantics are captured as DCC-independent Python contracts for a later Blender adapter.
+纯 Python Core 保存数据、数学、计划和校验，不导入 \`maya.cmds\` 或 \`bpy\`。Application 层组织场景捕获、事务和结果复检；Maya Adapter 负责 DAG、DG、约束、关键帧和文件导出。Maya 写入在修改前检查对象与连接，在单一 Undo Chunk 中提交，并从场景重新读取关键结果。
 
-The current baseline includes 90 Maya vertical slices across Fit, 30/70-joint bodies, arm/leg/hand FK/IK, skinning, root motion, FBX, and temporary MoCap driving. A pure-Python core, application layer, and Maya adapter are backed by 272 regression checks and Maya 2024 standalone validation. Blender remains a frozen second-stage target rather than a parallel product line. No original AdvancedSkeleton MEL, templates, icons, scenes, or documentation are redistributed.` },
+仓库保持私有，不包含 AdvancedSkeleton 原始 MEL、模板、图标、场景或文档。当前版本未包含产品 UI、厂商 MoCap 自动映射、外部 FBX 自动导入或 Blender 第二阶段的正式功能迁移。`, en: `# AdvancedSkeleton Python Architecture Refactor
+
+A private research and migration project around a locally licensed AdvancedSkeleton installation. Version 0.95.0 follows a Maya-first, Blender-second sequence: behavior is rebuilt and verified in Maya before stable semantics are captured as DCC-independent Python contracts.
+
+The current baseline includes 90 Maya vertical slices across Fit, 30/70-joint bodies, arm/leg/hand FK/IK, skinning, root motion, FBX, and temporary MoCap driving. The repository contains 272 passing pure-Python regression tests and 79 host smoke scripts, with the current MoCap lifecycle validated in Maya 2024 standalone. Blender remains a frozen second-stage target. No original AdvancedSkeleton MEL, templates, icons, scenes, or documentation are redistributed.` },
     images: [
       { src: '/media/repositories/production-tools/advanced-skeleton-python-refactor.svg', alt: { zh: 'Maya-first、Blender-second 的 Python 分层迁移架构与验证基线', en: 'Maya-first, Blender-second layered Python migration architecture and validation baseline' } },
     ],

@@ -10,7 +10,6 @@
       <stop offset="0" stop-color="#27c4c8"/>
       <stop offset="1" stop-color="#147a99"/>
     </linearGradient>
-    <filter id="shadow"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-opacity=".28"/></filter>
   </defs>
   <rect width="1600" height="900" fill="url(#bg)"/>
   <circle cx="1390" cy="110" r="250" fill="#27c4c8" opacity=".06"/>
@@ -18,9 +17,9 @@
   <g font-family="Arial, 'Microsoft YaHei', sans-serif">
     <text x="110" y="118" fill="#72e7e5" font-size="26" font-weight="700" letter-spacing="5">MAYA-FIRST · BLENDER-SECOND</text>
     <text x="110" y="188" fill="#f5f8fc" font-size="54" font-weight="700">AdvancedSkeleton Python 架构重构</text>
-    <text x="110" y="236" fill="#aebed1" font-size="25">从单体 MEL 行为到可验证、可移植的 Python 合同</text>
+    <text x="110" y="236" fill="#aebed1" font-size="25">从单体 MEL 行为到分层、可验证的 Python 合同</text>
 
-    <g filter="url(#shadow)">
+    <g>
       <rect x="110" y="310" width="310" height="146" rx="22" fill="#172a3d" stroke="#34516b"/>
       <text x="140" y="355" fill="#8da9c1" font-size="19">PURE PYTHON</text>
       <text x="140" y="400" fill="#ffffff" font-size="34" font-weight="700">Core</text>
@@ -39,7 +38,7 @@
       <rect x="1265" y="310" width="225" height="146" rx="22" fill="#121e2d" stroke="#496078" stroke-dasharray="9 8"/>
       <text x="1295" y="355" fill="#8598aa" font-size="19">STAGE 2 · FROZEN</text>
       <text x="1295" y="400" fill="#c8d3de" font-size="31" font-weight="700">Blender</text>
-      <text x="1295" y="430" fill="#8598aa" font-size="18">稳定后迁移</text>
+      <text x="1295" y="430" fill="#8598aa" font-size="18">Maya 稳定后迁移</text>
     </g>
 
     <g fill="none" stroke="#72e7e5" stroke-width="4">
@@ -69,6 +68,6 @@
       <rect x="1085" y="132" width="245" height="48" rx="24" fill="#163a46"/>
       <text x="1207" y="164" fill="#72e7e5" text-anchor="middle" font-size="18" font-weight="700">Maya 2024 VERIFIED</text>
     </g>
-    <text x="110" y="835" fill="#71869a" font-size="18">PRIVATE CLEAN-ROOM RESEARCH · NO ORIGINAL ADVANCEDSKELETON ASSETS REDISTRIBUTED</text>
+    <text x="110" y="835" fill="#71869a" font-size="18">PRIVATE RESEARCH · ORIGINAL ADVANCEDSKELETON SOURCE AND ASSETS ARE NOT INCLUDED</text>
   </g>
 </svg>
