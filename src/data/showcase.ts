@@ -33,7 +33,7 @@ export const portfolioOverview = {
   status: { en: 'Public snapshot online · Maya + Unreal host-verified', zh: '公开快照已上线 · Maya + Unreal 宿主实测' },
   facts: [
     { value: '5', label: { en: 'product lines', zh: '条产品线' } },
-    { value: '18', label: { en: 'independent repositories', zh: '个独立仓库' } },
+    { value: '19', label: { en: 'independent repositories', zh: '个独立仓库' } },
     { value: '9', label: { en: 'visual projects', zh: '个视觉作品' } },
     { value: 'CN', label: { en: 'Chinese-first presentation', zh: '中文优先展示' } },
   ],

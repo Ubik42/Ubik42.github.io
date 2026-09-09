@@ -17,6 +17,65 @@ export interface RepositoryWork {
 
 export const repositoryWorks: RepositoryWork[] = [
   {
+    id: 'gameops-insight-agent',
+    title: 'GameOps Insight Agent：游戏运营数据 BI Agent',
+    category: 'ai-agent',
+    categoryLabel: { zh: '游戏运营 BI Agent', en: 'Game operations BI agent' },
+    summary: {
+      zh: '把中文业务问题编译为指标口径、分析计划和受限只读查询，再用真实表格、图表、证据哈希与 Run 回放交付可复算结论。',
+      en: 'Compiles Chinese business questions into metric contracts, analysis plans, and restricted read-only queries, then delivers reproducible findings with real tables, charts, evidence hashes, and replayable runs.',
+    },
+    cover: '/media/repositories/gameops-insight-agent/golden.png',
+    tags: ['BI Agent', 'DuckDB', 'FastAPI', 'SQLGlot'],
+    repositoryUrl: 'https://github.com/Ubik42/GameOps-Insight-Agent',
+    story: {
+      zh: `# GameOps Insight Agent：游戏运营数据 BI Agent
+
+这是一个中文优先、本地运行的游戏运营与客户端质量分析作品。重点不是生成一组静态 KPI 卡片，而是把一次业务判断拆成可以审阅和复算的分析过程：中文问题先匹配版本化指标口径，形成 AnalysisPlan，再进入受限只读查询、结果复检、图表与表格，最后保存证据绑定和 Run。
+
+## 从问题到证据的完整链路
+
+- 9 个版本化指标记录名称、公式、粒度、分母、允许维度、负责人和冲突关系；
+- “本周崩溃率”存在按会话和按玩家两个有效分母，系统会在执行 SQL 前要求选择，不静默猜测；
+- SQLGlot AST 只允许单条只读查询，DuckDB 连接关闭外部访问与扩展加载，并限制执行时间、内存、线程和返回行数；
+- 查询结果继续检查空结果、零分母、缺日、重复粒度、异常规模、样本量和截断，复检错误会阻断业务结论；
+- 每条结论绑定数据集、字段和 SHA-256，Run 保存计划、SQL、参数、快照、结果、耗时、复检、证据、限制与异常。
+
+## 五类游戏 BI 问题
+
+固定种子合成数据覆盖 1,200 名虚构玩家，以及会话、客户端性能、崩溃、英雄对局和活动事件。当前版本可以稳定复演：
+
+- 版本上线后的玩家活跃、会话崩溃和 GPU 帧时变化；
+- 地图性能回归是否集中在高强度战斗与特定设备；
+- 英雄胜率和选用率变化是否集中在高分段打野；
+- 活动漏斗最大流失步骤及平台分群；
+- 当前观测数据为什么只能说明时间相关，不能证明版本发布造成流失。
+
+## 运行可靠性与边界
+
+分析任务独立落盘，运行中可以主动取消；服务重启后，未完成任务会标记为中断，并从原问题创建关联重跑，不会把部分结果伪装成成功。数据生成先在同盘暂存，完整性检查通过后才原子替换正式快照；Run 也在临时目录完成后整体提交。
+
+v0.1.0 已在 Windows、Python 3.12 和 DuckDB 1.5.5 验证，21 项核心测试与 9/9 固定 BI 评测通过。当前只支持仓库自带的合成数据和确定性问题路由，不宣称任意问题、真实企业数据、自动因果判断或开放式代码执行。`,
+      en: `# GameOps Insight Agent
+
+A Chinese-first, locally runnable BI agent for game operations and client-quality analysis. It turns a business question into versioned metric contracts and an inspectable AnalysisPlan before running restricted read-only DuckDB queries. Results are validated, rendered as real tables and charts, and stored with SQL, parameters, snapshot hashes, evidence bindings, limitations, and replayable Run artifacts.
+
+Five distinct scenarios cover release regression, map performance, hero balance, activity funnels, and causal-evidence gaps. Ambiguous crash-rate questions stop before SQL until the user selects a denominator. Empty results, zero denominators, missing dates, duplicate grain, unexpected result size, small samples, and truncation are checked before findings are written.
+
+Version 0.1.0 is verified on Windows with Python 3.12 and DuckDB 1.5.5. It uses deterministic synthetic data and bounded question routing; it does not claim arbitrary enterprise analysis, causal automation, or unrestricted code execution.`,
+    },
+    images: [
+      {
+        src: '/media/repositories/gameops-insight-agent/metric-choice.png',
+        alt: { zh: '崩溃率两个有效分母的执行前口径选择', en: 'Pre-query selection between two valid crash-rate denominators' },
+      },
+      {
+        src: '/media/repositories/gameops-insight-agent/sql-blocked.png',
+        alt: { zh: '外部文件读取 SQL 在执行前被拦截', en: 'External-file SQL blocked before execution' },
+      },
+    ],
+  },
+  {
     id: 'lyra-hero-arena',
     title: 'Lyra Hero Arena：五英雄多人对战游戏',
     category: 'engine-games',
