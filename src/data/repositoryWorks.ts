@@ -671,6 +671,34 @@ A read-only Unreal 5.8.1 Editor plug-in. Native C++ collects host metadata while
     ],
   },
   {
+    id: 'unreal-toolsmith-agent', title: 'UE 编辑器工具开发与诊断 Agent', category: 'engine-games',
+    categoryLabel: { zh: 'UE 编辑器工具开发、构建诊断与宿主验证', en: 'Unreal editor tooling, build diagnosis, and host validation' },
+    summary: { zh: '把中文 UE 工具需求编译为版本化任务合同与可审阅 Patch，串联 UBT、Automation、官方 MCP 只读发现和真实 Slate 生命周期验证。', en: 'Compiles Chinese Unreal tooling requests into versioned task contracts and reviewable patches, then connects UBT, Automation, official read-only MCP discovery, and real Slate lifecycle validation.' },
+    cover: '/media/repositories/production-tools/unreal-toolsmith-agent.png',
+    tags: ['v0.1.1', 'UE 5.8.1', 'C++ / Slate', 'MCP / Automation'],
+    repositoryUrl: 'https://github.com/Ubik42/Unreal-Toolsmith-Agent',
+    story: { zh: `# UE 编辑器工具开发与诊断 Agent
+
+这是一个面向 UE 客户端、TA 与工具程序开发者的本地开发 Harness。它读取精确引擎和项目上下文，把中文需求整理为 ToolTaskSpec 与 ChangePlan，在隔离 Sandbox 中预览并应用插件 Patch，再通过 UBT、Automation、官方 Unreal MCP 只读发现和真实 Editor 生命周期完成验证。
+
+## 已完成纵切
+
+- 交付 Editor-only 静态网格只读审计插件，读取 Content Browser 显式选择并显示 LOD、材质槽、Nanite 和简单碰撞；
+- 六个严格 JSON 合同覆盖引擎、项目、任务、改动、验证和最终 RunReceipt；
+- Patch 应用前后用 SHA-256 对照模板与 Sandbox 副本，构建日志可归类 Target、依赖与链接错误；
+- UE 5.8.1 中已通过 3 个 Automation Case，并完成面板首次打开、关闭、重开和进程清理；
+- v0.1.1 演示读取四个引擎 BasicShapes，源资产运行前后哈希一致，报告只写入项目 Saved。
+
+当前范围只覆盖 UE 5.8.1 和这一条只读工具纵切。MCP 仅调用本机回环的只读发现，不执行宽权限工具；仓库不包含 Unreal Engine 内容或编译二进制。`, en: `# Unreal Toolsmith Agent
+
+A local development harness for Unreal client, technical-art, and tools engineers. It turns tooling requests into versioned contracts and reviewable patches, applies them in an isolated sandbox, and validates the result through UBT, Automation, official read-only Unreal MCP discovery, and a real Editor lifecycle.
+
+Version 0.1.1 ships an Editor-only static-mesh audit slice validated on Unreal Engine 5.8.1. Three Automation cases pass, the Slate panel opens, closes, and reopens in an isolated Editor process, and four built-in BasicShapes retain identical hashes before and after the run. The current release does not claim a multi-version matrix, arbitrary MCP execution, or automatic asset repair.` },
+    images: [
+      { src: '/media/repositories/production-tools/unreal-toolsmith-agent.png', alt: { zh: 'UE 5.8.1 中读取四个 BasicShapes 的静态网格只读审计面板', en: 'Read-only static-mesh audit panel inspecting four BasicShapes in UE 5.8.1' } },
+    ],
+  },
+  {
     id: 'rez-studio-launcher', title: 'DCC 项目环境与插件启动器', category: 'pipeline',
     categoryLabel: { zh: '项目环境、插件与 DCC 工具运行时', en: 'Project environment, plug-in, and DCC tool runtime' },
     summary: { zh: '按项目解析隔离的 Rez 环境，并把插件方案、工具清单、宿主装载和诊断日志组织成可追溯的 DCC 工作站入口。', en: 'Resolves isolated Rez environments per project and manages plug-in schemes, tool manifests, host loading, and diagnostics as one traceable DCC workstation entry point.' },
