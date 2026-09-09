@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Game Unpack Agent v0.1.0 运行结果摘要</title>
+  <desc id="desc">Windows 上的 Unity 与 Unreal 受控解包流程，以及两个固定样本的验证结果。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#071522"/>
+      <stop offset="0.56" stop-color="#102a3f"/>
+      <stop offset="1" stop-color="#19142f"/>
+    </linearGradient>
+    <linearGradient id="unity" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#19b6c9"/>
+      <stop offset="1" stop-color="#087b9a"/>
+    </linearGradient>
+    <linearGradient id="unreal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7659e8"/>
+      <stop offset="1" stop-color="#4933a8"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="28"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1395" cy="115" r="260" fill="#7659e8" opacity=".13" filter="url(#soft)"/>
+  <circle cx="160" cy="790" r="300" fill="#19b6c9" opacity=".11" filter="url(#soft)"/>
+
+  <g font-family="Arial, 'Microsoft YaHei', sans-serif">
+    <text x="105" y="105" fill="#62d8e5" font-size="24" font-weight="700" letter-spacing="5">CONTROLLED LOCAL EXTRACTION · v0.1.0</text>
+    <text x="105" y="182" fill="#f7fbff" font-size="62" font-weight="750">Game Unpack Agent</text>
+    <text x="105" y="230" fill="#b8c9da" font-size="26">授权范围内的 Unity / Unreal 本地解包 CLI</text>
+
+    <g transform="translate(105 286)">
+      <rect width="1390" height="96" rx="24" fill="#091623" stroke="#29445b"/>
+      <g font-size="20" font-weight="700">
+        <text x="55" y="42" fill="#62d8e5">01 · SCAN</text>
+        <text x="55" y="70" fill="#a9bac9" font-size="17" font-weight="400">只读指纹与 SHA-256</text>
+        <text x="390" y="42" fill="#62d8e5">02 · PLAN</text>
+        <text x="390" y="70" fill="#a9bac9" font-size="17" font-weight="400">工具身份与命令预览</text>
+        <text x="735" y="42" fill="#62d8e5">03 · RUN</text>
+        <text x="735" y="70" fill="#a9bac9" font-size="17" font-weight="400">全新隔离目录实际解包</text>
+        <text x="1080" y="42" fill="#62d8e5">04 · VERIFY</text>
+        <text x="1080" y="70" fill="#a9bac9" font-size="17" font-weight="400">清单、哈希与输入复检</text>
+      </g>
+      <path d="M310 48h42m303 0h42m303 0h42" stroke="#45657d" stroke-width="4" stroke-linecap="round"/>
+    </g>
+
+    <g transform="translate(105 430)">
+      <rect width="665" height="282" rx="30" fill="#0c1b29" stroke="#24526a"/>
+      <rect width="665" height="10" rx="5" fill="url(#unity)"/>
+      <text x="44" y="62" fill="#72e6ef" font-size="22" font-weight="700" letter-spacing="3">UNITY ASSETBUNDLE</text>
+      <text x="44" y="112" fill="#ffffff" font-size="30" font-weight="700">UnityDataTools v2.2.0</text>
+      <text x="44" y="149" fill="#9fb4c6" font-size="20">Unity 6000.3.21f1c1 · 自建未加密样本</text>
+      <text x="44" y="216" fill="#ffffff" font-size="54" font-weight="750">7 / 7</text>
+      <text x="192" y="214" fill="#72e6ef" font-size="21" font-weight="700">语义项 preserved</text>
+      <text x="44" y="255" fill="#9fb4c6" font-size="18">SerializedFile 148,248 B · 对象文本 307,326 B</text>
+    </g>
+
+    <g transform="translate(830 430)">
+      <rect width="665" height="282" rx="30" fill="#11172a" stroke="#483f79"/>
+      <rect width="665" height="10" rx="5" fill="url(#unreal)"/>
+      <text x="44" y="62" fill="#b7a8ff" font-size="22" font-weight="700" letter-spacing="3">UNREAL PAK</text>
+      <text x="44" y="112" fill="#ffffff" font-size="30" font-weight="700">UnrealPak 5.8.1</text>
+      <text x="44" y="149" fill="#aeb3ce" font-size="20">自建未加密最小 Pak · -List → -Extract</text>
+      <text x="44" y="216" fill="#ffffff" font-size="54" font-weight="750">4 / 4</text>
+      <text x="192" y="214" fill="#b7a8ff" font-size="21" font-weight="700">路径、大小与哈希一致</text>
+      <text x="44" y="255" fill="#aeb3ce" font-size="18">Config · Content · README · Project descriptor</text>
+    </g>
+
+    <g transform="translate(105 760)">
+      <rect width="184" height="46" rx="23" fill="#123549"/>
+      <text x="92" y="30" fill="#72e6ef" text-anchor="middle" font-size="17" font-weight="700">WINDOWS x64</text>
+      <rect x="202" width="126" height="46" rx="23" fill="#123549"/>
+      <text x="265" y="30" fill="#72e6ef" text-anchor="middle" font-size="17" font-weight="700">.NET 9</text>
+      <rect x="346" width="260" height="46" rx="23" fill="#251f4b"/>
+      <text x="476" y="30" fill="#c5baff" text-anchor="middle" font-size="17" font-weight="700">INPUT UNCHANGED</text>
+      <text x="1390" y="29" fill="#788da2" text-anchor="end" font-size="16" letter-spacing="2">EVIDENCE SUMMARY · NOT A HOST SCREENSHOT</text>
+    </g>
+  </g>
+</svg>
