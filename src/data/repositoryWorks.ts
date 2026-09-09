@@ -1174,6 +1174,46 @@ Enemy spawns are currently gameplay markers rather than combat AI. Automated nav
     ],
   },
   {
+    id: 'threeui-agent', title: 'ThreeUI 组件选型与资产规划 Agent', category: 'ai-agent',
+    categoryLabel: { zh: 'Three.js 组件检索与视觉选型', en: 'Three.js component retrieval and visual selection' },
+    summary: { zh: '结合中文需求、参考图和前端工程环境，从 176 个可安装 Community 结果与 462 个官网公开页面中返回最多三个候选，并明确源码、许可与兼容边界。', en: 'Returns up to three candidates from 176 installable Community results and 462 public catalog pages using the request, reference images, and target frontend environment.' },
+    cover: '/media/repositories/threeui-agent/dark-cyan-particle-flow.webp',
+    tags: ['v0.3.0', 'ThreeUI / Three.js', '自然语言 + 参考图', 'Codex Skill'],
+    repositoryUrl: 'https://github.com/Ubik42/ThreeUI-Agent',
+    story: { zh: `# ThreeUI 组件选型与资产规划 Agent
+
+ThreeUI Agent 面向需要为 React / Three.js 页面选择背景、交互、动效和 3D 展示组件的开发者。它读取中文需求、可选参考图与目标工程配置，从固定 Community 快照和无需登录的官网公开目录中筛选候选，并把可安装源码与公开视觉参考分开处理。
+
+## v0.3.0 已完成
+
+- 从 ThreeUI Community 固定提交建立 176 条可安装结果的离线索引，保留来源 revision、运行时、源码文件和 MIT 许可；
+- 按官方 robots.txt 与 sitemap.xml 抓取 462 个公开页面和 399 张唯一缩略图，首次全量运行页面与媒体错误均为 0；
+- 中文检索最多返回三个候选，说明匹配原因、兼容性、改造成本、冲突、取舍和来源；
+- 只读扫描 React、Next.js、Vite、Three.js、lockfile 与静态资产条件，不读取 .env，也不执行目标工程脚本；
+- 对项目自生成参考图提取色板、亮度、密度、构图和运动线索，只在硬约束通过后调整顺序；
+- 精确确认候选后生成 AssetRequirement 与 GenerationPlan，计划确认本身不启动模型、Blender 或工程写入。
+
+## 数据与源码边界
+
+与固定 MIT Community 索引对应的条目标记为可安装；无法确认开源许可的 286 个官网页面统一标记为 public-preview-only，只保留官网来源并用于视觉方向参考。抓取器不登录、不携带 Cookie，不访问成员 API、受保护源码、source map 或预览视频。当前流程不购买 ThreeUI Pro，也不依赖官方 Pro MCP。
+
+## 当前状态
+
+v0.3.0 以 CLI 和可安装 Codex Skill 交付，已在 Windows 11 与 Python 3.14.3 上通过 18 项自动化测试和 M1–M4 轻量评测。Web UI、资产执行和组件自动接入尚未包含；下一阶段计划完成确认计划到 Blender 5.2、GLB、预览图与 AssetManifest 的单一隔离生成闭环。`, en: `# ThreeUI component selection and asset-planning agent
+
+ThreeUI Agent helps React and Three.js developers select backgrounds, interactions, motion effects, and 3D presentation components from a fixed Community snapshot and the public no-login catalog.
+
+Version 0.3.0 indexes 176 installable Community results and crawls 462 public catalog pages with 399 unique thumbnails. It combines Chinese natural-language requests, optional reference images, and a read-only target-project profile, then returns at most three candidates with compatibility, adaptation cost, tradeoffs, source, and license boundaries.
+
+Community matches retain their pinned MIT source revision. The remaining 286 public pages are marked public-preview-only and are used only as visual references. The crawler does not authenticate, send cookies, access member APIs, or download protected source. The current path does not require ThreeUI Pro or its MCP.
+
+The v0.3.0 release ships a CLI and installable Codex Skill, validated on Windows 11 and Python 3.14.3 with 18 automated tests and the M1–M4 lightweight evaluations. Web UI, asset execution, and automatic project integration are not included yet.` },
+    images: [
+      { src: '/media/repositories/threeui-agent/bright-silver-liquid-glass.webp', alt: { zh: '项目自行生成的明亮液态金属参考图输入', en: 'Project-generated bright liquid-metal reference input' } },
+      { src: '/media/repositories/threeui-agent/warm-halftone-wave.webp', alt: { zh: '项目自行生成的暖色半调波浪参考图输入', en: 'Project-generated warm halftone-wave reference input' } },
+    ],
+  },
+  {
     id: 'comfyui-workflow-lab', title: 'ComfyUI 工作流智能推荐 Agent', category: 'ai-agent',
     categoryLabel: { zh: '本地工作流检索与推荐 Agent', en: 'Local workflow retrieval and recommendation agent' },
     summary: { zh: '从 617 个官方工作流中结合中文需求、参考图、本机模型、节点、版本、16GB 显存与许可证约束，返回最多三个可解释候选，并在确认后安全导出。', en: 'Recommends up to three explainable candidates from 617 official workflows using the request, reference image, local models, nodes, versions, VRAM, and license constraints.' },
