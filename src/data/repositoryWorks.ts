@@ -129,20 +129,20 @@ A Chinese Unreal Editor tool that turns profiling setup into repeatable experime
     title: 'Noemancer：面向人与 AI 协作的自研游戏引擎',
     category: 'engine-games',
     categoryLabel: { zh: '自研游戏引擎', en: 'Custom game engine' },
-    summary: { zh: 'Noemancer 是一套处于 pre-alpha 的 C++20 游戏引擎与编辑器，当前在 Windows x64 上贯通 Scene/Project 编辑、C# Gameplay、Jolt 物理、ozz 动画、SDL_GPU Raster、资产 Cook、Package 与独立 Player；Editor、CLI 和 MCP 通过稳定 ID、Schema、Revision 与 Receipt 共享状态观察和受控修改。', en: 'Noemancer is a pre-alpha C++20 engine and editor, currently verified end to end on Windows x64 across Scene/Project authoring, C# gameplay, Jolt physics, ozz animation, SDL_GPU raster rendering, asset Cook, Package, and a standalone Player. Editor, CLI, and MCP share stable IDs, schemas, revisions, and receipts for structured observation and bounded mutation.' },
+    summary: { zh: 'Noemancer v0.2.0 Preview 1 是一套处于 pre-alpha 的 C++20 游戏引擎与编辑器，当前在 Windows x64 上贯通 Scene/Project 编辑、C# Gameplay、Jolt 物理、ozz 动画、SDL_GPU D3D12/Vulkan Raster、资产 Cook、Package 与独立 Player；Editor、CLI 和 MCP 通过稳定 ID、Schema、Revision 与 Receipt 共享状态观察和受控修改。', en: 'Noemancer v0.2.0 Preview 1 is a pre-alpha C++20 engine and editor, currently verified end to end on Windows x64 across Scene/Project authoring, C# gameplay, Jolt physics, ozz animation, SDL_GPU D3D12/Vulkan raster rendering, asset Cook, Package, and a standalone Player. Editor, CLI, and MCP share stable IDs, schemas, revisions, and receipts for structured observation and bounded mutation.' },
     cover: '/media/repositories/major-updates/noemancer-sponza-atrium.webp',
     tags: ['C++20', 'D3D12 / Vulkan', 'C#', 'MCP'],
     repositoryUrl: 'https://github.com/Ubik42/Noemancer',
     story: {
       zh: `# Noemancer：面向人与 AI 协作的自研游戏引擎
 
-Noemancer 是一套仍处于 pre-alpha 的 C++20 游戏引擎与编辑器。当前重点不是宣称所有高级特性完成，而是在 Windows x64 上把通用项目从编辑、运行、Cook、打包到独立 Player 串成一条可复核链路，并让 Editor、CLI、MCP 共享同一套状态与命令合同。
+Noemancer v0.2.0 Preview 1 是一套仍处于 pre-alpha 的 C++20 游戏引擎与编辑器。当前在 Windows x64 上把通用项目从编辑、运行、Cook、打包到独立 Player 串成一条可复核链路，并让 Editor、CLI、MCP 共享同一套状态与命令合同。
 
 ## 从建立工程到独立运行
 
-- Project Hub 管理创建、打开和恢复工程；Scene View、Outliner、Inspector、Asset Browser、Console 与 Animation Graph 组成完整编辑工作区。
+- Project Hub 管理创建、打开和恢复工程；Scene View、Outliner、Inspector、Asset Browser、Console、Animation Graph 与 Scene Flow Canvas 组成编辑工作区，音频、VFX、Sprite 和材质作者面板接入同一 Editor。
 - Edit World 与 Play World 互相隔离，运行时改动不会污染编辑场景；需要的结果可选择性 Apply Back，并进入同一套 Undo / Redo。
-- Gameplay 层使用 .NET 10 / C# 项目脚本，支持编译、热重载状态迁移与调试会话；Runtime 集成 Flecs ECS、Jolt 物理、ozz 骨骼动画、GPU Skinning、RmlUi、输入、音频、VFX、Prefab 和存档。
+- Gameplay 层使用 .NET 10 / C# 项目脚本，支持编译、热重载状态迁移与调试会话；Runtime 集成 Flecs ECS、Jolt 物理、ozz 骨骼动画、GPU Skinning、RmlUi、输入、音频、VFX、Prefab 和存档，并提供确定性延迟/重复事件、实体池与增量 Prefab 生成/销毁。
 - NoemancerPlatformer 已经贯通“项目 UI / 输入 → C# Gameplay → Cook → Package → 独立 Player”，用于验证游戏侧的完整生命周期。
 
 ## D3D12 / Vulkan 渲染管线
@@ -151,7 +151,7 @@ Noemancer 是一套仍处于 pre-alpha 的 C++20 游戏引擎与编辑器。当�
 - Raster 主路径包含 Forward PBR、split-sum IBL、四级 CSM、Point/Spot 阴影、GPU 视锥裁剪与间接绘制。
 - 画面管线已接入四 LUT 动态天空、Aerial Perspective、共享 HiZ、SSR、SSGI、TAA、GTAO、双边降噪、Bloom、曝光调色和 ACES Tone Mapping。
 - RenderLab 使用 Intel Sponza 2022 进行实时验证：约 205 万顶点、1124 万索引、405 个 primitive 和 72 张纹理。页面中的画面均来自 Release 运行捕获。
-- RTX 4080 上已完成 D3D12/Vulkan 的 BLAS / TLAS 构建、Barrier、Fence 和释放测试；当前阶段用于确认底层资源边界，可见生产光追、RTGI、光追阴影与 VSM 仍在后续路线中。
+- RTX 4080 上已完成 D3D12/Vulkan 的 BLAS/TLAS、Pipeline、SBT、Trace 与 Readback 闭环；D3D12 已接入真实 SceneRenderer 几何并形成可见线性直接光，Vulkan 仍是私有全帧输出。项目可见的生产 RTGI、VSM、完整光追材质与 Vulkan SDL 安全呈现仍在后续路线中。
 
 ## 资产 Cook 与发布
 
@@ -165,22 +165,24 @@ Noemancer 是一套仍处于 pre-alpha 的 C++20 游戏引擎与编辑器。当�
 
 ## 当前状态
 
-项目处于 Pre-alpha，目前主要验证 Windows x64。稳定插件 SDK、跨平台发行、生产网络、签名安装器、可见生产硬件光追、RTGI、光追阴影与 VSM，以及真实 Provider→Staging 的 AIGC 管线仍在后续计划中。当前展示重点是已经真正跑通的 Editor—Runtime—Cook—Player 链路与实时渲染结果。`,
+项目处于 Pre-alpha，目前主要验证 Windows x64。Sprite 元数据与 Atlas 仍是计划态，材质作者台尚无完整资产持久化事务；稳定插件 SDK、跨平台发行、生产网络、签名安装器、生产 RTGI/VSM，以及真实 Provider→Staging 的 AIGC 管线仍在后续计划中。当前展示对应 v0.2.0 Preview 1 的 Editor—Runtime—Cook—Player 链路与实时渲染结果。`,
       en: `# Noemancer
 
-Noemancer is a pre-alpha C++20 game engine and editor. Its current focus is a verifiable Windows x64 path from authoring and runtime execution through asset Cook, packaging, and a standalone Player, with the Editor, CLI, and MCP sharing one state and command contract.
+Noemancer v0.2.0 Preview 1 is a pre-alpha C++20 game engine and editor. It provides a verifiable Windows x64 path from authoring and runtime execution through asset Cook, packaging, and a standalone Player, with the Editor, CLI, and MCP sharing one state and command contract.
 
 ## Current capabilities
 
 - Native project and scene authoring, input and project UI.
 - Isolated Play World execution with selective Apply Back.
+- Scene Flow Canvas plus Audio, VFX, Sprite, and Material authoring surfaces.
+- Deterministic delayed/repeating gameplay events, runtime pools, and incremental prefab spawn/despawn.
 - SDL_GPU rendering on D3D12 / Vulkan with Forward PBR, shadows, dynamic sky, SSR, SSGI, TAA, GTAO, Bloom, and ACES tone mapping.
 - GLB / FBX import, cooked mesh and animation formats, KTX2 assets, and Windows Player packaging.
 - Stable IDs, schemas, revisions, receipts, and undoable commands shared by the Editor and agent tools.
 
 ## Current boundary
 
-The project is pre-alpha and currently verified end to end on Windows x64. Raster SSR, SSGI, and dynamic atmosphere are current verified paths. Native RT has experimental BLAS/TLAS and D3D12 scene-tracing foundations; production RTGI, VSM, visible RT shadows, clean-machine/cross-platform release, provider-backed AIGC, and a stable plug-in SDK remain unfinished.`,
+The project is pre-alpha and currently verified end to end on Windows x64. Raster SSR, SSGI, and dynamic atmosphere are current verified paths. Native RT has experimental D3D12/Vulkan execution and D3D12 scene-tracing foundations; production RTGI, VSM, Vulkan presentation, durable Sprite/Material asset authoring, clean-machine/cross-platform release, provider-backed AIGC, and a stable plug-in SDK remain unfinished.`,
     },
     images: [
       { src: '/media/repositories/major-updates/noemancer-editor.webp', alt: { zh: 'Noemancer 中文 Editor：场景、层级、Inspector、资产与 Agent Context', en: 'Noemancer Chinese editor workspace' } },

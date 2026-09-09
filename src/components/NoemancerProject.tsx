@@ -1,7 +1,7 @@
 import { useLanguage } from '../i18n/LanguageContext';
 
 const repositoryUrl = 'https://github.com/Ubik42/Noemancer';
-const releaseUrl = 'https://github.com/Ubik42/Noemancer/releases/tag/v0.1.0-preview.1';
+const releaseUrl = 'https://github.com/Ubik42/Noemancer/releases/tag/v0.2.0-preview.1';
 
 export function NoemancerProject() {
   const { locale } = useLanguage();
@@ -9,14 +9,14 @@ export function NoemancerProject() {
 
   const capabilities = zh
     ? [
-        ['可读状态面', '场景、项目、运行时状态与诊断采用可查询、可比较的结构化数据。'],
-        ['Agent 工具层', 'CLI 与 MCP 提供渐进式披露，让 Agent 先定位事实，再调用受控操作。'],
-        ['通用引擎骨架', '覆盖 D3D12 渲染、物理、动画、音频、C# 脚本、资产和打包基础。'],
+        ['共同状态与命令', 'Editor、CLI 与 MCP 通过稳定 ID、Schema、Revision 和 Receipt 操作同一份引擎状态。'],
+        ['可运行游戏链路', 'C# Gameplay、Jolt 物理、ozz 动画、音频、资产 Cook、Package 与独立 Player 已经贯通。'],
+        ['双后端实时渲染', 'D3D12 / Vulkan 共用 SDL_GPU 管线，覆盖 PBR、阴影、天空大气、SSR、SSGI、TAA 与 ACES。'],
       ]
     : [
-        ['Readable state plane', 'Scenes, projects, runtime state, and diagnostics use queryable, diffable structures.'],
-        ['Agent tool layer', 'CLI and MCP expose progressive disclosure: inspect facts first, then invoke bounded operations.'],
-        ['General engine foundation', 'D3D12 rendering, physics, animation, audio, C# scripting, assets, and packaging foundations.'],
+        ['Shared state and commands', 'The Editor, CLI, and MCP operate one engine state through stable IDs, schemas, revisions, and receipts.'],
+        ['Playable game workflow', 'C# gameplay, Jolt physics, ozz animation, audio, asset cooking, packaging, and a standalone Player form one path.'],
+        ['Dual-backend rendering', 'D3D12 and Vulkan share an SDL_GPU pipeline with PBR, shadows, atmosphere, SSR, SSGI, TAA, and ACES.'],
       ];
 
   return (
@@ -26,22 +26,22 @@ export function NoemancerProject() {
         <h2 id="noemancer-title">Noemancer</h2>
         <p className="noemancer-lead">
           {zh
-            ? '使用 C++20 开发的实验性游戏引擎，包含编辑器、D3D12 渲染、物理、动画、音频、C# 脚本与资产管线，并通过 JSON、CLI 和 MCP 提供结构化编辑与诊断能力。'
-            : 'An experimental C++20 game engine with an editor, D3D12 rendering, physics, animation, audio, C# scripting, and an asset pipeline, plus structured editing and diagnostics through JSON, CLI, and MCP.'}
+            ? '使用 C++20 开发的 pre-alpha 游戏引擎与中文编辑器，在 Windows x64 上贯通项目编辑、双后端实时渲染、C# Gameplay、物理动画、资产 Cook 和独立 Player。'
+            : 'A pre-alpha C++20 game engine and editor with an end-to-end Windows x64 path across project authoring, dual-backend rendering, C# gameplay, physics, animation, asset cooking, and a standalone Player.'}
         </p>
         <div className="noemancer-status">
-          <span>{zh ? 'PRE-ALPHA · 源码预览' : 'PRE-ALPHA · SOURCE PREVIEW'}</span>
-          <small>{zh ? '当前验证平台：Windows 10/11 x64' : 'Currently verified on Windows 10/11 x64'}</small>
+          <span>{zh ? 'v0.2.0 PREVIEW 1 · PRE-ALPHA' : 'v0.2.0 PREVIEW 1 · PRE-ALPHA'}</span>
+          <small>{zh ? '当前验证环境：Windows 11 x64 · RTX 4080' : 'Verified on Windows 11 x64 · RTX 4080'}</small>
         </div>
         <ul className="noemancer-stack" aria-label={zh ? '主要技术' : 'Core technology'}>
-          {['C++20', 'D3D12', 'SDL3', 'Jolt Physics', 'C# / .NET', 'MCP'].map((item) => <li key={item}>{item}</li>)}
+          {['C++20', 'D3D12 / Vulkan', 'Flecs / Jolt', 'ozz', '.NET 10 / C#', 'MCP'].map((item) => <li key={item}>{item}</li>)}
         </ul>
         <div className="noemancer-actions">
           <a className="action action-primary" href={repositoryUrl} target="_blank" rel="noreferrer">
             {zh ? '查看 GitHub 源码' : 'View source on GitHub'} <span aria-hidden="true">↗</span>
           </a>
           <a className="text-link" href={releaseUrl} target="_blank" rel="noreferrer">
-            v0.1.0 Preview 1 <span aria-hidden="true">↗</span>
+            v0.2.0 Preview 1 <span aria-hidden="true">↗</span>
           </a>
         </div>
       </div>
