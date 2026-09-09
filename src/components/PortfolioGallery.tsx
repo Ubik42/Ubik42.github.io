@@ -45,6 +45,7 @@ const engineGamesOrder = new Map([
   'ue-performance-workbench',
   'resonance-forge',
   'noemancer',
+  'game-unpack-agent',
   'unreal-asset-batch-auditor',
   'noemancer-software-rasterizer',
 ].map((id, index) => [id, index]));

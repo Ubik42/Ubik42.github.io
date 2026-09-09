@@ -687,6 +687,42 @@ Version 0.3.1 provides two Maya 2025 workflows: safe three-input UV/position tra
     ],
   },
   {
+    id: 'game-unpack-agent', title: 'Game Unpack Agent：Unity / Unreal 受控解包', category: 'engine-games',
+    categoryLabel: { zh: '跨引擎资源容器识别与受控解包', en: 'Cross-engine container detection and controlled extraction' },
+    summary: { zh: '面向自有或明确获授权的 Unity / Unreal 包执行 scan → plan → run → verify；v0.1.0 已在 Windows x64 / .NET 9 下验证 Unity AssetBundle 7/7 与 Unreal Pak 4/4。', en: 'Runs scan → plan → run → verify for owned or explicitly authorized Unity and Unreal packages; v0.1.0 validates a 7/7 Unity AssetBundle case and a 4/4 Unreal Pak case on Windows x64 and .NET 9.' },
+    cover: '/media/repositories/production-tools/game-unpack-agent.svg',
+    tags: ['v0.1.0', '.NET 9', 'Unity AssetBundle', 'Unreal Pak'],
+    repositoryUrl: 'https://github.com/Ubik42/Game-Unpack-Agent',
+    story: { zh: `# Game Unpack Agent：Unity / Unreal 受控解包
+
+这是一个面向 Windows 的本地解包 CLI，用于研究自有或明确获授权的 Unity / Unreal 构建。它从资源容器的只读指纹开始，匹配已登记且身份固定的工具，在全新隔离目录中实际解出文件，并用清单、SHA-256、失败项和 Run Receipt 复核结果。
+
+## 当前工作流
+
+- **scan**：读取文件 Magic、目录结构、版本证据和 SHA-256，不修改输入；
+- **plan**：匹配 ToolCard，生成带 PlanId 的命令预览、来源 Manifest 与输出预算；
+- **run**：确认计划后，将输入副本和固定工具放入独立 Run，记录命令、PID、退出码和日志；
+- **verify**：检查全部输出是否位于 Run/output，重新计算输入与产物哈希，并生成 UnpackManifest、ContainerInventory、SemanticLoss 和 RunReceipt。
+
+## v0.1.0 已验证结果
+
+- Unity 6000.3.21f1c1 AssetBundle 通过 UnityDataTools v2.2.0 完成 archive list、archive extract、dump 与 analyze；7/7 个固定语义项保留，0 missing；
+- UnrealPak 5.8.1 对自建最小 Pak 完成 List 与 Extract；4/4 个文件的路径、大小和 SHA-256 与源 Manifest 一致；
+- 两个最终 Run 均确认原输入未变化、原路径未暴露给工具、进程已经结束，并且没有超出隔离输出边界的文件。
+
+## 当前边界
+
+结论只覆盖仓库自建、未加密样本。当前未验证 Addressables、IoStore、完整 Cook / Stage 游戏包、其他引擎版本或商业游戏，也不把对象文本导出描述为完整 Unity 工程恢复。项目不绕过 DRM、签名、加密、反作弊或访问控制，不搜索密钥，也不执行从输入中发现的脚本、程序或插件。
+
+仓库当前未附带开源许可证；UnityDataTools、UnrealPak 和其他候选解包器不随仓库复制或分发。`, en: `# Game Unpack Agent
+
+A local Windows CLI for extracting owned or explicitly authorized Unity and Unreal packages. It detects container evidence, selects a pinned registered tool, executes extraction inside a fresh isolated run, and verifies the result through manifests, SHA-256 hashes, failure records, and a run receipt.
+
+Version 0.1.0 validates two self-generated, unencrypted cases: a Unity 6000.3.21f1c1 AssetBundle processed with UnityDataTools v2.2.0, preserving 7/7 fixed semantic checks; and an UnrealPak 5.8.1 Pak whose 4/4 extracted paths, sizes, and hashes match the source manifest. Both final runs retain unchanged inputs and contained outputs.
+
+The current release does not claim Addressables, IoStore, full cooked-game recovery, encrypted packages, commercial games, or broad engine-version coverage. It does not bypass DRM, signatures, encryption, anti-cheat, or access controls, and third-party extraction binaries are not redistributed. The repository currently has no open-source license.` },
+  },
+  {
     id: 'unreal-asset-batch-auditor', title: 'Unreal 资产批量质量审计工具', category: 'engine-games',
     categoryLabel: { zh: 'Unreal 资产验收与交付证据', en: 'Unreal asset acceptance and delivery evidence' },
     summary: { zh: 'UE 5.8.1 原生中文 Slate 工作台：用项目 Profile 分别审计模型、纹理与材质，并把混合交付汇总为可下钻、可追溯的三轨验收结论。', en: 'A native UE 5.8.1 Slate workbench that audits meshes, textures, and materials under project profiles, then summarizes mixed deliveries as traceable, drill-down acceptance results.' },
