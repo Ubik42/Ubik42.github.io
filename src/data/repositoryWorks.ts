@@ -1136,6 +1136,44 @@ PyArsenal 面向需要维护大量零散脚本的 Python 开发者。它把脚�
 PyArsenal is a graphical manager for Python developers who maintain many scripts. It centralizes registration, tags, execution environments, and compilation so a script library remains searchable and deliverable.` },
   },
   {
+    id: 'levelwright-agent', title: 'Levelwright Agent：UE 关卡灰盒搭建智能体', category: 'ai-agent',
+    categoryLabel: { zh: 'UE 关卡设计与可玩性验证', en: 'UE level design and playability validation' },
+    summary: { zh: '把关卡 Brief、玩家尺度、节拍与技术约束转换为两个可比较的 UE 5.8.1 灰盒候选，并用稳定语义 ID、真实导航、碰撞射线和 Playtest 轨迹支持局部修订。', en: 'Turns level briefs, player metrics, pacing, and technical constraints into two comparable UE 5.8.1 blockout candidates, with stable semantic IDs, real navigation, collision traces, and playtest trajectories for local revision.' },
+    cover: '/media/repositories/levelwright-agent/observation.png',
+    tags: ['v0.2.0', 'Unreal 5.8.1', 'Level Design', 'Python / C++'],
+    repositoryUrl: 'https://github.com/Ubik42/Levelwright-Agent',
+    story: { zh: `# Levelwright Agent：UE 关卡灰盒搭建智能体
+
+Levelwright Agent 面向第三人称动作 / 射击关卡的灰盒阶段。它从结构化 Brief、角色尺度、节拍图和知识卡生成候选布局，在独立 Unreal Level 中搭建入口、观察区、双路线、遭遇区与撤离点，再把引擎测量结果整理为可定位报告。
+
+## 从设计意图到两个候选
+
+- LevelBrief、MetricProfile、BeatGraph 与 LayoutPlan 四类版本化 Schema 保留目标、尺度、节奏和空间约束；
+- 30 张带来源与适用边界的关卡知识卡参与确定性规划；
+- candidate.a 使用等长双分支，candidate.b 使用短内线与长外线，便于比较路线取舍；
+- Actor 使用稳定语义 ID，通过 dry-run、单事务 reconcile 和候选归属标签执行 Create / Update / Delete，避免重建无关区域。
+
+## UE 5.8.1 真实验证
+
+v0.2.0 在 Unreal Engine 5.8.1（CL 56057345）中生成 candidate.b，并完成 33 项检查：空间和尺寸、碰撞、Nav、受管对象预算、目标视线，以及 Encounter 容量、出生间距与出生点遮挡。当前候选包含 34 个受管 Actor；同输入复跑为 34 个 unchanged。
+
+最新独立游戏态路径长 6506.76 cm，标准第三人称 Character 到达终点后距离 11.85 cm。运行保存 49 个轨迹点与真实截图。两个敌人出生标记相距 1500 cm，并分别被对应遮挡体从固定观察点遮住。
+
+## 当前边界
+
+敌人出生点目前是 Gameplay Marker，不包含敌人 AI、战斗逻辑或平衡结论。角色尺度仍是项目占位基线；固定机位射线和自动导航不能替代真人 Playtest。当前公开仓库未授予复制、修改或再分发许可证。`, en: `# Levelwright Agent
+
+Levelwright Agent supports third-person action/shooter blockout work. Versioned LevelBrief, MetricProfile, BeatGraph, and LayoutPlan schemas turn design intent, player metrics, pacing, and constraints into two isolated UE candidates. Stable semantic IDs, dry-run reconciliation, and candidate ownership keep revisions local.
+
+Version 0.2.0 was verified in Unreal Engine 5.8.1 (CL 56057345). Candidate B passes 33 checks covering geometry, dimensions, collision, navigation, budgets, target sightlines, encounter capacity, spawn spacing, and spawn occlusion. A standalone game run produced a valid 6506.76 cm path and finished 11.85 cm from the goal, with 49 trajectory samples.
+
+Enemy spawns are currently gameplay markers rather than combat AI. Automated navigation and fixed-view traces do not replace human playtesting. No reuse license is currently granted.` },
+    images: [
+      { src: '/media/repositories/levelwright-agent/overview.png', alt: { zh: 'candidate.b 双路线灰盒俯视图', en: 'Top-down view of candidate B and its two routes' } },
+      { src: '/media/repositories/levelwright-agent/play.png', alt: { zh: '标准第三人称角色到达撤离点的真实运行画面', en: 'Standalone third-person run reaching the extraction goal' } },
+    ],
+  },
+  {
     id: 'comfyui-workflow-lab', title: 'ComfyUI 工作流智能推荐 Agent', category: 'ai-agent',
     categoryLabel: { zh: '本地工作流检索与推荐 Agent', en: 'Local workflow retrieval and recommendation agent' },
     summary: { zh: '从 617 个官方工作流中结合中文需求、参考图、本机模型、节点、版本、16GB 显存与许可证约束，返回最多三个可解释候选，并在确认后安全导出。', en: 'Recommends up to three explainable candidates from 617 official workflows using the request, reference image, local models, nodes, versions, VRAM, and license constraints.' },
