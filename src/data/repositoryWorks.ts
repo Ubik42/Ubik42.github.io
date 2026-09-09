@@ -750,6 +750,51 @@ The Tauri 2 and React desktop application connects to Rez through a Python servi
     ],
   },
   {
+    id: 'blender-toolsmith-agent', title: 'Blender 插件开发与场景诊断 Agent', category: 'pipeline',
+    categoryLabel: { zh: 'Blender Extension 开发与场景诊断', en: 'Blender Extension development and scene diagnostics' },
+    summary: { zh: '把中文插件需求、现有脚本或错误现象整理为结构化任务，在隔离 Blender 配置中完成受控 Patch、场景检查、真实 GUI 验证与可复演交付。', en: 'Turns plug-in requirements, existing scripts, and error reports into structured tasks, then runs controlled patches, scene checks, real GUI validation, and reproducible delivery in an isolated Blender configuration.' },
+    cover: '/media/repositories/production-tools/blender-toolsmith-agent.png',
+    tags: ['Blender 5.2 LTS', 'Extension API', 'Undo / Redo', 'Python 3.13'],
+    repositoryUrl: 'https://github.com/Ubik42/Blender-Toolsmith-Agent',
+    story: { zh: `# Blender 插件开发与场景诊断 Agent
+
+这是一套面向 Blender Extension / Add-on 研发的受控工具链。它将中文插件需求、现有脚本或明确错误现象整理为结构化任务，在隔离的 Blender 配置中完成开发、场景诊断、真实 GUI 验证与发布交付。
+
+## 从任务合同到受控修改
+
+- 用 AddonTaskSpec 固定目标 Extension、入口、对象范围、副作用、验收条件和允许修改的文件；
+- 用 ContextRequirement 描述 Mode、Window、Area、Region、活动对象与选择集，定位 Operator poll failed 的具体缺失条件；
+- Patch 在预览和应用前检查任务归属、规范化路径、文件白名单与基线 SHA-256；
+- 工具链不提供 execute_python、eval、exec 或等价的任意代码执行入口。
+
+## 中文场景交付检查 Extension
+
+随仓库发布的 Extension 检查场景单位、网格命名、对象层级和缺失贴图。失败场景稳定检出 4 个问题，并预览 3 项可以确定执行的命名与层级修复；单位选择和贴图路径继续交由用户确认。修复只作用于单次运行目录中的场景副本，真实 Panel 操作支持一步 Undo 与一步 Redo。
+
+## v0.1.0 验证结果
+
+- 已验证环境为 Windows 11 x64、Blender 5.2.0 LTS 与 CPython 3.13.13；
+- 通过 Blender 官方 extension validate、build、install-file 和 remove；
+- 三轮注册、卸载与热重载后，Class、Property、Menu、Handler 和 Timer 均无累积残留；
+- Array Modifier 的 evaluated Mesh 为 24 顶点，清理临时 Mesh 后 original Mesh 保持 8 顶点且签名不变；
+- 14 项宿主外快速测试通过，Release 提供 Extension 安装包、成功/失败/边界场景、日志、截图、Manifest、Receipt 与哈希清单。
+
+当前兼容性证据只覆盖 Windows x64 与 Blender 5.2.0。自动修复只覆盖网格命名和对象层级。`, en: `# Blender Plug-in Development and Scene Diagnostics Agent
+
+A controlled toolchain for Blender Extension and Add-on development. It converts plug-in requirements, existing scripts, and explicit error reports into structured tasks, then develops, diagnoses, validates, and packages them inside isolated Blender configurations.
+
+AddonTaskSpec and ContextRequirement define the target extension, allowed files, side effects, acceptance conditions, and required Blender context. Patches verify normalized paths, file allowlists, and baseline SHA-256 values before preview or application; arbitrary Python execution is not exposed.
+
+The included Chinese Scene Delivery Check extension audits units, mesh naming, object hierarchy, and missing textures. The failing demo scene reports four issues and previews three deterministic naming and hierarchy repairs. A real Panel workflow supports one-step undo and redo while working only on a run-specific scene copy.
+
+Version 0.1.0 is verified on Windows 11 x64 with Blender 5.2.0 LTS and CPython 3.13.13. It passes Blender's official extension validate, build, install-file, and remove commands, three registration and hot-reload cycles, context diagnostics, depsgraph original/evaluated mesh checks, a real GUI workflow, and 14 host-independent tests. The release includes the installable extension, success/failure/boundary scenes, logs, screenshots, manifests, receipts, and hashes.
+
+Current compatibility evidence is limited to Windows x64 and Blender 5.2.0. Automatic repair is limited to mesh naming and object hierarchy.` },
+    images: [
+      { src: '/media/repositories/production-tools/blender-toolsmith-agent.png', alt: { zh: 'Blender 5.2 中运行的中文场景交付检查面板', en: 'Chinese Scene Delivery Check panel running in Blender 5.2' } },
+    ],
+  },
+  {
     id: 'advanced-skeleton-python-refactor', title: 'AdvancedSkeleton Python 架构重构', category: 'pipeline',
     categoryLabel: { zh: 'Maya 角色绑定架构与跨 DCC 迁移研究', en: 'Maya rigging architecture and cross-DCC migration research' },
     summary: { zh: 'v0.95.0 采用 Maya-first、Blender-second 路线，将授权环境中的单体 MEL 行为拆分为纯 Python Core、用例层与宿主适配器；当前完成 90 个 Maya 切片和 272 项回归测试。', en: 'Version 0.95.0 follows a Maya-first, Blender-second path, separating licensed MEL behavior into a pure-Python core, application use cases, and host adapters; 90 Maya slices and 272 regression tests are complete.' },
