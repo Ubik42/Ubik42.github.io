@@ -895,9 +895,10 @@ Current compatibility evidence is limited to Windows x64 and Blender 5.2.0. Auto
     summary: { zh: 'v0.96.0 将角色绑定拆分为 Python Core、用例层与 Maya 适配器；Fit、Body、FK/IK、蒙皮及跨脊柱段数替换已有 Maya 2024 后台验证，392 项 Python 回归通过。', en: 'Version 0.96.0 separates rigging into a Python core, use cases, and a Maya adapter. Fit, Body, FK/IK, skinning, and cross-segment spine replacement have Maya 2024 standalone coverage, with 392 Python regression tests.' },
     cover: '/media/repositories/production-tools/advanced-skeleton-python-refactor.svg',
     tags: ['v0.96.0', 'Maya 2024', 'Python', '392 Tests'],
+    repositoryUrl: 'https://github.com/Ubik42/advanced-skeleton-python-refactor',
     story: { zh: `# AdvancedSkeleton Python 架构重构
 
-这是一个围绕本机已授权 AdvancedSkeleton 安装开展的私有研究与迁移工程。v0.96.0 先在 Maya 中重建绑定行为，再把稳定语义整理为 DCC 无关的 Python 合同。Blender 是第二阶段目标。
+这是一个围绕本机已授权 AdvancedSkeleton 安装开展的公开 Python 重构工程。v0.96.0 先在 Maya 中重建绑定行为，再把稳定语义整理为 DCC 无关的 Python 合同。Blender 是第二阶段目标。
 
 ## 当前结果
 
@@ -918,11 +919,11 @@ Current compatibility evidence is limited to Windows x64 and Blender 5.2.0. Auto
 
 纯 Python Core 保存数据、数学、计划和校验，不导入 \`maya.cmds\` 或 \`bpy\`。Application 层组织场景捕获、事务和结果复检；Maya Adapter 负责 DAG、DG、约束、关键帧和文件导出。Maya 写入在修改前检查对象与连接，在单一 Undo Chunk 中提交，并从场景重新读取关键结果。
 
-仓库保持私有，不包含 AdvancedSkeleton 原始 MEL、模板、图标、场景或文档。当前有 Maya 后台角色工作台，但可见会话尚未验收；外部生产资产、完整原工具行为覆盖与 Blender 正式迁移也尚未完成。`, en: `# AdvancedSkeleton Python Architecture Refactor
+仓库公开可读，不包含 AdvancedSkeleton 原始 MEL、模板、图标、场景或文档；当前未提供开源许可证。已有 Maya 后台角色工作台，但可见会话尚未验收；外部生产资产、完整原工具行为覆盖与 Blender 正式迁移也尚未完成。`, en: `# AdvancedSkeleton Python Architecture Refactor
 
-A private research and migration project around a locally licensed AdvancedSkeleton installation. Version 0.96.0 follows a Maya-first, Blender-second sequence: behavior is rebuilt and verified in Maya before stable semantics are captured as DCC-independent Python contracts.
+A public Python refactor project around a locally licensed AdvancedSkeleton installation. Version 0.96.0 follows a Maya-first, Blender-second sequence: behavior is rebuilt and verified in Maya before stable semantics are captured as DCC-independent Python contracts.
 
-The current baseline covers Fit, 30/70-joint bodies, arm/leg/hand and spine FK/IK, skinning, root motion, FBX, MoCap, baseline Face workflows, and controlled replacement between characters with different spine segment counts. It has 392 passing pure-Python regression tests and self-generated Maya 2024 standalone scene validation, including undo/redo and reopening saved scenes. A Maya workbench exists, but interactive GUI validation, external production assets, full legacy behavior coverage, and formal Blender migration remain open. No original AdvancedSkeleton MEL, templates, icons, scenes, or documentation are redistributed.` },
+The current baseline covers Fit, 30/70-joint bodies, arm/leg/hand and spine FK/IK, skinning, root motion, FBX, MoCap, baseline Face workflows, and controlled replacement between characters with different spine segment counts. It has 392 passing pure-Python regression tests and self-generated Maya 2024 standalone scene validation, including undo/redo and reopening saved scenes. A Maya workbench exists, but interactive GUI validation, external production assets, full legacy behavior coverage, and formal Blender migration remain open. No original AdvancedSkeleton MEL, templates, icons, scenes, or documentation are redistributed. The public repository currently does not grant an open-source license.` },
     images: [
       { src: '/media/repositories/production-tools/advanced-skeleton-python-refactor.svg', alt: { zh: 'Maya-first、Blender-second 的 Python 分层迁移架构与验证基线', en: 'Maya-first, Blender-second layered Python migration architecture and validation baseline' } },
     ],
