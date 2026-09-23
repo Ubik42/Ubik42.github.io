@@ -26,11 +26,11 @@ const filters: Array<{ id: 'all' | PortfolioCategory; zh: string; en: string }> 
 
 const pipelineOrder = new Map([
   'art-pipeline-skill',
+  'advanced-skeleton-python-refactor',
   'rez-studio-launcher',
   'blender-toolsmith-agent',
   'internship-art-pipeline',
   'maya-garment-preparation',
-  'advanced-skeleton-python-refactor',
   'mayascope',
   'mayacraft',
   'asset-delivery-organizer',

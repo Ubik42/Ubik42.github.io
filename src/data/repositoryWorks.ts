@@ -892,9 +892,9 @@ Current compatibility evidence is limited to Windows x64 and Blender 5.2.0. Auto
   {
     id: 'advanced-skeleton-python-refactor', title: 'AdvancedSkeleton Python 架构重构', category: 'pipeline',
     categoryLabel: { zh: 'Maya 角色绑定架构与跨 DCC 迁移研究', en: 'Maya rigging architecture and cross-DCC migration research' },
-    summary: { zh: 'v0.96.0 将角色绑定拆分为 Python Core、用例层与 Maya 适配器；Fit、Body、FK/IK、蒙皮及跨脊柱段数替换已有 Maya 2024 后台验证，392 项 Python 回归通过。', en: 'Version 0.96.0 separates rigging into a Python core, use cases, and a Maya adapter. Fit, Body, FK/IK, skinning, and cross-segment spine replacement have Maya 2024 standalone coverage, with 392 Python regression tests.' },
+    summary: { zh: '公开的 Maya-first Python 绑定重构：标准 Fit 骨架可生成基础完整角色 Rig，覆盖 Body、FK/IK、空间切换、蒙皮与脊柱替换，并已在 Maya 2024 可见界面验证。', en: 'A public Maya-first Python rigging refactor: a standard Fit skeleton builds a complete base character rig with Body, FK/IK, space switching, skinning, and spine replacement, validated in a visible Maya 2024 session.' },
     cover: '/media/repositories/production-tools/advanced-skeleton-python-refactor.svg',
-    tags: ['v0.96.0', 'Maya 2024', 'Python', '392 Tests'],
+    tags: ['公开仓库', 'v0.96.0', 'Maya 2024', 'Python Rig'],
     repositoryUrl: 'https://github.com/Ubik42/advanced-skeleton-python-refactor',
     story: { zh: `# AdvancedSkeleton Python 架构重构
 
@@ -907,6 +907,7 @@ Current compatibility evidence is limited to Windows x64 and Blender 5.2.0. Auto
 - FitSkeleton、Hand Pose 与 Skin Weight 使用路径无关的 JSON 文档和 SHA-256 内容摘要；
 - 392 项纯 Python 回归测试通过；Maya 2024 standalone 已验证绑定构建、动画、撤销／重做及保存重开；
 - 不同脊柱段数的角色替换已在自生成单／双 Skin、动画附件和嵌套命名空间场景验证，提交前检查误差并保留原 Skin。
+- Maya 图形入口已按 AdvancedSkeleton 的顶层和子栏目顺序改为左侧折叠导航；真实 Maya 2024 会话已验证面板停靠、Body → Fit 操作入口和 18 关节 Fit 文档导出。
 
 ## 已完成的工作流
 
@@ -919,13 +920,15 @@ Current compatibility evidence is limited to Windows x64 and Blender 5.2.0. Auto
 
 纯 Python Core 保存数据、数学、计划和校验，不导入 \`maya.cmds\` 或 \`bpy\`。Application 层组织场景捕获、事务和结果复检；Maya Adapter 负责 DAG、DG、约束、关键帧和文件导出。Maya 写入在修改前检查对象与连接，在单一 Undo Chunk 中提交，并从场景重新读取关键结果。
 
-仓库公开可读，不包含 AdvancedSkeleton 原始 MEL、模板、图标、场景或文档；当前未提供开源许可证。已有 Maya 后台角色工作台，但可见会话尚未验收；外部生产资产、完整原工具行为覆盖与 Blender 正式迁移也尚未完成。`, en: `# AdvancedSkeleton Python Architecture Refactor
+仓库公开可读，不包含 AdvancedSkeleton 原始 MEL、模板、图标、场景或文档；当前未提供开源许可证。当前界面完成了原版页面层级和已实现操作入口的对照，外部生产资产、完整原工具行为覆盖与 Blender 正式迁移仍在后续范围。`, en: `# AdvancedSkeleton Python Architecture Refactor
 
 A public Python refactor project around a locally licensed AdvancedSkeleton installation. Version 0.96.0 follows a Maya-first, Blender-second sequence: behavior is rebuilt and verified in Maya before stable semantics are captured as DCC-independent Python contracts.
 
-The current baseline covers Fit, 30/70-joint bodies, arm/leg/hand and spine FK/IK, skinning, root motion, FBX, MoCap, baseline Face workflows, and controlled replacement between characters with different spine segment counts. It has 392 passing pure-Python regression tests and self-generated Maya 2024 standalone scene validation, including undo/redo and reopening saved scenes. A Maya workbench exists, but interactive GUI validation, external production assets, full legacy behavior coverage, and formal Blender migration remain open. No original AdvancedSkeleton MEL, templates, icons, scenes, or documentation are redistributed. The public repository currently does not grant an open-source license.` },
+The current baseline covers Fit, 30/70-joint bodies, arm/leg/hand and spine FK/IK, skinning, root motion, FBX, MoCap, baseline Face workflows, and controlled replacement between characters with different spine segment counts. It has 392 passing pure-Python regression tests and self-generated Maya 2024 standalone scene validation, including undo/redo and reopening saved scenes. The visible Maya 2024 session also validates the docked AdvancedSkeleton-style navigation, Body → Fit routing, and an 18-joint Fit export. External production assets, full legacy behavior coverage, and formal Blender migration remain open. No original AdvancedSkeleton MEL, templates, icons, scenes, or documentation are redistributed. The public repository currently does not grant an open-source license.` },
     images: [
       { src: '/media/repositories/production-tools/advanced-skeleton-python-refactor.svg', alt: { zh: 'Maya-first、Blender-second 的 Python 分层迁移架构与验证基线', en: 'Maya-first, Blender-second layered Python migration architecture and validation baseline' } },
+      { src: '/media/repositories/production-tools/advanced-skeleton-python-dock.png', alt: { zh: 'Maya 2024 中按原版层级排列的左侧折叠导航', en: 'Docked AdvancedSkeleton-style navigation running in Maya 2024' } },
+      { src: '/media/repositories/production-tools/advanced-skeleton-python-detail.png', alt: { zh: 'Body / Fit 操作入口打开的中文参数窗口', en: 'Chinese Body / Fit operation window opened from the dock' } },
     ],
   },
   {
