@@ -1,5 +1,5 @@
 import type { Localized } from './showcase';
-import { aitaSystems } from './aitaSystems';
+import { aitaProjects } from './aitaSystems';
 
 export type PortfolioCategory = 'pipeline' | 'ai-agent' | 'general-ta' | 'engine-games' | 'other-tools';
 
@@ -17,7 +17,7 @@ export interface RepositoryWork {
 }
 
 export const repositoryWorks: RepositoryWork[] = [
-  aitaSystems,
+  ...aitaProjects,
   {
     id: 'frostbound-gate',
     title: '霜隙之门 · Frostbound Gate',

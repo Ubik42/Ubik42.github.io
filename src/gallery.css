@@ -57,7 +57,7 @@
 .unified-dialog .project-dialog-heading { border-color: var(--ink); }
 .unified-dialog .project-dialog-heading > p:first-child { color: var(--blue); }
 .unified-dialog .project-dialog-heading > p:last-child { color: var(--muted); }
-.unified-dialog .project-dialog-heading[data-work-id="aita-systems"] h2 {
+.unified-dialog .project-dialog-heading[data-work-id^="aita-"] h2 {
   max-width: none;
   font-size: clamp(2rem, 4.6vw, 4rem);
   line-height: 1.18;

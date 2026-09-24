@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from 'motion/react';
 
 import { projectText, selectedProjects, type SelectedProject } from '../data/projects';
 import { projectStories } from '../data/projectStories';
+import { aitaSystems } from '../data/aitaSystems';
 import { repositoryWorks, type PortfolioCategory, type RepositoryWork } from '../data/repositoryWorks';
 import { localize } from '../data/showcase';
 import { visualWorks, type VisualWork } from '../data/visualWorks';
@@ -117,12 +118,22 @@ export function PortfolioGallery() {
   useEffect(() => {
     const syncFromUrl = () => {
       const workId = new URLSearchParams(window.location.search).get('work');
-      setActiveItem(workId ? items.find((item) => item.id === workId) ?? null : null);
+      // Existing repository and Obsidian links still open the overview, without an eighth gallery card.
+      if (workId === aitaSystems.id) {
+        setActiveItem({
+          kind: 'repository', id: aitaSystems.id, category: aitaSystems.category,
+          title: aitaSystems.title, label: localize(aitaSystems.categoryLabel, locale),
+          summary: localize(aitaSystems.summary, locale), cover: aitaSystems.cover,
+          tags: aitaSystems.tags, value: aitaSystems,
+        });
+      } else {
+        setActiveItem(workId ? items.find((item) => item.id === workId) ?? null : null);
+      }
     };
     syncFromUrl();
     window.addEventListener('popstate', syncFromUrl);
     return () => window.removeEventListener('popstate', syncFromUrl);
-  }, [items]);
+  }, [items, locale]);
 
   useEffect(() => {
     const dialog = dialogRef.current;
