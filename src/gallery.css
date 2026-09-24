@@ -57,6 +57,12 @@
 .unified-dialog .project-dialog-heading { border-color: var(--ink); }
 .unified-dialog .project-dialog-heading > p:first-child { color: var(--blue); }
 .unified-dialog .project-dialog-heading > p:last-child { color: var(--muted); }
+.unified-dialog .project-dialog-heading[data-work-id="aita-systems"] h2 {
+  max-width: none;
+  font-size: clamp(2rem, 4.6vw, 4rem);
+  line-height: 1.18;
+  letter-spacing: -.025em;
+}
 .unified-dialog .project-dialog-close { border-color: var(--ink); background: var(--white); color: var(--ink); }
 .unified-dialog .notion-story h3, .unified-dialog .notion-story h4 { border-color: var(--line); color: var(--ink); }
 .unified-dialog .notion-story p, .unified-dialog .notion-story li { color: var(--muted); }

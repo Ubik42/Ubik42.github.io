@@ -177,7 +177,7 @@ function GalleryDetail({ item, locale, close }: { item: GalleryItem; locale: 'zh
   return (
     <motion.article key={`${item.kind}-${item.id}`} initial={reducedMotion ? false : { opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .2 }}>
       <button className="project-dialog-close" type="button" onClick={close} aria-label={locale === 'zh' ? '关闭项目详情' : 'Close project details'}>×</button>
-      <div className="project-dialog-heading"><p>{item.label} · {item.tags.join(' · ')}</p><h2>{item.title}</h2><p>{item.summary}</p></div>
+      <div className="project-dialog-heading" data-work-id={item.id}><p>{item.label} · {item.tags.join(' · ')}</p><h2>{item.title}</h2><p>{item.summary}</p></div>
       {item.kind === 'repository' && <RepositoryDetail work={item.value} locale={locale} />}
       {item.kind === 'visual' && <VisualDetail work={item.value} locale={locale} />}
       {item.kind === 'project' && <ProjectDetail project={item.value} locale={locale} />}
