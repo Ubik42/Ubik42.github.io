@@ -3,7 +3,7 @@ import type { RepositoryWork } from './repositoryWorks';
 export const aitaSystems: RepositoryWork = {
   id: 'aita-systems',
   title: 'UE 实时图形实验室：七项渲染与模拟',
-  category: 'general-ta',
+  category: 'engine-games',
   categoryLabel: { zh: '渲染与物理模拟 · 学习复现', en: 'Rendering and simulation studies' },
   summary: {
     zh: '一个 UE 5.8 C++ 工程，串联 Toon、交互草地、GPU 鱼群、布料、宇宙、体积雾与破碎溶解；附真实编辑器录像和可切换的七个展项。',
