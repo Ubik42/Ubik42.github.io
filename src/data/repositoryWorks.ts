@@ -195,7 +195,7 @@ An in-progress multiplayer hero-shooter project built on Unreal Engine 5.7 and L
       zh: '在固定地图和角色负载下，分别比较 AI、寻路、动画、渲染与网络调整前后的性能指标和场景状态。',
       en: 'Independent, attributable before-and-after studies across AI, navigation, animation, rendering, and networking under high multi-character load.',
     },
-    cover: '/media/repositories/lyra-hero-arena/workbench-render.png',
+    cover: '/media/repositories/lyra-hero-arena/gameplay.jpg',
     tags: ['Unreal Insights', 'CSV Profiler', 'Slate', 'A/B Benchmark'],
     repositoryUrl: 'https://github.com/Ubik42/LyraHeroArena/tree/main/Plugins/PerformanceLab',
     story: {
@@ -405,7 +405,7 @@ The cases cover contact-aware GPU cloth, multiscale tetrahedral soft bodies, par
       zh: '在 UE 场景里把碰撞与 MIDI 变成可调声音：标定冲量，塑造模态或波导共振，再交给 Wwise、WAV 与可复用配方。',
       en: 'Turns scene collisions and MIDI into tunable sound in UE: calibrate impact, shape modal or waveguide resonance, then deliver through Wwise, WAV, and reusable recipes.',
     },
-    cover: '/media/repositories/resonance-forge/workbench.png',
+    cover: '/media/repositories/resonance-forge/keybed.png',
     tags: ['UE 5.8 / C++', 'Wwise 2025.1', 'Modal / Waveguide', 'MIDI'],
     repositoryUrl: 'https://github.com/Ubik42/resonance-forge',
     story: {

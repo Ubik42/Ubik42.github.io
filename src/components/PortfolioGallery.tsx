@@ -39,12 +39,12 @@ const pipelineOrder = new Map([
 ].map((id, index) => [id, index]));
 
 const engineGamesOrder = new Map([
-  'lyra-hero-arena',
   'siggraph-physics-lab',
+  'noemancer',
+  'lyra-hero-arena',
   'lyra-performance-lab',
   'ue-performance-workbench',
   'resonance-forge',
-  'noemancer',
   'game-unpack-agent',
   'unreal-asset-batch-auditor',
   'noemancer-software-rasterizer',
