@@ -1,6 +1,7 @@
 import type { Localized } from './showcase';
 import { aitaProjects } from './aitaSystems';
 import { animationAigcLab } from './animationAigcLab';
+import { pcgWorkbench } from './pcgWorkbench';
 
 export type PortfolioCategory = 'pipeline' | 'ai-agent' | 'general-ta' | 'engine-games' | 'other-tools';
 
@@ -18,6 +19,7 @@ export interface RepositoryWork {
 }
 
 export const repositoryWorks: RepositoryWork[] = [
+  pcgWorkbench,
   animationAigcLab,
   ...aitaProjects,
   {
