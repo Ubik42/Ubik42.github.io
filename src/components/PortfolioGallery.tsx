@@ -10,6 +10,7 @@ import { visualWorks, type VisualWork } from '../data/visualWorks';
 import { visualWorkStories } from '../data/visualWorkStories';
 import { useLanguage } from '../i18n/LanguageContext';
 import { MarkdownStory } from './MarkdownStory';
+import { AnimationAigcShowcase } from './AnimationAigcShowcase';
 
 type GalleryItem =
   | { kind: 'repository'; id: string; category: PortfolioCategory; title: string; label: string; summary: string; cover: string; tags: string[]; value: RepositoryWork }
@@ -58,6 +59,7 @@ const engineGamesOrder = new Map([
 ].map((id, index) => [id, index]));
 
 const aigcOrder = new Map([
+  'animation-aigc-lab',
   'artflow-agent',
   'comfyui-production-nodes',
 ].map((id, index) => [id, index]));
@@ -208,6 +210,7 @@ function RepositoryDetail({ work, locale }: { work: RepositoryWork; locale: 'zh'
   return <>
     {work.repositoryUrl && <a className="project-dialog-source" href={work.repositoryUrl} target="_blank" rel="noreferrer"><span>{locale === 'zh' ? '查看 GitHub 仓库' : 'View GitHub repository'}</span><span aria-hidden="true">↗</span></a>}
     <DetailLeadMedia src={work.cover} alt={`${work.title} ${locale === 'zh' ? '项目画面' : 'project view'}`} fit={leadFit} />
+    {work.id === 'animation-aigc-lab' && <AnimationAigcShowcase locale={locale} />}
     <MarkdownStory markdown={localize(work.story, locale)} title={work.title} />
     {galleryImages.length > 0 && <DetailGallery fit="contain" images={galleryImages.map((image) => ({ src: image.src, alt: localize(image.alt, locale), caption: localize(image.alt, locale) }))} />}
   </>;
