@@ -59,6 +59,7 @@ const engineGamesOrder = new Map([
 ].map((id, index) => [id, index]));
 
 const aigcOrder = new Map([
+  'als-director',
   'animation-aigc-lab',
   'artflow-agent',
   'comfyui-production-nodes',

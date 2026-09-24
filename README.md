@@ -13,6 +13,8 @@
 
 AIGC 板块新增“AI 角色生成与视频动作重定向”：三个角色、两段动作参考，展示六段 Blender 渲染动画，以及多视图建模、四边面重建、PBR 烘焙、54 骨骼绑定和接触修正流程。公开页仅包含角色渲染与参考来源链接，不上传真人参考视频或音乐。
 
+AIGC 板块新增“动作导演”：当前 GPT/Codex 对话通过本地桥驱动 Unreal / ALS 角色，展示复合指令、姿态修订、连续路线与停止。详情包含独立 Windows 程序实机录像、十二项运行回归录像、路径脱敏的测试报告与源码重建包；明确区分模型回传、测试夹具和 ALS 提供的动画能力。
+
 新增的 [CPU 软件光栅化实验室](https://github.com/Ubik42/NoemancerSoftwareRasterizer) 以 C++20 在 CPU 上显式完成三角形覆盖、透视正确插值、Z-Buffer 与逐像素着色，并通过十张真实输出展示基础缓冲、风格化 Shader 和 Overdraw 诊断。项目基于 MIT 许可的 TinyRenderer 教学实现扩展，主页与仓库均保留来源和素材授权边界。
 
 Unreal 方向新增三项独立作品：[Lyra Hero Arena 五英雄多人对战游戏](https://github.com/Ubik42/LyraHeroArena)、[多角色高负载场景性能优化](https://github.com/Ubik42/LyraHeroArena/tree/main/Plugins/PerformanceLab) 与 [UE Performance Workbench 性能实验工作台](https://github.com/Ubik42/LyraHeroArena/tree/main/Plugins/PerformanceWorkbench)。它们共享同一套真实 Lyra 工程，但分别展示游戏流程、优化方法和 Editor 工具开发能力。
