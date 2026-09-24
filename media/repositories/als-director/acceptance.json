@@ -1,0 +1,240 @@
+{
+  "application": "ALSDirector",
+  "engine": "Unreal Engine 5.8.1",
+  "host": "Packaged Windows Development",
+  "passed": 12,
+  "expected": 12,
+  "plan_source": "explicit regression fixtures, not model inference",
+  "video_fps": 30,
+  "source_frame_offset": 819,
+  "cases": [
+    {
+      "name": "01 / 角色、动画实例与复位",
+      "passed": true,
+      "video_seconds": 0.0,
+      "observed": {
+        "speed": 0,
+        "x": -449.99999999999994,
+        "y": -300.00000000000006,
+        "moving": false,
+        "move_target": "",
+        "actual_gait": "Als.Gait.Walking",
+        "actual_stance": "Als.Stance.Standing",
+        "overlay": "Als.OverlayMode.Default",
+        "look_at": "",
+        "remaining_steps": 0,
+        "animation_loaded": true,
+        "tick_seconds": 0.03333333507180214
+      }
+    },
+    {
+      "name": "02 / 真实跑步速度与位置更新",
+      "passed": true,
+      "video_seconds": 1.9,
+      "observed": {
+        "speed": 333.3333528984438,
+        "x": -416.83209004643,
+        "y": -303.31679099535705,
+        "moving": true,
+        "move_target": "blue_box",
+        "actual_gait": "Als.Gait.Running",
+        "actual_stance": "Als.Stance.Standing",
+        "overlay": "Als.OverlayMode.Default",
+        "look_at": "",
+        "remaining_steps": 1,
+        "animation_loaded": true,
+        "tick_seconds": 0.03333333507180214
+      }
+    },
+    {
+      "name": "03 / 蹲伏且保留移动目标",
+      "passed": true,
+      "video_seconds": 3.7,
+      "observed": {
+        "speed": 295.0000305175783,
+        "x": 249.51118510777584,
+        "y": -369.95111851077735,
+        "moving": true,
+        "move_target": "blue_box",
+        "actual_gait": "Als.Gait.Running",
+        "actual_stance": "Als.Stance.Crouching",
+        "overlay": "Als.OverlayMode.Default",
+        "look_at": "",
+        "remaining_steps": 1,
+        "animation_loaded": true,
+        "tick_seconds": 0.03333333507180214
+      }
+    },
+    {
+      "name": "04 / 抱箱叠加姿态与停止",
+      "passed": true,
+      "video_seconds": 5.5,
+      "observed": {
+        "speed": 0,
+        "x": 400.57313758025236,
+        "y": -385.05731375802526,
+        "moving": false,
+        "move_target": "",
+        "actual_gait": "Als.Gait.Walking",
+        "actual_stance": "Als.Stance.Standing",
+        "overlay": "Als.OverlayMode.Box",
+        "look_at": "",
+        "remaining_steps": 0,
+        "animation_loaded": true,
+        "tick_seconds": 0.03333333507180214
+      }
+    },
+    {
+      "name": "05 / 受伤叠加与注视目标",
+      "passed": true,
+      "video_seconds": 7.2,
+      "observed": {
+        "speed": 0,
+        "x": 400.57313758025236,
+        "y": -385.05731375802526,
+        "moving": false,
+        "move_target": "",
+        "actual_gait": "Als.Gait.Walking",
+        "actual_stance": "Als.Stance.Standing",
+        "overlay": "Als.OverlayMode.Injured",
+        "look_at": "door",
+        "remaining_steps": 0,
+        "animation_loaded": true,
+        "tick_seconds": 0.03333333507180214
+      }
+    },
+    {
+      "name": "06 / 多步骤顺序与到达判定",
+      "passed": true,
+      "video_seconds": 10.9,
+      "observed": {
+        "speed": 0,
+        "x": 565.9500869710714,
+        "y": 290.8380520541889,
+        "moving": false,
+        "move_target": "",
+        "actual_gait": "Als.Gait.Running",
+        "actual_stance": "Als.Stance.Standing",
+        "overlay": "Als.OverlayMode.Default",
+        "look_at": "",
+        "remaining_steps": 0,
+        "animation_loaded": true,
+        "tick_seconds": 0.03333333507180214
+      }
+    },
+    {
+      "name": "07 / 途中补丁保留完整队列",
+      "passed": true,
+      "video_seconds": 12.8,
+      "observed": {
+        "speed": 174.99999999999835,
+        "x": 541.8982173050757,
+        "y": 293.1907997040459,
+        "moving": true,
+        "move_target": "door",
+        "actual_gait": "Als.Gait.Walking",
+        "actual_stance": "Als.Stance.Standing",
+        "overlay": "Als.OverlayMode.Box",
+        "look_at": "",
+        "remaining_steps": 3,
+        "animation_loaded": true,
+        "tick_seconds": 0.03333333507180214
+      }
+    },
+    {
+      "name": "08 / 非法计划整体拒绝且不改角色",
+      "passed": true,
+      "video_seconds": 14.6,
+      "observed": {
+        "speed": 0,
+        "x": 263.2282832183643,
+        "y": 320.45022034838956,
+        "moving": false,
+        "move_target": "",
+        "actual_gait": "Als.Gait.Walking",
+        "actual_stance": "Als.Stance.Standing",
+        "overlay": "Als.OverlayMode.Box",
+        "look_at": "",
+        "remaining_steps": 0,
+        "animation_loaded": true,
+        "tick_seconds": 0.03333333507180214
+      }
+    },
+    {
+      "name": "09 / 会话隔离",
+      "passed": true,
+      "video_seconds": 17.2,
+      "observed": {
+        "speed": 0,
+        "x": 263.2282832183643,
+        "y": 320.45022034838956,
+        "moving": false,
+        "move_target": "",
+        "actual_gait": "Als.Gait.Walking",
+        "actual_stance": "Als.Stance.Standing",
+        "overlay": "Als.OverlayMode.Box",
+        "look_at": "",
+        "remaining_steps": 0,
+        "animation_loaded": true,
+        "tick_seconds": 0.03333333507180214
+      }
+    },
+    {
+      "name": "10 / 新请求覆盖旧请求",
+      "passed": true,
+      "video_seconds": 19.5,
+      "observed": {
+        "speed": 0,
+        "x": 263.2282832183643,
+        "y": 320.45022034838956,
+        "moving": false,
+        "move_target": "",
+        "actual_gait": "Als.Gait.Walking",
+        "actual_stance": "Als.Stance.Standing",
+        "overlay": "Als.OverlayMode.Default",
+        "look_at": "",
+        "remaining_steps": 0,
+        "animation_loaded": true,
+        "tick_seconds": 0.03333333507180214
+      }
+    },
+    {
+      "name": "11 / 急停使迟到回复失效",
+      "passed": true,
+      "video_seconds": 22.2,
+      "observed": {
+        "speed": 0,
+        "x": 263.2282832183643,
+        "y": 320.45022034838956,
+        "moving": false,
+        "move_target": "",
+        "actual_gait": "Als.Gait.Walking",
+        "actual_stance": "Als.Stance.Standing",
+        "overlay": "Als.OverlayMode.Default",
+        "look_at": "",
+        "remaining_steps": 0,
+        "animation_loaded": true,
+        "tick_seconds": 0.03333333507180214
+      }
+    },
+    {
+      "name": "12 / 测试后复位与恢复",
+      "passed": true,
+      "video_seconds": 23.8,
+      "observed": {
+        "speed": 0,
+        "x": -450.00000000000006,
+        "y": -300.00000000000006,
+        "moving": false,
+        "move_target": "",
+        "actual_gait": "Als.Gait.Walking",
+        "actual_stance": "Als.Stance.Standing",
+        "overlay": "Als.OverlayMode.Default",
+        "look_at": "",
+        "remaining_steps": 0,
+        "animation_loaded": true,
+        "tick_seconds": 0.03333333507180214
+      }
+    }
+  ]
+}
