@@ -26,17 +26,17 @@ const filters: Array<{ id: 'all' | PortfolioCategory; zh: string; en: string }> 
 ];
 
 const pipelineOrder = new Map([
-  'art-pipeline-skill',
-  'advanced-skeleton-python-refactor',
   'rez-studio-launcher',
-  'blender-toolsmith-agent',
+  'advanced-skeleton-python-refactor',
+  'art-pipeline-skill',
+  'maya-plugin',
   'internship-art-pipeline',
   'maya-garment-preparation',
   'mayascope',
   'mayacraft',
   'asset-delivery-organizer',
   'maya-scene-checker',
-  'maya-plugin',
+  'blender-toolsmith-agent',
 ].map((id, index) => [id, index]));
 
 const engineGamesOrder = new Map([
