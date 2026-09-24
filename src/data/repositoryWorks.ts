@@ -17,6 +17,79 @@ export interface RepositoryWork {
 
 export const repositoryWorks: RepositoryWork[] = [
   {
+    id: 'frostbound-gate',
+    title: '霜隙之门 · Frostbound Gate',
+    category: 'general-ta',
+    categoryLabel: { zh: 'Unity 场景特效', en: 'Unity scene VFX' },
+    summary: {
+      zh: '雪地遗迹中的冰晶传送门。旅人靠近时凝结，穿越后传送，远离时碎裂消散；包含昼夜变化、分层冰材质和程序生成资产。',
+      en: 'An ice-crystal portal in snowy ruins: approach to form it, cross to teleport, and retreat to dissolve it. Includes a day–night cycle, layered ice shading, and procedural assets.',
+    },
+    cover: '/media/repositories/frostbound-gate/hero.webp',
+    tags: ['Unity 6', 'URP', 'Shader', '程序化建模', '场景交互'],
+    repositoryUrl: 'https://github.com/Ubik42/FrostboundGate',
+    story: {
+      zh: `# 霜隙之门
+
+一座冰门立在雪地遗迹中，冷色冰晶与暖色石灯共同标出入口。这个独立场景项目把结晶、生长、消散和昼夜变化放进同一个可以游玩的场景，让效果随着角色行动发生。
+
+## 60 秒实机演示
+
+@[video: Unity Player 实机演示：场景、角色交互、昼夜变化、冰晶细节与凝结消散](/media/repositories/frostbound-gate/showcase.mp4)
+
+视频来自 Unity Player 的真实渲染画面。字幕和下方章节条在剪辑阶段加入；固定步长录制用于保持动画与镜头连续，不作为性能测量。
+
+## 角色行动带动效果
+
+旅人接近后，地面霜纹展开，34 段冰晶依次形成不对称门拱，符文和门芯逐渐点亮。穿越开启的门面会触发传送，角色远离后冰门消散，配合 48 枚碎片散开。
+
+进入和离开使用不同的距离边界，角色在临界位置小幅移动时不会反复开关。中途折返会从当前进度继续变化。WASD 可以手动移动，F2 切换自动行走，E 可在开启的门附近交互。
+
+## 冰晶与环境
+
+冰材质分开表现切面反光、内部裂隙、云雾与颗粒。霜纹使用分支贴图，门芯由着色器绘制旋涡和环形图案。门芯并非另一场景的相机画面，实际传送由角色逻辑完成。
+
+![冰晶切面、符文与旋涡门芯](/media/repositories/frostbound-gate/detail.webp)
+
+昼夜变化同时控制主光方向、天空与环境色、魔法亮度。白天保留冰晶轮廓和裂隙，夜间由门芯、符文和石灯建立明暗关系。
+
+![日间光照下的雪地遗迹](/media/repositories/frostbound-gate/day.webp)
+
+## 工程与性能
+
+工程使用 Unity 6000.3.21f1 / URP 17.3.0。冰晶、地形、石件、旅人和纹理由项目代码生成或组合制作，生成后的资源已包含在仓库中，可以直接打开场景。代码、程序资产和文档包含 Codex 辅助。
+
+独立 Player 在 i7-13700F / RTX 4080、1920×1080、Direct3D 11、MSAA 4×、关闭垂直同步和帧率上限的条件下测量：完全开启时平均帧间隔 2.051 ms，p95 为 3.898 ms；生成—开启—消散循环平均 1.520 ms，p95 为 3.183 ms。p95 表示 95% 样本不超过该值。这是本机该次采样结果，不代表其他硬件的运行保证。
+
+仓库提供运行说明、制作说明和原始 CSV，可核对测试条件及有效 GPU 样本。[查看性能记录](https://github.com/Ubik42/FrostboundGate/blob/main/Docs/Public/性能记录.md) · [下载 1080p 演示](https://github.com/Ubik42/FrostboundGate/releases/tag/v0.1.0)。`,
+      en: `# Frostbound Gate
+
+An independent Unity scene project set in snowy ruins. Cold crystal shapes and warm stone lanterns frame an interactive portal, combining formation, dissolution, and a day–night cycle in one playable scene.
+
+## 60-second in-engine showcase
+
+@[video: Unity Player footage: environment, interaction, day–night lighting, ice detail, and formation / dissolution](/media/repositories/frostbound-gate/showcase.mp4)
+
+Captured from actual Unity Player rendering, with captions and chapter markers added in editing. Fixed-step recording keeps the animation consistent and is separate from runtime benchmarking.
+
+## Interaction and materials
+
+Approaching the gate reveals ground frost and forms an asymmetric arch of 34 crystal segments. Crossing the open portal teleports the traveller; retreat dissolves the gate with 48 shards. Separate entry and exit thresholds prevent rapid toggling at the boundary, and interrupted transitions continue from their current progress. WASD moves the character, F2 toggles the automatic walk, and E interacts near the open gate.
+
+Ice shading separates facet highlights, fractures, cloudiness, and grain. The portal core uses procedural swirl and ring patterns, rather than a camera view into another scene. Day–night controls coordinate the main light, sky, ambient color, and magical emission.
+
+![Crystal facets and procedural portal core](/media/repositories/frostbound-gate/detail.webp)
+
+![The ruins under daytime lighting](/media/repositories/frostbound-gate/day.webp)
+
+## Implementation and measurements
+
+Built with Unity 6000.3.21f1 and URP 17.3.0. Crystals, terrain, stonework, the traveller, and textures are generated or assembled by project code; ready-to-open generated assets are included. Code, procedural assets, and documentation include Codex assistance.
+
+Standalone Player measurements on an i7-13700F / RTX 4080 at 1920×1080, Direct3D 11, MSAA 4×, with VSync and the frame cap disabled: fully open mean frame interval 2.051 ms / p95 3.898 ms; formation–open–dissolution cycle mean 1.520 ms / p95 3.183 ms. These are measurements of this build on this machine, not guarantees for other hardware. The repository includes test conditions and raw CSV data.`,
+    },
+  },
+  {
     id: 'gameops-insight-agent',
     title: 'GameOps Insight Agent：游戏运营数据 BI Agent',
     category: 'ai-agent',
