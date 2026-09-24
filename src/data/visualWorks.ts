@@ -29,7 +29,7 @@ export const visualWorks: VisualWork[] = [
     portfolioCategory: 'pipeline',
     artstationUrl: 'https://www.artstation.com/artwork/XJGnR3',
     title: { en: 'Maya Plugin', zh: 'Maya 综合工具集' },
-    cover: '/media/artstation/maya-plugin.jpg',
+    cover: '/media/visual-works/maya-toolset-video-cover.jpg',
     category: { en: 'DCC tool development', zh: 'DCC 工具开发' },
     summary: {
       en: 'A modular Maya tool suite covering nine production areas, with separated interface and utility layers.',
