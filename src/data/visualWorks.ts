@@ -25,30 +25,6 @@ export interface VisualWork {
 
 export const visualWorks: VisualWork[] = [
   {
-    id: 'unreal-stylized-world',
-    portfolioCategory: 'general-ta',
-    artstationUrl: 'https://www.artstation.com/artwork/kNZDbK',
-    title: { en: 'Unreal Engine Stylized World', zh: 'Unreal 风格化世界' },
-    cover: '/media/artstation/unreal-stylized-world.jpg',
-    category: { en: 'Realtime environment', zh: '实时场景' },
-    summary: {
-      en: 'A stylized realtime environment built from a Houdini heightfield HDA, then authored and optimized in Unreal Engine.',
-      zh: '使用 Houdini 生成高度场与散布数据，将 HDA 接入 Unreal Engine，完成风格化材质、植被替换、水面、灯光与后处理。',
-    },
-    process: [
-      { en: 'Generated, eroded, and smoothed the terrain in Houdini, with placeholders for rocks and four tree variants.', zh: '在 Houdini 中生成、侵蚀并平滑地形，同时为岩石和四类树木建立程序化散布占位。' },
-      { en: 'Built distance-aware terrain, water, grass, and foliage materials in Unreal Engine.', zh: '在 Unreal Engine 中制作分远近层级的地表、水面、草地与植被材质。' },
-      { en: 'Completed scene dressing, lighting, sharpening post process, and final realtime presentation.', zh: '完成场景布置、灯光、锐化后处理与最终实时画面。' },
-    ],
-    tools: ['Unreal Engine', 'Houdini', 'HDA', 'Material Editor'],
-    youtubeId: 'GRVpU7MBSTg',
-    featured: true,
-    images: [
-      { src: '/media/visual-works/world-final.webp', alt: { en: 'Final stylized environment in Unreal Engine', zh: 'Unreal Engine 中的风格化世界最终画面' }, caption: { en: 'Final realtime environment', zh: '最终实时场景' } },
-      { src: '/media/visual-works/world-heightfield.webp', alt: { en: 'Houdini heightfield and placement visualization', zh: 'Houdini 高度场与模型占位可视化' }, caption: { en: 'Heightfield and procedural placement data', zh: '高度场与程序化散布数据' } },
-    ],
-  },
-  {
     id: 'maya-plugin',
     portfolioCategory: 'pipeline',
     artstationUrl: 'https://www.artstation.com/artwork/XJGnR3',
@@ -164,6 +140,30 @@ export const visualWorks: VisualWork[] = [
       { src: '/media/visual-works/lightning-form.webp', alt: { en: 'Procedural lightning curves', zh: '程序化生成的闪电曲线' }, caption: { en: 'Lightning form generation', zh: '闪电形态生成' } },
       { src: '/media/visual-works/lightning-stream.webp', alt: { en: 'Secondary electric current effect', zh: '次级电流与颜色流动效果' }, caption: { en: 'Secondary current', zh: '次级电流效果' } },
       { src: '/media/visual-works/lightning-destruction.webp', alt: { en: 'Wall destruction driven by lightning strikes', zh: '闪电命中驱动的墙体破碎' }, caption: { en: 'Strike-driven rigid-body destruction', zh: '命中驱动的刚体破碎' } },
+    ],
+  },
+  {
+    id: 'unreal-stylized-world',
+    portfolioCategory: 'general-ta',
+    artstationUrl: 'https://www.artstation.com/artwork/kNZDbK',
+    title: { en: 'Unreal Engine Stylized World', zh: 'Unreal 风格化世界' },
+    cover: '/media/artstation/unreal-stylized-world.jpg',
+    category: { en: 'Realtime environment', zh: '实时场景' },
+    summary: {
+      en: 'A stylized realtime environment built from a Houdini heightfield HDA, then authored and optimized in Unreal Engine.',
+      zh: '使用 Houdini 生成高度场与散布数据，将 HDA 接入 Unreal Engine，完成风格化材质、植被替换、水面、灯光与后处理。',
+    },
+    process: [
+      { en: 'Generated, eroded, and smoothed the terrain in Houdini, with placeholders for rocks and four tree variants.', zh: '在 Houdini 中生成、侵蚀并平滑地形，同时为岩石和四类树木建立程序化散布占位。' },
+      { en: 'Built distance-aware terrain, water, grass, and foliage materials in Unreal Engine.', zh: '在 Unreal Engine 中制作分远近层级的地表、水面、草地与植被材质。' },
+      { en: 'Completed scene dressing, lighting, sharpening post process, and final realtime presentation.', zh: '完成场景布置、灯光、锐化后处理与最终实时画面。' },
+    ],
+    tools: ['Unreal Engine', 'Houdini', 'HDA', 'Material Editor'],
+    youtubeId: 'GRVpU7MBSTg',
+    featured: true,
+    images: [
+      { src: '/media/visual-works/world-final.webp', alt: { en: 'Final stylized environment in Unreal Engine', zh: 'Unreal Engine 中的风格化世界最终画面' }, caption: { en: 'Final realtime environment', zh: '最终实时场景' } },
+      { src: '/media/visual-works/world-heightfield.webp', alt: { en: 'Houdini heightfield and placement visualization', zh: 'Houdini 高度场与模型占位可视化' }, caption: { en: 'Heightfield and procedural placement data', zh: '高度场与程序化散布数据' } },
     ],
   },
   {
