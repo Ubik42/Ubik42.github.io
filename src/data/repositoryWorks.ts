@@ -92,7 +92,7 @@ Standalone Player measurements on an i7-13700F / RTX 4080 at 1920×1080, Direct3
   {
     id: 'gameops-insight-agent',
     title: 'GameOps Insight Agent：游戏运营数据 BI Agent',
-    category: 'ai-agent',
+    category: 'other-tools',
     categoryLabel: { zh: '游戏运营 BI Agent', en: 'Game operations BI agent' },
     summary: {
       zh: '把中文业务问题编译为指标口径、分析计划和受限只读查询，再用真实表格、图表、证据哈希与 Run 回放交付可复算结论。',
@@ -1215,7 +1215,7 @@ PyArsenal 面向需要维护大量零散脚本的 Python 开发者。它把脚�
 PyArsenal is a graphical manager for Python developers who maintain many scripts. It centralizes registration, tags, execution environments, and compilation so a script library remains searchable and deliverable.` },
   },
   {
-    id: 'levelwright-agent', title: 'Levelwright Agent：UE 关卡灰盒搭建智能体', category: 'ai-agent',
+    id: 'levelwright-agent', title: 'Levelwright Agent：UE 关卡灰盒搭建智能体', category: 'other-tools',
     categoryLabel: { zh: 'UE 关卡设计与可玩性验证', en: 'UE level design and playability validation' },
     summary: { zh: '把关卡 Brief、玩家尺度、节拍与技术约束转换为两个可比较的 UE 5.8.1 灰盒候选，并用稳定语义 ID、真实导航、碰撞射线和 Playtest 轨迹支持局部修订。', en: 'Turns level briefs, player metrics, pacing, and technical constraints into two comparable UE 5.8.1 blockout candidates, with stable semantic IDs, real navigation, collision traces, and playtest trajectories for local revision.' },
     cover: '/media/repositories/levelwright-agent/observation.png',
@@ -1253,7 +1253,7 @@ Enemy spawns are currently gameplay markers rather than combat AI. Automated nav
     ],
   },
   {
-    id: 'threeui-agent', title: 'ThreeUI 组件选型与资产规划 Agent', category: 'ai-agent',
+    id: 'threeui-agent', title: 'ThreeUI 组件选型与资产规划 Agent', category: 'other-tools',
     categoryLabel: { zh: 'Three.js 组件检索与视觉选型', en: 'Three.js component retrieval and visual selection' },
     summary: { zh: '结合中文需求、参考图和前端工程环境，从 176 个可安装 Community 结果与 462 个官网公开页面中返回最多三个候选，并明确源码、许可与兼容边界。', en: 'Returns up to three candidates from 176 installable Community results and 462 public catalog pages using the request, reference images, and target frontend environment.' },
     cover: '/media/repositories/threeui-agent/dark-cyan-particle-flow.webp',
@@ -1293,7 +1293,7 @@ The v0.3.0 release ships a CLI and installable Codex Skill, validated on Windows
     ],
   },
   {
-    id: 'comfyui-workflow-lab', title: 'ComfyUI 工作流智能推荐 Agent', category: 'ai-agent',
+    id: 'comfyui-workflow-lab', title: 'ComfyUI 工作流智能推荐 Agent', category: 'other-tools',
     categoryLabel: { zh: '本地工作流检索与推荐 Agent', en: 'Local workflow retrieval and recommendation agent' },
     summary: { zh: '从 617 个官方工作流中结合中文需求、参考图、本机模型、节点、版本、16GB 显存与许可证约束，返回最多三个可解释候选，并在确认后安全导出。', en: 'Recommends up to three explainable candidates from 617 official workflows using the request, reference image, local models, nodes, versions, VRAM, and license constraints.' },
     cover: '/media/repositories/comfyui-workflow-lab/reference-recommendation.png',

@@ -52,10 +52,6 @@ const engineGamesOrder = new Map([
 
 const aigcOrder = new Map([
   'artflow-agent',
-  'gameops-insight-agent',
-  'levelwright-agent',
-  'threeui-agent',
-  'comfyui-workflow-lab',
   'comfyui-production-nodes',
 ].map((id, index) => [id, index]));
 
