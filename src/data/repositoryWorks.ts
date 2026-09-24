@@ -762,7 +762,7 @@ Version 0.3.1 provides two Maya 2025 workflows: safe three-input UV/position tra
     ],
   },
   {
-    id: 'game-unpack-agent', title: 'Game Unpack Agent：Unity / Unreal 受控解包', category: 'engine-games',
+    id: 'game-unpack-agent', title: 'Game Unpack Agent：Unity / Unreal 受控解包', category: 'other-tools',
     categoryLabel: { zh: '跨引擎资源容器识别与受控解包', en: 'Cross-engine container detection and controlled extraction' },
     summary: { zh: '面向自有或明确获授权的 Unity / Unreal 包执行 scan → plan → run → verify；v0.1.0 已在 Windows x64 / .NET 9 下验证 Unity AssetBundle 7/7 与 Unreal Pak 4/4。', en: 'Runs scan → plan → run → verify for owned or explicitly authorized Unity and Unreal packages; v0.1.0 validates a 7/7 Unity AssetBundle case and a 4/4 Unreal Pak case on Windows x64 and .NET 9.' },
     cover: '/media/repositories/production-tools/game-unpack-agent.svg',
@@ -841,7 +841,7 @@ A read-only Unreal 5.8.1 Editor plug-in. Native C++ collects host metadata while
     ],
   },
   {
-    id: 'unreal-toolsmith-agent', title: 'UE 编辑器工具开发与诊断 Agent', category: 'engine-games',
+    id: 'unreal-toolsmith-agent', title: 'UE 编辑器工具开发与诊断 Agent', category: 'other-tools',
     categoryLabel: { zh: 'UE 编辑器工具开发、构建诊断与宿主验证', en: 'Unreal editor tooling, build diagnosis, and host validation' },
     summary: { zh: '把中文 UE 工具需求编译为版本化任务合同与可审阅 Patch，串联 UBT、Automation、官方 MCP 只读发现和真实 Slate 生命周期验证。', en: 'Compiles Chinese Unreal tooling requests into versioned task contracts and reviewable patches, then connects UBT, Automation, official read-only MCP discovery, and real Slate lifecycle validation.' },
     cover: '/media/repositories/production-tools/unreal-toolsmith-agent.png',
