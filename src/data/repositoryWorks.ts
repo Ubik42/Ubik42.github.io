@@ -3,6 +3,7 @@ import { aitaProjects } from './aitaSystems';
 import { animationAigcLab } from './animationAigcLab';
 import { alsDirector } from './alsDirector';
 import { pcgWorkbench } from './pcgWorkbench';
+import { parkourAnimation } from './parkourAnimation';
 
 export type PortfolioCategory = 'pipeline' | 'ai-agent' | 'general-ta' | 'engine-games' | 'other-tools';
 
@@ -20,6 +21,7 @@ export interface RepositoryWork {
 }
 
 export const repositoryWorks: RepositoryWork[] = [
+  parkourAnimation,
   alsDirector,
   pcgWorkbench,
   animationAigcLab,

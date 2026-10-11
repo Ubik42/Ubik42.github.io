@@ -10,3 +10,7 @@
 /.vite/
 /assets/
 *.log
+/scripts/maya-capture-prefs/
+/scripts/parkour-capture.json
+/scripts/startup.png
+/public/media/parkour-animation/controls.*.jpg
