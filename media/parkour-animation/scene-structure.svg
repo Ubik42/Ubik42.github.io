@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="920" viewBox="0 0 1400 920">
+<rect width="1400" height="920" rx="14" fill="#101921"/>
+<g font-family="Microsoft YaHei, sans-serif">
+<text x="38" y="52" fill="#fff" font-size="30" font-weight="700">场景层级与动作职责</text>
+<text x="38" y="90" fill="#bdcbd6" font-size="19">节点名称与父子关系来自最终 Maya 工程；省略号表示中间绑定节点。</text>
+<g fill="none" stroke="#536a7c" stroke-width="2">
+<path d="M68 156V276 M68 213H107 M68 270H107 M118 278V490 M118 330H159 M118 482H159 M172 336V442 M172 388H216 M172 434H216 M172 487V608 M172 541H216 M172 600H216 M68 717V817 M68 756H107 M68 817H107"/>
+</g>
+<g font-size="21" fill="#e8eff5">
+<text x="38" y="148" fill="#83ceff" font-weight="700">rig_group</text><text x="690" y="148">角色绑定的顶层组</text>
+<text x="113" y="220" fill="#acb8c4">geo_group → proxy_geoGroup</text><text x="690" y="220">角色显示几何体与代理模型</text>
+<text x="113" y="276" fill="#83ceff" font-weight="700">Character</text><text x="690" y="276">整体位移：控制角色沿场景前进</text>
+<text x="168" y="336" fill="#f5bd55" font-weight="700">Upper_Body</text><text x="690" y="336">身体升降、局部前进与前翻旋转</text>
+<text x="228" y="394">JOINTS</text><text x="690" y="394">骨骼层</text>
+<text x="228" y="442">RIG → … → Spine_Pelvis_FK</text><text x="690" y="442">骨盆姿态与躯干控制</text>
+<text x="168" y="490" fill="#6cddb5" font-weight="700">IK</text><text x="690" y="490">手脚 IK 控制分支</text>
+<text x="228" y="550" fill="#6cddb5">LeftLeg_IK → … → LeftLeg_IK_Leg</text><text x="690" y="550">左脚位置与腿部姿态</text>
+<text x="228" y="608" fill="#ad9cff">RightLeg_IK → … → RightLeg_IK_Leg</text><text x="690" y="608">右脚位置与腿部姿态</text>
+<text x="38" y="709" fill="#fff" font-weight="700">场景根节点</text>
+<text x="113" y="764">pCube1—pCube6 / pPlane1—pPlane2</text><text x="690" y="764">障碍、平台与地面；与角色绑定独立</text>
+<text x="113" y="825">persp1 → perspShape2</text><text x="690" y="825">有位置关键帧的跟随相机</text>
+</g>
+<text x="38" y="889" fill="#b9c9d5" font-size="18">身体控制与 IK 控制是 Character 下的两个分支；身体姿态和脚端位置可以分别调整。</text>
+</g></svg>
