@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-17",
+  "backend": "D3D12",
+  "nativeSize": [
+    1600,
+    900
+  ],
+  "simulationHz": 60,
+  "editorFrames": 900,
+  "playerFrames": 360,
+  "packageTransitionHoldSeconds": 2,
+  "videoDurationSeconds": 23,
+  "beforePosition": [
+    2.8,
+    0.35,
+    0
+  ],
+  "savedPosition": [
+    2.799999952316284,
+    1.350000023841858,
+    0
+  ],
+  "undoRestoredScene": true,
+  "savedWithVirtualIdentity": true,
+  "packageMatchesSavedScene": true,
+  "editConfirmedFrame": 331,
+  "undoConfirmedFrame": 391,
+  "redoConfirmedFrame": 451,
+  "saveConfirmedFrame": 452,
+  "packageFileCount": 356,
+  "limitations": [
+    "Scripted Play and input, not manual mouse operations",
+    "Fixed simulation step, not wall-clock performance or packaging duration",
+    "Editor recording and packaged Player are separate runs",
+    "Local machine validation only"
+  ],
+  "events": [
+    {
+      "name": "scene.transform.edit",
+      "capturedFrames": 330
+    },
+    {
+      "name": "scene.transform.edit",
+      "capturedFrames": 331
+    },
+    {
+      "name": "world.undo",
+      "capturedFrames": 391
+    },
+    {
+      "name": "world.redo",
+      "capturedFrames": 451
+    },
+    {
+      "name": "scene.save",
+      "capturedFrames": 452
+    }
+  ],
+  "playEvents": [
+    {
+      "frame": 120,
+      "state": "playing"
+    },
+    {
+      "frame": 300,
+      "state": "edit"
+    },
+    {
+      "frame": 540,
+      "state": "playing"
+    },
+    {
+      "frame": 840,
+      "state": "edit"
+    }
+  ]
+}

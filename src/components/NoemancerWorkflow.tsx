@@ -19,12 +19,23 @@ export function NoemancerWorkflow({ locale }: { locale: 'zh' | 'en' }) {
       <h3 id="noemancer-workflow-title">{zh ? '一个台阶，从编辑到独立运行' : 'One platform, from editing to a player build'}</h3>
       <p>{zh ? '场景变更、中文 HUD 与 C# 玩法共用同一个工程。' : 'Scene changes, a Chinese HUD and C# gameplay in one project.'}</p>
     </header>
+    <figure className="noemancer-motion">
+      <video controls playsInline preload="metadata" width="1600" height="1140"
+        poster="/media/repositories/noemancer-workflow/motion-poster.png"
+        aria-label={zh ? 'Noemancer 编辑、撤销重做、保存及独立运行连续演示' : 'Noemancer editing, undo, redo, save and packaged player demonstration'}>
+        <source src="/media/repositories/noemancer-workflow/motion.mp4" type="video/mp4" />
+        <a href="/media/repositories/noemancer-workflow/motion.mp4">{zh ? '打开演示视频' : 'Open video'}</a>
+      </video>
+      <figcaption><strong>{zh ? '23 秒连续流程' : '23-second workflow'}</strong>
+        {zh ? '同一 Editor 中试玩、修改台阶、撤销重做与保存，再启动打包后的独立 Player。自动操作、固定 60 Hz 游戏步长、无声；中间 2 秒停帧用于打包转场，不代表真实打包耗时。' : 'Play, edit, undo, redo and save in one Editor, then launch the packaged Player. Scripted input, fixed 60 Hz simulation, silent. The two-second packaging transition does not represent build time.'}
+      </figcaption>
+    </figure>
     <div className="noemancer-workflow-switch" role="group" aria-label={zh ? '工作流画面' : 'Workflow views'}>
       {steps.map((item, index) => <button type="button" key={item.image} aria-pressed={selected === index} onClick={() => setSelected(index)}>
         <span aria-hidden="true">0{index + 1}</span>{item[locale]}<small>{item.value}</small>
       </button>)}
     </div>
-    <figure>
+    <figure className="noemancer-stills">
       <a href={`/media/repositories/noemancer-workflow/${step.image}.webp`} target="_blank" rel="noreferrer" aria-label={zh ? `${step.zh}：打开原尺寸画面` : `Open full-size ${step.en.toLowerCase()} image`}>
         <img src={`/media/repositories/noemancer-workflow/${step.image}.webp`} width="1600" height="900" alt={step.caption[locale]} />
       </a>
@@ -37,7 +48,9 @@ export function NoemancerWorkflow({ locale }: { locale: 'zh' | 'en' }) {
         <li>{zh ? '撤销恢复完整场景，重做后保存；重新打开工程确认位置。' : 'Undo restores the complete scene; redo and save persist the change.'}</li>
         <li>{zh ? 'HUD 的五个中文标签通过 UI 源文档事务保存并热应用。' : 'Five Chinese HUD labels are persisted and hot-applied through UI source transactions.'}</li>
       </ol>
-      <p>{zh ? '画面来自原生 GPU 捕获。场景修改在独立命令会话完成，截图阶段连接当前编辑器选中目标；此组为流程截图，完整连续操作录像仍待补充。原工程保持不变，演示副本修正了环境 Sprite 元数据。' : 'Native GPU captures. Scene edits use an isolated command session; capture selection connects to the live editor. These are workflow stills; a continuous recording remains pending. The original project is unchanged; environment Sprite metadata was corrected in the demonstration copy.'}</p>
+      <p>{zh ? '录像来自原生 D3D12 连续帧。实时命令连接当前 Editor，在同一编辑世界中修改、撤销、重做并保存；打包与 Player 为后续独立运行。以上三张静态截图保留早期独立命令会话的记录。两批均使用工程副本，原工程保持不变。' : 'The video uses native D3D12 frames and live commands in the active Editor. Packaging and Player execution follow separately. The three stills preserve the earlier isolated command-session demonstration. Both runs use project copies; the original remains unchanged.'}</p>
+      <a href="/media/repositories/noemancer-workflow/motion.json" target="_blank" rel="noreferrer">{zh ? '连续演示的操作与保存记录 ↗' : 'Video operations and save record ↗'}</a>
+      {' · '}
       <a href="/media/repositories/noemancer-workflow/results.json" target="_blank" rel="noreferrer">{zh ? '运行摘要与文件指纹 ↗' : 'Run summary and file hashes ↗'}</a>
     </details>
   </section>;
