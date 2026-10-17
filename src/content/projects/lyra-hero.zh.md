@@ -4,6 +4,22 @@
 
 基于 UE 5.7.4 与 Lyra 架构搭建的五英雄射击原型，目前处于持续开发阶段。项目以独立的 HeroArena GameFeature 插件组织玩法扩展，包含五位英雄的数据资产、专属能力组合、A/B/C 轮换控制点与战术 HUD，并为机器人补充前排、输出与支援的技能决策。底层的角色移动预测、网络同步武器、GAS 基础架构、动画资产、死亡镜头与自动重生流程复用 Lyra 的原生能力。
 
+## 游骑：射击、恢复场与轮换控制点
+
+游骑 Striker 的技能与占点规则由 HeroArena 扩展实现，基础移动、武器、动画及重生流程复用 Lyra。下方为单机 1 玩家加 9 Bot 的连续片段：脚本读取只读寻路和视线可达敌人的位置，通过既有 Enhanced Input 输入移动、射击与技能。
+
+@[video: 游骑连续实机片段，约 65 秒，无声。保留完整过程与等待，按游戏时间播放；自动输入，未开启无敌、传送、伤害注入或强制占点。](/media/repositories/lyra-hero-arena/striker-combat.mp4)
+
+### 恢复场：权威治疗与脉冲反馈
+
+**RecoveryField** 采用 LocalPredicted GameplayAbility。激活时先执行 CommitAbility 处理冷却等提交，只有 Authority 分支生成恢复场 Actor。Actor 记录所属队伍与到期时间，服务器定时检索范围内友方，通过标准 **GameplayEffect** 路径应用治疗。实际治疗成功后递增 HealingPulseSequence 并触发 ForceNetUpdate，客户端由 **OnRep** 驱动 Niagara 脉冲。治疗计算由服务器负责，客户端按复制结果播放反馈；本段录像覆盖单机流程。
+
+### 目标轮换：分离玩法坐标与隐藏状态
+
+控制点组件保存各点的原始 Transform。原逻辑将非活动点移入地下 100000 单位隐藏，预告下一目标时误读其实时坐标，目标高度变为约 −99948，导致导航失败。修复后读取 **OriginalTransforms** 中的初始位置，避免临时位移污染玩法坐标。单机测试已验证初始预告与 A 到 B 轮换，目标高度和寻路恢复正常。
+
+实现入口：[恢复场能力](https://github.com/Ubik42/LyraHeroArena/blob/main/Plugins/GameFeatures/HeroArena/Source/HeroArenaRuntime/Private/Abilities/HeroArenaGameplayAbility_RecoveryField.cpp)、[恢复场 Actor](https://github.com/Ubik42/LyraHeroArena/blob/main/Plugins/GameFeatures/HeroArena/Source/HeroArenaRuntime/Private/Actors/HeroArenaRecoveryField.cpp)、[控制点轮换](https://github.com/Ubik42/LyraHeroArena/blob/main/Plugins/GameFeatures/HeroArena/Source/HeroArenaRuntime/Private/Components/HeroArenaControlPointRotationComponent.cpp)。
+
 ## Phase 闪回：闪现充能与历史状态回溯
 
 在 HeroArena GameFeature 中，基于 Lyra 的 GAS 框架与角色资产，为 Phase 实现闪现与回溯。GameplayAbility 组织技能激活，PlayerState 组件维护充能和历史记录，战术 HUD 显示剩余次数、冷却与失败原因。
