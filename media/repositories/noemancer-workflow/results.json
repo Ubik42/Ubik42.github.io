@@ -1,0 +1,171 @@
+{
+  "schema": "portfolio.noemancer-workflow/1",
+  "date": "2026-10-17",
+  "engineSourceCommit": "f494cb8ca682db33d8ca27f02a747b4f5e82f71d",
+  "engineChanges": "Editor initial scene focus and bounded adaptive Sprite Atlas Cook pages",
+  "executableSha256": "ffab2728fd214172e7828dba1818a9d6ee6983e84b86a71382b35463e84b210a",
+  "originalProjectUnchanged": true,
+  "edit": {
+    "entity": "entity.lumen.platform.01",
+    "before": {
+      "position": [
+        2.8,
+        0.35,
+        0.0
+      ],
+      "scale": [
+        0.8,
+        0.25,
+        1.0
+      ]
+    },
+    "after": {
+      "position": [
+        2.799999952316284,
+        1.350000023841858,
+        0.0
+      ],
+      "scale": [
+        0.800000011920929,
+        0.25,
+        1.0
+      ]
+    },
+    "dryRunUnchanged": true,
+    "staleRejected": true,
+    "undoRestoredScene": true,
+    "redoApplied": true,
+    "saved": true,
+    "revisionBefore": 1,
+    "revisionAfter": 4
+  },
+  "ui": {
+    "labelsPersisted": 5,
+    "runtimeHotApplied": true,
+    "finalRevision": 6
+  },
+  "liveEditorSelection": {
+    "editor-before": {
+      "selection": "entity.lumen.platform.01",
+      "focus": {
+        "activeTabId": "editor.panel.scene",
+        "panelId": "editor.panel.scene"
+      },
+      "revision": 17
+    },
+    "editor-after": {
+      "selection": "entity.lumen.platform.01",
+      "focus": {
+        "activeTabId": "editor.panel.scene",
+        "panelId": "editor.panel.scene"
+      },
+      "revision": 17
+    }
+  },
+  "metadataRepair": {
+    "scope": "generated copy only",
+    "sourceSize": [
+      1672,
+      941
+    ],
+    "previousDeclaredSize": [
+      1680,
+      945
+    ],
+    "fields": [
+      "textureSize",
+      "frames[0].rect",
+      "frames[0].sourceSize"
+    ],
+    "sourcePngSha256": "4be55e628b7388ac977b1f1b6da2dd57da59b54bdef90f3ebc258d8f21a0751e"
+  },
+  "package": {
+    "success": true,
+    "profileSha256": "3eceb180d3ffae27f9890dad934ba64c698eb77f273a7c810dd419131bd9bb75",
+    "files": 356
+  },
+  "headlessRuntime": {
+    "source": {
+      "entityCount": 27,
+      "mode": "source-project",
+      "managedBackend": "coreclr-hostfxr/1.0",
+      "runtime": ".NET 10.0.11",
+      "projectCodeExecuted": true,
+      "courierCallbacks": 91,
+      "courierState": {
+        "CheckpointX": -4,
+        "CheckpointY": 1,
+        "CheckpointZ": 0,
+        "Collected": 0,
+        "Completed": false,
+        "FacingLeft": false,
+        "InteractHeld": false,
+        "InteractionCount": 0,
+        "PositionX": -4,
+        "PositionY": 0.91999996,
+        "RestartHeld": false,
+        "VisualState": "idle"
+      }
+    },
+    "player": {
+      "entityCount": 27,
+      "mode": "packaged-player",
+      "managedBackend": "coreclr-hostfxr/1.0",
+      "runtime": ".NET 10.0.11",
+      "projectCodeExecuted": true,
+      "courierCallbacks": 91,
+      "courierState": {
+        "CheckpointX": -4,
+        "CheckpointY": 1,
+        "CheckpointZ": 0,
+        "Collected": 0,
+        "Completed": false,
+        "FacingLeft": false,
+        "InteractHeld": false,
+        "InteractionCount": 0,
+        "PositionX": -4,
+        "PositionY": 0.91999996,
+        "RestartHeld": false,
+        "VisualState": "idle"
+      }
+    }
+  },
+  "images": [
+    {
+      "file": "editor-before.webp",
+      "sourcePngSha256": "69f3b1cf61eb19cc4943c014485a4b8080b7173f03e7f02d44853d032ad60db6",
+      "sha256": "49e6186259a3edd4db949f13e42fde9056d5d89b9f1de6eb0dc292a82c1cd32c",
+      "size": [
+        1600,
+        900
+      ],
+      "executableSha256": "ffab2728fd214172e7828dba1818a9d6ee6983e84b86a71382b35463e84b210a"
+    },
+    {
+      "file": "editor-after.webp",
+      "sourcePngSha256": "11d9cb79029bb0193c09db390beef07807395b096af098b1dcecdb508783a824",
+      "sha256": "1094de7f189b8dfaf6f01bcc2f69ed7ff1f8315b6392e07150630a5a60c42c3d",
+      "size": [
+        1600,
+        900
+      ],
+      "executableSha256": "ffab2728fd214172e7828dba1818a9d6ee6983e84b86a71382b35463e84b210a"
+    },
+    {
+      "file": "player.webp",
+      "sourcePngSha256": "d6d089ed699150aa9656cca6ea0504eae32e8178b71d47052cc40d8f7695afc5",
+      "sha256": "0efc6faa726e936c01735da8a2ef56045ce0d7a0d842fe695391874fa538f0a5",
+      "size": [
+        1600,
+        900
+      ],
+      "executableSha256": "ffab2728fd214172e7828dba1818a9d6ee6983e84b86a71382b35463e84b210a"
+    }
+  ],
+  "scope": [
+    "Command-driven edit/save in an isolated serve World; live Editor used for selection and capture.",
+    "Native D3D12 stills; not a continuous manual GUI recording.",
+    "Source and packaged C# execution checked for 90 fixed steps on this Windows machine.",
+    "No clean-machine or Sponza package claim. Background artwork is a prototype asset."
+  ]
+}
