@@ -1,0 +1,5084 @@
+{
+  "scope": "Pose tracking with a fixed pelvis world target and unlimited control force/torque; not autonomous balance or a performance benchmark.",
+  "historical": {
+    "date": "2026-08-30",
+    "engine": "5.4.4-35576357+++UE5+Release-5.4",
+    "samples": 360,
+    "fixed_step_hz": 60,
+    "duration_seconds": 6,
+    "bodies_per_character": 22,
+    "controls_on_active_character": 22,
+    "impulse_kg_cm_per_s": 5200,
+    "csv_sha256": "f95410f1ff0f0cf6132cd9c18938c829fbbb3c60da3034bdb22e5fd782e721b9",
+    "json_sha256": "ccd50346cc0eeb036bffb19196abe48d3cc8eed39e08bafee9000c428bc76a3a",
+    "final": {
+      "baseline_pose_error_deg": 107.603648286,
+      "research_pose_error_deg": 27.143672045,
+      "baseline_pelvis_displacement_cm": 152.213929202,
+      "research_pelvis_displacement_cm": 2.996189229
+    },
+    "time_series": [
+      {
+        "time_s": 0.016666668,
+        "baseline_pose_error_deg": 0.377468814,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 0.390785699,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.033333335,
+        "baseline_pose_error_deg": 2.126358404,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 1.511415634,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.050000003,
+        "baseline_pose_error_deg": 3.368256023,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 2.944784112,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.06666667,
+        "baseline_pose_error_deg": 5.142420658,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 4.062609739,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.083333338,
+        "baseline_pose_error_deg": 6.201680201,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 4.660876045,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.100000005,
+        "baseline_pose_error_deg": 7.806841928,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 4.900597649,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.116666673,
+        "baseline_pose_error_deg": 9.031068286,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 4.869850326,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.13333334,
+        "baseline_pose_error_deg": 10.862244626,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 4.943766393,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.150000008,
+        "baseline_pose_error_deg": 12.565961239,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 5.209739845,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.166666675,
+        "baseline_pose_error_deg": 14.570890635,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 5.905329257,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.183333343,
+        "baseline_pose_error_deg": 16.314731463,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 6.728505711,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.20000001,
+        "baseline_pose_error_deg": 18.387708457,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 7.684641509,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.216666678,
+        "baseline_pose_error_deg": 20.415991467,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 8.440494428,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.233333346,
+        "baseline_pose_error_deg": 23.133738868,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 9.206862139,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.250000013,
+        "baseline_pose_error_deg": 25.349023228,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 9.825832476,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.266666681,
+        "baseline_pose_error_deg": 28.051592201,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 10.51231355,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.283333348,
+        "baseline_pose_error_deg": 30.255741916,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 11.005900587,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.300000016,
+        "baseline_pose_error_deg": 32.891364396,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 11.544204377,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.316666683,
+        "baseline_pose_error_deg": 35.208848777,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 11.898511731,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.333333351,
+        "baseline_pose_error_deg": 37.993871985,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 12.319171907,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.350000018,
+        "baseline_pose_error_deg": 40.339054471,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 12.559925479,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.366666686,
+        "baseline_pose_error_deg": 42.869550763,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 12.896317036,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.383333353,
+        "baseline_pose_error_deg": 45.160899936,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 13.124397433,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.400000021,
+        "baseline_pose_error_deg": 47.872422405,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 13.66046636,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.416666688,
+        "baseline_pose_error_deg": 50.277793155,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 14.053312862,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.433333356,
+        "baseline_pose_error_deg": 52.367477199,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 14.452018406,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.450000023,
+        "baseline_pose_error_deg": 54.67141419,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 15.095707215,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.466666691,
+        "baseline_pose_error_deg": 56.56133178,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 15.527256844,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.483333359,
+        "baseline_pose_error_deg": 58.463803044,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 16.133351366,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.500000026,
+        "baseline_pose_error_deg": 60.05714634,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 16.485147678,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.516666694,
+        "baseline_pose_error_deg": 60.364196264,
+        "research_pose_error_deg": 3.455004691,
+        "baseline_pelvis_displacement_cm": 17.480078406,
+        "research_pelvis_displacement_cm": 1.336072457
+      },
+      {
+        "time_s": 0.533333361,
+        "baseline_pose_error_deg": 62.044614009,
+        "research_pose_error_deg": 5.718549806,
+        "baseline_pelvis_displacement_cm": 18.970930056,
+        "research_pelvis_displacement_cm": 2.611151698
+      },
+      {
+        "time_s": 0.550000029,
+        "baseline_pose_error_deg": 63.454060499,
+        "research_pose_error_deg": 7.324109291,
+        "baseline_pelvis_displacement_cm": 20.871728667,
+        "research_pelvis_displacement_cm": 3.160255096
+      },
+      {
+        "time_s": 0.566666696,
+        "baseline_pose_error_deg": 64.77820256,
+        "research_pose_error_deg": 8.832157055,
+        "baseline_pelvis_displacement_cm": 22.359721874,
+        "research_pelvis_displacement_cm": 3.310919542
+      },
+      {
+        "time_s": 0.583333364,
+        "baseline_pose_error_deg": 65.586367363,
+        "research_pose_error_deg": 10.222924446,
+        "baseline_pelvis_displacement_cm": 23.555304071,
+        "research_pelvis_displacement_cm": 3.309839408
+      },
+      {
+        "time_s": 0.600000031,
+        "baseline_pose_error_deg": 66.311080975,
+        "research_pose_error_deg": 12.022554908,
+        "baseline_pelvis_displacement_cm": 24.563458217,
+        "research_pelvis_displacement_cm": 3.262029952
+      },
+      {
+        "time_s": 0.616666699,
+        "baseline_pose_error_deg": 67.090604772,
+        "research_pose_error_deg": 13.938322581,
+        "baseline_pelvis_displacement_cm": 25.298163825,
+        "research_pelvis_displacement_cm": 3.250611749
+      },
+      {
+        "time_s": 0.633333366,
+        "baseline_pose_error_deg": 67.853403378,
+        "research_pose_error_deg": 16.092184554,
+        "baseline_pelvis_displacement_cm": 25.940692986,
+        "research_pelvis_displacement_cm": 3.261693261
+      },
+      {
+        "time_s": 0.650000034,
+        "baseline_pose_error_deg": 68.562553891,
+        "research_pose_error_deg": 18.269273639,
+        "baseline_pelvis_displacement_cm": 26.501818697,
+        "research_pelvis_displacement_cm": 3.301571488
+      },
+      {
+        "time_s": 0.666666701,
+        "baseline_pose_error_deg": 69.180252924,
+        "research_pose_error_deg": 20.599936387,
+        "baseline_pelvis_displacement_cm": 27.009371953,
+        "research_pelvis_displacement_cm": 3.33528898
+      },
+      {
+        "time_s": 0.683333369,
+        "baseline_pose_error_deg": 69.686305906,
+        "research_pose_error_deg": 22.960592434,
+        "baseline_pelvis_displacement_cm": 27.489849608,
+        "research_pelvis_displacement_cm": 3.353707675
+      },
+      {
+        "time_s": 0.700000037,
+        "baseline_pose_error_deg": 70.062950587,
+        "research_pose_error_deg": 25.176228033,
+        "baseline_pelvis_displacement_cm": 27.982741696,
+        "research_pelvis_displacement_cm": 3.361579029
+      },
+      {
+        "time_s": 0.716666704,
+        "baseline_pose_error_deg": 70.285984675,
+        "research_pose_error_deg": 27.195607747,
+        "baseline_pelvis_displacement_cm": 28.44474454,
+        "research_pelvis_displacement_cm": 3.344915482
+      },
+      {
+        "time_s": 0.733333372,
+        "baseline_pose_error_deg": 70.389536752,
+        "research_pose_error_deg": 29.086348044,
+        "baseline_pelvis_displacement_cm": 28.90473871,
+        "research_pelvis_displacement_cm": 3.305411777
+      },
+      {
+        "time_s": 0.750000039,
+        "baseline_pose_error_deg": 70.447117332,
+        "research_pose_error_deg": 30.868666178,
+        "baseline_pelvis_displacement_cm": 29.384554888,
+        "research_pelvis_displacement_cm": 3.261746628
+      },
+      {
+        "time_s": 0.766666707,
+        "baseline_pose_error_deg": 70.464153419,
+        "research_pose_error_deg": 32.434625842,
+        "baseline_pelvis_displacement_cm": 29.841435626,
+        "research_pelvis_displacement_cm": 3.224910383
+      },
+      {
+        "time_s": 0.783333374,
+        "baseline_pose_error_deg": 70.473509606,
+        "research_pose_error_deg": 33.793951064,
+        "baseline_pelvis_displacement_cm": 30.307324287,
+        "research_pelvis_displacement_cm": 3.196151274
+      },
+      {
+        "time_s": 0.800000042,
+        "baseline_pose_error_deg": 70.489728212,
+        "research_pose_error_deg": 34.907326062,
+        "baseline_pelvis_displacement_cm": 30.744029681,
+        "research_pelvis_displacement_cm": 3.170058754
+      },
+      {
+        "time_s": 0.816666709,
+        "baseline_pose_error_deg": 70.554329754,
+        "research_pose_error_deg": 35.797790953,
+        "baseline_pelvis_displacement_cm": 31.220030556,
+        "research_pelvis_displacement_cm": 3.140339694
+      },
+      {
+        "time_s": 0.833333377,
+        "baseline_pose_error_deg": 70.657570364,
+        "research_pose_error_deg": 36.431897239,
+        "baseline_pelvis_displacement_cm": 31.629860281,
+        "research_pelvis_displacement_cm": 3.112390631
+      },
+      {
+        "time_s": 0.850000044,
+        "baseline_pose_error_deg": 70.826938633,
+        "research_pose_error_deg": 36.83160527,
+        "baseline_pelvis_displacement_cm": 32.091269841,
+        "research_pelvis_displacement_cm": 3.086116987
+      },
+      {
+        "time_s": 0.866666712,
+        "baseline_pose_error_deg": 71.061801945,
+        "research_pose_error_deg": 36.98908167,
+        "baseline_pelvis_displacement_cm": 32.490123406,
+        "research_pelvis_displacement_cm": 3.044289242
+      },
+      {
+        "time_s": 0.883333379,
+        "baseline_pose_error_deg": 71.433136462,
+        "research_pose_error_deg": 36.96985543,
+        "baseline_pelvis_displacement_cm": 33.035368388,
+        "research_pelvis_displacement_cm": 3.011727319
+      },
+      {
+        "time_s": 0.900000047,
+        "baseline_pose_error_deg": 71.873497967,
+        "research_pose_error_deg": 36.76670126,
+        "baseline_pelvis_displacement_cm": 33.475311792,
+        "research_pelvis_displacement_cm": 2.983423268
+      },
+      {
+        "time_s": 0.916666714,
+        "baseline_pose_error_deg": 72.353378953,
+        "research_pose_error_deg": 36.381326552,
+        "baseline_pelvis_displacement_cm": 34.005312164,
+        "research_pelvis_displacement_cm": 2.967089817
+      },
+      {
+        "time_s": 0.933333382,
+        "baseline_pose_error_deg": 72.851901728,
+        "research_pose_error_deg": 35.885859725,
+        "baseline_pelvis_displacement_cm": 34.532892243,
+        "research_pelvis_displacement_cm": 2.947591463
+      },
+      {
+        "time_s": 0.95000005,
+        "baseline_pose_error_deg": 73.473528166,
+        "research_pose_error_deg": 35.293826424,
+        "baseline_pelvis_displacement_cm": 35.259657876,
+        "research_pelvis_displacement_cm": 2.936023842
+      },
+      {
+        "time_s": 0.966666717,
+        "baseline_pose_error_deg": 74.011874112,
+        "research_pose_error_deg": 34.614243618,
+        "baseline_pelvis_displacement_cm": 35.8587658,
+        "research_pelvis_displacement_cm": 2.932379284
+      },
+      {
+        "time_s": 0.983333385,
+        "baseline_pose_error_deg": 74.500810126,
+        "research_pose_error_deg": 33.81995642,
+        "baseline_pelvis_displacement_cm": 36.637085737,
+        "research_pelvis_displacement_cm": 2.930883216
+      },
+      {
+        "time_s": 1.000000052,
+        "baseline_pose_error_deg": 74.928096325,
+        "research_pose_error_deg": 33.016358708,
+        "baseline_pelvis_displacement_cm": 37.501436364,
+        "research_pelvis_displacement_cm": 2.933718519
+      },
+      {
+        "time_s": 1.01666672,
+        "baseline_pose_error_deg": 75.422260644,
+        "research_pose_error_deg": 32.215822731,
+        "baseline_pelvis_displacement_cm": 38.644948433,
+        "research_pelvis_displacement_cm": 2.939731041
+      },
+      {
+        "time_s": 1.033333387,
+        "baseline_pose_error_deg": 75.860429575,
+        "research_pose_error_deg": 31.402735759,
+        "baseline_pelvis_displacement_cm": 39.768113871,
+        "research_pelvis_displacement_cm": 2.948076983
+      },
+      {
+        "time_s": 1.050000055,
+        "baseline_pose_error_deg": 76.531825531,
+        "research_pose_error_deg": 30.575464086,
+        "baseline_pelvis_displacement_cm": 41.337505771,
+        "research_pelvis_displacement_cm": 2.95577902
+      },
+      {
+        "time_s": 1.066666722,
+        "baseline_pose_error_deg": 77.131288949,
+        "research_pose_error_deg": 29.779741802,
+        "baseline_pelvis_displacement_cm": 42.692607434,
+        "research_pelvis_displacement_cm": 2.970396625
+      },
+      {
+        "time_s": 1.08333339,
+        "baseline_pose_error_deg": 77.817477568,
+        "research_pose_error_deg": 28.933333662,
+        "baseline_pelvis_displacement_cm": 44.375231743,
+        "research_pelvis_displacement_cm": 2.983366671
+      },
+      {
+        "time_s": 1.100000057,
+        "baseline_pose_error_deg": 78.38597385,
+        "research_pose_error_deg": 28.153314242,
+        "baseline_pelvis_displacement_cm": 46.01598365,
+        "research_pelvis_displacement_cm": 3.000207042
+      },
+      {
+        "time_s": 1.116666725,
+        "baseline_pose_error_deg": 79.225336435,
+        "research_pose_error_deg": 27.453510802,
+        "baseline_pelvis_displacement_cm": 48.13274992,
+        "research_pelvis_displacement_cm": 3.015470695
+      },
+      {
+        "time_s": 1.133333392,
+        "baseline_pose_error_deg": 79.882634784,
+        "research_pose_error_deg": 26.759178381,
+        "baseline_pelvis_displacement_cm": 50.065278493,
+        "research_pelvis_displacement_cm": 3.024008966
+      },
+      {
+        "time_s": 1.15000006,
+        "baseline_pose_error_deg": 80.459596534,
+        "research_pose_error_deg": 26.141209032,
+        "baseline_pelvis_displacement_cm": 52.274806253,
+        "research_pelvis_displacement_cm": 3.038080774
+      },
+      {
+        "time_s": 1.166666728,
+        "baseline_pose_error_deg": 81.108627108,
+        "research_pose_error_deg": 25.584440211,
+        "baseline_pelvis_displacement_cm": 54.65417769,
+        "research_pelvis_displacement_cm": 3.038117921
+      },
+      {
+        "time_s": 1.183333395,
+        "baseline_pose_error_deg": 81.926384754,
+        "research_pose_error_deg": 25.112176417,
+        "baseline_pelvis_displacement_cm": 57.252838049,
+        "research_pelvis_displacement_cm": 3.044403527
+      },
+      {
+        "time_s": 1.200000063,
+        "baseline_pose_error_deg": 82.750524622,
+        "research_pose_error_deg": 24.671417582,
+        "baseline_pelvis_displacement_cm": 59.949513377,
+        "research_pelvis_displacement_cm": 3.037917057
+      },
+      {
+        "time_s": 1.21666673,
+        "baseline_pose_error_deg": 83.961159143,
+        "research_pose_error_deg": 24.303698964,
+        "baseline_pelvis_displacement_cm": 63.104515721,
+        "research_pelvis_displacement_cm": 3.043018201
+      },
+      {
+        "time_s": 1.233333398,
+        "baseline_pose_error_deg": 85.172138531,
+        "research_pose_error_deg": 24.042396349,
+        "baseline_pelvis_displacement_cm": 66.056950259,
+        "research_pelvis_displacement_cm": 3.041550702
+      },
+      {
+        "time_s": 1.250000065,
+        "baseline_pose_error_deg": 86.57506491,
+        "research_pose_error_deg": 23.820383878,
+        "baseline_pelvis_displacement_cm": 69.20957236,
+        "research_pelvis_displacement_cm": 3.042892507
+      },
+      {
+        "time_s": 1.266666733,
+        "baseline_pose_error_deg": 88.145245629,
+        "research_pose_error_deg": 23.700247961,
+        "baseline_pelvis_displacement_cm": 72.517948178,
+        "research_pelvis_displacement_cm": 3.041261686
+      },
+      {
+        "time_s": 1.2833334,
+        "baseline_pose_error_deg": 89.800368327,
+        "research_pose_error_deg": 23.652789666,
+        "baseline_pelvis_displacement_cm": 75.938583302,
+        "research_pelvis_displacement_cm": 3.031798327
+      },
+      {
+        "time_s": 1.300000068,
+        "baseline_pose_error_deg": 91.710146231,
+        "research_pose_error_deg": 23.645203589,
+        "baseline_pelvis_displacement_cm": 79.631673106,
+        "research_pelvis_displacement_cm": 3.031711872
+      },
+      {
+        "time_s": 1.316666735,
+        "baseline_pose_error_deg": 93.643069517,
+        "research_pose_error_deg": 23.755696034,
+        "baseline_pelvis_displacement_cm": 83.378591963,
+        "research_pelvis_displacement_cm": 3.025176389
+      },
+      {
+        "time_s": 1.333333403,
+        "baseline_pose_error_deg": 95.574775307,
+        "research_pose_error_deg": 23.866412189,
+        "baseline_pelvis_displacement_cm": 87.463122191,
+        "research_pelvis_displacement_cm": 3.022974014
+      },
+      {
+        "time_s": 1.35000007,
+        "baseline_pose_error_deg": 96.183616965,
+        "research_pose_error_deg": 24.038168355,
+        "baseline_pelvis_displacement_cm": 91.214481518,
+        "research_pelvis_displacement_cm": 3.018739226
+      },
+      {
+        "time_s": 1.366666738,
+        "baseline_pose_error_deg": 96.344708879,
+        "research_pose_error_deg": 24.28204459,
+        "baseline_pelvis_displacement_cm": 95.583807264,
+        "research_pelvis_displacement_cm": 3.007189738
+      },
+      {
+        "time_s": 1.383333405,
+        "baseline_pose_error_deg": 95.905443118,
+        "research_pose_error_deg": 24.523444143,
+        "baseline_pelvis_displacement_cm": 99.630886804,
+        "research_pelvis_displacement_cm": 3.007677265
+      },
+      {
+        "time_s": 1.400000073,
+        "baseline_pose_error_deg": 95.410127699,
+        "research_pose_error_deg": 24.859104835,
+        "baseline_pelvis_displacement_cm": 103.325317035,
+        "research_pelvis_displacement_cm": 3.00268857
+      },
+      {
+        "time_s": 1.416666741,
+        "baseline_pose_error_deg": 94.954691038,
+        "research_pose_error_deg": 25.147650388,
+        "baseline_pelvis_displacement_cm": 106.439793353,
+        "research_pelvis_displacement_cm": 3.004051121
+      },
+      {
+        "time_s": 1.433333408,
+        "baseline_pose_error_deg": 95.685906868,
+        "research_pose_error_deg": 25.530698406,
+        "baseline_pelvis_displacement_cm": 109.376485116,
+        "research_pelvis_displacement_cm": 3.001266883
+      },
+      {
+        "time_s": 1.450000076,
+        "baseline_pose_error_deg": 96.428008605,
+        "research_pose_error_deg": 25.83867101,
+        "baseline_pelvis_displacement_cm": 111.993759766,
+        "research_pelvis_displacement_cm": 3.004174773
+      },
+      {
+        "time_s": 1.466666743,
+        "baseline_pose_error_deg": 97.613079652,
+        "research_pose_error_deg": 26.229216003,
+        "baseline_pelvis_displacement_cm": 114.48949432,
+        "research_pelvis_displacement_cm": 3.001370758
+      },
+      {
+        "time_s": 1.483333411,
+        "baseline_pose_error_deg": 98.277732314,
+        "research_pose_error_deg": 26.52610194,
+        "baseline_pelvis_displacement_cm": 116.63700377,
+        "research_pelvis_displacement_cm": 3.005322899
+      },
+      {
+        "time_s": 1.500000078,
+        "baseline_pose_error_deg": 98.45970783,
+        "research_pose_error_deg": 26.892628027,
+        "baseline_pelvis_displacement_cm": 119.126465517,
+        "research_pelvis_displacement_cm": 3.002135325
+      },
+      {
+        "time_s": 1.516666746,
+        "baseline_pose_error_deg": 98.15799345,
+        "research_pose_error_deg": 27.154486722,
+        "baseline_pelvis_displacement_cm": 121.138968358,
+        "research_pelvis_displacement_cm": 3.006640711
+      },
+      {
+        "time_s": 1.533333413,
+        "baseline_pose_error_deg": 98.161758511,
+        "research_pose_error_deg": 27.474814323,
+        "baseline_pelvis_displacement_cm": 123.058395956,
+        "research_pelvis_displacement_cm": 3.003276943
+      },
+      {
+        "time_s": 1.550000081,
+        "baseline_pose_error_deg": 97.824250905,
+        "research_pose_error_deg": 27.684958977,
+        "baseline_pelvis_displacement_cm": 124.822784485,
+        "research_pelvis_displacement_cm": 3.008060512
+      },
+      {
+        "time_s": 1.566666748,
+        "baseline_pose_error_deg": 97.592623573,
+        "research_pose_error_deg": 27.944552646,
+        "baseline_pelvis_displacement_cm": 126.569760573,
+        "research_pelvis_displacement_cm": 3.004743769
+      },
+      {
+        "time_s": 1.583333416,
+        "baseline_pose_error_deg": 96.986529415,
+        "research_pose_error_deg": 28.092648131,
+        "baseline_pelvis_displacement_cm": 128.271239299,
+        "research_pelvis_displacement_cm": 3.009625846
+      },
+      {
+        "time_s": 1.600000083,
+        "baseline_pose_error_deg": 96.692471538,
+        "research_pose_error_deg": 28.283754978,
+        "baseline_pelvis_displacement_cm": 130.046015783,
+        "research_pelvis_displacement_cm": 3.006463803
+      },
+      {
+        "time_s": 1.616666751,
+        "baseline_pose_error_deg": 95.398072024,
+        "research_pose_error_deg": 28.365729963,
+        "baseline_pelvis_displacement_cm": 131.686140522,
+        "research_pelvis_displacement_cm": 3.011300713
+      },
+      {
+        "time_s": 1.633333419,
+        "baseline_pose_error_deg": 94.827483889,
+        "research_pose_error_deg": 28.487293378,
+        "baseline_pelvis_displacement_cm": 133.201709359,
+        "research_pelvis_displacement_cm": 3.008309957
+      },
+      {
+        "time_s": 1.650000086,
+        "baseline_pose_error_deg": 94.151152669,
+        "research_pose_error_deg": 28.505358234,
+        "baseline_pelvis_displacement_cm": 133.920392325,
+        "research_pelvis_displacement_cm": 3.012990888
+      },
+      {
+        "time_s": 1.666666754,
+        "baseline_pose_error_deg": 93.74261123,
+        "research_pose_error_deg": 28.562644027,
+        "baseline_pelvis_displacement_cm": 134.559105448,
+        "research_pelvis_displacement_cm": 3.010138615
+      },
+      {
+        "time_s": 1.683333421,
+        "baseline_pose_error_deg": 93.137648211,
+        "research_pose_error_deg": 28.524605297,
+        "baseline_pelvis_displacement_cm": 135.17914792,
+        "research_pelvis_displacement_cm": 3.014586938
+      },
+      {
+        "time_s": 1.700000089,
+        "baseline_pose_error_deg": 93.033586112,
+        "research_pose_error_deg": 28.466761006,
+        "baseline_pelvis_displacement_cm": 135.524660254,
+        "research_pelvis_displacement_cm": 3.016334825
+      },
+      {
+        "time_s": 1.716666756,
+        "baseline_pose_error_deg": 92.586267348,
+        "research_pose_error_deg": 28.41382141,
+        "baseline_pelvis_displacement_cm": 135.759240179,
+        "research_pelvis_displacement_cm": 3.007247448
+      },
+      {
+        "time_s": 1.733333424,
+        "baseline_pose_error_deg": 92.632823513,
+        "research_pose_error_deg": 28.317034594,
+        "baseline_pelvis_displacement_cm": 136.228688404,
+        "research_pelvis_displacement_cm": 3.011615014
+      },
+      {
+        "time_s": 1.750000091,
+        "baseline_pose_error_deg": 92.779516551,
+        "research_pose_error_deg": 28.247107564,
+        "baseline_pelvis_displacement_cm": 136.424319499,
+        "research_pelvis_displacement_cm": 3.009757118
+      },
+      {
+        "time_s": 1.766666759,
+        "baseline_pose_error_deg": 93.299144065,
+        "research_pose_error_deg": 28.122846489,
+        "baseline_pelvis_displacement_cm": 136.894220087,
+        "research_pelvis_displacement_cm": 3.013655443
+      },
+      {
+        "time_s": 1.783333426,
+        "baseline_pose_error_deg": 93.439917704,
+        "research_pose_error_deg": 28.006951773,
+        "baseline_pelvis_displacement_cm": 137.053242484,
+        "research_pelvis_displacement_cm": 3.015752131
+      },
+      {
+        "time_s": 1.800000094,
+        "baseline_pose_error_deg": 93.293514883,
+        "research_pose_error_deg": 27.892158841,
+        "baseline_pelvis_displacement_cm": 137.732798705,
+        "research_pelvis_displacement_cm": 3.0098808
+      },
+      {
+        "time_s": 1.816666761,
+        "baseline_pose_error_deg": 93.538276559,
+        "research_pose_error_deg": 27.761546256,
+        "baseline_pelvis_displacement_cm": 137.747689788,
+        "research_pelvis_displacement_cm": 3.013837591
+      },
+      {
+        "time_s": 1.833333429,
+        "baseline_pose_error_deg": 93.209408961,
+        "research_pose_error_deg": 27.653000582,
+        "baseline_pelvis_displacement_cm": 138.439336462,
+        "research_pelvis_displacement_cm": 3.006361556
+      },
+      {
+        "time_s": 1.850000096,
+        "baseline_pose_error_deg": 93.484031347,
+        "research_pose_error_deg": 27.539696273,
+        "baseline_pelvis_displacement_cm": 138.453997694,
+        "research_pelvis_displacement_cm": 3.006343271
+      },
+      {
+        "time_s": 1.866666764,
+        "baseline_pose_error_deg": 93.256990208,
+        "research_pose_error_deg": 27.453888322,
+        "baseline_pelvis_displacement_cm": 139.221126342,
+        "research_pelvis_displacement_cm": 3.004235185
+      },
+      {
+        "time_s": 1.883333432,
+        "baseline_pose_error_deg": 93.609069476,
+        "research_pose_error_deg": 27.362247053,
+        "baseline_pelvis_displacement_cm": 139.291972257,
+        "research_pelvis_displacement_cm": 2.997606475
+      },
+      {
+        "time_s": 1.900000099,
+        "baseline_pose_error_deg": 93.471752008,
+        "research_pose_error_deg": 27.276307559,
+        "baseline_pelvis_displacement_cm": 139.911643356,
+        "research_pelvis_displacement_cm": 2.999766948
+      },
+      {
+        "time_s": 1.916666767,
+        "baseline_pose_error_deg": 93.790598694,
+        "research_pose_error_deg": 27.221456189,
+        "baseline_pelvis_displacement_cm": 139.798042591,
+        "research_pelvis_displacement_cm": 2.999138397
+      },
+      {
+        "time_s": 1.933333434,
+        "baseline_pose_error_deg": 93.509958375,
+        "research_pose_error_deg": 27.154670114,
+        "baseline_pelvis_displacement_cm": 140.436181773,
+        "research_pelvis_displacement_cm": 2.996415544
+      },
+      {
+        "time_s": 1.950000102,
+        "baseline_pose_error_deg": 93.469582403,
+        "research_pose_error_deg": 27.094710206,
+        "baseline_pelvis_displacement_cm": 140.724989241,
+        "research_pelvis_displacement_cm": 2.998930837
+      },
+      {
+        "time_s": 1.966666769,
+        "baseline_pose_error_deg": 93.887242443,
+        "research_pose_error_deg": 27.068409519,
+        "baseline_pelvis_displacement_cm": 140.895719901,
+        "research_pelvis_displacement_cm": 2.998396302
+      },
+      {
+        "time_s": 1.983333437,
+        "baseline_pose_error_deg": 93.390770294,
+        "research_pose_error_deg": 27.030974621,
+        "baseline_pelvis_displacement_cm": 141.066617809,
+        "research_pelvis_displacement_cm": 2.996118363
+      },
+      {
+        "time_s": 2.000000104,
+        "baseline_pose_error_deg": 93.440510739,
+        "research_pose_error_deg": 26.998435774,
+        "baseline_pelvis_displacement_cm": 141.392104549,
+        "research_pelvis_displacement_cm": 2.998302089
+      },
+      {
+        "time_s": 2.016666772,
+        "baseline_pose_error_deg": 93.639583154,
+        "research_pose_error_deg": 26.999383521,
+        "baseline_pelvis_displacement_cm": 141.077210778,
+        "research_pelvis_displacement_cm": 2.99725496
+      },
+      {
+        "time_s": 2.033333439,
+        "baseline_pose_error_deg": 93.277366237,
+        "research_pose_error_deg": 26.981320094,
+        "baseline_pelvis_displacement_cm": 141.494339406,
+        "research_pelvis_displacement_cm": 2.991189928
+      },
+      {
+        "time_s": 2.050000107,
+        "baseline_pose_error_deg": 93.281054252,
+        "research_pose_error_deg": 26.975069099,
+        "baseline_pelvis_displacement_cm": 141.614331752,
+        "research_pelvis_displacement_cm": 2.992352816
+      },
+      {
+        "time_s": 2.066666774,
+        "baseline_pose_error_deg": 93.594586908,
+        "research_pose_error_deg": 26.993154147,
+        "baseline_pelvis_displacement_cm": 141.597068528,
+        "research_pelvis_displacement_cm": 2.990192203
+      },
+      {
+        "time_s": 2.083333442,
+        "baseline_pose_error_deg": 93.002376124,
+        "research_pose_error_deg": 26.974702591,
+        "baseline_pelvis_displacement_cm": 141.662565492,
+        "research_pelvis_displacement_cm": 2.972789183
+      },
+      {
+        "time_s": 2.10000011,
+        "baseline_pose_error_deg": 92.959843621,
+        "research_pose_error_deg": 26.982959184,
+        "baseline_pelvis_displacement_cm": 141.901636539,
+        "research_pelvis_displacement_cm": 2.968771909
+      },
+      {
+        "time_s": 2.116666777,
+        "baseline_pose_error_deg": 93.068076198,
+        "research_pose_error_deg": 26.96804524,
+        "baseline_pelvis_displacement_cm": 141.443638062,
+        "research_pelvis_displacement_cm": 2.953904342
+      },
+      {
+        "time_s": 2.133333445,
+        "baseline_pose_error_deg": 92.599562916,
+        "research_pose_error_deg": 26.97030036,
+        "baseline_pelvis_displacement_cm": 141.726331353,
+        "research_pelvis_displacement_cm": 2.954724343
+      },
+      {
+        "time_s": 2.150000112,
+        "baseline_pose_error_deg": 92.783402646,
+        "research_pose_error_deg": 26.985179562,
+        "baseline_pelvis_displacement_cm": 141.357256924,
+        "research_pelvis_displacement_cm": 2.955973385
+      },
+      {
+        "time_s": 2.16666678,
+        "baseline_pose_error_deg": 92.714920393,
+        "research_pose_error_deg": 26.99839699,
+        "baseline_pelvis_displacement_cm": 141.447477058,
+        "research_pelvis_displacement_cm": 2.958455598
+      },
+      {
+        "time_s": 2.183333447,
+        "baseline_pose_error_deg": 92.250622194,
+        "research_pose_error_deg": 27.002279512,
+        "baseline_pelvis_displacement_cm": 141.595756621,
+        "research_pelvis_displacement_cm": 2.968009317
+      },
+      {
+        "time_s": 2.200000115,
+        "baseline_pose_error_deg": 92.444254555,
+        "research_pose_error_deg": 27.024588053,
+        "baseline_pelvis_displacement_cm": 141.608443698,
+        "research_pelvis_displacement_cm": 2.974837604
+      },
+      {
+        "time_s": 2.216666782,
+        "baseline_pose_error_deg": 91.725203195,
+        "research_pose_error_deg": 27.059501012,
+        "baseline_pelvis_displacement_cm": 141.69697034,
+        "research_pelvis_displacement_cm": 2.979293879
+      },
+      {
+        "time_s": 2.23333345,
+        "baseline_pose_error_deg": 91.569990493,
+        "research_pose_error_deg": 27.072986367,
+        "baseline_pelvis_displacement_cm": 141.952032589,
+        "research_pelvis_displacement_cm": 2.987790075
+      },
+      {
+        "time_s": 2.250000117,
+        "baseline_pose_error_deg": 91.470109123,
+        "research_pose_error_deg": 27.100291309,
+        "baseline_pelvis_displacement_cm": 141.925208078,
+        "research_pelvis_displacement_cm": 2.992136479
+      },
+      {
+        "time_s": 2.266666785,
+        "baseline_pose_error_deg": 91.448815919,
+        "research_pose_error_deg": 27.143964823,
+        "baseline_pelvis_displacement_cm": 142.068935752,
+        "research_pelvis_displacement_cm": 2.99169721
+      },
+      {
+        "time_s": 2.283333452,
+        "baseline_pose_error_deg": 91.292670463,
+        "research_pose_error_deg": 27.15975524,
+        "baseline_pelvis_displacement_cm": 141.972396142,
+        "research_pelvis_displacement_cm": 2.997050429
+      },
+      {
+        "time_s": 2.30000012,
+        "baseline_pose_error_deg": 91.220582991,
+        "research_pose_error_deg": 27.183525678,
+        "baseline_pelvis_displacement_cm": 142.10479654,
+        "research_pelvis_displacement_cm": 2.998562891
+      },
+      {
+        "time_s": 2.316666787,
+        "baseline_pose_error_deg": 91.079440605,
+        "research_pose_error_deg": 27.223325776,
+        "baseline_pelvis_displacement_cm": 141.994537454,
+        "research_pelvis_displacement_cm": 2.99480866
+      },
+      {
+        "time_s": 2.333333455,
+        "baseline_pose_error_deg": 90.973266196,
+        "research_pose_error_deg": 27.231872483,
+        "baseline_pelvis_displacement_cm": 142.109655822,
+        "research_pelvis_displacement_cm": 2.998692033
+      },
+      {
+        "time_s": 2.350000123,
+        "baseline_pose_error_deg": 90.892541531,
+        "research_pose_error_deg": 27.243990216,
+        "baseline_pelvis_displacement_cm": 142.024219573,
+        "research_pelvis_displacement_cm": 2.999472798
+      },
+      {
+        "time_s": 2.36666679,
+        "baseline_pose_error_deg": 90.896658335,
+        "research_pose_error_deg": 27.270166743,
+        "baseline_pelvis_displacement_cm": 142.186224835,
+        "research_pelvis_displacement_cm": 2.995033262
+      },
+      {
+        "time_s": 2.383333458,
+        "baseline_pose_error_deg": 90.889563444,
+        "research_pose_error_deg": 27.264881407,
+        "baseline_pelvis_displacement_cm": 142.115915013,
+        "research_pelvis_displacement_cm": 2.999087972
+      },
+      {
+        "time_s": 2.400000125,
+        "baseline_pose_error_deg": 90.962823408,
+        "research_pose_error_deg": 27.260998067,
+        "baseline_pelvis_displacement_cm": 142.268093226,
+        "research_pelvis_displacement_cm": 3.000549497
+      },
+      {
+        "time_s": 2.416666793,
+        "baseline_pose_error_deg": 90.971635137,
+        "research_pose_error_deg": 27.268297838,
+        "baseline_pelvis_displacement_cm": 142.178926979,
+        "research_pelvis_displacement_cm": 2.996785355
+      },
+      {
+        "time_s": 2.43333346,
+        "baseline_pose_error_deg": 90.99286148,
+        "research_pose_error_deg": 27.247388485,
+        "baseline_pelvis_displacement_cm": 142.280246093,
+        "research_pelvis_displacement_cm": 3.001452399
+      },
+      {
+        "time_s": 2.450000128,
+        "baseline_pose_error_deg": 90.980984155,
+        "research_pose_error_deg": 27.271216491,
+        "baseline_pelvis_displacement_cm": 142.139439188,
+        "research_pelvis_displacement_cm": 3.001816384
+      },
+      {
+        "time_s": 2.466666795,
+        "baseline_pose_error_deg": 91.067418817,
+        "research_pose_error_deg": 27.242328903,
+        "baseline_pelvis_displacement_cm": 142.217383977,
+        "research_pelvis_displacement_cm": 3.005107278
+      },
+      {
+        "time_s": 2.483333463,
+        "baseline_pose_error_deg": 91.09367051,
+        "research_pose_error_deg": 27.243419324,
+        "baseline_pelvis_displacement_cm": 142.074981739,
+        "research_pelvis_displacement_cm": 2.994710164
+      },
+      {
+        "time_s": 2.50000013,
+        "baseline_pose_error_deg": 91.211216769,
+        "research_pose_error_deg": 27.228537798,
+        "baseline_pelvis_displacement_cm": 142.166580609,
+        "research_pelvis_displacement_cm": 2.993681021
+      },
+      {
+        "time_s": 2.516666798,
+        "baseline_pose_error_deg": 91.217714181,
+        "research_pose_error_deg": 27.252010071,
+        "baseline_pelvis_displacement_cm": 142.034035967,
+        "research_pelvis_displacement_cm": 2.985581337
+      },
+      {
+        "time_s": 2.533333465,
+        "baseline_pose_error_deg": 91.348080231,
+        "research_pose_error_deg": 27.235548374,
+        "baseline_pelvis_displacement_cm": 142.160812376,
+        "research_pelvis_displacement_cm": 2.986742979
+      },
+      {
+        "time_s": 2.550000133,
+        "baseline_pose_error_deg": 91.34717092,
+        "research_pose_error_deg": 27.270288091,
+        "baseline_pelvis_displacement_cm": 142.109391838,
+        "research_pelvis_displacement_cm": 2.984565713
+      },
+      {
+        "time_s": 2.566666801,
+        "baseline_pose_error_deg": 91.544789966,
+        "research_pose_error_deg": 27.25188492,
+        "baseline_pelvis_displacement_cm": 142.304745975,
+        "research_pelvis_displacement_cm": 2.987793062
+      },
+      {
+        "time_s": 2.583333468,
+        "baseline_pose_error_deg": 91.577514683,
+        "research_pose_error_deg": 27.28787528,
+        "baseline_pelvis_displacement_cm": 142.276671441,
+        "research_pelvis_displacement_cm": 2.987115992
+      },
+      {
+        "time_s": 2.600000136,
+        "baseline_pose_error_deg": 91.800561369,
+        "research_pose_error_deg": 27.266483712,
+        "baseline_pelvis_displacement_cm": 142.464029042,
+        "research_pelvis_displacement_cm": 2.990934955
+      },
+      {
+        "time_s": 2.616666803,
+        "baseline_pose_error_deg": 91.83232938,
+        "research_pose_error_deg": 27.300657928,
+        "baseline_pelvis_displacement_cm": 142.419303632,
+        "research_pelvis_displacement_cm": 2.989936255
+      },
+      {
+        "time_s": 2.633333471,
+        "baseline_pose_error_deg": 92.024347939,
+        "research_pose_error_deg": 27.276350713,
+        "baseline_pelvis_displacement_cm": 142.584139614,
+        "research_pelvis_displacement_cm": 2.99366993
+      },
+      {
+        "time_s": 2.650000138,
+        "baseline_pose_error_deg": 92.123411579,
+        "research_pose_error_deg": 27.264015624,
+        "baseline_pelvis_displacement_cm": 142.507021874,
+        "research_pelvis_displacement_cm": 2.980022969
+      },
+      {
+        "time_s": 2.666666806,
+        "baseline_pose_error_deg": 92.330498426,
+        "research_pose_error_deg": 27.242394288,
+        "baseline_pelvis_displacement_cm": 142.636261824,
+        "research_pelvis_displacement_cm": 2.979060105
+      },
+      {
+        "time_s": 2.683333473,
+        "baseline_pose_error_deg": 92.418409769,
+        "research_pose_error_deg": 27.24972181,
+        "baseline_pelvis_displacement_cm": 142.538827122,
+        "research_pelvis_displacement_cm": 2.969810905
+      },
+      {
+        "time_s": 2.700000141,
+        "baseline_pose_error_deg": 92.652988987,
+        "research_pose_error_deg": 27.221952004,
+        "baseline_pelvis_displacement_cm": 142.652243757,
+        "research_pelvis_displacement_cm": 2.972779288
+      },
+      {
+        "time_s": 2.716666808,
+        "baseline_pose_error_deg": 92.750135526,
+        "research_pose_error_deg": 27.244278996,
+        "baseline_pelvis_displacement_cm": 142.551105802,
+        "research_pelvis_displacement_cm": 2.973757172
+      },
+      {
+        "time_s": 2.733333476,
+        "baseline_pose_error_deg": 93.01352204,
+        "research_pose_error_deg": 27.216060907,
+        "baseline_pelvis_displacement_cm": 142.668368523,
+        "research_pelvis_displacement_cm": 2.979611129
+      },
+      {
+        "time_s": 2.750000143,
+        "baseline_pose_error_deg": 93.12303043,
+        "research_pose_error_deg": 27.199933598,
+        "baseline_pelvis_displacement_cm": 142.568715588,
+        "research_pelvis_displacement_cm": 2.984104247
+      },
+      {
+        "time_s": 2.766666811,
+        "baseline_pose_error_deg": 93.406836911,
+        "research_pose_error_deg": 27.201170782,
+        "baseline_pelvis_displacement_cm": 142.680825156,
+        "research_pelvis_displacement_cm": 2.982841906
+      },
+      {
+        "time_s": 2.783333478,
+        "baseline_pose_error_deg": 93.514635626,
+        "research_pose_error_deg": 27.179249867,
+        "baseline_pelvis_displacement_cm": 142.577207438,
+        "research_pelvis_displacement_cm": 2.989218575
+      },
+      {
+        "time_s": 2.800000146,
+        "baseline_pose_error_deg": 93.811858121,
+        "research_pose_error_deg": 27.203940245,
+        "baseline_pelvis_displacement_cm": 142.680700284,
+        "research_pelvis_displacement_cm": 2.991717003
+      },
+      {
+        "time_s": 2.816666814,
+        "baseline_pose_error_deg": 93.906804031,
+        "research_pose_error_deg": 27.183387177,
+        "baseline_pelvis_displacement_cm": 142.571554377,
+        "research_pelvis_displacement_cm": 2.995004762
+      },
+      {
+        "time_s": 2.833333481,
+        "baseline_pose_error_deg": 94.185251871,
+        "research_pose_error_deg": 27.179013324,
+        "baseline_pelvis_displacement_cm": 142.675536729,
+        "research_pelvis_displacement_cm": 2.996159006
+      },
+      {
+        "time_s": 2.850000149,
+        "baseline_pose_error_deg": 94.278016308,
+        "research_pose_error_deg": 27.194053876,
+        "baseline_pelvis_displacement_cm": 142.571028071,
+        "research_pelvis_displacement_cm": 2.992574925
+      },
+      {
+        "time_s": 2.866666816,
+        "baseline_pose_error_deg": 94.563088469,
+        "research_pose_error_deg": 27.187427565,
+        "baseline_pelvis_displacement_cm": 142.667986949,
+        "research_pelvis_displacement_cm": 2.994958369
+      },
+      {
+        "time_s": 2.883333484,
+        "baseline_pose_error_deg": 94.644366837,
+        "research_pose_error_deg": 27.193103324,
+        "baseline_pelvis_displacement_cm": 142.558524415,
+        "research_pelvis_displacement_cm": 2.99436557
+      },
+      {
+        "time_s": 2.900000151,
+        "baseline_pose_error_deg": 94.938372601,
+        "research_pose_error_deg": 27.210104561,
+        "baseline_pelvis_displacement_cm": 142.658679392,
+        "research_pelvis_displacement_cm": 2.991147662
+      },
+      {
+        "time_s": 2.916666819,
+        "baseline_pose_error_deg": 95.008749532,
+        "research_pose_error_deg": 27.211003502,
+        "baseline_pelvis_displacement_cm": 142.558596759,
+        "research_pelvis_displacement_cm": 2.993057964
+      },
+      {
+        "time_s": 2.933333486,
+        "baseline_pose_error_deg": 95.266292932,
+        "research_pose_error_deg": 27.225703587,
+        "baseline_pelvis_displacement_cm": 142.656941776,
+        "research_pelvis_displacement_cm": 2.992314089
+      },
+      {
+        "time_s": 2.950000154,
+        "baseline_pose_error_deg": 95.777763933,
+        "research_pose_error_deg": 27.247387043,
+        "baseline_pelvis_displacement_cm": 142.115344389,
+        "research_pelvis_displacement_cm": 2.989973007
+      },
+      {
+        "time_s": 2.966666821,
+        "baseline_pose_error_deg": 95.082746151,
+        "research_pose_error_deg": 27.254360279,
+        "baseline_pelvis_displacement_cm": 142.354839801,
+        "research_pelvis_displacement_cm": 2.991726017
+      },
+      {
+        "time_s": 2.983333489,
+        "baseline_pose_error_deg": 94.80052423,
+        "research_pose_error_deg": 27.276341938,
+        "baseline_pelvis_displacement_cm": 142.439001212,
+        "research_pelvis_displacement_cm": 2.990941994
+      },
+      {
+        "time_s": 3.000000156,
+        "baseline_pose_error_deg": 94.813487618,
+        "research_pose_error_deg": 27.3016298,
+        "baseline_pelvis_displacement_cm": 142.677008039,
+        "research_pelvis_displacement_cm": 2.988731189
+      },
+      {
+        "time_s": 3.016666824,
+        "baseline_pose_error_deg": 94.799693431,
+        "research_pose_error_deg": 27.31257852,
+        "baseline_pelvis_displacement_cm": 142.671215896,
+        "research_pelvis_displacement_cm": 2.990550645
+      },
+      {
+        "time_s": 3.033333492,
+        "baseline_pose_error_deg": 94.988026104,
+        "research_pose_error_deg": 27.339008171,
+        "baseline_pelvis_displacement_cm": 142.828761649,
+        "research_pelvis_displacement_cm": 2.989817903
+      },
+      {
+        "time_s": 3.050000159,
+        "baseline_pose_error_deg": 95.031139637,
+        "research_pose_error_deg": 27.365080481,
+        "baseline_pelvis_displacement_cm": 142.779277644,
+        "research_pelvis_displacement_cm": 2.987507296
+      },
+      {
+        "time_s": 3.066666827,
+        "baseline_pose_error_deg": 95.253431907,
+        "research_pose_error_deg": 27.376448237,
+        "baseline_pelvis_displacement_cm": 142.919476655,
+        "research_pelvis_displacement_cm": 2.989571423
+      },
+      {
+        "time_s": 3.083333494,
+        "baseline_pose_error_deg": 95.289087888,
+        "research_pose_error_deg": 27.402998604,
+        "baseline_pelvis_displacement_cm": 142.84894878,
+        "research_pelvis_displacement_cm": 2.988999291
+      },
+      {
+        "time_s": 3.100000162,
+        "baseline_pose_error_deg": 95.520765984,
+        "research_pose_error_deg": 27.426188024,
+        "baseline_pelvis_displacement_cm": 142.962336651,
+        "research_pelvis_displacement_cm": 2.986576845
+      },
+      {
+        "time_s": 3.116666829,
+        "baseline_pose_error_deg": 96.028925367,
+        "research_pose_error_deg": 27.433732923,
+        "baseline_pelvis_displacement_cm": 142.439079239,
+        "research_pelvis_displacement_cm": 2.988956932
+      },
+      {
+        "time_s": 3.133333497,
+        "baseline_pose_error_deg": 95.389517788,
+        "research_pose_error_deg": 27.455698096,
+        "baseline_pelvis_displacement_cm": 142.682891178,
+        "research_pelvis_displacement_cm": 2.988573266
+      },
+      {
+        "time_s": 3.150000164,
+        "baseline_pose_error_deg": 95.221513442,
+        "research_pose_error_deg": 27.47288875,
+        "baseline_pelvis_displacement_cm": 142.742288387,
+        "research_pelvis_displacement_cm": 2.986053249
+      },
+      {
+        "time_s": 3.166666832,
+        "baseline_pose_error_deg": 95.292040402,
+        "research_pose_error_deg": 27.4732271,
+        "baseline_pelvis_displacement_cm": 142.9615173,
+        "research_pelvis_displacement_cm": 2.988710728
+      },
+      {
+        "time_s": 3.183333499,
+        "baseline_pose_error_deg": 95.708320813,
+        "research_pose_error_deg": 27.487101628,
+        "baseline_pelvis_displacement_cm": 142.505467417,
+        "research_pelvis_displacement_cm": 2.988483768
+      },
+      {
+        "time_s": 3.200000167,
+        "baseline_pose_error_deg": 95.172445168,
+        "research_pose_error_deg": 27.496768202,
+        "baseline_pelvis_displacement_cm": 142.756570108,
+        "research_pelvis_displacement_cm": 2.985892236
+      },
+      {
+        "time_s": 3.216666834,
+        "baseline_pose_error_deg": 95.056011536,
+        "research_pose_error_deg": 27.488333572,
+        "baseline_pelvis_displacement_cm": 142.808151841,
+        "research_pelvis_displacement_cm": 2.988747596
+      },
+      {
+        "time_s": 3.233333502,
+        "baseline_pose_error_deg": 95.175954422,
+        "research_pose_error_deg": 27.492590907,
+        "baseline_pelvis_displacement_cm": 142.995648332,
+        "research_pelvis_displacement_cm": 2.988645594
+      },
+      {
+        "time_s": 3.25000017,
+        "baseline_pose_error_deg": 95.265817564,
+        "research_pose_error_deg": 27.494872943,
+        "baseline_pelvis_displacement_cm": 142.968551232,
+        "research_pelvis_displacement_cm": 2.986026398
+      },
+      {
+        "time_s": 3.266666837,
+        "baseline_pose_error_deg": 95.491014727,
+        "research_pose_error_deg": 27.477903007,
+        "baseline_pelvis_displacement_cm": 143.097079367,
+        "research_pelvis_displacement_cm": 2.98901017
+      },
+      {
+        "time_s": 3.283333505,
+        "baseline_pose_error_deg": 95.521330116,
+        "research_pose_error_deg": 27.472835654,
+        "baseline_pelvis_displacement_cm": 143.043310993,
+        "research_pelvis_displacement_cm": 2.989020886
+      },
+      {
+        "time_s": 3.300000172,
+        "baseline_pose_error_deg": 95.763522829,
+        "research_pose_error_deg": 27.468967157,
+        "baseline_pelvis_displacement_cm": 143.179215752,
+        "research_pelvis_displacement_cm": 2.986412883
+      },
+      {
+        "time_s": 3.31666684,
+        "baseline_pose_error_deg": 96.272540977,
+        "research_pose_error_deg": 27.444938631,
+        "baseline_pelvis_displacement_cm": 142.680418896,
+        "research_pelvis_displacement_cm": 2.989473833
+      },
+      {
+        "time_s": 3.333333507,
+        "baseline_pose_error_deg": 95.678150087,
+        "research_pose_error_deg": 27.432073447,
+        "baseline_pelvis_displacement_cm": 142.93671923,
+        "research_pelvis_displacement_cm": 2.98959681
+      },
+      {
+        "time_s": 3.350000175,
+        "baseline_pose_error_deg": 95.459378843,
+        "research_pose_error_deg": 27.423705092,
+        "baseline_pelvis_displacement_cm": 143.015490017,
+        "research_pelvis_displacement_cm": 2.987036408
+      },
+      {
+        "time_s": 3.366666842,
+        "baseline_pose_error_deg": 95.476330682,
+        "research_pose_error_deg": 27.394713745,
+        "baseline_pelvis_displacement_cm": 143.243637858,
+        "research_pelvis_displacement_cm": 2.990137615
+      },
+      {
+        "time_s": 3.38333351,
+        "baseline_pose_error_deg": 95.50329692,
+        "research_pose_error_deg": 27.376257722,
+        "baseline_pelvis_displacement_cm": 143.250822219,
+        "research_pelvis_displacement_cm": 2.990387584
+      },
+      {
+        "time_s": 3.400000177,
+        "baseline_pose_error_deg": 95.634910759,
+        "research_pose_error_deg": 27.364990214,
+        "baseline_pelvis_displacement_cm": 143.394287122,
+        "research_pelvis_displacement_cm": 2.987904099
+      },
+      {
+        "time_s": 3.416666845,
+        "baseline_pose_error_deg": 95.675668101,
+        "research_pose_error_deg": 27.333313048,
+        "baseline_pelvis_displacement_cm": 143.36025168,
+        "research_pelvis_displacement_cm": 2.991027687
+      },
+      {
+        "time_s": 3.433333512,
+        "baseline_pose_error_deg": 95.887647642,
+        "research_pose_error_deg": 27.311760377,
+        "baseline_pelvis_displacement_cm": 143.509962591,
+        "research_pelvis_displacement_cm": 2.991428314
+      },
+      {
+        "time_s": 3.45000018,
+        "baseline_pose_error_deg": 95.970871123,
+        "research_pose_error_deg": 27.298950641,
+        "baseline_pelvis_displacement_cm": 143.477025613,
+        "research_pelvis_displacement_cm": 2.989055036
+      },
+      {
+        "time_s": 3.466666847,
+        "baseline_pose_error_deg": 96.223830504,
+        "research_pose_error_deg": 27.26680743,
+        "baseline_pelvis_displacement_cm": 143.607631882,
+        "research_pelvis_displacement_cm": 2.992191347
+      },
+      {
+        "time_s": 3.483333515,
+        "baseline_pose_error_deg": 96.30346856,
+        "research_pose_error_deg": 27.244698991,
+        "baseline_pelvis_displacement_cm": 143.555225071,
+        "research_pelvis_displacement_cm": 2.992764193
+      },
+      {
+        "time_s": 3.500000183,
+        "baseline_pose_error_deg": 96.529641389,
+        "research_pose_error_deg": 27.231428985,
+        "baseline_pelvis_displacement_cm": 143.678229981,
+        "research_pelvis_displacement_cm": 2.990526494
+      },
+      {
+        "time_s": 3.51666685,
+        "baseline_pose_error_deg": 96.621018192,
+        "research_pose_error_deg": 27.200859707,
+        "baseline_pelvis_displacement_cm": 143.620549885,
+        "research_pelvis_displacement_cm": 2.9936616
+      },
+      {
+        "time_s": 3.533333518,
+        "baseline_pose_error_deg": 96.852093653,
+        "research_pose_error_deg": 27.157621279,
+        "baseline_pelvis_displacement_cm": 143.723786934,
+        "research_pelvis_displacement_cm": 2.977180158
+      },
+      {
+        "time_s": 3.550000185,
+        "baseline_pose_error_deg": 97.363391986,
+        "research_pose_error_deg": 27.122995389,
+        "baseline_pelvis_displacement_cm": 143.185102597,
+        "research_pelvis_displacement_cm": 2.973897014
+      },
+      {
+        "time_s": 3.566666853,
+        "baseline_pose_error_deg": 96.74224579,
+        "research_pose_error_deg": 27.101485728,
+        "baseline_pelvis_displacement_cm": 143.438474885,
+        "research_pelvis_displacement_cm": 2.965985068
+      },
+      {
+        "time_s": 3.58333352,
+        "baseline_pose_error_deg": 96.497995612,
+        "research_pose_error_deg": 27.0615455,
+        "baseline_pelvis_displacement_cm": 143.524211411,
+        "research_pelvis_displacement_cm": 2.968868383
+      },
+      {
+        "time_s": 3.600000188,
+        "baseline_pose_error_deg": 96.505577773,
+        "research_pose_error_deg": 27.06755637,
+        "baseline_pelvis_displacement_cm": 143.723734711,
+        "research_pelvis_displacement_cm": 2.972907297
+      },
+      {
+        "time_s": 3.616666855,
+        "baseline_pose_error_deg": 96.487120237,
+        "research_pose_error_deg": 27.031890224,
+        "baseline_pelvis_displacement_cm": 143.725010209,
+        "research_pelvis_displacement_cm": 2.979579414
+      },
+      {
+        "time_s": 3.633333523,
+        "baseline_pose_error_deg": 96.616906377,
+        "research_pose_error_deg": 27.013508642,
+        "baseline_pelvis_displacement_cm": 143.877651328,
+        "research_pelvis_displacement_cm": 2.985933291
+      },
+      {
+        "time_s": 3.65000019,
+        "baseline_pose_error_deg": 96.631201974,
+        "research_pose_error_deg": 27.008120441,
+        "baseline_pelvis_displacement_cm": 143.857433097,
+        "research_pelvis_displacement_cm": 2.987368053
+      },
+      {
+        "time_s": 3.666666858,
+        "baseline_pose_error_deg": 96.804881384,
+        "research_pose_error_deg": 26.985516107,
+        "baseline_pelvis_displacement_cm": 144.014656585,
+        "research_pelvis_displacement_cm": 2.995024253
+      },
+      {
+        "time_s": 3.683333525,
+        "baseline_pose_error_deg": 96.868240046,
+        "research_pose_error_deg": 27.004022306,
+        "baseline_pelvis_displacement_cm": 143.995473554,
+        "research_pelvis_displacement_cm": 2.998325082
+      },
+      {
+        "time_s": 3.700000193,
+        "baseline_pose_error_deg": 97.041661954,
+        "research_pose_error_deg": 26.982925054,
+        "baseline_pelvis_displacement_cm": 144.133066025,
+        "research_pelvis_displacement_cm": 3.002277466
+      },
+      {
+        "time_s": 3.716666861,
+        "baseline_pose_error_deg": 97.088111457,
+        "research_pose_error_deg": 26.996130817,
+        "baseline_pelvis_displacement_cm": 144.097075277,
+        "research_pelvis_displacement_cm": 2.996851599
+      },
+      {
+        "time_s": 3.733333528,
+        "baseline_pose_error_deg": 97.259381501,
+        "research_pose_error_deg": 26.988538476,
+        "baseline_pelvis_displacement_cm": 144.237504699,
+        "research_pelvis_displacement_cm": 2.997326212
+      },
+      {
+        "time_s": 3.750000196,
+        "baseline_pose_error_deg": 97.308239777,
+        "research_pose_error_deg": 27.024918161,
+        "baseline_pelvis_displacement_cm": 144.208323107,
+        "research_pelvis_displacement_cm": 2.992735715
+      },
+      {
+        "time_s": 3.766666863,
+        "baseline_pose_error_deg": 97.484698731,
+        "research_pose_error_deg": 27.019917253,
+        "baseline_pelvis_displacement_cm": 144.34211674,
+        "research_pelvis_displacement_cm": 2.993718003
+      },
+      {
+        "time_s": 3.783333531,
+        "baseline_pose_error_deg": 97.996016267,
+        "research_pose_error_deg": 27.028151678,
+        "baseline_pelvis_displacement_cm": 143.815354427,
+        "research_pelvis_displacement_cm": 2.993537333
+      },
+      {
+        "time_s": 3.800000198,
+        "baseline_pose_error_deg": 97.078281461,
+        "research_pose_error_deg": 27.048789936,
+        "baseline_pelvis_displacement_cm": 144.04881021,
+        "research_pelvis_displacement_cm": 2.988595991
+      },
+      {
+        "time_s": 3.816666866,
+        "baseline_pose_error_deg": 96.681765149,
+        "research_pose_error_deg": 27.048587302,
+        "baseline_pelvis_displacement_cm": 144.136256517,
+        "research_pelvis_displacement_cm": 2.992451241
+      },
+      {
+        "time_s": 3.833333533,
+        "baseline_pose_error_deg": 96.624834085,
+        "research_pose_error_deg": 27.090212654,
+        "baseline_pelvis_displacement_cm": 144.327777132,
+        "research_pelvis_displacement_cm": 2.993442956
+      },
+      {
+        "time_s": 3.850000201,
+        "baseline_pose_error_deg": 96.527813056,
+        "research_pose_error_deg": 27.086583413,
+        "baseline_pelvis_displacement_cm": 144.34004863,
+        "research_pelvis_displacement_cm": 2.995956177
+      },
+      {
+        "time_s": 3.866666868,
+        "baseline_pose_error_deg": 96.639283185,
+        "research_pose_error_deg": 27.096224478,
+        "baseline_pelvis_displacement_cm": 144.495591822,
+        "research_pelvis_displacement_cm": 2.997038196
+      },
+      {
+        "time_s": 3.883333536,
+        "baseline_pose_error_deg": 96.723820763,
+        "research_pose_error_deg": 27.121278352,
+        "baseline_pelvis_displacement_cm": 144.461329538,
+        "research_pelvis_displacement_cm": 2.994004172
+      },
+      {
+        "time_s": 3.900000203,
+        "baseline_pose_error_deg": 96.908253256,
+        "research_pose_error_deg": 27.122185356,
+        "baseline_pelvis_displacement_cm": 144.58318095,
+        "research_pelvis_displacement_cm": 2.997115647
+      },
+      {
+        "time_s": 3.916666871,
+        "baseline_pose_error_deg": 96.998653046,
+        "research_pose_error_deg": 27.130428814,
+        "baseline_pelvis_displacement_cm": 144.530051038,
+        "research_pelvis_displacement_cm": 2.997432287
+      },
+      {
+        "time_s": 3.933333538,
+        "baseline_pose_error_deg": 97.177556757,
+        "research_pose_error_deg": 27.14832068,
+        "baseline_pelvis_displacement_cm": 144.647453036,
+        "research_pelvis_displacement_cm": 2.995408575
+      },
+      {
+        "time_s": 3.950000206,
+        "baseline_pose_error_deg": 97.266770799,
+        "research_pose_error_deg": 27.146984373,
+        "baseline_pelvis_displacement_cm": 144.590953126,
+        "research_pelvis_displacement_cm": 2.9980776
+      },
+      {
+        "time_s": 3.966666874,
+        "baseline_pose_error_deg": 97.47198718,
+        "research_pose_error_deg": 27.154205818,
+        "baseline_pelvis_displacement_cm": 144.705066875,
+        "research_pelvis_displacement_cm": 2.998074931
+      },
+      {
+        "time_s": 3.983333541,
+        "baseline_pose_error_deg": 97.583796002,
+        "research_pose_error_deg": 27.169335018,
+        "baseline_pelvis_displacement_cm": 144.644641897,
+        "research_pelvis_displacement_cm": 2.996831046
+      },
+      {
+        "time_s": 4.000000209,
+        "baseline_pose_error_deg": 97.739586027,
+        "research_pose_error_deg": 27.167161998,
+        "baseline_pelvis_displacement_cm": 144.760830182,
+        "research_pelvis_displacement_cm": 2.998757209
+      },
+      {
+        "time_s": 4.016666876,
+        "baseline_pose_error_deg": 97.778862053,
+        "research_pose_error_deg": 27.175361095,
+        "baseline_pelvis_displacement_cm": 144.702753308,
+        "research_pelvis_displacement_cm": 2.998214742
+      },
+      {
+        "time_s": 4.033333544,
+        "baseline_pose_error_deg": 97.890078692,
+        "research_pose_error_deg": 27.189456751,
+        "baseline_pelvis_displacement_cm": 144.820572337,
+        "research_pelvis_displacement_cm": 2.996855698
+      },
+      {
+        "time_s": 4.050000211,
+        "baseline_pose_error_deg": 97.920746319,
+        "research_pose_error_deg": 27.188037433,
+        "baseline_pelvis_displacement_cm": 144.762765171,
+        "research_pelvis_displacement_cm": 2.998296055
+      },
+      {
+        "time_s": 4.066666879,
+        "baseline_pose_error_deg": 98.069683306,
+        "research_pose_error_deg": 27.198705523,
+        "baseline_pelvis_displacement_cm": 144.875169761,
+        "research_pelvis_displacement_cm": 2.997430412
+      },
+      {
+        "time_s": 4.083333546,
+        "baseline_pose_error_deg": 98.135933095,
+        "research_pose_error_deg": 27.212101935,
+        "baseline_pelvis_displacement_cm": 144.812179684,
+        "research_pelvis_displacement_cm": 2.995844053
+      },
+      {
+        "time_s": 4.100000214,
+        "baseline_pose_error_deg": 98.276865004,
+        "research_pose_error_deg": 27.211707428,
+        "baseline_pelvis_displacement_cm": 144.916498311,
+        "research_pelvis_displacement_cm": 2.997234164
+      },
+      {
+        "time_s": 4.116666881,
+        "baseline_pose_error_deg": 98.786459441,
+        "research_pose_error_deg": 27.224687764,
+        "baseline_pelvis_displacement_cm": 144.355261023,
+        "research_pelvis_displacement_cm": 2.996390078
+      },
+      {
+        "time_s": 4.133333549,
+        "baseline_pose_error_deg": 97.88071989,
+        "research_pose_error_deg": 27.236668006,
+        "baseline_pelvis_displacement_cm": 144.591104777,
+        "research_pelvis_displacement_cm": 2.99471487
+      },
+      {
+        "time_s": 4.150000216,
+        "baseline_pose_error_deg": 97.523274629,
+        "research_pose_error_deg": 27.23617444,
+        "baseline_pelvis_displacement_cm": 144.688429099,
+        "research_pelvis_displacement_cm": 2.996363787
+      },
+      {
+        "time_s": 4.166666884,
+        "baseline_pose_error_deg": 97.471847743,
+        "research_pose_error_deg": 27.249807956,
+        "baseline_pelvis_displacement_cm": 144.894223557,
+        "research_pelvis_displacement_cm": 2.995742702
+      },
+      {
+        "time_s": 4.183333552,
+        "baseline_pose_error_deg": 97.787416826,
+        "research_pose_error_deg": 27.259246332,
+        "baseline_pelvis_displacement_cm": 144.395865467,
+        "research_pelvis_displacement_cm": 2.994064771
+      },
+      {
+        "time_s": 4.200000219,
+        "baseline_pose_error_deg": 97.010149668,
+        "research_pose_error_deg": 27.256944861,
+        "baseline_pelvis_displacement_cm": 144.629842805,
+        "research_pelvis_displacement_cm": 2.996054277
+      },
+      {
+        "time_s": 4.216666887,
+        "baseline_pose_error_deg": 96.741850367,
+        "research_pose_error_deg": 27.269068695,
+        "baseline_pelvis_displacement_cm": 144.704151182,
+        "research_pelvis_displacement_cm": 2.995666873
+      },
+      {
+        "time_s": 4.233333554,
+        "baseline_pose_error_deg": 96.674687022,
+        "research_pose_error_deg": 27.275168643,
+        "baseline_pelvis_displacement_cm": 144.885320706,
+        "research_pelvis_displacement_cm": 2.993991582
+      },
+      {
+        "time_s": 4.250000222,
+        "baseline_pose_error_deg": 96.728958921,
+        "research_pose_error_deg": 27.269650388,
+        "baseline_pelvis_displacement_cm": 144.87751058,
+        "research_pelvis_displacement_cm": 2.996243326
+      },
+      {
+        "time_s": 4.266666889,
+        "baseline_pose_error_deg": 96.923797502,
+        "research_pose_error_deg": 27.27850667,
+        "baseline_pelvis_displacement_cm": 144.998102113,
+        "research_pelvis_displacement_cm": 2.99600333
+      },
+      {
+        "time_s": 4.283333557,
+        "baseline_pose_error_deg": 97.024955069,
+        "research_pose_error_deg": 27.281165099,
+        "baseline_pelvis_displacement_cm": 144.963859004,
+        "research_pelvis_displacement_cm": 2.994302214
+      },
+      {
+        "time_s": 4.300000224,
+        "baseline_pose_error_deg": 97.221037629,
+        "research_pose_error_deg": 27.271761172,
+        "baseline_pelvis_displacement_cm": 145.091787318,
+        "research_pelvis_displacement_cm": 2.996681321
+      },
+      {
+        "time_s": 4.316666892,
+        "baseline_pose_error_deg": 97.306766379,
+        "research_pose_error_deg": 27.276391176,
+        "baseline_pelvis_displacement_cm": 145.065266903,
+        "research_pelvis_displacement_cm": 2.996482357
+      },
+      {
+        "time_s": 4.333333559,
+        "baseline_pose_error_deg": 97.525816669,
+        "research_pose_error_deg": 27.276129577,
+        "baseline_pelvis_displacement_cm": 145.182304442,
+        "research_pelvis_displacement_cm": 2.994719249
+      },
+      {
+        "time_s": 4.350000227,
+        "baseline_pose_error_deg": 97.645791868,
+        "research_pose_error_deg": 27.262929184,
+        "baseline_pelvis_displacement_cm": 145.143517732,
+        "research_pelvis_displacement_cm": 2.997103877
+      },
+      {
+        "time_s": 4.366666894,
+        "baseline_pose_error_deg": 97.891273856,
+        "research_pose_error_deg": 27.263180388,
+        "baseline_pelvis_displacement_cm": 145.244921911,
+        "research_pelvis_displacement_cm": 2.996870125
+      },
+      {
+        "time_s": 4.383333562,
+        "baseline_pose_error_deg": 98.009858108,
+        "research_pose_error_deg": 27.26087059,
+        "baseline_pelvis_displacement_cm": 145.190482991,
+        "research_pelvis_displacement_cm": 2.995030945
+      },
+      {
+        "time_s": 4.400000229,
+        "baseline_pose_error_deg": 98.245228773,
+        "research_pose_error_deg": 27.244521302,
+        "baseline_pelvis_displacement_cm": 145.288295014,
+        "research_pelvis_displacement_cm": 2.997349855
+      },
+      {
+        "time_s": 4.416666897,
+        "baseline_pose_error_deg": 98.344286049,
+        "research_pose_error_deg": 27.240866338,
+        "baseline_pelvis_displacement_cm": 145.23904799,
+        "research_pelvis_displacement_cm": 2.997057775
+      },
+      {
+        "time_s": 4.433333565,
+        "baseline_pose_error_deg": 98.483886114,
+        "research_pose_error_deg": 27.23742989,
+        "baseline_pelvis_displacement_cm": 145.349230798,
+        "research_pelvis_displacement_cm": 2.995158567
+      },
+      {
+        "time_s": 4.450000232,
+        "baseline_pose_error_deg": 98.513136097,
+        "research_pose_error_deg": 27.218869126,
+        "baseline_pelvis_displacement_cm": 145.305935544,
+        "research_pelvis_displacement_cm": 2.99740206
+      },
+      {
+        "time_s": 4.4666669,
+        "baseline_pose_error_deg": 98.591884297,
+        "research_pose_error_deg": 27.212175345,
+        "baseline_pelvis_displacement_cm": 145.416909017,
+        "research_pelvis_displacement_cm": 2.997087164
+      },
+      {
+        "time_s": 4.483333567,
+        "baseline_pose_error_deg": 98.578001542,
+        "research_pose_error_deg": 27.208349669,
+        "baseline_pelvis_displacement_cm": 145.37196249,
+        "research_pelvis_displacement_cm": 2.995179876
+      },
+      {
+        "time_s": 4.500000235,
+        "baseline_pose_error_deg": 98.616099266,
+        "research_pose_error_deg": 27.188580614,
+        "baseline_pelvis_displacement_cm": 145.549578289,
+        "research_pelvis_displacement_cm": 2.997386278
+      },
+      {
+        "time_s": 4.516666902,
+        "baseline_pose_error_deg": 98.59665905,
+        "research_pose_error_deg": 27.179911396,
+        "baseline_pelvis_displacement_cm": 145.633388317,
+        "research_pelvis_displacement_cm": 2.997118404
+      },
+      {
+        "time_s": 4.53333357,
+        "baseline_pose_error_deg": 98.679835133,
+        "research_pose_error_deg": 27.176144709,
+        "baseline_pelvis_displacement_cm": 145.898915698,
+        "research_pelvis_displacement_cm": 2.99527174
+      },
+      {
+        "time_s": 4.550000237,
+        "baseline_pose_error_deg": 98.721585834,
+        "research_pose_error_deg": 27.156103656,
+        "baseline_pelvis_displacement_cm": 145.977467686,
+        "research_pelvis_displacement_cm": 2.997499412
+      },
+      {
+        "time_s": 4.566666905,
+        "baseline_pose_error_deg": 98.823977591,
+        "research_pose_error_deg": 27.146590405,
+        "baseline_pelvis_displacement_cm": 146.174501882,
+        "research_pelvis_displacement_cm": 2.997352606
+      },
+      {
+        "time_s": 4.583333572,
+        "baseline_pose_error_deg": 98.834172408,
+        "research_pose_error_deg": 27.1430632,
+        "baseline_pelvis_displacement_cm": 146.197916988,
+        "research_pelvis_displacement_cm": 2.99562191
+      },
+      {
+        "time_s": 4.60000024,
+        "baseline_pose_error_deg": 98.932886882,
+        "research_pose_error_deg": 27.123582277,
+        "baseline_pelvis_displacement_cm": 146.377995559,
+        "research_pelvis_displacement_cm": 2.997912288
+      },
+      {
+        "time_s": 4.616666907,
+        "baseline_pose_error_deg": 98.967357195,
+        "research_pose_error_deg": 27.114364305,
+        "baseline_pelvis_displacement_cm": 146.381273397,
+        "research_pelvis_displacement_cm": 2.997929868
+      },
+      {
+        "time_s": 4.633333575,
+        "baseline_pose_error_deg": 99.089518141,
+        "research_pose_error_deg": 27.111094725,
+        "baseline_pelvis_displacement_cm": 146.527319671,
+        "research_pelvis_displacement_cm": 2.996339868
+      },
+      {
+        "time_s": 4.650000243,
+        "baseline_pose_error_deg": 99.122423671,
+        "research_pose_error_deg": 27.092922657,
+        "baseline_pelvis_displacement_cm": 146.500260353,
+        "research_pelvis_displacement_cm": 2.99869884
+      },
+      {
+        "time_s": 4.66666691,
+        "baseline_pose_error_deg": 99.207558285,
+        "research_pose_error_deg": 27.117278064,
+        "baseline_pelvis_displacement_cm": 146.610437717,
+        "research_pelvis_displacement_cm": 2.999710424
+      },
+      {
+        "time_s": 4.683333578,
+        "baseline_pose_error_deg": 99.189371519,
+        "research_pose_error_deg": 27.099628083,
+        "baseline_pelvis_displacement_cm": 146.606144991,
+        "research_pelvis_displacement_cm": 2.999994169
+      },
+      {
+        "time_s": 4.700000245,
+        "baseline_pose_error_deg": 99.249271711,
+        "research_pose_error_deg": 27.097912526,
+        "baseline_pelvis_displacement_cm": 146.704260418,
+        "research_pelvis_displacement_cm": 2.999584384
+      },
+      {
+        "time_s": 4.716666913,
+        "baseline_pose_error_deg": 99.22835758,
+        "research_pose_error_deg": 27.109525828,
+        "baseline_pelvis_displacement_cm": 146.728507831,
+        "research_pelvis_displacement_cm": 2.995383261
+      },
+      {
+        "time_s": 4.73333358,
+        "baseline_pose_error_deg": 99.266566632,
+        "research_pose_error_deg": 27.099853199,
+        "baseline_pelvis_displacement_cm": 146.849323329,
+        "research_pelvis_displacement_cm": 2.997427855
+      },
+      {
+        "time_s": 4.750000248,
+        "baseline_pose_error_deg": 99.260456341,
+        "research_pose_error_deg": 27.07863952,
+        "baseline_pelvis_displacement_cm": 146.90029485,
+        "research_pelvis_displacement_cm": 2.980084399
+      },
+      {
+        "time_s": 4.766666915,
+        "baseline_pose_error_deg": 99.375412247,
+        "research_pose_error_deg": 27.06641667,
+        "baseline_pelvis_displacement_cm": 147.058833008,
+        "research_pelvis_displacement_cm": 2.976240179
+      },
+      {
+        "time_s": 4.783333583,
+        "baseline_pose_error_deg": 99.635808722,
+        "research_pose_error_deg": 27.06548191,
+        "baseline_pelvis_displacement_cm": 146.551471637,
+        "research_pelvis_displacement_cm": 2.967526605
+      },
+      {
+        "time_s": 4.80000025,
+        "baseline_pose_error_deg": 99.219263545,
+        "research_pose_error_deg": 27.046973677,
+        "baseline_pelvis_displacement_cm": 146.794425694,
+        "research_pelvis_displacement_cm": 2.970061929
+      },
+      {
+        "time_s": 4.816666918,
+        "baseline_pose_error_deg": 99.016899331,
+        "research_pose_error_deg": 27.072301533,
+        "baseline_pelvis_displacement_cm": 146.964188431,
+        "research_pelvis_displacement_cm": 2.973775899
+      },
+      {
+        "time_s": 4.833333585,
+        "baseline_pose_error_deg": 99.006770914,
+        "research_pose_error_deg": 27.054844792,
+        "baseline_pelvis_displacement_cm": 147.192145108,
+        "research_pelvis_displacement_cm": 2.979974377
+      },
+      {
+        "time_s": 4.850000253,
+        "baseline_pose_error_deg": 99.262920714,
+        "research_pose_error_deg": 27.053232586,
+        "baseline_pelvis_displacement_cm": 146.755719946,
+        "research_pelvis_displacement_cm": 2.98568042
+      },
+      {
+        "time_s": 4.86666692,
+        "baseline_pose_error_deg": 98.956777308,
+        "research_pose_error_deg": 27.064267638,
+        "baseline_pelvis_displacement_cm": 147.041139365,
+        "research_pelvis_displacement_cm": 2.986838606
+      },
+      {
+        "time_s": 4.883333588,
+        "baseline_pose_error_deg": 98.786716386,
+        "research_pose_error_deg": 27.054721827,
+        "baseline_pelvis_displacement_cm": 147.17024339,
+        "research_pelvis_displacement_cm": 2.993912315
+      },
+      {
+        "time_s": 4.900000256,
+        "baseline_pose_error_deg": 98.79332132,
+        "research_pose_error_deg": 27.059944002,
+        "baseline_pelvis_displacement_cm": 147.383209292,
+        "research_pelvis_displacement_cm": 2.988523859
+      },
+      {
+        "time_s": 4.916666923,
+        "baseline_pose_error_deg": 98.99227666,
+        "research_pose_error_deg": 27.053192613,
+        "baseline_pelvis_displacement_cm": 146.897412627,
+        "research_pelvis_displacement_cm": 2.990354869
+      },
+      {
+        "time_s": 4.933333591,
+        "baseline_pose_error_deg": 98.586884117,
+        "research_pose_error_deg": 27.083922458,
+        "baseline_pelvis_displacement_cm": 147.143424944,
+        "research_pelvis_displacement_cm": 2.988039197
+      },
+      {
+        "time_s": 4.950000258,
+        "baseline_pose_error_deg": 98.267166845,
+        "research_pose_error_deg": 27.076177853,
+        "baseline_pelvis_displacement_cm": 147.301182496,
+        "research_pelvis_displacement_cm": 2.990139122
+      },
+      {
+        "time_s": 4.966666926,
+        "baseline_pose_error_deg": 98.170734289,
+        "research_pose_error_deg": 27.082124109,
+        "baseline_pelvis_displacement_cm": 147.514993251,
+        "research_pelvis_displacement_cm": 2.991181407
+      },
+      {
+        "time_s": 4.983333593,
+        "baseline_pose_error_deg": 98.373095668,
+        "research_pose_error_deg": 27.10054232,
+        "baseline_pelvis_displacement_cm": 147.088271375,
+        "research_pelvis_displacement_cm": 2.988481103
+      },
+      {
+        "time_s": 5.000000261,
+        "baseline_pose_error_deg": 98.056636888,
+        "research_pose_error_deg": 27.097373217,
+        "baseline_pelvis_displacement_cm": 147.383991363,
+        "research_pelvis_displacement_cm": 2.992894741
+      },
+      {
+        "time_s": 5.016666928,
+        "baseline_pose_error_deg": 97.850086903,
+        "research_pose_error_deg": 27.10310541,
+        "baseline_pelvis_displacement_cm": 147.596352221,
+        "research_pelvis_displacement_cm": 2.99457026
+      },
+      {
+        "time_s": 5.033333596,
+        "baseline_pose_error_deg": 97.797944958,
+        "research_pose_error_deg": 27.115518101,
+        "baseline_pelvis_displacement_cm": 147.862970332,
+        "research_pelvis_displacement_cm": 2.993631399
+      },
+      {
+        "time_s": 5.050000263,
+        "baseline_pose_error_deg": 98.052736007,
+        "research_pose_error_deg": 27.110484361,
+        "baseline_pelvis_displacement_cm": 147.461454105,
+        "research_pelvis_displacement_cm": 2.99764054
+      },
+      {
+        "time_s": 5.066666931,
+        "baseline_pose_error_deg": 97.932345387,
+        "research_pose_error_deg": 27.115254266,
+        "baseline_pelvis_displacement_cm": 147.775554188,
+        "research_pelvis_displacement_cm": 2.998742511
+      },
+      {
+        "time_s": 5.083333598,
+        "baseline_pose_error_deg": 97.826417869,
+        "research_pose_error_deg": 27.125479344,
+        "baseline_pelvis_displacement_cm": 147.957786233,
+        "research_pelvis_displacement_cm": 2.998000498
+      },
+      {
+        "time_s": 5.100000266,
+        "baseline_pose_error_deg": 97.953796288,
+        "research_pose_error_deg": 27.119761671,
+        "baseline_pelvis_displacement_cm": 148.192444452,
+        "research_pelvis_displacement_cm": 3.000773626
+      },
+      {
+        "time_s": 5.116666934,
+        "baseline_pose_error_deg": 98.032910948,
+        "research_pose_error_deg": 27.125147707,
+        "baseline_pelvis_displacement_cm": 148.336224934,
+        "research_pelvis_displacement_cm": 3.000825322
+      },
+      {
+        "time_s": 5.133333601,
+        "baseline_pose_error_deg": 98.232509387,
+        "research_pose_error_deg": 27.134890987,
+        "baseline_pelvis_displacement_cm": 148.545616808,
+        "research_pelvis_displacement_cm": 2.999486475
+      },
+      {
+        "time_s": 5.150000269,
+        "baseline_pose_error_deg": 98.318105161,
+        "research_pose_error_deg": 27.129902186,
+        "baseline_pelvis_displacement_cm": 148.660086331,
+        "research_pelvis_displacement_cm": 3.001349974
+      },
+      {
+        "time_s": 5.166666936,
+        "baseline_pose_error_deg": 98.583188241,
+        "research_pose_error_deg": 27.137153804,
+        "baseline_pelvis_displacement_cm": 148.859145199,
+        "research_pelvis_displacement_cm": 3.000746815
+      },
+      {
+        "time_s": 5.183333604,
+        "baseline_pose_error_deg": 98.700793047,
+        "research_pose_error_deg": 27.146615643,
+        "baseline_pelvis_displacement_cm": 148.964885157,
+        "research_pelvis_displacement_cm": 2.998989001
+      },
+      {
+        "time_s": 5.200000271,
+        "baseline_pose_error_deg": 98.929842613,
+        "research_pose_error_deg": 27.142569102,
+        "baseline_pelvis_displacement_cm": 149.157371019,
+        "research_pelvis_displacement_cm": 3.000551204
+      },
+      {
+        "time_s": 5.216666939,
+        "baseline_pose_error_deg": 99.052033351,
+        "research_pose_error_deg": 27.151603949,
+        "baseline_pelvis_displacement_cm": 149.281916672,
+        "research_pelvis_displacement_cm": 2.99981116
+      },
+      {
+        "time_s": 5.233333606,
+        "baseline_pose_error_deg": 99.289290754,
+        "research_pose_error_deg": 27.160073826,
+        "baseline_pelvis_displacement_cm": 149.514600225,
+        "research_pelvis_displacement_cm": 2.997922409
+      },
+      {
+        "time_s": 5.250000274,
+        "baseline_pose_error_deg": 99.452795639,
+        "research_pose_error_deg": 27.156153484,
+        "baseline_pelvis_displacement_cm": 149.600252565,
+        "research_pelvis_displacement_cm": 2.999594812
+      },
+      {
+        "time_s": 5.266666941,
+        "baseline_pose_error_deg": 99.689125865,
+        "research_pose_error_deg": 27.165840159,
+        "baseline_pelvis_displacement_cm": 149.769564115,
+        "research_pelvis_displacement_cm": 2.999000142
+      },
+      {
+        "time_s": 5.283333609,
+        "baseline_pose_error_deg": 100.211403124,
+        "research_pose_error_deg": 27.172448565,
+        "baseline_pelvis_displacement_cm": 149.281205817,
+        "research_pelvis_displacement_cm": 2.997119328
+      },
+      {
+        "time_s": 5.300000276,
+        "baseline_pose_error_deg": 99.988865709,
+        "research_pose_error_deg": 27.167534193,
+        "baseline_pelvis_displacement_cm": 149.505658457,
+        "research_pelvis_displacement_cm": 2.999041253
+      },
+      {
+        "time_s": 5.316666944,
+        "baseline_pose_error_deg": 100.004078178,
+        "research_pose_error_deg": 27.176483129,
+        "baseline_pelvis_displacement_cm": 149.606329705,
+        "research_pelvis_displacement_cm": 2.998654084
+      },
+      {
+        "time_s": 5.333333611,
+        "baseline_pose_error_deg": 100.214899123,
+        "research_pose_error_deg": 27.180753731,
+        "baseline_pelvis_displacement_cm": 149.797720777,
+        "research_pelvis_displacement_cm": 2.996815383
+      },
+      {
+        "time_s": 5.350000279,
+        "baseline_pose_error_deg": 100.424500145,
+        "research_pose_error_deg": 27.173988746,
+        "baseline_pelvis_displacement_cm": 149.952907035,
+        "research_pelvis_displacement_cm": 2.998964751
+      },
+      {
+        "time_s": 5.366666947,
+        "baseline_pose_error_deg": 100.625002009,
+        "research_pose_error_deg": 27.181106415,
+        "baseline_pelvis_displacement_cm": 150.190690446,
+        "research_pelvis_displacement_cm": 2.998748713
+      },
+      {
+        "time_s": 5.383333614,
+        "baseline_pose_error_deg": 100.849546372,
+        "research_pose_error_deg": 27.183062168,
+        "baseline_pelvis_displacement_cm": 150.303174176,
+        "research_pelvis_displacement_cm": 2.996952467
+      },
+      {
+        "time_s": 5.400000282,
+        "baseline_pose_error_deg": 101.01690752,
+        "research_pose_error_deg": 27.174035794,
+        "baseline_pelvis_displacement_cm": 150.484752084,
+        "research_pelvis_displacement_cm": 2.999249888
+      },
+      {
+        "time_s": 5.416666949,
+        "baseline_pose_error_deg": 101.262371029,
+        "research_pose_error_deg": 27.178676608,
+        "baseline_pelvis_displacement_cm": 150.541091044,
+        "research_pelvis_displacement_cm": 2.999139816
+      },
+      {
+        "time_s": 5.433333617,
+        "baseline_pose_error_deg": 101.465841573,
+        "research_pose_error_deg": 27.178673016,
+        "baseline_pelvis_displacement_cm": 150.656623673,
+        "research_pelvis_displacement_cm": 2.99737263
+      },
+      {
+        "time_s": 5.450000284,
+        "baseline_pose_error_deg": 101.703601871,
+        "research_pose_error_deg": 27.167359252,
+        "baseline_pelvis_displacement_cm": 150.671570199,
+        "research_pelvis_displacement_cm": 2.999726769
+      },
+      {
+        "time_s": 5.466666952,
+        "baseline_pose_error_deg": 101.871141464,
+        "research_pose_error_deg": 27.169296361,
+        "baseline_pelvis_displacement_cm": 150.798357876,
+        "research_pelvis_displacement_cm": 2.999656028
+      },
+      {
+        "time_s": 5.483333619,
+        "baseline_pose_error_deg": 102.096786984,
+        "research_pose_error_deg": 27.16781521,
+        "baseline_pelvis_displacement_cm": 150.898516958,
+        "research_pelvis_displacement_cm": 2.99789279
+      },
+      {
+        "time_s": 5.500000287,
+        "baseline_pose_error_deg": 102.331345212,
+        "research_pose_error_deg": 27.154474285,
+        "baseline_pelvis_displacement_cm": 151.105432145,
+        "research_pelvis_displacement_cm": 3.000225128
+      },
+      {
+        "time_s": 5.516666954,
+        "baseline_pose_error_deg": 102.632054482,
+        "research_pose_error_deg": 27.153838498,
+        "baseline_pelvis_displacement_cm": 151.220323927,
+        "research_pelvis_displacement_cm": 3.000141056
+      },
+      {
+        "time_s": 5.533333622,
+        "baseline_pose_error_deg": 102.863461537,
+        "research_pose_error_deg": 27.151370199,
+        "baseline_pelvis_displacement_cm": 151.394004429,
+        "research_pelvis_displacement_cm": 2.998361213
+      },
+      {
+        "time_s": 5.550000289,
+        "baseline_pose_error_deg": 103.1623905,
+        "research_pose_error_deg": 27.136474195,
+        "baseline_pelvis_displacement_cm": 151.45362078,
+        "research_pelvis_displacement_cm": 3.000624039
+      },
+      {
+        "time_s": 5.566666957,
+        "baseline_pose_error_deg": 103.433440169,
+        "research_pose_error_deg": 27.133708552,
+        "baseline_pelvis_displacement_cm": 151.589907532,
+        "research_pelvis_displacement_cm": 3.000512748
+      },
+      {
+        "time_s": 5.583333625,
+        "baseline_pose_error_deg": 103.733382372,
+        "research_pose_error_deg": 27.130693842,
+        "baseline_pelvis_displacement_cm": 151.608725346,
+        "research_pelvis_displacement_cm": 2.998716086
+      },
+      {
+        "time_s": 5.600000292,
+        "baseline_pose_error_deg": 103.979268385,
+        "research_pose_error_deg": 27.114859069,
+        "baseline_pelvis_displacement_cm": 151.738876194,
+        "research_pelvis_displacement_cm": 3.000905835
+      },
+      {
+        "time_s": 5.61666696,
+        "baseline_pose_error_deg": 104.239419906,
+        "research_pose_error_deg": 27.086019546,
+        "baseline_pelvis_displacement_cm": 151.765488812,
+        "research_pelvis_displacement_cm": 2.98723289
+      },
+      {
+        "time_s": 5.633333627,
+        "baseline_pose_error_deg": 104.46157911,
+        "research_pose_error_deg": 27.071532212,
+        "baseline_pelvis_displacement_cm": 151.86864669,
+        "research_pelvis_displacement_cm": 2.984443224
+      },
+      {
+        "time_s": 5.650000295,
+        "baseline_pose_error_deg": 104.743008219,
+        "research_pose_error_deg": 27.061419907,
+        "baseline_pelvis_displacement_cm": 151.870648968,
+        "research_pelvis_displacement_cm": 2.977222828
+      },
+      {
+        "time_s": 5.666666962,
+        "baseline_pose_error_deg": 104.947240902,
+        "research_pose_error_deg": 27.040139518,
+        "baseline_pelvis_displacement_cm": 151.936373592,
+        "research_pelvis_displacement_cm": 2.978780025
+      },
+      {
+        "time_s": 5.68333363,
+        "baseline_pose_error_deg": 105.192448554,
+        "research_pose_error_deg": 27.062749046,
+        "baseline_pelvis_displacement_cm": 151.886015378,
+        "research_pelvis_displacement_cm": 2.981823718
+      },
+      {
+        "time_s": 5.700000297,
+        "baseline_pose_error_deg": 105.367988364,
+        "research_pose_error_deg": 27.046068209,
+        "baseline_pelvis_displacement_cm": 151.898986046,
+        "research_pelvis_displacement_cm": 2.985851958
+      },
+      {
+        "time_s": 5.716666965,
+        "baseline_pose_error_deg": 105.60507502,
+        "research_pose_error_deg": 27.047150196,
+        "baseline_pelvis_displacement_cm": 151.814314887,
+        "research_pelvis_displacement_cm": 2.989578465
+      },
+      {
+        "time_s": 5.733333632,
+        "baseline_pose_error_deg": 105.723044072,
+        "research_pose_error_deg": 27.060648329,
+        "baseline_pelvis_displacement_cm": 151.872162527,
+        "research_pelvis_displacement_cm": 2.98911977
+      },
+      {
+        "time_s": 5.7500003,
+        "baseline_pose_error_deg": 105.868883174,
+        "research_pose_error_deg": 27.053045777,
+        "baseline_pelvis_displacement_cm": 151.894113982,
+        "research_pelvis_displacement_cm": 2.994441915
+      },
+      {
+        "time_s": 5.766666967,
+        "baseline_pose_error_deg": 105.96587726,
+        "research_pose_error_deg": 27.054505873,
+        "baseline_pelvis_displacement_cm": 152.030049652,
+        "research_pelvis_displacement_cm": 2.996680042
+      },
+      {
+        "time_s": 5.783333635,
+        "baseline_pose_error_deg": 106.09060359,
+        "research_pose_error_deg": 27.061875722,
+        "baseline_pelvis_displacement_cm": 152.061788485,
+        "research_pelvis_displacement_cm": 2.995350166
+      },
+      {
+        "time_s": 5.800000302,
+        "baseline_pose_error_deg": 106.254314159,
+        "research_pose_error_deg": 27.052779304,
+        "baseline_pelvis_displacement_cm": 152.119314327,
+        "research_pelvis_displacement_cm": 2.999353439
+      },
+      {
+        "time_s": 5.81666697,
+        "baseline_pose_error_deg": 106.437624856,
+        "research_pose_error_deg": 27.06689444,
+        "baseline_pelvis_displacement_cm": 152.090120494,
+        "research_pelvis_displacement_cm": 2.9944832
+      },
+      {
+        "time_s": 5.833333638,
+        "baseline_pose_error_deg": 106.59883843,
+        "research_pose_error_deg": 27.060834884,
+        "baseline_pelvis_displacement_cm": 152.110136787,
+        "research_pelvis_displacement_cm": 2.994645552
+      },
+      {
+        "time_s": 5.850000305,
+        "baseline_pose_error_deg": 106.752424171,
+        "research_pose_error_deg": 27.100297485,
+        "baseline_pelvis_displacement_cm": 152.058487221,
+        "research_pelvis_displacement_cm": 2.992465023
+      },
+      {
+        "time_s": 5.866666973,
+        "baseline_pose_error_deg": 106.835403013,
+        "research_pose_error_deg": 27.095476056,
+        "baseline_pelvis_displacement_cm": 152.066624629,
+        "research_pelvis_displacement_cm": 2.993352758
+      },
+      {
+        "time_s": 5.88333364,
+        "baseline_pose_error_deg": 106.989566895,
+        "research_pose_error_deg": 27.103249785,
+        "baseline_pelvis_displacement_cm": 152.01180246,
+        "research_pelvis_displacement_cm": 2.993228821
+      },
+      {
+        "time_s": 5.900000308,
+        "baseline_pose_error_deg": 107.093201198,
+        "research_pose_error_deg": 27.126351737,
+        "baseline_pelvis_displacement_cm": 152.023713415,
+        "research_pelvis_displacement_cm": 2.98890839
+      },
+      {
+        "time_s": 5.916666975,
+        "baseline_pose_error_deg": 107.251441168,
+        "research_pose_error_deg": 27.124066877,
+        "baseline_pelvis_displacement_cm": 151.97545434,
+        "research_pelvis_displacement_cm": 2.992403328
+      },
+      {
+        "time_s": 5.933333643,
+        "baseline_pose_error_deg": 107.31357228,
+        "research_pose_error_deg": 27.128417768,
+        "baseline_pelvis_displacement_cm": 151.981927666,
+        "research_pelvis_displacement_cm": 2.993373413
+      },
+      {
+        "time_s": 5.95000031,
+        "baseline_pose_error_deg": 107.388694232,
+        "research_pose_error_deg": 27.141827834,
+        "baseline_pelvis_displacement_cm": 151.950357936,
+        "research_pelvis_displacement_cm": 2.991619293
+      },
+      {
+        "time_s": 5.966666978,
+        "baseline_pose_error_deg": 107.432127576,
+        "research_pose_error_deg": 27.13486487,
+        "baseline_pelvis_displacement_cm": 152.016686246,
+        "research_pelvis_displacement_cm": 2.995643932
+      },
+      {
+        "time_s": 5.983333645,
+        "baseline_pose_error_deg": 107.507611351,
+        "research_pose_error_deg": 27.135453873,
+        "baseline_pelvis_displacement_cm": 152.084104746,
+        "research_pelvis_displacement_cm": 2.996937218
+      },
+      {
+        "time_s": 6.000000313,
+        "baseline_pose_error_deg": 107.603648286,
+        "research_pose_error_deg": 27.143672045,
+        "baseline_pelvis_displacement_cm": 152.213929202,
+        "research_pelvis_displacement_cm": 2.996189229
+      }
+    ]
+  },
+  "current": {
+    "date": "2026-10-17",
+    "engine": "5.4.4-35576357+++UE5+Release-5.4",
+    "samples": 360,
+    "fixed_step_hz": 60,
+    "duration_seconds": 6,
+    "bodies_per_character": 22,
+    "controls_on_active_character": 22,
+    "impulse_kg_cm_per_s": 5200,
+    "csv_sha256": "06c1ed90971b56b2c98e725ba178849c21d3b65a994188c359899d2ab93ee387",
+    "json_sha256": "ccd50346cc0eeb036bffb19196abe48d3cc8eed39e08bafee9000c428bc76a3a",
+    "final": {
+      "baseline_pose_error_deg": 107.603648286,
+      "research_pose_error_deg": 27.143672045,
+      "baseline_pelvis_displacement_cm": 152.213929202,
+      "research_pelvis_displacement_cm": 2.996189229
+    },
+    "time_series": [
+      {
+        "time_s": 0.016666668,
+        "baseline_pose_error_deg": 0.377468814,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 0.390785699,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.033333335,
+        "baseline_pose_error_deg": 2.126358404,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 1.511415634,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.050000003,
+        "baseline_pose_error_deg": 3.368256023,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 2.944784112,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.06666667,
+        "baseline_pose_error_deg": 5.142420658,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 4.062609739,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.083333338,
+        "baseline_pose_error_deg": 6.201680201,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 4.660876045,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.100000005,
+        "baseline_pose_error_deg": 7.806841928,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 4.900597649,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.116666673,
+        "baseline_pose_error_deg": 9.031068286,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 4.869850326,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.13333334,
+        "baseline_pose_error_deg": 10.862244626,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 4.943766393,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.150000008,
+        "baseline_pose_error_deg": 12.565961239,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 5.209739845,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.166666675,
+        "baseline_pose_error_deg": 14.570890635,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 5.905329257,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.183333343,
+        "baseline_pose_error_deg": 16.314731463,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 6.728505711,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.20000001,
+        "baseline_pose_error_deg": 18.387708457,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 7.684641509,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.216666678,
+        "baseline_pose_error_deg": 20.415991467,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 8.440494428,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.233333346,
+        "baseline_pose_error_deg": 23.133738868,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 9.206862139,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.250000013,
+        "baseline_pose_error_deg": 25.349023228,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 9.825832476,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.266666681,
+        "baseline_pose_error_deg": 28.051592201,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 10.51231355,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.283333348,
+        "baseline_pose_error_deg": 30.255741916,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 11.005900587,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.300000016,
+        "baseline_pose_error_deg": 32.891364396,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 11.544204377,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.316666683,
+        "baseline_pose_error_deg": 35.208848777,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 11.898511731,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.333333351,
+        "baseline_pose_error_deg": 37.993871985,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 12.319171907,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.350000018,
+        "baseline_pose_error_deg": 40.339054471,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 12.559925479,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.366666686,
+        "baseline_pose_error_deg": 42.869550763,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 12.896317036,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.383333353,
+        "baseline_pose_error_deg": 45.160899936,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 13.124397433,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.400000021,
+        "baseline_pose_error_deg": 47.872422405,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 13.66046636,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.416666688,
+        "baseline_pose_error_deg": 50.277793155,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 14.053312862,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.433333356,
+        "baseline_pose_error_deg": 52.367477199,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 14.452018406,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.450000023,
+        "baseline_pose_error_deg": 54.67141419,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 15.095707215,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.466666691,
+        "baseline_pose_error_deg": 56.56133178,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 15.527256844,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.483333359,
+        "baseline_pose_error_deg": 58.463803044,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 16.133351366,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.500000026,
+        "baseline_pose_error_deg": 60.05714634,
+        "research_pose_error_deg": 6.29e-07,
+        "baseline_pelvis_displacement_cm": 16.485147678,
+        "research_pelvis_displacement_cm": 0.0
+      },
+      {
+        "time_s": 0.516666694,
+        "baseline_pose_error_deg": 60.364196264,
+        "research_pose_error_deg": 3.455004691,
+        "baseline_pelvis_displacement_cm": 17.480078406,
+        "research_pelvis_displacement_cm": 1.336072457
+      },
+      {
+        "time_s": 0.533333361,
+        "baseline_pose_error_deg": 62.044614009,
+        "research_pose_error_deg": 5.718549806,
+        "baseline_pelvis_displacement_cm": 18.970930056,
+        "research_pelvis_displacement_cm": 2.611151698
+      },
+      {
+        "time_s": 0.550000029,
+        "baseline_pose_error_deg": 63.454060499,
+        "research_pose_error_deg": 7.324109291,
+        "baseline_pelvis_displacement_cm": 20.871728667,
+        "research_pelvis_displacement_cm": 3.160255096
+      },
+      {
+        "time_s": 0.566666696,
+        "baseline_pose_error_deg": 64.77820256,
+        "research_pose_error_deg": 8.832157055,
+        "baseline_pelvis_displacement_cm": 22.359721874,
+        "research_pelvis_displacement_cm": 3.310919542
+      },
+      {
+        "time_s": 0.583333364,
+        "baseline_pose_error_deg": 65.586367363,
+        "research_pose_error_deg": 10.222924446,
+        "baseline_pelvis_displacement_cm": 23.555304071,
+        "research_pelvis_displacement_cm": 3.309839408
+      },
+      {
+        "time_s": 0.600000031,
+        "baseline_pose_error_deg": 66.311080975,
+        "research_pose_error_deg": 12.022554908,
+        "baseline_pelvis_displacement_cm": 24.563458217,
+        "research_pelvis_displacement_cm": 3.262029952
+      },
+      {
+        "time_s": 0.616666699,
+        "baseline_pose_error_deg": 67.090604772,
+        "research_pose_error_deg": 13.938322581,
+        "baseline_pelvis_displacement_cm": 25.298163825,
+        "research_pelvis_displacement_cm": 3.250611749
+      },
+      {
+        "time_s": 0.633333366,
+        "baseline_pose_error_deg": 67.853403378,
+        "research_pose_error_deg": 16.092184554,
+        "baseline_pelvis_displacement_cm": 25.940692986,
+        "research_pelvis_displacement_cm": 3.261693261
+      },
+      {
+        "time_s": 0.650000034,
+        "baseline_pose_error_deg": 68.562553891,
+        "research_pose_error_deg": 18.269273639,
+        "baseline_pelvis_displacement_cm": 26.501818697,
+        "research_pelvis_displacement_cm": 3.301571488
+      },
+      {
+        "time_s": 0.666666701,
+        "baseline_pose_error_deg": 69.180252924,
+        "research_pose_error_deg": 20.599936387,
+        "baseline_pelvis_displacement_cm": 27.009371953,
+        "research_pelvis_displacement_cm": 3.33528898
+      },
+      {
+        "time_s": 0.683333369,
+        "baseline_pose_error_deg": 69.686305906,
+        "research_pose_error_deg": 22.960592434,
+        "baseline_pelvis_displacement_cm": 27.489849608,
+        "research_pelvis_displacement_cm": 3.353707675
+      },
+      {
+        "time_s": 0.700000037,
+        "baseline_pose_error_deg": 70.062950587,
+        "research_pose_error_deg": 25.176228033,
+        "baseline_pelvis_displacement_cm": 27.982741696,
+        "research_pelvis_displacement_cm": 3.361579029
+      },
+      {
+        "time_s": 0.716666704,
+        "baseline_pose_error_deg": 70.285984675,
+        "research_pose_error_deg": 27.195607747,
+        "baseline_pelvis_displacement_cm": 28.44474454,
+        "research_pelvis_displacement_cm": 3.344915482
+      },
+      {
+        "time_s": 0.733333372,
+        "baseline_pose_error_deg": 70.389536752,
+        "research_pose_error_deg": 29.086348044,
+        "baseline_pelvis_displacement_cm": 28.90473871,
+        "research_pelvis_displacement_cm": 3.305411777
+      },
+      {
+        "time_s": 0.750000039,
+        "baseline_pose_error_deg": 70.447117332,
+        "research_pose_error_deg": 30.868666178,
+        "baseline_pelvis_displacement_cm": 29.384554888,
+        "research_pelvis_displacement_cm": 3.261746628
+      },
+      {
+        "time_s": 0.766666707,
+        "baseline_pose_error_deg": 70.464153419,
+        "research_pose_error_deg": 32.434625842,
+        "baseline_pelvis_displacement_cm": 29.841435626,
+        "research_pelvis_displacement_cm": 3.224910383
+      },
+      {
+        "time_s": 0.783333374,
+        "baseline_pose_error_deg": 70.473509606,
+        "research_pose_error_deg": 33.793951064,
+        "baseline_pelvis_displacement_cm": 30.307324287,
+        "research_pelvis_displacement_cm": 3.196151274
+      },
+      {
+        "time_s": 0.800000042,
+        "baseline_pose_error_deg": 70.489728212,
+        "research_pose_error_deg": 34.907326062,
+        "baseline_pelvis_displacement_cm": 30.744029681,
+        "research_pelvis_displacement_cm": 3.170058754
+      },
+      {
+        "time_s": 0.816666709,
+        "baseline_pose_error_deg": 70.554329754,
+        "research_pose_error_deg": 35.797790953,
+        "baseline_pelvis_displacement_cm": 31.220030556,
+        "research_pelvis_displacement_cm": 3.140339694
+      },
+      {
+        "time_s": 0.833333377,
+        "baseline_pose_error_deg": 70.657570364,
+        "research_pose_error_deg": 36.431897239,
+        "baseline_pelvis_displacement_cm": 31.629860281,
+        "research_pelvis_displacement_cm": 3.112390631
+      },
+      {
+        "time_s": 0.850000044,
+        "baseline_pose_error_deg": 70.826938633,
+        "research_pose_error_deg": 36.83160527,
+        "baseline_pelvis_displacement_cm": 32.091269841,
+        "research_pelvis_displacement_cm": 3.086116987
+      },
+      {
+        "time_s": 0.866666712,
+        "baseline_pose_error_deg": 71.061801945,
+        "research_pose_error_deg": 36.98908167,
+        "baseline_pelvis_displacement_cm": 32.490123406,
+        "research_pelvis_displacement_cm": 3.044289242
+      },
+      {
+        "time_s": 0.883333379,
+        "baseline_pose_error_deg": 71.433136462,
+        "research_pose_error_deg": 36.96985543,
+        "baseline_pelvis_displacement_cm": 33.035368388,
+        "research_pelvis_displacement_cm": 3.011727319
+      },
+      {
+        "time_s": 0.900000047,
+        "baseline_pose_error_deg": 71.873497967,
+        "research_pose_error_deg": 36.76670126,
+        "baseline_pelvis_displacement_cm": 33.475311792,
+        "research_pelvis_displacement_cm": 2.983423268
+      },
+      {
+        "time_s": 0.916666714,
+        "baseline_pose_error_deg": 72.353378953,
+        "research_pose_error_deg": 36.381326552,
+        "baseline_pelvis_displacement_cm": 34.005312164,
+        "research_pelvis_displacement_cm": 2.967089817
+      },
+      {
+        "time_s": 0.933333382,
+        "baseline_pose_error_deg": 72.851901728,
+        "research_pose_error_deg": 35.885859725,
+        "baseline_pelvis_displacement_cm": 34.532892243,
+        "research_pelvis_displacement_cm": 2.947591463
+      },
+      {
+        "time_s": 0.95000005,
+        "baseline_pose_error_deg": 73.473528166,
+        "research_pose_error_deg": 35.293826424,
+        "baseline_pelvis_displacement_cm": 35.259657876,
+        "research_pelvis_displacement_cm": 2.936023842
+      },
+      {
+        "time_s": 0.966666717,
+        "baseline_pose_error_deg": 74.011874112,
+        "research_pose_error_deg": 34.614243618,
+        "baseline_pelvis_displacement_cm": 35.8587658,
+        "research_pelvis_displacement_cm": 2.932379284
+      },
+      {
+        "time_s": 0.983333385,
+        "baseline_pose_error_deg": 74.500810126,
+        "research_pose_error_deg": 33.81995642,
+        "baseline_pelvis_displacement_cm": 36.637085737,
+        "research_pelvis_displacement_cm": 2.930883216
+      },
+      {
+        "time_s": 1.000000052,
+        "baseline_pose_error_deg": 74.928096325,
+        "research_pose_error_deg": 33.016358708,
+        "baseline_pelvis_displacement_cm": 37.501436364,
+        "research_pelvis_displacement_cm": 2.933718519
+      },
+      {
+        "time_s": 1.01666672,
+        "baseline_pose_error_deg": 75.422260644,
+        "research_pose_error_deg": 32.215822731,
+        "baseline_pelvis_displacement_cm": 38.644948433,
+        "research_pelvis_displacement_cm": 2.939731041
+      },
+      {
+        "time_s": 1.033333387,
+        "baseline_pose_error_deg": 75.860429575,
+        "research_pose_error_deg": 31.402735759,
+        "baseline_pelvis_displacement_cm": 39.768113871,
+        "research_pelvis_displacement_cm": 2.948076983
+      },
+      {
+        "time_s": 1.050000055,
+        "baseline_pose_error_deg": 76.531825531,
+        "research_pose_error_deg": 30.575464086,
+        "baseline_pelvis_displacement_cm": 41.337505771,
+        "research_pelvis_displacement_cm": 2.95577902
+      },
+      {
+        "time_s": 1.066666722,
+        "baseline_pose_error_deg": 77.131288949,
+        "research_pose_error_deg": 29.779741802,
+        "baseline_pelvis_displacement_cm": 42.692607434,
+        "research_pelvis_displacement_cm": 2.970396625
+      },
+      {
+        "time_s": 1.08333339,
+        "baseline_pose_error_deg": 77.817477568,
+        "research_pose_error_deg": 28.933333662,
+        "baseline_pelvis_displacement_cm": 44.375231743,
+        "research_pelvis_displacement_cm": 2.983366671
+      },
+      {
+        "time_s": 1.100000057,
+        "baseline_pose_error_deg": 78.38597385,
+        "research_pose_error_deg": 28.153314242,
+        "baseline_pelvis_displacement_cm": 46.01598365,
+        "research_pelvis_displacement_cm": 3.000207042
+      },
+      {
+        "time_s": 1.116666725,
+        "baseline_pose_error_deg": 79.225336435,
+        "research_pose_error_deg": 27.453510802,
+        "baseline_pelvis_displacement_cm": 48.13274992,
+        "research_pelvis_displacement_cm": 3.015470695
+      },
+      {
+        "time_s": 1.133333392,
+        "baseline_pose_error_deg": 79.882634784,
+        "research_pose_error_deg": 26.759178381,
+        "baseline_pelvis_displacement_cm": 50.065278493,
+        "research_pelvis_displacement_cm": 3.024008966
+      },
+      {
+        "time_s": 1.15000006,
+        "baseline_pose_error_deg": 80.459596534,
+        "research_pose_error_deg": 26.141209032,
+        "baseline_pelvis_displacement_cm": 52.274806253,
+        "research_pelvis_displacement_cm": 3.038080774
+      },
+      {
+        "time_s": 1.166666728,
+        "baseline_pose_error_deg": 81.108627108,
+        "research_pose_error_deg": 25.584440211,
+        "baseline_pelvis_displacement_cm": 54.65417769,
+        "research_pelvis_displacement_cm": 3.038117921
+      },
+      {
+        "time_s": 1.183333395,
+        "baseline_pose_error_deg": 81.926384754,
+        "research_pose_error_deg": 25.112176417,
+        "baseline_pelvis_displacement_cm": 57.252838049,
+        "research_pelvis_displacement_cm": 3.044403527
+      },
+      {
+        "time_s": 1.200000063,
+        "baseline_pose_error_deg": 82.750524622,
+        "research_pose_error_deg": 24.671417582,
+        "baseline_pelvis_displacement_cm": 59.949513377,
+        "research_pelvis_displacement_cm": 3.037917057
+      },
+      {
+        "time_s": 1.21666673,
+        "baseline_pose_error_deg": 83.961159143,
+        "research_pose_error_deg": 24.303698964,
+        "baseline_pelvis_displacement_cm": 63.104515721,
+        "research_pelvis_displacement_cm": 3.043018201
+      },
+      {
+        "time_s": 1.233333398,
+        "baseline_pose_error_deg": 85.172138531,
+        "research_pose_error_deg": 24.042396349,
+        "baseline_pelvis_displacement_cm": 66.056950259,
+        "research_pelvis_displacement_cm": 3.041550702
+      },
+      {
+        "time_s": 1.250000065,
+        "baseline_pose_error_deg": 86.57506491,
+        "research_pose_error_deg": 23.820383878,
+        "baseline_pelvis_displacement_cm": 69.20957236,
+        "research_pelvis_displacement_cm": 3.042892507
+      },
+      {
+        "time_s": 1.266666733,
+        "baseline_pose_error_deg": 88.145245629,
+        "research_pose_error_deg": 23.700247961,
+        "baseline_pelvis_displacement_cm": 72.517948178,
+        "research_pelvis_displacement_cm": 3.041261686
+      },
+      {
+        "time_s": 1.2833334,
+        "baseline_pose_error_deg": 89.800368327,
+        "research_pose_error_deg": 23.652789666,
+        "baseline_pelvis_displacement_cm": 75.938583302,
+        "research_pelvis_displacement_cm": 3.031798327
+      },
+      {
+        "time_s": 1.300000068,
+        "baseline_pose_error_deg": 91.710146231,
+        "research_pose_error_deg": 23.645203589,
+        "baseline_pelvis_displacement_cm": 79.631673106,
+        "research_pelvis_displacement_cm": 3.031711872
+      },
+      {
+        "time_s": 1.316666735,
+        "baseline_pose_error_deg": 93.643069517,
+        "research_pose_error_deg": 23.755696034,
+        "baseline_pelvis_displacement_cm": 83.378591963,
+        "research_pelvis_displacement_cm": 3.025176389
+      },
+      {
+        "time_s": 1.333333403,
+        "baseline_pose_error_deg": 95.574775307,
+        "research_pose_error_deg": 23.866412189,
+        "baseline_pelvis_displacement_cm": 87.463122191,
+        "research_pelvis_displacement_cm": 3.022974014
+      },
+      {
+        "time_s": 1.35000007,
+        "baseline_pose_error_deg": 96.183616965,
+        "research_pose_error_deg": 24.038168355,
+        "baseline_pelvis_displacement_cm": 91.214481518,
+        "research_pelvis_displacement_cm": 3.018739226
+      },
+      {
+        "time_s": 1.366666738,
+        "baseline_pose_error_deg": 96.344708879,
+        "research_pose_error_deg": 24.28204459,
+        "baseline_pelvis_displacement_cm": 95.583807264,
+        "research_pelvis_displacement_cm": 3.007189738
+      },
+      {
+        "time_s": 1.383333405,
+        "baseline_pose_error_deg": 95.905443118,
+        "research_pose_error_deg": 24.523444143,
+        "baseline_pelvis_displacement_cm": 99.630886804,
+        "research_pelvis_displacement_cm": 3.007677265
+      },
+      {
+        "time_s": 1.400000073,
+        "baseline_pose_error_deg": 95.410127699,
+        "research_pose_error_deg": 24.859104835,
+        "baseline_pelvis_displacement_cm": 103.325317035,
+        "research_pelvis_displacement_cm": 3.00268857
+      },
+      {
+        "time_s": 1.416666741,
+        "baseline_pose_error_deg": 94.954691038,
+        "research_pose_error_deg": 25.147650388,
+        "baseline_pelvis_displacement_cm": 106.439793353,
+        "research_pelvis_displacement_cm": 3.004051121
+      },
+      {
+        "time_s": 1.433333408,
+        "baseline_pose_error_deg": 95.685906868,
+        "research_pose_error_deg": 25.530698406,
+        "baseline_pelvis_displacement_cm": 109.376485116,
+        "research_pelvis_displacement_cm": 3.001266883
+      },
+      {
+        "time_s": 1.450000076,
+        "baseline_pose_error_deg": 96.428008605,
+        "research_pose_error_deg": 25.83867101,
+        "baseline_pelvis_displacement_cm": 111.993759766,
+        "research_pelvis_displacement_cm": 3.004174773
+      },
+      {
+        "time_s": 1.466666743,
+        "baseline_pose_error_deg": 97.613079652,
+        "research_pose_error_deg": 26.229216003,
+        "baseline_pelvis_displacement_cm": 114.48949432,
+        "research_pelvis_displacement_cm": 3.001370758
+      },
+      {
+        "time_s": 1.483333411,
+        "baseline_pose_error_deg": 98.277732314,
+        "research_pose_error_deg": 26.52610194,
+        "baseline_pelvis_displacement_cm": 116.63700377,
+        "research_pelvis_displacement_cm": 3.005322899
+      },
+      {
+        "time_s": 1.500000078,
+        "baseline_pose_error_deg": 98.45970783,
+        "research_pose_error_deg": 26.892628027,
+        "baseline_pelvis_displacement_cm": 119.126465517,
+        "research_pelvis_displacement_cm": 3.002135325
+      },
+      {
+        "time_s": 1.516666746,
+        "baseline_pose_error_deg": 98.15799345,
+        "research_pose_error_deg": 27.154486722,
+        "baseline_pelvis_displacement_cm": 121.138968358,
+        "research_pelvis_displacement_cm": 3.006640711
+      },
+      {
+        "time_s": 1.533333413,
+        "baseline_pose_error_deg": 98.161758511,
+        "research_pose_error_deg": 27.474814323,
+        "baseline_pelvis_displacement_cm": 123.058395956,
+        "research_pelvis_displacement_cm": 3.003276943
+      },
+      {
+        "time_s": 1.550000081,
+        "baseline_pose_error_deg": 97.824250905,
+        "research_pose_error_deg": 27.684958977,
+        "baseline_pelvis_displacement_cm": 124.822784485,
+        "research_pelvis_displacement_cm": 3.008060512
+      },
+      {
+        "time_s": 1.566666748,
+        "baseline_pose_error_deg": 97.592623573,
+        "research_pose_error_deg": 27.944552646,
+        "baseline_pelvis_displacement_cm": 126.569760573,
+        "research_pelvis_displacement_cm": 3.004743769
+      },
+      {
+        "time_s": 1.583333416,
+        "baseline_pose_error_deg": 96.986529415,
+        "research_pose_error_deg": 28.092648131,
+        "baseline_pelvis_displacement_cm": 128.271239299,
+        "research_pelvis_displacement_cm": 3.009625846
+      },
+      {
+        "time_s": 1.600000083,
+        "baseline_pose_error_deg": 96.692471538,
+        "research_pose_error_deg": 28.283754978,
+        "baseline_pelvis_displacement_cm": 130.046015783,
+        "research_pelvis_displacement_cm": 3.006463803
+      },
+      {
+        "time_s": 1.616666751,
+        "baseline_pose_error_deg": 95.398072024,
+        "research_pose_error_deg": 28.365729963,
+        "baseline_pelvis_displacement_cm": 131.686140522,
+        "research_pelvis_displacement_cm": 3.011300713
+      },
+      {
+        "time_s": 1.633333419,
+        "baseline_pose_error_deg": 94.827483889,
+        "research_pose_error_deg": 28.487293378,
+        "baseline_pelvis_displacement_cm": 133.201709359,
+        "research_pelvis_displacement_cm": 3.008309957
+      },
+      {
+        "time_s": 1.650000086,
+        "baseline_pose_error_deg": 94.151152669,
+        "research_pose_error_deg": 28.505358234,
+        "baseline_pelvis_displacement_cm": 133.920392325,
+        "research_pelvis_displacement_cm": 3.012990888
+      },
+      {
+        "time_s": 1.666666754,
+        "baseline_pose_error_deg": 93.74261123,
+        "research_pose_error_deg": 28.562644027,
+        "baseline_pelvis_displacement_cm": 134.559105448,
+        "research_pelvis_displacement_cm": 3.010138615
+      },
+      {
+        "time_s": 1.683333421,
+        "baseline_pose_error_deg": 93.137648211,
+        "research_pose_error_deg": 28.524605297,
+        "baseline_pelvis_displacement_cm": 135.17914792,
+        "research_pelvis_displacement_cm": 3.014586938
+      },
+      {
+        "time_s": 1.700000089,
+        "baseline_pose_error_deg": 93.033586112,
+        "research_pose_error_deg": 28.466761006,
+        "baseline_pelvis_displacement_cm": 135.524660254,
+        "research_pelvis_displacement_cm": 3.016334825
+      },
+      {
+        "time_s": 1.716666756,
+        "baseline_pose_error_deg": 92.586267348,
+        "research_pose_error_deg": 28.41382141,
+        "baseline_pelvis_displacement_cm": 135.759240179,
+        "research_pelvis_displacement_cm": 3.007247448
+      },
+      {
+        "time_s": 1.733333424,
+        "baseline_pose_error_deg": 92.632823513,
+        "research_pose_error_deg": 28.317034594,
+        "baseline_pelvis_displacement_cm": 136.228688404,
+        "research_pelvis_displacement_cm": 3.011615014
+      },
+      {
+        "time_s": 1.750000091,
+        "baseline_pose_error_deg": 92.779516551,
+        "research_pose_error_deg": 28.247107564,
+        "baseline_pelvis_displacement_cm": 136.424319499,
+        "research_pelvis_displacement_cm": 3.009757118
+      },
+      {
+        "time_s": 1.766666759,
+        "baseline_pose_error_deg": 93.299144065,
+        "research_pose_error_deg": 28.122846489,
+        "baseline_pelvis_displacement_cm": 136.894220087,
+        "research_pelvis_displacement_cm": 3.013655443
+      },
+      {
+        "time_s": 1.783333426,
+        "baseline_pose_error_deg": 93.439917704,
+        "research_pose_error_deg": 28.006951773,
+        "baseline_pelvis_displacement_cm": 137.053242484,
+        "research_pelvis_displacement_cm": 3.015752131
+      },
+      {
+        "time_s": 1.800000094,
+        "baseline_pose_error_deg": 93.293514883,
+        "research_pose_error_deg": 27.892158841,
+        "baseline_pelvis_displacement_cm": 137.732798705,
+        "research_pelvis_displacement_cm": 3.0098808
+      },
+      {
+        "time_s": 1.816666761,
+        "baseline_pose_error_deg": 93.538276559,
+        "research_pose_error_deg": 27.761546256,
+        "baseline_pelvis_displacement_cm": 137.747689788,
+        "research_pelvis_displacement_cm": 3.013837591
+      },
+      {
+        "time_s": 1.833333429,
+        "baseline_pose_error_deg": 93.209408961,
+        "research_pose_error_deg": 27.653000582,
+        "baseline_pelvis_displacement_cm": 138.439336462,
+        "research_pelvis_displacement_cm": 3.006361556
+      },
+      {
+        "time_s": 1.850000096,
+        "baseline_pose_error_deg": 93.484031347,
+        "research_pose_error_deg": 27.539696273,
+        "baseline_pelvis_displacement_cm": 138.453997694,
+        "research_pelvis_displacement_cm": 3.006343271
+      },
+      {
+        "time_s": 1.866666764,
+        "baseline_pose_error_deg": 93.256990208,
+        "research_pose_error_deg": 27.453888322,
+        "baseline_pelvis_displacement_cm": 139.221126342,
+        "research_pelvis_displacement_cm": 3.004235185
+      },
+      {
+        "time_s": 1.883333432,
+        "baseline_pose_error_deg": 93.609069476,
+        "research_pose_error_deg": 27.362247053,
+        "baseline_pelvis_displacement_cm": 139.291972257,
+        "research_pelvis_displacement_cm": 2.997606475
+      },
+      {
+        "time_s": 1.900000099,
+        "baseline_pose_error_deg": 93.471752008,
+        "research_pose_error_deg": 27.276307559,
+        "baseline_pelvis_displacement_cm": 139.911643356,
+        "research_pelvis_displacement_cm": 2.999766948
+      },
+      {
+        "time_s": 1.916666767,
+        "baseline_pose_error_deg": 93.790598694,
+        "research_pose_error_deg": 27.221456189,
+        "baseline_pelvis_displacement_cm": 139.798042591,
+        "research_pelvis_displacement_cm": 2.999138397
+      },
+      {
+        "time_s": 1.933333434,
+        "baseline_pose_error_deg": 93.509958375,
+        "research_pose_error_deg": 27.154670114,
+        "baseline_pelvis_displacement_cm": 140.436181773,
+        "research_pelvis_displacement_cm": 2.996415544
+      },
+      {
+        "time_s": 1.950000102,
+        "baseline_pose_error_deg": 93.469582403,
+        "research_pose_error_deg": 27.094710206,
+        "baseline_pelvis_displacement_cm": 140.724989241,
+        "research_pelvis_displacement_cm": 2.998930837
+      },
+      {
+        "time_s": 1.966666769,
+        "baseline_pose_error_deg": 93.887242443,
+        "research_pose_error_deg": 27.068409519,
+        "baseline_pelvis_displacement_cm": 140.895719901,
+        "research_pelvis_displacement_cm": 2.998396302
+      },
+      {
+        "time_s": 1.983333437,
+        "baseline_pose_error_deg": 93.390770294,
+        "research_pose_error_deg": 27.030974621,
+        "baseline_pelvis_displacement_cm": 141.066617809,
+        "research_pelvis_displacement_cm": 2.996118363
+      },
+      {
+        "time_s": 2.000000104,
+        "baseline_pose_error_deg": 93.440510739,
+        "research_pose_error_deg": 26.998435774,
+        "baseline_pelvis_displacement_cm": 141.392104549,
+        "research_pelvis_displacement_cm": 2.998302089
+      },
+      {
+        "time_s": 2.016666772,
+        "baseline_pose_error_deg": 93.639583154,
+        "research_pose_error_deg": 26.999383521,
+        "baseline_pelvis_displacement_cm": 141.077210778,
+        "research_pelvis_displacement_cm": 2.99725496
+      },
+      {
+        "time_s": 2.033333439,
+        "baseline_pose_error_deg": 93.277366237,
+        "research_pose_error_deg": 26.981320094,
+        "baseline_pelvis_displacement_cm": 141.494339406,
+        "research_pelvis_displacement_cm": 2.991189928
+      },
+      {
+        "time_s": 2.050000107,
+        "baseline_pose_error_deg": 93.281054252,
+        "research_pose_error_deg": 26.975069099,
+        "baseline_pelvis_displacement_cm": 141.614331752,
+        "research_pelvis_displacement_cm": 2.992352816
+      },
+      {
+        "time_s": 2.066666774,
+        "baseline_pose_error_deg": 93.594586908,
+        "research_pose_error_deg": 26.993154147,
+        "baseline_pelvis_displacement_cm": 141.597068528,
+        "research_pelvis_displacement_cm": 2.990192203
+      },
+      {
+        "time_s": 2.083333442,
+        "baseline_pose_error_deg": 93.002376124,
+        "research_pose_error_deg": 26.974702591,
+        "baseline_pelvis_displacement_cm": 141.662565492,
+        "research_pelvis_displacement_cm": 2.972789183
+      },
+      {
+        "time_s": 2.10000011,
+        "baseline_pose_error_deg": 92.959843621,
+        "research_pose_error_deg": 26.982959184,
+        "baseline_pelvis_displacement_cm": 141.901636539,
+        "research_pelvis_displacement_cm": 2.968771909
+      },
+      {
+        "time_s": 2.116666777,
+        "baseline_pose_error_deg": 93.068076198,
+        "research_pose_error_deg": 26.96804524,
+        "baseline_pelvis_displacement_cm": 141.443638062,
+        "research_pelvis_displacement_cm": 2.953904342
+      },
+      {
+        "time_s": 2.133333445,
+        "baseline_pose_error_deg": 92.599562916,
+        "research_pose_error_deg": 26.97030036,
+        "baseline_pelvis_displacement_cm": 141.726331353,
+        "research_pelvis_displacement_cm": 2.954724343
+      },
+      {
+        "time_s": 2.150000112,
+        "baseline_pose_error_deg": 92.783402646,
+        "research_pose_error_deg": 26.985179562,
+        "baseline_pelvis_displacement_cm": 141.357256924,
+        "research_pelvis_displacement_cm": 2.955973385
+      },
+      {
+        "time_s": 2.16666678,
+        "baseline_pose_error_deg": 92.714920393,
+        "research_pose_error_deg": 26.99839699,
+        "baseline_pelvis_displacement_cm": 141.447477058,
+        "research_pelvis_displacement_cm": 2.958455598
+      },
+      {
+        "time_s": 2.183333447,
+        "baseline_pose_error_deg": 92.250622194,
+        "research_pose_error_deg": 27.002279512,
+        "baseline_pelvis_displacement_cm": 141.595756621,
+        "research_pelvis_displacement_cm": 2.968009317
+      },
+      {
+        "time_s": 2.200000115,
+        "baseline_pose_error_deg": 92.444254555,
+        "research_pose_error_deg": 27.024588053,
+        "baseline_pelvis_displacement_cm": 141.608443698,
+        "research_pelvis_displacement_cm": 2.974837604
+      },
+      {
+        "time_s": 2.216666782,
+        "baseline_pose_error_deg": 91.725203195,
+        "research_pose_error_deg": 27.059501012,
+        "baseline_pelvis_displacement_cm": 141.69697034,
+        "research_pelvis_displacement_cm": 2.979293879
+      },
+      {
+        "time_s": 2.23333345,
+        "baseline_pose_error_deg": 91.569990493,
+        "research_pose_error_deg": 27.072986367,
+        "baseline_pelvis_displacement_cm": 141.952032589,
+        "research_pelvis_displacement_cm": 2.987790075
+      },
+      {
+        "time_s": 2.250000117,
+        "baseline_pose_error_deg": 91.470109123,
+        "research_pose_error_deg": 27.100291309,
+        "baseline_pelvis_displacement_cm": 141.925208078,
+        "research_pelvis_displacement_cm": 2.992136479
+      },
+      {
+        "time_s": 2.266666785,
+        "baseline_pose_error_deg": 91.448815919,
+        "research_pose_error_deg": 27.143964823,
+        "baseline_pelvis_displacement_cm": 142.068935752,
+        "research_pelvis_displacement_cm": 2.99169721
+      },
+      {
+        "time_s": 2.283333452,
+        "baseline_pose_error_deg": 91.292670463,
+        "research_pose_error_deg": 27.15975524,
+        "baseline_pelvis_displacement_cm": 141.972396142,
+        "research_pelvis_displacement_cm": 2.997050429
+      },
+      {
+        "time_s": 2.30000012,
+        "baseline_pose_error_deg": 91.220582991,
+        "research_pose_error_deg": 27.183525678,
+        "baseline_pelvis_displacement_cm": 142.10479654,
+        "research_pelvis_displacement_cm": 2.998562891
+      },
+      {
+        "time_s": 2.316666787,
+        "baseline_pose_error_deg": 91.079440605,
+        "research_pose_error_deg": 27.223325776,
+        "baseline_pelvis_displacement_cm": 141.994537454,
+        "research_pelvis_displacement_cm": 2.99480866
+      },
+      {
+        "time_s": 2.333333455,
+        "baseline_pose_error_deg": 90.973266196,
+        "research_pose_error_deg": 27.231872483,
+        "baseline_pelvis_displacement_cm": 142.109655822,
+        "research_pelvis_displacement_cm": 2.998692033
+      },
+      {
+        "time_s": 2.350000123,
+        "baseline_pose_error_deg": 90.892541531,
+        "research_pose_error_deg": 27.243990216,
+        "baseline_pelvis_displacement_cm": 142.024219573,
+        "research_pelvis_displacement_cm": 2.999472798
+      },
+      {
+        "time_s": 2.36666679,
+        "baseline_pose_error_deg": 90.896658335,
+        "research_pose_error_deg": 27.270166743,
+        "baseline_pelvis_displacement_cm": 142.186224835,
+        "research_pelvis_displacement_cm": 2.995033262
+      },
+      {
+        "time_s": 2.383333458,
+        "baseline_pose_error_deg": 90.889563444,
+        "research_pose_error_deg": 27.264881407,
+        "baseline_pelvis_displacement_cm": 142.115915013,
+        "research_pelvis_displacement_cm": 2.999087972
+      },
+      {
+        "time_s": 2.400000125,
+        "baseline_pose_error_deg": 90.962823408,
+        "research_pose_error_deg": 27.260998067,
+        "baseline_pelvis_displacement_cm": 142.268093226,
+        "research_pelvis_displacement_cm": 3.000549497
+      },
+      {
+        "time_s": 2.416666793,
+        "baseline_pose_error_deg": 90.971635137,
+        "research_pose_error_deg": 27.268297838,
+        "baseline_pelvis_displacement_cm": 142.178926979,
+        "research_pelvis_displacement_cm": 2.996785355
+      },
+      {
+        "time_s": 2.43333346,
+        "baseline_pose_error_deg": 90.99286148,
+        "research_pose_error_deg": 27.247388485,
+        "baseline_pelvis_displacement_cm": 142.280246093,
+        "research_pelvis_displacement_cm": 3.001452399
+      },
+      {
+        "time_s": 2.450000128,
+        "baseline_pose_error_deg": 90.980984155,
+        "research_pose_error_deg": 27.271216491,
+        "baseline_pelvis_displacement_cm": 142.139439188,
+        "research_pelvis_displacement_cm": 3.001816384
+      },
+      {
+        "time_s": 2.466666795,
+        "baseline_pose_error_deg": 91.067418817,
+        "research_pose_error_deg": 27.242328903,
+        "baseline_pelvis_displacement_cm": 142.217383977,
+        "research_pelvis_displacement_cm": 3.005107278
+      },
+      {
+        "time_s": 2.483333463,
+        "baseline_pose_error_deg": 91.09367051,
+        "research_pose_error_deg": 27.243419324,
+        "baseline_pelvis_displacement_cm": 142.074981739,
+        "research_pelvis_displacement_cm": 2.994710164
+      },
+      {
+        "time_s": 2.50000013,
+        "baseline_pose_error_deg": 91.211216769,
+        "research_pose_error_deg": 27.228537798,
+        "baseline_pelvis_displacement_cm": 142.166580609,
+        "research_pelvis_displacement_cm": 2.993681021
+      },
+      {
+        "time_s": 2.516666798,
+        "baseline_pose_error_deg": 91.217714181,
+        "research_pose_error_deg": 27.252010071,
+        "baseline_pelvis_displacement_cm": 142.034035967,
+        "research_pelvis_displacement_cm": 2.985581337
+      },
+      {
+        "time_s": 2.533333465,
+        "baseline_pose_error_deg": 91.348080231,
+        "research_pose_error_deg": 27.235548374,
+        "baseline_pelvis_displacement_cm": 142.160812376,
+        "research_pelvis_displacement_cm": 2.986742979
+      },
+      {
+        "time_s": 2.550000133,
+        "baseline_pose_error_deg": 91.34717092,
+        "research_pose_error_deg": 27.270288091,
+        "baseline_pelvis_displacement_cm": 142.109391838,
+        "research_pelvis_displacement_cm": 2.984565713
+      },
+      {
+        "time_s": 2.566666801,
+        "baseline_pose_error_deg": 91.544789966,
+        "research_pose_error_deg": 27.25188492,
+        "baseline_pelvis_displacement_cm": 142.304745975,
+        "research_pelvis_displacement_cm": 2.987793062
+      },
+      {
+        "time_s": 2.583333468,
+        "baseline_pose_error_deg": 91.577514683,
+        "research_pose_error_deg": 27.28787528,
+        "baseline_pelvis_displacement_cm": 142.276671441,
+        "research_pelvis_displacement_cm": 2.987115992
+      },
+      {
+        "time_s": 2.600000136,
+        "baseline_pose_error_deg": 91.800561369,
+        "research_pose_error_deg": 27.266483712,
+        "baseline_pelvis_displacement_cm": 142.464029042,
+        "research_pelvis_displacement_cm": 2.990934955
+      },
+      {
+        "time_s": 2.616666803,
+        "baseline_pose_error_deg": 91.83232938,
+        "research_pose_error_deg": 27.300657928,
+        "baseline_pelvis_displacement_cm": 142.419303632,
+        "research_pelvis_displacement_cm": 2.989936255
+      },
+      {
+        "time_s": 2.633333471,
+        "baseline_pose_error_deg": 92.024347939,
+        "research_pose_error_deg": 27.276350713,
+        "baseline_pelvis_displacement_cm": 142.584139614,
+        "research_pelvis_displacement_cm": 2.99366993
+      },
+      {
+        "time_s": 2.650000138,
+        "baseline_pose_error_deg": 92.123411579,
+        "research_pose_error_deg": 27.264015624,
+        "baseline_pelvis_displacement_cm": 142.507021874,
+        "research_pelvis_displacement_cm": 2.980022969
+      },
+      {
+        "time_s": 2.666666806,
+        "baseline_pose_error_deg": 92.330498426,
+        "research_pose_error_deg": 27.242394288,
+        "baseline_pelvis_displacement_cm": 142.636261824,
+        "research_pelvis_displacement_cm": 2.979060105
+      },
+      {
+        "time_s": 2.683333473,
+        "baseline_pose_error_deg": 92.418409769,
+        "research_pose_error_deg": 27.24972181,
+        "baseline_pelvis_displacement_cm": 142.538827122,
+        "research_pelvis_displacement_cm": 2.969810905
+      },
+      {
+        "time_s": 2.700000141,
+        "baseline_pose_error_deg": 92.652988987,
+        "research_pose_error_deg": 27.221952004,
+        "baseline_pelvis_displacement_cm": 142.652243757,
+        "research_pelvis_displacement_cm": 2.972779288
+      },
+      {
+        "time_s": 2.716666808,
+        "baseline_pose_error_deg": 92.750135526,
+        "research_pose_error_deg": 27.244278996,
+        "baseline_pelvis_displacement_cm": 142.551105802,
+        "research_pelvis_displacement_cm": 2.973757172
+      },
+      {
+        "time_s": 2.733333476,
+        "baseline_pose_error_deg": 93.01352204,
+        "research_pose_error_deg": 27.216060907,
+        "baseline_pelvis_displacement_cm": 142.668368523,
+        "research_pelvis_displacement_cm": 2.979611129
+      },
+      {
+        "time_s": 2.750000143,
+        "baseline_pose_error_deg": 93.12303043,
+        "research_pose_error_deg": 27.199933598,
+        "baseline_pelvis_displacement_cm": 142.568715588,
+        "research_pelvis_displacement_cm": 2.984104247
+      },
+      {
+        "time_s": 2.766666811,
+        "baseline_pose_error_deg": 93.406836911,
+        "research_pose_error_deg": 27.201170782,
+        "baseline_pelvis_displacement_cm": 142.680825156,
+        "research_pelvis_displacement_cm": 2.982841906
+      },
+      {
+        "time_s": 2.783333478,
+        "baseline_pose_error_deg": 93.514635626,
+        "research_pose_error_deg": 27.179249867,
+        "baseline_pelvis_displacement_cm": 142.577207438,
+        "research_pelvis_displacement_cm": 2.989218575
+      },
+      {
+        "time_s": 2.800000146,
+        "baseline_pose_error_deg": 93.811858121,
+        "research_pose_error_deg": 27.203940245,
+        "baseline_pelvis_displacement_cm": 142.680700284,
+        "research_pelvis_displacement_cm": 2.991717003
+      },
+      {
+        "time_s": 2.816666814,
+        "baseline_pose_error_deg": 93.906804031,
+        "research_pose_error_deg": 27.183387177,
+        "baseline_pelvis_displacement_cm": 142.571554377,
+        "research_pelvis_displacement_cm": 2.995004762
+      },
+      {
+        "time_s": 2.833333481,
+        "baseline_pose_error_deg": 94.185251871,
+        "research_pose_error_deg": 27.179013324,
+        "baseline_pelvis_displacement_cm": 142.675536729,
+        "research_pelvis_displacement_cm": 2.996159006
+      },
+      {
+        "time_s": 2.850000149,
+        "baseline_pose_error_deg": 94.278016308,
+        "research_pose_error_deg": 27.194053876,
+        "baseline_pelvis_displacement_cm": 142.571028071,
+        "research_pelvis_displacement_cm": 2.992574925
+      },
+      {
+        "time_s": 2.866666816,
+        "baseline_pose_error_deg": 94.563088469,
+        "research_pose_error_deg": 27.187427565,
+        "baseline_pelvis_displacement_cm": 142.667986949,
+        "research_pelvis_displacement_cm": 2.994958369
+      },
+      {
+        "time_s": 2.883333484,
+        "baseline_pose_error_deg": 94.644366837,
+        "research_pose_error_deg": 27.193103324,
+        "baseline_pelvis_displacement_cm": 142.558524415,
+        "research_pelvis_displacement_cm": 2.99436557
+      },
+      {
+        "time_s": 2.900000151,
+        "baseline_pose_error_deg": 94.938372601,
+        "research_pose_error_deg": 27.210104561,
+        "baseline_pelvis_displacement_cm": 142.658679392,
+        "research_pelvis_displacement_cm": 2.991147662
+      },
+      {
+        "time_s": 2.916666819,
+        "baseline_pose_error_deg": 95.008749532,
+        "research_pose_error_deg": 27.211003502,
+        "baseline_pelvis_displacement_cm": 142.558596759,
+        "research_pelvis_displacement_cm": 2.993057964
+      },
+      {
+        "time_s": 2.933333486,
+        "baseline_pose_error_deg": 95.266292932,
+        "research_pose_error_deg": 27.225703587,
+        "baseline_pelvis_displacement_cm": 142.656941776,
+        "research_pelvis_displacement_cm": 2.992314089
+      },
+      {
+        "time_s": 2.950000154,
+        "baseline_pose_error_deg": 95.777763933,
+        "research_pose_error_deg": 27.247387043,
+        "baseline_pelvis_displacement_cm": 142.115344389,
+        "research_pelvis_displacement_cm": 2.989973007
+      },
+      {
+        "time_s": 2.966666821,
+        "baseline_pose_error_deg": 95.082746151,
+        "research_pose_error_deg": 27.254360279,
+        "baseline_pelvis_displacement_cm": 142.354839801,
+        "research_pelvis_displacement_cm": 2.991726017
+      },
+      {
+        "time_s": 2.983333489,
+        "baseline_pose_error_deg": 94.80052423,
+        "research_pose_error_deg": 27.276341938,
+        "baseline_pelvis_displacement_cm": 142.439001212,
+        "research_pelvis_displacement_cm": 2.990941994
+      },
+      {
+        "time_s": 3.000000156,
+        "baseline_pose_error_deg": 94.813487618,
+        "research_pose_error_deg": 27.3016298,
+        "baseline_pelvis_displacement_cm": 142.677008039,
+        "research_pelvis_displacement_cm": 2.988731189
+      },
+      {
+        "time_s": 3.016666824,
+        "baseline_pose_error_deg": 94.799693431,
+        "research_pose_error_deg": 27.31257852,
+        "baseline_pelvis_displacement_cm": 142.671215896,
+        "research_pelvis_displacement_cm": 2.990550645
+      },
+      {
+        "time_s": 3.033333492,
+        "baseline_pose_error_deg": 94.988026104,
+        "research_pose_error_deg": 27.339008171,
+        "baseline_pelvis_displacement_cm": 142.828761649,
+        "research_pelvis_displacement_cm": 2.989817903
+      },
+      {
+        "time_s": 3.050000159,
+        "baseline_pose_error_deg": 95.031139637,
+        "research_pose_error_deg": 27.365080481,
+        "baseline_pelvis_displacement_cm": 142.779277644,
+        "research_pelvis_displacement_cm": 2.987507296
+      },
+      {
+        "time_s": 3.066666827,
+        "baseline_pose_error_deg": 95.253431907,
+        "research_pose_error_deg": 27.376448237,
+        "baseline_pelvis_displacement_cm": 142.919476655,
+        "research_pelvis_displacement_cm": 2.989571423
+      },
+      {
+        "time_s": 3.083333494,
+        "baseline_pose_error_deg": 95.289087888,
+        "research_pose_error_deg": 27.402998604,
+        "baseline_pelvis_displacement_cm": 142.84894878,
+        "research_pelvis_displacement_cm": 2.988999291
+      },
+      {
+        "time_s": 3.100000162,
+        "baseline_pose_error_deg": 95.520765984,
+        "research_pose_error_deg": 27.426188024,
+        "baseline_pelvis_displacement_cm": 142.962336651,
+        "research_pelvis_displacement_cm": 2.986576845
+      },
+      {
+        "time_s": 3.116666829,
+        "baseline_pose_error_deg": 96.028925367,
+        "research_pose_error_deg": 27.433732923,
+        "baseline_pelvis_displacement_cm": 142.439079239,
+        "research_pelvis_displacement_cm": 2.988956932
+      },
+      {
+        "time_s": 3.133333497,
+        "baseline_pose_error_deg": 95.389517788,
+        "research_pose_error_deg": 27.455698096,
+        "baseline_pelvis_displacement_cm": 142.682891178,
+        "research_pelvis_displacement_cm": 2.988573266
+      },
+      {
+        "time_s": 3.150000164,
+        "baseline_pose_error_deg": 95.221513442,
+        "research_pose_error_deg": 27.47288875,
+        "baseline_pelvis_displacement_cm": 142.742288387,
+        "research_pelvis_displacement_cm": 2.986053249
+      },
+      {
+        "time_s": 3.166666832,
+        "baseline_pose_error_deg": 95.292040402,
+        "research_pose_error_deg": 27.4732271,
+        "baseline_pelvis_displacement_cm": 142.9615173,
+        "research_pelvis_displacement_cm": 2.988710728
+      },
+      {
+        "time_s": 3.183333499,
+        "baseline_pose_error_deg": 95.708320813,
+        "research_pose_error_deg": 27.487101628,
+        "baseline_pelvis_displacement_cm": 142.505467417,
+        "research_pelvis_displacement_cm": 2.988483768
+      },
+      {
+        "time_s": 3.200000167,
+        "baseline_pose_error_deg": 95.172445168,
+        "research_pose_error_deg": 27.496768202,
+        "baseline_pelvis_displacement_cm": 142.756570108,
+        "research_pelvis_displacement_cm": 2.985892236
+      },
+      {
+        "time_s": 3.216666834,
+        "baseline_pose_error_deg": 95.056011536,
+        "research_pose_error_deg": 27.488333572,
+        "baseline_pelvis_displacement_cm": 142.808151841,
+        "research_pelvis_displacement_cm": 2.988747596
+      },
+      {
+        "time_s": 3.233333502,
+        "baseline_pose_error_deg": 95.175954422,
+        "research_pose_error_deg": 27.492590907,
+        "baseline_pelvis_displacement_cm": 142.995648332,
+        "research_pelvis_displacement_cm": 2.988645594
+      },
+      {
+        "time_s": 3.25000017,
+        "baseline_pose_error_deg": 95.265817564,
+        "research_pose_error_deg": 27.494872943,
+        "baseline_pelvis_displacement_cm": 142.968551232,
+        "research_pelvis_displacement_cm": 2.986026398
+      },
+      {
+        "time_s": 3.266666837,
+        "baseline_pose_error_deg": 95.491014727,
+        "research_pose_error_deg": 27.477903007,
+        "baseline_pelvis_displacement_cm": 143.097079367,
+        "research_pelvis_displacement_cm": 2.98901017
+      },
+      {
+        "time_s": 3.283333505,
+        "baseline_pose_error_deg": 95.521330116,
+        "research_pose_error_deg": 27.472835654,
+        "baseline_pelvis_displacement_cm": 143.043310993,
+        "research_pelvis_displacement_cm": 2.989020886
+      },
+      {
+        "time_s": 3.300000172,
+        "baseline_pose_error_deg": 95.763522829,
+        "research_pose_error_deg": 27.468967157,
+        "baseline_pelvis_displacement_cm": 143.179215752,
+        "research_pelvis_displacement_cm": 2.986412883
+      },
+      {
+        "time_s": 3.31666684,
+        "baseline_pose_error_deg": 96.272540977,
+        "research_pose_error_deg": 27.444938631,
+        "baseline_pelvis_displacement_cm": 142.680418896,
+        "research_pelvis_displacement_cm": 2.989473833
+      },
+      {
+        "time_s": 3.333333507,
+        "baseline_pose_error_deg": 95.678150087,
+        "research_pose_error_deg": 27.432073447,
+        "baseline_pelvis_displacement_cm": 142.93671923,
+        "research_pelvis_displacement_cm": 2.98959681
+      },
+      {
+        "time_s": 3.350000175,
+        "baseline_pose_error_deg": 95.459378843,
+        "research_pose_error_deg": 27.423705092,
+        "baseline_pelvis_displacement_cm": 143.015490017,
+        "research_pelvis_displacement_cm": 2.987036408
+      },
+      {
+        "time_s": 3.366666842,
+        "baseline_pose_error_deg": 95.476330682,
+        "research_pose_error_deg": 27.394713745,
+        "baseline_pelvis_displacement_cm": 143.243637858,
+        "research_pelvis_displacement_cm": 2.990137615
+      },
+      {
+        "time_s": 3.38333351,
+        "baseline_pose_error_deg": 95.50329692,
+        "research_pose_error_deg": 27.376257722,
+        "baseline_pelvis_displacement_cm": 143.250822219,
+        "research_pelvis_displacement_cm": 2.990387584
+      },
+      {
+        "time_s": 3.400000177,
+        "baseline_pose_error_deg": 95.634910759,
+        "research_pose_error_deg": 27.364990214,
+        "baseline_pelvis_displacement_cm": 143.394287122,
+        "research_pelvis_displacement_cm": 2.987904099
+      },
+      {
+        "time_s": 3.416666845,
+        "baseline_pose_error_deg": 95.675668101,
+        "research_pose_error_deg": 27.333313048,
+        "baseline_pelvis_displacement_cm": 143.36025168,
+        "research_pelvis_displacement_cm": 2.991027687
+      },
+      {
+        "time_s": 3.433333512,
+        "baseline_pose_error_deg": 95.887647642,
+        "research_pose_error_deg": 27.311760377,
+        "baseline_pelvis_displacement_cm": 143.509962591,
+        "research_pelvis_displacement_cm": 2.991428314
+      },
+      {
+        "time_s": 3.45000018,
+        "baseline_pose_error_deg": 95.970871123,
+        "research_pose_error_deg": 27.298950641,
+        "baseline_pelvis_displacement_cm": 143.477025613,
+        "research_pelvis_displacement_cm": 2.989055036
+      },
+      {
+        "time_s": 3.466666847,
+        "baseline_pose_error_deg": 96.223830504,
+        "research_pose_error_deg": 27.26680743,
+        "baseline_pelvis_displacement_cm": 143.607631882,
+        "research_pelvis_displacement_cm": 2.992191347
+      },
+      {
+        "time_s": 3.483333515,
+        "baseline_pose_error_deg": 96.30346856,
+        "research_pose_error_deg": 27.244698991,
+        "baseline_pelvis_displacement_cm": 143.555225071,
+        "research_pelvis_displacement_cm": 2.992764193
+      },
+      {
+        "time_s": 3.500000183,
+        "baseline_pose_error_deg": 96.529641389,
+        "research_pose_error_deg": 27.231428985,
+        "baseline_pelvis_displacement_cm": 143.678229981,
+        "research_pelvis_displacement_cm": 2.990526494
+      },
+      {
+        "time_s": 3.51666685,
+        "baseline_pose_error_deg": 96.621018192,
+        "research_pose_error_deg": 27.200859707,
+        "baseline_pelvis_displacement_cm": 143.620549885,
+        "research_pelvis_displacement_cm": 2.9936616
+      },
+      {
+        "time_s": 3.533333518,
+        "baseline_pose_error_deg": 96.852093653,
+        "research_pose_error_deg": 27.157621279,
+        "baseline_pelvis_displacement_cm": 143.723786934,
+        "research_pelvis_displacement_cm": 2.977180158
+      },
+      {
+        "time_s": 3.550000185,
+        "baseline_pose_error_deg": 97.363391986,
+        "research_pose_error_deg": 27.122995389,
+        "baseline_pelvis_displacement_cm": 143.185102597,
+        "research_pelvis_displacement_cm": 2.973897014
+      },
+      {
+        "time_s": 3.566666853,
+        "baseline_pose_error_deg": 96.74224579,
+        "research_pose_error_deg": 27.101485728,
+        "baseline_pelvis_displacement_cm": 143.438474885,
+        "research_pelvis_displacement_cm": 2.965985068
+      },
+      {
+        "time_s": 3.58333352,
+        "baseline_pose_error_deg": 96.497995612,
+        "research_pose_error_deg": 27.0615455,
+        "baseline_pelvis_displacement_cm": 143.524211411,
+        "research_pelvis_displacement_cm": 2.968868383
+      },
+      {
+        "time_s": 3.600000188,
+        "baseline_pose_error_deg": 96.505577773,
+        "research_pose_error_deg": 27.06755637,
+        "baseline_pelvis_displacement_cm": 143.723734711,
+        "research_pelvis_displacement_cm": 2.972907297
+      },
+      {
+        "time_s": 3.616666855,
+        "baseline_pose_error_deg": 96.487120237,
+        "research_pose_error_deg": 27.031890224,
+        "baseline_pelvis_displacement_cm": 143.725010209,
+        "research_pelvis_displacement_cm": 2.979579414
+      },
+      {
+        "time_s": 3.633333523,
+        "baseline_pose_error_deg": 96.616906377,
+        "research_pose_error_deg": 27.013508642,
+        "baseline_pelvis_displacement_cm": 143.877651328,
+        "research_pelvis_displacement_cm": 2.985933291
+      },
+      {
+        "time_s": 3.65000019,
+        "baseline_pose_error_deg": 96.631201974,
+        "research_pose_error_deg": 27.008120441,
+        "baseline_pelvis_displacement_cm": 143.857433097,
+        "research_pelvis_displacement_cm": 2.987368053
+      },
+      {
+        "time_s": 3.666666858,
+        "baseline_pose_error_deg": 96.804881384,
+        "research_pose_error_deg": 26.985516107,
+        "baseline_pelvis_displacement_cm": 144.014656585,
+        "research_pelvis_displacement_cm": 2.995024253
+      },
+      {
+        "time_s": 3.683333525,
+        "baseline_pose_error_deg": 96.868240046,
+        "research_pose_error_deg": 27.004022306,
+        "baseline_pelvis_displacement_cm": 143.995473554,
+        "research_pelvis_displacement_cm": 2.998325082
+      },
+      {
+        "time_s": 3.700000193,
+        "baseline_pose_error_deg": 97.041661954,
+        "research_pose_error_deg": 26.982925054,
+        "baseline_pelvis_displacement_cm": 144.133066025,
+        "research_pelvis_displacement_cm": 3.002277466
+      },
+      {
+        "time_s": 3.716666861,
+        "baseline_pose_error_deg": 97.088111457,
+        "research_pose_error_deg": 26.996130817,
+        "baseline_pelvis_displacement_cm": 144.097075277,
+        "research_pelvis_displacement_cm": 2.996851599
+      },
+      {
+        "time_s": 3.733333528,
+        "baseline_pose_error_deg": 97.259381501,
+        "research_pose_error_deg": 26.988538476,
+        "baseline_pelvis_displacement_cm": 144.237504699,
+        "research_pelvis_displacement_cm": 2.997326212
+      },
+      {
+        "time_s": 3.750000196,
+        "baseline_pose_error_deg": 97.308239777,
+        "research_pose_error_deg": 27.024918161,
+        "baseline_pelvis_displacement_cm": 144.208323107,
+        "research_pelvis_displacement_cm": 2.992735715
+      },
+      {
+        "time_s": 3.766666863,
+        "baseline_pose_error_deg": 97.484698731,
+        "research_pose_error_deg": 27.019917253,
+        "baseline_pelvis_displacement_cm": 144.34211674,
+        "research_pelvis_displacement_cm": 2.993718003
+      },
+      {
+        "time_s": 3.783333531,
+        "baseline_pose_error_deg": 97.996016267,
+        "research_pose_error_deg": 27.028151678,
+        "baseline_pelvis_displacement_cm": 143.815354427,
+        "research_pelvis_displacement_cm": 2.993537333
+      },
+      {
+        "time_s": 3.800000198,
+        "baseline_pose_error_deg": 97.078281461,
+        "research_pose_error_deg": 27.048789936,
+        "baseline_pelvis_displacement_cm": 144.04881021,
+        "research_pelvis_displacement_cm": 2.988595991
+      },
+      {
+        "time_s": 3.816666866,
+        "baseline_pose_error_deg": 96.681765149,
+        "research_pose_error_deg": 27.048587302,
+        "baseline_pelvis_displacement_cm": 144.136256517,
+        "research_pelvis_displacement_cm": 2.992451241
+      },
+      {
+        "time_s": 3.833333533,
+        "baseline_pose_error_deg": 96.624834085,
+        "research_pose_error_deg": 27.090212654,
+        "baseline_pelvis_displacement_cm": 144.327777132,
+        "research_pelvis_displacement_cm": 2.993442956
+      },
+      {
+        "time_s": 3.850000201,
+        "baseline_pose_error_deg": 96.527813056,
+        "research_pose_error_deg": 27.086583413,
+        "baseline_pelvis_displacement_cm": 144.34004863,
+        "research_pelvis_displacement_cm": 2.995956177
+      },
+      {
+        "time_s": 3.866666868,
+        "baseline_pose_error_deg": 96.639283185,
+        "research_pose_error_deg": 27.096224478,
+        "baseline_pelvis_displacement_cm": 144.495591822,
+        "research_pelvis_displacement_cm": 2.997038196
+      },
+      {
+        "time_s": 3.883333536,
+        "baseline_pose_error_deg": 96.723820763,
+        "research_pose_error_deg": 27.121278352,
+        "baseline_pelvis_displacement_cm": 144.461329538,
+        "research_pelvis_displacement_cm": 2.994004172
+      },
+      {
+        "time_s": 3.900000203,
+        "baseline_pose_error_deg": 96.908253256,
+        "research_pose_error_deg": 27.122185356,
+        "baseline_pelvis_displacement_cm": 144.58318095,
+        "research_pelvis_displacement_cm": 2.997115647
+      },
+      {
+        "time_s": 3.916666871,
+        "baseline_pose_error_deg": 96.998653046,
+        "research_pose_error_deg": 27.130428814,
+        "baseline_pelvis_displacement_cm": 144.530051038,
+        "research_pelvis_displacement_cm": 2.997432287
+      },
+      {
+        "time_s": 3.933333538,
+        "baseline_pose_error_deg": 97.177556757,
+        "research_pose_error_deg": 27.14832068,
+        "baseline_pelvis_displacement_cm": 144.647453036,
+        "research_pelvis_displacement_cm": 2.995408575
+      },
+      {
+        "time_s": 3.950000206,
+        "baseline_pose_error_deg": 97.266770799,
+        "research_pose_error_deg": 27.146984373,
+        "baseline_pelvis_displacement_cm": 144.590953126,
+        "research_pelvis_displacement_cm": 2.9980776
+      },
+      {
+        "time_s": 3.966666874,
+        "baseline_pose_error_deg": 97.47198718,
+        "research_pose_error_deg": 27.154205818,
+        "baseline_pelvis_displacement_cm": 144.705066875,
+        "research_pelvis_displacement_cm": 2.998074931
+      },
+      {
+        "time_s": 3.983333541,
+        "baseline_pose_error_deg": 97.583796002,
+        "research_pose_error_deg": 27.169335018,
+        "baseline_pelvis_displacement_cm": 144.644641897,
+        "research_pelvis_displacement_cm": 2.996831046
+      },
+      {
+        "time_s": 4.000000209,
+        "baseline_pose_error_deg": 97.739586027,
+        "research_pose_error_deg": 27.167161998,
+        "baseline_pelvis_displacement_cm": 144.760830182,
+        "research_pelvis_displacement_cm": 2.998757209
+      },
+      {
+        "time_s": 4.016666876,
+        "baseline_pose_error_deg": 97.778862053,
+        "research_pose_error_deg": 27.175361095,
+        "baseline_pelvis_displacement_cm": 144.702753308,
+        "research_pelvis_displacement_cm": 2.998214742
+      },
+      {
+        "time_s": 4.033333544,
+        "baseline_pose_error_deg": 97.890078692,
+        "research_pose_error_deg": 27.189456751,
+        "baseline_pelvis_displacement_cm": 144.820572337,
+        "research_pelvis_displacement_cm": 2.996855698
+      },
+      {
+        "time_s": 4.050000211,
+        "baseline_pose_error_deg": 97.920746319,
+        "research_pose_error_deg": 27.188037433,
+        "baseline_pelvis_displacement_cm": 144.762765171,
+        "research_pelvis_displacement_cm": 2.998296055
+      },
+      {
+        "time_s": 4.066666879,
+        "baseline_pose_error_deg": 98.069683306,
+        "research_pose_error_deg": 27.198705523,
+        "baseline_pelvis_displacement_cm": 144.875169761,
+        "research_pelvis_displacement_cm": 2.997430412
+      },
+      {
+        "time_s": 4.083333546,
+        "baseline_pose_error_deg": 98.135933095,
+        "research_pose_error_deg": 27.212101935,
+        "baseline_pelvis_displacement_cm": 144.812179684,
+        "research_pelvis_displacement_cm": 2.995844053
+      },
+      {
+        "time_s": 4.100000214,
+        "baseline_pose_error_deg": 98.276865004,
+        "research_pose_error_deg": 27.211707428,
+        "baseline_pelvis_displacement_cm": 144.916498311,
+        "research_pelvis_displacement_cm": 2.997234164
+      },
+      {
+        "time_s": 4.116666881,
+        "baseline_pose_error_deg": 98.786459441,
+        "research_pose_error_deg": 27.224687764,
+        "baseline_pelvis_displacement_cm": 144.355261023,
+        "research_pelvis_displacement_cm": 2.996390078
+      },
+      {
+        "time_s": 4.133333549,
+        "baseline_pose_error_deg": 97.88071989,
+        "research_pose_error_deg": 27.236668006,
+        "baseline_pelvis_displacement_cm": 144.591104777,
+        "research_pelvis_displacement_cm": 2.99471487
+      },
+      {
+        "time_s": 4.150000216,
+        "baseline_pose_error_deg": 97.523274629,
+        "research_pose_error_deg": 27.23617444,
+        "baseline_pelvis_displacement_cm": 144.688429099,
+        "research_pelvis_displacement_cm": 2.996363787
+      },
+      {
+        "time_s": 4.166666884,
+        "baseline_pose_error_deg": 97.471847743,
+        "research_pose_error_deg": 27.249807956,
+        "baseline_pelvis_displacement_cm": 144.894223557,
+        "research_pelvis_displacement_cm": 2.995742702
+      },
+      {
+        "time_s": 4.183333552,
+        "baseline_pose_error_deg": 97.787416826,
+        "research_pose_error_deg": 27.259246332,
+        "baseline_pelvis_displacement_cm": 144.395865467,
+        "research_pelvis_displacement_cm": 2.994064771
+      },
+      {
+        "time_s": 4.200000219,
+        "baseline_pose_error_deg": 97.010149668,
+        "research_pose_error_deg": 27.256944861,
+        "baseline_pelvis_displacement_cm": 144.629842805,
+        "research_pelvis_displacement_cm": 2.996054277
+      },
+      {
+        "time_s": 4.216666887,
+        "baseline_pose_error_deg": 96.741850367,
+        "research_pose_error_deg": 27.269068695,
+        "baseline_pelvis_displacement_cm": 144.704151182,
+        "research_pelvis_displacement_cm": 2.995666873
+      },
+      {
+        "time_s": 4.233333554,
+        "baseline_pose_error_deg": 96.674687022,
+        "research_pose_error_deg": 27.275168643,
+        "baseline_pelvis_displacement_cm": 144.885320706,
+        "research_pelvis_displacement_cm": 2.993991582
+      },
+      {
+        "time_s": 4.250000222,
+        "baseline_pose_error_deg": 96.728958921,
+        "research_pose_error_deg": 27.269650388,
+        "baseline_pelvis_displacement_cm": 144.87751058,
+        "research_pelvis_displacement_cm": 2.996243326
+      },
+      {
+        "time_s": 4.266666889,
+        "baseline_pose_error_deg": 96.923797502,
+        "research_pose_error_deg": 27.27850667,
+        "baseline_pelvis_displacement_cm": 144.998102113,
+        "research_pelvis_displacement_cm": 2.99600333
+      },
+      {
+        "time_s": 4.283333557,
+        "baseline_pose_error_deg": 97.024955069,
+        "research_pose_error_deg": 27.281165099,
+        "baseline_pelvis_displacement_cm": 144.963859004,
+        "research_pelvis_displacement_cm": 2.994302214
+      },
+      {
+        "time_s": 4.300000224,
+        "baseline_pose_error_deg": 97.221037629,
+        "research_pose_error_deg": 27.271761172,
+        "baseline_pelvis_displacement_cm": 145.091787318,
+        "research_pelvis_displacement_cm": 2.996681321
+      },
+      {
+        "time_s": 4.316666892,
+        "baseline_pose_error_deg": 97.306766379,
+        "research_pose_error_deg": 27.276391176,
+        "baseline_pelvis_displacement_cm": 145.065266903,
+        "research_pelvis_displacement_cm": 2.996482357
+      },
+      {
+        "time_s": 4.333333559,
+        "baseline_pose_error_deg": 97.525816669,
+        "research_pose_error_deg": 27.276129577,
+        "baseline_pelvis_displacement_cm": 145.182304442,
+        "research_pelvis_displacement_cm": 2.994719249
+      },
+      {
+        "time_s": 4.350000227,
+        "baseline_pose_error_deg": 97.645791868,
+        "research_pose_error_deg": 27.262929184,
+        "baseline_pelvis_displacement_cm": 145.143517732,
+        "research_pelvis_displacement_cm": 2.997103877
+      },
+      {
+        "time_s": 4.366666894,
+        "baseline_pose_error_deg": 97.891273856,
+        "research_pose_error_deg": 27.263180388,
+        "baseline_pelvis_displacement_cm": 145.244921911,
+        "research_pelvis_displacement_cm": 2.996870125
+      },
+      {
+        "time_s": 4.383333562,
+        "baseline_pose_error_deg": 98.009858108,
+        "research_pose_error_deg": 27.26087059,
+        "baseline_pelvis_displacement_cm": 145.190482991,
+        "research_pelvis_displacement_cm": 2.995030945
+      },
+      {
+        "time_s": 4.400000229,
+        "baseline_pose_error_deg": 98.245228773,
+        "research_pose_error_deg": 27.244521302,
+        "baseline_pelvis_displacement_cm": 145.288295014,
+        "research_pelvis_displacement_cm": 2.997349855
+      },
+      {
+        "time_s": 4.416666897,
+        "baseline_pose_error_deg": 98.344286049,
+        "research_pose_error_deg": 27.240866338,
+        "baseline_pelvis_displacement_cm": 145.23904799,
+        "research_pelvis_displacement_cm": 2.997057775
+      },
+      {
+        "time_s": 4.433333565,
+        "baseline_pose_error_deg": 98.483886114,
+        "research_pose_error_deg": 27.23742989,
+        "baseline_pelvis_displacement_cm": 145.349230798,
+        "research_pelvis_displacement_cm": 2.995158567
+      },
+      {
+        "time_s": 4.450000232,
+        "baseline_pose_error_deg": 98.513136097,
+        "research_pose_error_deg": 27.218869126,
+        "baseline_pelvis_displacement_cm": 145.305935544,
+        "research_pelvis_displacement_cm": 2.99740206
+      },
+      {
+        "time_s": 4.4666669,
+        "baseline_pose_error_deg": 98.591884297,
+        "research_pose_error_deg": 27.212175345,
+        "baseline_pelvis_displacement_cm": 145.416909017,
+        "research_pelvis_displacement_cm": 2.997087164
+      },
+      {
+        "time_s": 4.483333567,
+        "baseline_pose_error_deg": 98.578001542,
+        "research_pose_error_deg": 27.208349669,
+        "baseline_pelvis_displacement_cm": 145.37196249,
+        "research_pelvis_displacement_cm": 2.995179876
+      },
+      {
+        "time_s": 4.500000235,
+        "baseline_pose_error_deg": 98.616099266,
+        "research_pose_error_deg": 27.188580614,
+        "baseline_pelvis_displacement_cm": 145.549578289,
+        "research_pelvis_displacement_cm": 2.997386278
+      },
+      {
+        "time_s": 4.516666902,
+        "baseline_pose_error_deg": 98.59665905,
+        "research_pose_error_deg": 27.179911396,
+        "baseline_pelvis_displacement_cm": 145.633388317,
+        "research_pelvis_displacement_cm": 2.997118404
+      },
+      {
+        "time_s": 4.53333357,
+        "baseline_pose_error_deg": 98.679835133,
+        "research_pose_error_deg": 27.176144709,
+        "baseline_pelvis_displacement_cm": 145.898915698,
+        "research_pelvis_displacement_cm": 2.99527174
+      },
+      {
+        "time_s": 4.550000237,
+        "baseline_pose_error_deg": 98.721585834,
+        "research_pose_error_deg": 27.156103656,
+        "baseline_pelvis_displacement_cm": 145.977467686,
+        "research_pelvis_displacement_cm": 2.997499412
+      },
+      {
+        "time_s": 4.566666905,
+        "baseline_pose_error_deg": 98.823977591,
+        "research_pose_error_deg": 27.146590405,
+        "baseline_pelvis_displacement_cm": 146.174501882,
+        "research_pelvis_displacement_cm": 2.997352606
+      },
+      {
+        "time_s": 4.583333572,
+        "baseline_pose_error_deg": 98.834172408,
+        "research_pose_error_deg": 27.1430632,
+        "baseline_pelvis_displacement_cm": 146.197916988,
+        "research_pelvis_displacement_cm": 2.99562191
+      },
+      {
+        "time_s": 4.60000024,
+        "baseline_pose_error_deg": 98.932886882,
+        "research_pose_error_deg": 27.123582277,
+        "baseline_pelvis_displacement_cm": 146.377995559,
+        "research_pelvis_displacement_cm": 2.997912288
+      },
+      {
+        "time_s": 4.616666907,
+        "baseline_pose_error_deg": 98.967357195,
+        "research_pose_error_deg": 27.114364305,
+        "baseline_pelvis_displacement_cm": 146.381273397,
+        "research_pelvis_displacement_cm": 2.997929868
+      },
+      {
+        "time_s": 4.633333575,
+        "baseline_pose_error_deg": 99.089518141,
+        "research_pose_error_deg": 27.111094725,
+        "baseline_pelvis_displacement_cm": 146.527319671,
+        "research_pelvis_displacement_cm": 2.996339868
+      },
+      {
+        "time_s": 4.650000243,
+        "baseline_pose_error_deg": 99.122423671,
+        "research_pose_error_deg": 27.092922657,
+        "baseline_pelvis_displacement_cm": 146.500260353,
+        "research_pelvis_displacement_cm": 2.99869884
+      },
+      {
+        "time_s": 4.66666691,
+        "baseline_pose_error_deg": 99.207558285,
+        "research_pose_error_deg": 27.117278064,
+        "baseline_pelvis_displacement_cm": 146.610437717,
+        "research_pelvis_displacement_cm": 2.999710424
+      },
+      {
+        "time_s": 4.683333578,
+        "baseline_pose_error_deg": 99.189371519,
+        "research_pose_error_deg": 27.099628083,
+        "baseline_pelvis_displacement_cm": 146.606144991,
+        "research_pelvis_displacement_cm": 2.999994169
+      },
+      {
+        "time_s": 4.700000245,
+        "baseline_pose_error_deg": 99.249271711,
+        "research_pose_error_deg": 27.097912526,
+        "baseline_pelvis_displacement_cm": 146.704260418,
+        "research_pelvis_displacement_cm": 2.999584384
+      },
+      {
+        "time_s": 4.716666913,
+        "baseline_pose_error_deg": 99.22835758,
+        "research_pose_error_deg": 27.109525828,
+        "baseline_pelvis_displacement_cm": 146.728507831,
+        "research_pelvis_displacement_cm": 2.995383261
+      },
+      {
+        "time_s": 4.73333358,
+        "baseline_pose_error_deg": 99.266566632,
+        "research_pose_error_deg": 27.099853199,
+        "baseline_pelvis_displacement_cm": 146.849323329,
+        "research_pelvis_displacement_cm": 2.997427855
+      },
+      {
+        "time_s": 4.750000248,
+        "baseline_pose_error_deg": 99.260456341,
+        "research_pose_error_deg": 27.07863952,
+        "baseline_pelvis_displacement_cm": 146.90029485,
+        "research_pelvis_displacement_cm": 2.980084399
+      },
+      {
+        "time_s": 4.766666915,
+        "baseline_pose_error_deg": 99.375412247,
+        "research_pose_error_deg": 27.06641667,
+        "baseline_pelvis_displacement_cm": 147.058833008,
+        "research_pelvis_displacement_cm": 2.976240179
+      },
+      {
+        "time_s": 4.783333583,
+        "baseline_pose_error_deg": 99.635808722,
+        "research_pose_error_deg": 27.06548191,
+        "baseline_pelvis_displacement_cm": 146.551471637,
+        "research_pelvis_displacement_cm": 2.967526605
+      },
+      {
+        "time_s": 4.80000025,
+        "baseline_pose_error_deg": 99.219263545,
+        "research_pose_error_deg": 27.046973677,
+        "baseline_pelvis_displacement_cm": 146.794425694,
+        "research_pelvis_displacement_cm": 2.970061929
+      },
+      {
+        "time_s": 4.816666918,
+        "baseline_pose_error_deg": 99.016899331,
+        "research_pose_error_deg": 27.072301533,
+        "baseline_pelvis_displacement_cm": 146.964188431,
+        "research_pelvis_displacement_cm": 2.973775899
+      },
+      {
+        "time_s": 4.833333585,
+        "baseline_pose_error_deg": 99.006770914,
+        "research_pose_error_deg": 27.054844792,
+        "baseline_pelvis_displacement_cm": 147.192145108,
+        "research_pelvis_displacement_cm": 2.979974377
+      },
+      {
+        "time_s": 4.850000253,
+        "baseline_pose_error_deg": 99.262920714,
+        "research_pose_error_deg": 27.053232586,
+        "baseline_pelvis_displacement_cm": 146.755719946,
+        "research_pelvis_displacement_cm": 2.98568042
+      },
+      {
+        "time_s": 4.86666692,
+        "baseline_pose_error_deg": 98.956777308,
+        "research_pose_error_deg": 27.064267638,
+        "baseline_pelvis_displacement_cm": 147.041139365,
+        "research_pelvis_displacement_cm": 2.986838606
+      },
+      {
+        "time_s": 4.883333588,
+        "baseline_pose_error_deg": 98.786716386,
+        "research_pose_error_deg": 27.054721827,
+        "baseline_pelvis_displacement_cm": 147.17024339,
+        "research_pelvis_displacement_cm": 2.993912315
+      },
+      {
+        "time_s": 4.900000256,
+        "baseline_pose_error_deg": 98.79332132,
+        "research_pose_error_deg": 27.059944002,
+        "baseline_pelvis_displacement_cm": 147.383209292,
+        "research_pelvis_displacement_cm": 2.988523859
+      },
+      {
+        "time_s": 4.916666923,
+        "baseline_pose_error_deg": 98.99227666,
+        "research_pose_error_deg": 27.053192613,
+        "baseline_pelvis_displacement_cm": 146.897412627,
+        "research_pelvis_displacement_cm": 2.990354869
+      },
+      {
+        "time_s": 4.933333591,
+        "baseline_pose_error_deg": 98.586884117,
+        "research_pose_error_deg": 27.083922458,
+        "baseline_pelvis_displacement_cm": 147.143424944,
+        "research_pelvis_displacement_cm": 2.988039197
+      },
+      {
+        "time_s": 4.950000258,
+        "baseline_pose_error_deg": 98.267166845,
+        "research_pose_error_deg": 27.076177853,
+        "baseline_pelvis_displacement_cm": 147.301182496,
+        "research_pelvis_displacement_cm": 2.990139122
+      },
+      {
+        "time_s": 4.966666926,
+        "baseline_pose_error_deg": 98.170734289,
+        "research_pose_error_deg": 27.082124109,
+        "baseline_pelvis_displacement_cm": 147.514993251,
+        "research_pelvis_displacement_cm": 2.991181407
+      },
+      {
+        "time_s": 4.983333593,
+        "baseline_pose_error_deg": 98.373095668,
+        "research_pose_error_deg": 27.10054232,
+        "baseline_pelvis_displacement_cm": 147.088271375,
+        "research_pelvis_displacement_cm": 2.988481103
+      },
+      {
+        "time_s": 5.000000261,
+        "baseline_pose_error_deg": 98.056636888,
+        "research_pose_error_deg": 27.097373217,
+        "baseline_pelvis_displacement_cm": 147.383991363,
+        "research_pelvis_displacement_cm": 2.992894741
+      },
+      {
+        "time_s": 5.016666928,
+        "baseline_pose_error_deg": 97.850086903,
+        "research_pose_error_deg": 27.10310541,
+        "baseline_pelvis_displacement_cm": 147.596352221,
+        "research_pelvis_displacement_cm": 2.99457026
+      },
+      {
+        "time_s": 5.033333596,
+        "baseline_pose_error_deg": 97.797944958,
+        "research_pose_error_deg": 27.115518101,
+        "baseline_pelvis_displacement_cm": 147.862970332,
+        "research_pelvis_displacement_cm": 2.993631399
+      },
+      {
+        "time_s": 5.050000263,
+        "baseline_pose_error_deg": 98.052736007,
+        "research_pose_error_deg": 27.110484361,
+        "baseline_pelvis_displacement_cm": 147.461454105,
+        "research_pelvis_displacement_cm": 2.99764054
+      },
+      {
+        "time_s": 5.066666931,
+        "baseline_pose_error_deg": 97.932345387,
+        "research_pose_error_deg": 27.115254266,
+        "baseline_pelvis_displacement_cm": 147.775554188,
+        "research_pelvis_displacement_cm": 2.998742511
+      },
+      {
+        "time_s": 5.083333598,
+        "baseline_pose_error_deg": 97.826417869,
+        "research_pose_error_deg": 27.125479344,
+        "baseline_pelvis_displacement_cm": 147.957786233,
+        "research_pelvis_displacement_cm": 2.998000498
+      },
+      {
+        "time_s": 5.100000266,
+        "baseline_pose_error_deg": 97.953796288,
+        "research_pose_error_deg": 27.119761671,
+        "baseline_pelvis_displacement_cm": 148.192444452,
+        "research_pelvis_displacement_cm": 3.000773626
+      },
+      {
+        "time_s": 5.116666934,
+        "baseline_pose_error_deg": 98.032910948,
+        "research_pose_error_deg": 27.125147707,
+        "baseline_pelvis_displacement_cm": 148.336224934,
+        "research_pelvis_displacement_cm": 3.000825322
+      },
+      {
+        "time_s": 5.133333601,
+        "baseline_pose_error_deg": 98.232509387,
+        "research_pose_error_deg": 27.134890987,
+        "baseline_pelvis_displacement_cm": 148.545616808,
+        "research_pelvis_displacement_cm": 2.999486475
+      },
+      {
+        "time_s": 5.150000269,
+        "baseline_pose_error_deg": 98.318105161,
+        "research_pose_error_deg": 27.129902186,
+        "baseline_pelvis_displacement_cm": 148.660086331,
+        "research_pelvis_displacement_cm": 3.001349974
+      },
+      {
+        "time_s": 5.166666936,
+        "baseline_pose_error_deg": 98.583188241,
+        "research_pose_error_deg": 27.137153804,
+        "baseline_pelvis_displacement_cm": 148.859145199,
+        "research_pelvis_displacement_cm": 3.000746815
+      },
+      {
+        "time_s": 5.183333604,
+        "baseline_pose_error_deg": 98.700793047,
+        "research_pose_error_deg": 27.146615643,
+        "baseline_pelvis_displacement_cm": 148.964885157,
+        "research_pelvis_displacement_cm": 2.998989001
+      },
+      {
+        "time_s": 5.200000271,
+        "baseline_pose_error_deg": 98.929842613,
+        "research_pose_error_deg": 27.142569102,
+        "baseline_pelvis_displacement_cm": 149.157371019,
+        "research_pelvis_displacement_cm": 3.000551204
+      },
+      {
+        "time_s": 5.216666939,
+        "baseline_pose_error_deg": 99.052033351,
+        "research_pose_error_deg": 27.151603949,
+        "baseline_pelvis_displacement_cm": 149.281916672,
+        "research_pelvis_displacement_cm": 2.99981116
+      },
+      {
+        "time_s": 5.233333606,
+        "baseline_pose_error_deg": 99.289290754,
+        "research_pose_error_deg": 27.160073826,
+        "baseline_pelvis_displacement_cm": 149.514600225,
+        "research_pelvis_displacement_cm": 2.997922409
+      },
+      {
+        "time_s": 5.250000274,
+        "baseline_pose_error_deg": 99.452795639,
+        "research_pose_error_deg": 27.156153484,
+        "baseline_pelvis_displacement_cm": 149.600252565,
+        "research_pelvis_displacement_cm": 2.999594812
+      },
+      {
+        "time_s": 5.266666941,
+        "baseline_pose_error_deg": 99.689125865,
+        "research_pose_error_deg": 27.165840159,
+        "baseline_pelvis_displacement_cm": 149.769564115,
+        "research_pelvis_displacement_cm": 2.999000142
+      },
+      {
+        "time_s": 5.283333609,
+        "baseline_pose_error_deg": 100.211403124,
+        "research_pose_error_deg": 27.172448565,
+        "baseline_pelvis_displacement_cm": 149.281205817,
+        "research_pelvis_displacement_cm": 2.997119328
+      },
+      {
+        "time_s": 5.300000276,
+        "baseline_pose_error_deg": 99.988865709,
+        "research_pose_error_deg": 27.167534193,
+        "baseline_pelvis_displacement_cm": 149.505658457,
+        "research_pelvis_displacement_cm": 2.999041253
+      },
+      {
+        "time_s": 5.316666944,
+        "baseline_pose_error_deg": 100.004078178,
+        "research_pose_error_deg": 27.176483129,
+        "baseline_pelvis_displacement_cm": 149.606329705,
+        "research_pelvis_displacement_cm": 2.998654084
+      },
+      {
+        "time_s": 5.333333611,
+        "baseline_pose_error_deg": 100.214899123,
+        "research_pose_error_deg": 27.180753731,
+        "baseline_pelvis_displacement_cm": 149.797720777,
+        "research_pelvis_displacement_cm": 2.996815383
+      },
+      {
+        "time_s": 5.350000279,
+        "baseline_pose_error_deg": 100.424500145,
+        "research_pose_error_deg": 27.173988746,
+        "baseline_pelvis_displacement_cm": 149.952907035,
+        "research_pelvis_displacement_cm": 2.998964751
+      },
+      {
+        "time_s": 5.366666947,
+        "baseline_pose_error_deg": 100.625002009,
+        "research_pose_error_deg": 27.181106415,
+        "baseline_pelvis_displacement_cm": 150.190690446,
+        "research_pelvis_displacement_cm": 2.998748713
+      },
+      {
+        "time_s": 5.383333614,
+        "baseline_pose_error_deg": 100.849546372,
+        "research_pose_error_deg": 27.183062168,
+        "baseline_pelvis_displacement_cm": 150.303174176,
+        "research_pelvis_displacement_cm": 2.996952467
+      },
+      {
+        "time_s": 5.400000282,
+        "baseline_pose_error_deg": 101.01690752,
+        "research_pose_error_deg": 27.174035794,
+        "baseline_pelvis_displacement_cm": 150.484752084,
+        "research_pelvis_displacement_cm": 2.999249888
+      },
+      {
+        "time_s": 5.416666949,
+        "baseline_pose_error_deg": 101.262371029,
+        "research_pose_error_deg": 27.178676608,
+        "baseline_pelvis_displacement_cm": 150.541091044,
+        "research_pelvis_displacement_cm": 2.999139816
+      },
+      {
+        "time_s": 5.433333617,
+        "baseline_pose_error_deg": 101.465841573,
+        "research_pose_error_deg": 27.178673016,
+        "baseline_pelvis_displacement_cm": 150.656623673,
+        "research_pelvis_displacement_cm": 2.99737263
+      },
+      {
+        "time_s": 5.450000284,
+        "baseline_pose_error_deg": 101.703601871,
+        "research_pose_error_deg": 27.167359252,
+        "baseline_pelvis_displacement_cm": 150.671570199,
+        "research_pelvis_displacement_cm": 2.999726769
+      },
+      {
+        "time_s": 5.466666952,
+        "baseline_pose_error_deg": 101.871141464,
+        "research_pose_error_deg": 27.169296361,
+        "baseline_pelvis_displacement_cm": 150.798357876,
+        "research_pelvis_displacement_cm": 2.999656028
+      },
+      {
+        "time_s": 5.483333619,
+        "baseline_pose_error_deg": 102.096786984,
+        "research_pose_error_deg": 27.16781521,
+        "baseline_pelvis_displacement_cm": 150.898516958,
+        "research_pelvis_displacement_cm": 2.99789279
+      },
+      {
+        "time_s": 5.500000287,
+        "baseline_pose_error_deg": 102.331345212,
+        "research_pose_error_deg": 27.154474285,
+        "baseline_pelvis_displacement_cm": 151.105432145,
+        "research_pelvis_displacement_cm": 3.000225128
+      },
+      {
+        "time_s": 5.516666954,
+        "baseline_pose_error_deg": 102.632054482,
+        "research_pose_error_deg": 27.153838498,
+        "baseline_pelvis_displacement_cm": 151.220323927,
+        "research_pelvis_displacement_cm": 3.000141056
+      },
+      {
+        "time_s": 5.533333622,
+        "baseline_pose_error_deg": 102.863461537,
+        "research_pose_error_deg": 27.151370199,
+        "baseline_pelvis_displacement_cm": 151.394004429,
+        "research_pelvis_displacement_cm": 2.998361213
+      },
+      {
+        "time_s": 5.550000289,
+        "baseline_pose_error_deg": 103.1623905,
+        "research_pose_error_deg": 27.136474195,
+        "baseline_pelvis_displacement_cm": 151.45362078,
+        "research_pelvis_displacement_cm": 3.000624039
+      },
+      {
+        "time_s": 5.566666957,
+        "baseline_pose_error_deg": 103.433440169,
+        "research_pose_error_deg": 27.133708552,
+        "baseline_pelvis_displacement_cm": 151.589907532,
+        "research_pelvis_displacement_cm": 3.000512748
+      },
+      {
+        "time_s": 5.583333625,
+        "baseline_pose_error_deg": 103.733382372,
+        "research_pose_error_deg": 27.130693842,
+        "baseline_pelvis_displacement_cm": 151.608725346,
+        "research_pelvis_displacement_cm": 2.998716086
+      },
+      {
+        "time_s": 5.600000292,
+        "baseline_pose_error_deg": 103.979268385,
+        "research_pose_error_deg": 27.114859069,
+        "baseline_pelvis_displacement_cm": 151.738876194,
+        "research_pelvis_displacement_cm": 3.000905835
+      },
+      {
+        "time_s": 5.61666696,
+        "baseline_pose_error_deg": 104.239419906,
+        "research_pose_error_deg": 27.086019546,
+        "baseline_pelvis_displacement_cm": 151.765488812,
+        "research_pelvis_displacement_cm": 2.98723289
+      },
+      {
+        "time_s": 5.633333627,
+        "baseline_pose_error_deg": 104.46157911,
+        "research_pose_error_deg": 27.071532212,
+        "baseline_pelvis_displacement_cm": 151.86864669,
+        "research_pelvis_displacement_cm": 2.984443224
+      },
+      {
+        "time_s": 5.650000295,
+        "baseline_pose_error_deg": 104.743008219,
+        "research_pose_error_deg": 27.061419907,
+        "baseline_pelvis_displacement_cm": 151.870648968,
+        "research_pelvis_displacement_cm": 2.977222828
+      },
+      {
+        "time_s": 5.666666962,
+        "baseline_pose_error_deg": 104.947240902,
+        "research_pose_error_deg": 27.040139518,
+        "baseline_pelvis_displacement_cm": 151.936373592,
+        "research_pelvis_displacement_cm": 2.978780025
+      },
+      {
+        "time_s": 5.68333363,
+        "baseline_pose_error_deg": 105.192448554,
+        "research_pose_error_deg": 27.062749046,
+        "baseline_pelvis_displacement_cm": 151.886015378,
+        "research_pelvis_displacement_cm": 2.981823718
+      },
+      {
+        "time_s": 5.700000297,
+        "baseline_pose_error_deg": 105.367988364,
+        "research_pose_error_deg": 27.046068209,
+        "baseline_pelvis_displacement_cm": 151.898986046,
+        "research_pelvis_displacement_cm": 2.985851958
+      },
+      {
+        "time_s": 5.716666965,
+        "baseline_pose_error_deg": 105.60507502,
+        "research_pose_error_deg": 27.047150196,
+        "baseline_pelvis_displacement_cm": 151.814314887,
+        "research_pelvis_displacement_cm": 2.989578465
+      },
+      {
+        "time_s": 5.733333632,
+        "baseline_pose_error_deg": 105.723044072,
+        "research_pose_error_deg": 27.060648329,
+        "baseline_pelvis_displacement_cm": 151.872162527,
+        "research_pelvis_displacement_cm": 2.98911977
+      },
+      {
+        "time_s": 5.7500003,
+        "baseline_pose_error_deg": 105.868883174,
+        "research_pose_error_deg": 27.053045777,
+        "baseline_pelvis_displacement_cm": 151.894113982,
+        "research_pelvis_displacement_cm": 2.994441915
+      },
+      {
+        "time_s": 5.766666967,
+        "baseline_pose_error_deg": 105.96587726,
+        "research_pose_error_deg": 27.054505873,
+        "baseline_pelvis_displacement_cm": 152.030049652,
+        "research_pelvis_displacement_cm": 2.996680042
+      },
+      {
+        "time_s": 5.783333635,
+        "baseline_pose_error_deg": 106.09060359,
+        "research_pose_error_deg": 27.061875722,
+        "baseline_pelvis_displacement_cm": 152.061788485,
+        "research_pelvis_displacement_cm": 2.995350166
+      },
+      {
+        "time_s": 5.800000302,
+        "baseline_pose_error_deg": 106.254314159,
+        "research_pose_error_deg": 27.052779304,
+        "baseline_pelvis_displacement_cm": 152.119314327,
+        "research_pelvis_displacement_cm": 2.999353439
+      },
+      {
+        "time_s": 5.81666697,
+        "baseline_pose_error_deg": 106.437624856,
+        "research_pose_error_deg": 27.06689444,
+        "baseline_pelvis_displacement_cm": 152.090120494,
+        "research_pelvis_displacement_cm": 2.9944832
+      },
+      {
+        "time_s": 5.833333638,
+        "baseline_pose_error_deg": 106.59883843,
+        "research_pose_error_deg": 27.060834884,
+        "baseline_pelvis_displacement_cm": 152.110136787,
+        "research_pelvis_displacement_cm": 2.994645552
+      },
+      {
+        "time_s": 5.850000305,
+        "baseline_pose_error_deg": 106.752424171,
+        "research_pose_error_deg": 27.100297485,
+        "baseline_pelvis_displacement_cm": 152.058487221,
+        "research_pelvis_displacement_cm": 2.992465023
+      },
+      {
+        "time_s": 5.866666973,
+        "baseline_pose_error_deg": 106.835403013,
+        "research_pose_error_deg": 27.095476056,
+        "baseline_pelvis_displacement_cm": 152.066624629,
+        "research_pelvis_displacement_cm": 2.993352758
+      },
+      {
+        "time_s": 5.88333364,
+        "baseline_pose_error_deg": 106.989566895,
+        "research_pose_error_deg": 27.103249785,
+        "baseline_pelvis_displacement_cm": 152.01180246,
+        "research_pelvis_displacement_cm": 2.993228821
+      },
+      {
+        "time_s": 5.900000308,
+        "baseline_pose_error_deg": 107.093201198,
+        "research_pose_error_deg": 27.126351737,
+        "baseline_pelvis_displacement_cm": 152.023713415,
+        "research_pelvis_displacement_cm": 2.98890839
+      },
+      {
+        "time_s": 5.916666975,
+        "baseline_pose_error_deg": 107.251441168,
+        "research_pose_error_deg": 27.124066877,
+        "baseline_pelvis_displacement_cm": 151.97545434,
+        "research_pelvis_displacement_cm": 2.992403328
+      },
+      {
+        "time_s": 5.933333643,
+        "baseline_pose_error_deg": 107.31357228,
+        "research_pose_error_deg": 27.128417768,
+        "baseline_pelvis_displacement_cm": 151.981927666,
+        "research_pelvis_displacement_cm": 2.993373413
+      },
+      {
+        "time_s": 5.95000031,
+        "baseline_pose_error_deg": 107.388694232,
+        "research_pose_error_deg": 27.141827834,
+        "baseline_pelvis_displacement_cm": 151.950357936,
+        "research_pelvis_displacement_cm": 2.991619293
+      },
+      {
+        "time_s": 5.966666978,
+        "baseline_pose_error_deg": 107.432127576,
+        "research_pose_error_deg": 27.13486487,
+        "baseline_pelvis_displacement_cm": 152.016686246,
+        "research_pelvis_displacement_cm": 2.995643932
+      },
+      {
+        "time_s": 5.983333645,
+        "baseline_pose_error_deg": 107.507611351,
+        "research_pose_error_deg": 27.135453873,
+        "baseline_pelvis_displacement_cm": 152.084104746,
+        "research_pelvis_displacement_cm": 2.996937218
+      },
+      {
+        "time_s": 6.000000313,
+        "baseline_pose_error_deg": 107.603648286,
+        "research_pose_error_deg": 27.143672045,
+        "baseline_pelvis_displacement_cm": 152.213929202,
+        "research_pelvis_displacement_cm": 2.996189229
+      }
+    ],
+    "matches_historical_final": true
+  }
+}

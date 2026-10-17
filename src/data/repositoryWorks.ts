@@ -8,6 +8,7 @@ import { parkourAnimation } from './parkourAnimation';
 import lyraPerformanceStory from '../content/projects/lyra-performance.zh.md?raw';
 import performanceWorkbenchStory from '../content/projects/performance-workbench.zh.md?raw';
 import lyraHeroStory from '../content/projects/lyra-hero.zh.md?raw';
+import physicsLabStory from '../content/projects/physics-lab.zh.md?raw';
 
 export type PortfolioCategory = 'pipeline' | 'ai-agent' | 'general-ta' | 'engine-games' | 'other-tools';
 
@@ -313,19 +314,7 @@ The project is pre-alpha and currently verified end to end on Windows x64. Raste
     tags: ['UE 5.4.4', 'Chaos', 'RDG / D3D12', 'Physics'],
     repositoryUrl: 'https://github.com/Ubik42/ue5-siggraph-physics-lab',
     story: {
-      zh: `# UE5 SIGGRAPH 物理复现实验室
-
-这是我的个人 UE 物理实验室。我从近年的 SIGGRAPH / SIGGRAPH Asia 物理论文中选择适合实时验证的部分，把公式里的状态、约束和求解过程接到 UE 5.4.4、Lyra、Chaos 与真实资产工作流中。
-
-项目由五个独立 Case 组成：
-
-- **接触感知 GPU 布料**：读取 Assassin 的 Clothing 拓扑、动画蒙皮目标与 Physics Asset，在 RDG Compute 中实现 Jacobi、低频模态、NDB、rank-one 接触和 CCD，并与 Chaos Cloth 共用输入。
-- **多尺度 GPU 软体**：用四面体 XPBD 研究高分辨率下的局部传播停滞，以两模态全局校正改善中高档收敛，再通过体积 Cage 驱动 Dragon 表面。
-- **Particle Flow Map 流体**：实现 2D MAC 网格、粒子 Flow Map、Jacobian 输运和压力投影，让 Chaos 刚体成为实时运动边界。
-- **可微物理与反向设计**：对离散动力学推进前向切线，用有限差分验证梯度，并把反演参数送回 Chaos Constraint 重放。
-- **物理驱动角色**：连接 Chaos 多刚体、Physics Control、ALS 起身动画与 Lyra 服务器权威，处理跌倒、恢复判据和物理—动画交接。
-
-每个 Case 都保留标准结果、单变量失败、固定步数据、GPU 或 CPU 计时和自动化验证。公开仓库不重新分发 Fab 商业资产，只提交个人源码、Shader、文档和运行截图。`,
+      zh: physicsLabStory,
       en: `# UE5 SIGGRAPH Physics Lab
 
 This is my personal Unreal physics laboratory. Five independent cases bring selected ideas from recent SIGGRAPH and SIGGRAPH Asia papers into UE 5.4.4, Lyra, Chaos, RDG compute, and real engine asset workflows.
