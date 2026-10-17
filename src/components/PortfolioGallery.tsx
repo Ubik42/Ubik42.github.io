@@ -12,6 +12,7 @@ import { useLanguage } from '../i18n/LanguageContext';
 import { MarkdownStory } from './MarkdownStory';
 import { AnimationAigcShowcase } from './AnimationAigcShowcase';
 import { PerformanceEvidence } from './PerformanceEvidence';
+import { AnimationQuality } from './AnimationQuality';
 import { NoemancerWorkflow } from './NoemancerWorkflow';
 
 type GalleryItem =
@@ -215,7 +216,7 @@ function RepositoryDetail({ work, locale }: { work: RepositoryWork; locale: 'zh'
   return <>
     {work.repositoryUrl && <a className="project-dialog-source" href={work.repositoryUrl} target="_blank" rel="noreferrer"><span>{locale === 'zh' ? '查看 GitHub 仓库' : 'View GitHub repository'}</span><span aria-hidden="true">↗</span></a>}
     <DetailLeadMedia src={work.cover} alt={`${work.title} ${locale === 'zh' ? '项目画面' : 'project view'}`} fit={leadFit} />
-    {work.id === 'lyra-performance-lab' && <PerformanceEvidence study="animation" locale={locale} />}
+    {work.id === 'lyra-performance-lab' && <><AnimationQuality locale={locale} /><PerformanceEvidence study="animation" locale={locale} /></>}
     {work.id === 'ue-performance-workbench' && <PerformanceEvidence study="hud" locale={locale} />}
     {work.id === 'animation-aigc-lab' && <AnimationAigcShowcase locale={locale} />}
     {work.id === 'noemancer' && <NoemancerWorkflow locale={locale} />}

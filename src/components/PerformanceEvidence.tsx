@@ -26,7 +26,7 @@ export function PerformanceEvidence({ study, locale }: Props) {
     {study === 'animation' && <ol className="performance-policy" aria-label={zh ? '动画更新距离策略' : 'Distance-based animation policy'}>
       <li><span>{zh ? '本地角色 / 12 m 内' : 'Local player / within 12 m'}</span><strong>{zh ? '保留完整更新' : 'Full updates'}</strong><p>{zh ? '近景动作与玩家控制优先。' : 'Prioritize the player and nearby motion.'}</p></li>
       <li><span>{zh ? '12–24 m 非本地角色' : 'Non-local characters at 12–24 m'}</span><strong>{zh ? '启用 URO' : 'Enable URO'}</strong><p>{zh ? '降低更新频率；不可见时仅更新 Montage。' : 'Reduce update frequency; tick only montages while hidden.'}</p></li>
-      <li><span>{zh ? '24 m 外非本地角色' : 'Non-local characters beyond 24 m'}</span><strong>{zh ? '降低骨骼与 IK 开销' : 'Reduce mesh and IK work'}</strong><p>{zh ? '调整网格 LOD，关闭 Post Process AnimBP。' : 'Raise mesh LOD and disable the post-process AnimBP.'}</p></li>
+      <li><span>{zh ? '24 m 外非本地角色' : 'Non-local characters beyond 24 m'}</span><strong>{zh ? '关闭后处理动画' : 'Disable post-process animation'}</strong><p>{zh ? '省去 FootPlant IK；本轮资产仅有 LOD0，未减少网格细节。' : 'Skip FootPlant IK. Current meshes have only LOD0; no mesh detail reduction.'}</p></li>
     </ol>}
     <details className="performance-details">
       <summary>{zh ? '实验条件与六次采样' : 'Conditions and all six runs'}</summary>

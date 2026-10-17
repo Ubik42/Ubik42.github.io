@@ -196,8 +196,8 @@ An in-progress multiplayer hero-shooter project built on Unreal Engine 5.7 and L
       zh: '基于 Lyra 搭建 200 个受控 AI 的测试场景，通过距离分段、原生 URO 与动画后处理裁剪降低开销，展示实际采样与技术取舍。',
       en: 'Independent, attributable before-and-after studies across AI, navigation, animation, rendering, and networking under high multi-character load.',
     },
-    cover: '/media/repositories/lyra-hero-arena/gameplay.jpg',
-    tags: ['Unreal Insights', 'CSV Profiler', 'Slate', 'A/B Benchmark'],
+    cover: '/media/repositories/lyra-hero-arena/animation-crowd.jpg',
+    tags: ['URO / 动画分级', 'CSV Profiler', '200 AI', 'A/B 对照'],
     repositoryUrl: 'https://github.com/Ubik42/LyraHeroArena/tree/main/Plugins/PerformanceLab',
     story: {
       zh: lyraPerformanceStory,
