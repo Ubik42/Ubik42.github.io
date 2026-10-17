@@ -165,11 +165,11 @@ Version 0.1.0 is verified on Windows with Python 3.12 and DuckDB 1.5.5. It uses 
   },
   {
     id: 'lyra-hero-arena',
-    title: 'Lyra 英雄射击：选人、战斗与重生换人',
+    title: 'Lyra 英雄射击：GAS 深度实践与技能架构',
     category: 'engine-games',
     categoryLabel: { zh: '多人游戏与 Gameplay 架构', en: 'Multiplayer game and gameplay architecture' },
     summary: {
-      zh: '基于 UE 5.7.4 与 Lyra 的五英雄射击原型。通过 HeroArena 插件扩展英雄技能与轮换占点，将选人状态保存在 PlayerState，支持阵亡窗口内换人，并在新 Pawn 初始化后重新装配技能与武器。',
+      zh: '基于 UE 5.7.4 与 Lyra 的五英雄射击原型，深入实践 GAS 技能架构：以 AbilitySet 管理技能授予与撤销，由 PlayerState 保存选择并交给服务器校验，在重生 Pawn 初始化后重新装配技能与武器。',
       en: 'An in-progress UE5 Lyra hero shooter using GAS, Game Features, PawnData, and server-authoritative state for selection, combat, death, respawn, and results.',
     },
     cover: '/media/repositories/lyra-hero-arena/respawn-confirmed-20261017.jpg',

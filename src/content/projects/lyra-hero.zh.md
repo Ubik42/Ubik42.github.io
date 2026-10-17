@@ -1,4 +1,4 @@
-# Lyra 英雄射击：选人、战斗与重生换人
+# Lyra 英雄射击：GAS 深度实践与技能架构
 
 ## 游戏概述
 
@@ -6,7 +6,7 @@
 
 @[video: 重生换人连续演示，约 13 秒。1 玩家 + 9 Bot；开发命令触发死亡与换人，无声。](/media/repositories/lyra-hero-arena/hero-respawn.mp4)
 
-## 选择数据跨重生保留与装备应用
+## GAS 技能架构：选择数据跨重生保留与装备应用
 
 为支持阵亡期间换人，英雄选择状态与 Pawn 生命周期解耦，由挂载于 **PlayerState** 的 HeroSelectionComponent 管理。客户端通过 RequestHeroSelection 发起换人请求，经 ServerRequestHeroSelection 在服务器端完成英雄名单、锁定状态、HeroId 合法性及重复选择校验后返回确认状态，再通过复制属性 **SelectedHero** 与 OnHeroChanged 广播更新客户端表现。
 
@@ -27,3 +27,5 @@
 此前的双 PIE 监听服务器记录验证了早期版本 **Striker 的网络复制与跨重生保留**。该记录与本页单机换人演示分开保留；双客户端多英雄换人、弱网和完整对局录像仍待补充。
 
 公开仓库提供自有 C++ 模块、结构说明及运行截图，不重新分发 Lyra、Fab 或 Unreal Engine 资产。
+
+相关性能案例：[200 角色动画更新优化](/?work=lyra-performance-lab)、[战术 HUD 刷新与 UE 性能实验工作台](/?work=ue-performance-workbench)。
