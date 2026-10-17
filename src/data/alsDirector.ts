@@ -2,7 +2,7 @@ import type { RepositoryWork } from './repositoryWorks';
 
 export const alsDirector: RepositoryWork = {
   id: 'als-director',
-  title: '动作导演 · 自然语言驱动角色表演',
+  title: 'AI 接入 UE 动画：可中断的多步动作执行',
   category: 'ai-agent',
   categoryLabel: { zh: '运行时 AI 与技术动画', en: 'Runtime AI and technical animation' },
   summary: {
@@ -12,9 +12,27 @@ export const alsDirector: RepositoryWork = {
   cover: '/media/repositories/als-director/hero.webp',
   tags: ['Unreal Engine 5.8', 'C++', 'GPT / Codex', 'ALS-Refactored', '运行时动画'],
   story: {
-    zh: `# 动作导演
+    zh: `# AI 接入 UE 动画
 
-## 一句话，组合角色的表演
+## 移动中修改，急停后隔离旧回复
+
+@[video: 连续实机：途中修改保留路线、急停隔离旧回复与新请求恢复](/media/repositories/als-director/interruptions.mp4)
+
+本次录像运行明确标记为 test 的固定测试计划，专门检验引擎端的执行与中断逻辑。角色沿“红色标柱-青箱-停止”队列慢步移动，途中下发包含 style、look_at、stance 的动作补丁。运行记录显示 move_target 维持 red_target，remaining_steps 保持为 3，ALS Overlay 成功切为 Box 并转入蹲伏。随后提交换路线请求并故意暂缓回复，角色维持原移动；触发急停操作后，系统清空 PendingId 和队列并执行 StopMovementImmediately。此时注入旧回复，主循环因 PendingId 为空直接跳过读取，注入旧回复后的 3 秒仿真观察中，角色速度低于 1 cm/s，起止坐标一致。
+
+再次下发新请求后，角色可正常站立并恢复步行。此录像为 2026-10-17 的本机独立程序实测：447 张连续原生帧，1578×884，按 30 Hz 游戏步长编排为 14.9 秒，没有剪去中间等待。固定步录制不用于衡量模型推理延迟或显卡性能。
+
+| 视频时点 | 引擎中的变化 |
+| --- | --- |
+| 2.5 秒 / 4.8 秒 | 切换抱箱 / 蹲伏，目的地保持为红柱，队列仍有 3 步 |
+| 6.9 秒 | 新请求等待回复，原移动继续 |
+| 8.0 秒 | 急停清空请求编号和队列，速度归零 |
+| 9.0—12.0 秒 | 注入旧回复后持续观察，接收计划数未增加，位置保持 |
+| 12.3 秒 | 新请求正常生效，站起并向青箱步行 |
+
+[查看本次实际状态与时间点](/media/repositories/als-director/interruptions.json)。旧回复文件仍留在本地，因没有匹配的待处理请求而未被读取；来源标签仅用于展示，本机文件桥不提供公共网络服务的身份认证。
+
+## 自然语言到动作计划：原始演示
 
 “慢慢走向青色箱子，像抱着一个重箱子，目光看向门口。”这句话同时改变目的地、步态、上身姿态和注视方向。角色移动期间，还可以改成受伤姿态、蹲伏，或重新指定路线。
 
@@ -49,7 +67,17 @@ GPT 读取自然语言、场景目标与当前角色状态，只能返回有限�
 [下载工程源码与重建脚本](/media/repositories/als-director/ALSDirector-source-v1.zip) · [查看运行测试结果](/media/repositories/als-director/acceptance.json)
 
 源码包不含 Unreal Engine 或 ALS 插件资产；安装 UE 5.8 后运行依赖脚本，从固定上游提交获取 ALS 并构建。`,
-    en: `# Motion Director
+    en: `# AI Plans in Unreal Animation
+
+## Interrupted movement and stale replies
+
+@[video: Continuous runtime: preserve the route during pose patches, cancel a pending reply, and resume](/media/repositories/als-director/interruptions.mp4)
+
+This 14.9-second recording uses explicitly labelled test fixtures. A three-step route remains active while carrying and crouching patches change ALS state. An emergency stop clears the pending request and queue. Injecting the old reply does not increment the accepted-plan count or restart movement during the following three seconds; a fresh request then resumes walking. The 447 native 1578×884 frames are continuous at a fixed 30 Hz simulation step, with no waiting removed. This tests engine execution, not live model inference or response latency.
+
+[Observed states and timestamps](/media/repositories/als-director/interruptions.json). Recorded on 2026-10-17 in the packaged Windows application. The local file channel is trusted-process transport, not an authenticated public network service.
+
+## Original language-to-plan demonstration
 
 @[video: Live Windows application: compound direction, revisions, queued movement, and stops](/media/repositories/als-director/showcase.mp4)
 

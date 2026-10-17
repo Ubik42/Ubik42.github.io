@@ -1,0 +1,243 @@
+{
+  "date": "2026-10-17",
+  "engine": "UE 5.8.1",
+  "host": "Packaged Windows Development",
+  "plan_source": "Explicit regression fixtures, not live model inference.",
+  "video": {
+    "fps": 30,
+    "simulation_frames": 447,
+    "duration_seconds": 14.9,
+    "native_size": [
+      1578,
+      884
+    ],
+    "continuous": true
+  },
+  "scope": "Moving patches preserve the route and queue; local emergency stop invalidates a pending response; a fresh request resumes movement.",
+  "limitations": [
+    "Fixed simulation time, not latency or performance evidence",
+    "Local trusted file channel",
+    "No obstacle avoidance or multiplayer"
+  ],
+  "events": [
+    {
+      "name": "ready",
+      "video_seconds": 0.0,
+      "observed": {
+        "recording_frames": 0,
+        "world_seconds": 21.806173104792833,
+        "phase": "ready",
+        "speed": 0,
+        "x": -450,
+        "y": -300,
+        "gait": "walk",
+        "style": "normal",
+        "stance": "stand",
+        "move_target": "",
+        "look_at": "",
+        "moving": false,
+        "remaining_steps": 0,
+        "accepted_count": 0,
+        "actual_gait": "Als.Gait.Walking",
+        "actual_stance": "Als.Stance.Standing",
+        "overlay": "Als.OverlayMode.Default",
+        "animation_loaded": true
+      }
+    },
+    {
+      "name": "moving",
+      "video_seconds": 1.3,
+      "observed": {
+        "recording_frames": 39,
+        "world_seconds": 23.106173172593117,
+        "phase": "executing",
+        "speed": 133.33334055542971,
+        "x": -444.52623574525154,
+        "y": -296.1944305657463,
+        "gait": "walk",
+        "style": "normal",
+        "stance": "stand",
+        "move_target": "red_target",
+        "look_at": "",
+        "moving": true,
+        "remaining_steps": 3,
+        "accepted_count": 1,
+        "actual_gait": "Als.Gait.Walking",
+        "actual_stance": "Als.Stance.Standing",
+        "overlay": "Als.OverlayMode.Default",
+        "animation_loaded": true
+      }
+    },
+    {
+      "name": "carrying_patch",
+      "video_seconds": 2.5,
+      "observed": {
+        "recording_frames": 75,
+        "world_seconds": 24.306173235177994,
+        "phase": "executing",
+        "speed": 174.9999999999998,
+        "x": -272.1026709445029,
+        "y": -176.31899979951083,
+        "gait": "walk",
+        "style": "carrying",
+        "stance": "stand",
+        "move_target": "red_target",
+        "look_at": "door",
+        "moving": true,
+        "remaining_steps": 3,
+        "accepted_count": 2,
+        "actual_gait": "Als.Gait.Walking",
+        "actual_stance": "Als.Stance.Standing",
+        "overlay": "Als.OverlayMode.Box",
+        "animation_loaded": true
+      }
+    },
+    {
+      "name": "crouch_patch",
+      "video_seconds": 4.8,
+      "observed": {
+        "recording_frames": 144,
+        "world_seconds": 26.60617335513234,
+        "phase": "executing",
+        "speed": 150.00000000000006,
+        "x": 56.323166771209415,
+        "y": 52.01515404093714,
+        "gait": "walk",
+        "style": "carrying",
+        "stance": "crouch",
+        "move_target": "red_target",
+        "look_at": "door",
+        "moving": true,
+        "remaining_steps": 3,
+        "accepted_count": 3,
+        "actual_gait": "Als.Gait.Walking",
+        "actual_stance": "Als.Stance.Crouching",
+        "overlay": "Als.OverlayMode.Box",
+        "animation_loaded": true
+      }
+    },
+    {
+      "name": "pending_request",
+      "video_seconds": 6.9,
+      "observed": {
+        "recording_frames": 207,
+        "world_seconds": 28.706173464655876,
+        "phase": "waiting",
+        "speed": 149.9999999999998,
+        "x": 314.9585139723334,
+        "y": 231.82830019028918,
+        "gait": "walk",
+        "style": "carrying",
+        "stance": "crouch",
+        "move_target": "red_target",
+        "look_at": "door",
+        "moving": true,
+        "remaining_steps": 3,
+        "accepted_count": 3,
+        "actual_gait": "Als.Gait.Walking",
+        "actual_stance": "Als.Stance.Crouching",
+        "overlay": "Als.OverlayMode.Box",
+        "animation_loaded": true
+      }
+    },
+    {
+      "name": "emergency_stop",
+      "video_seconds": 8.0,
+      "observed": {
+        "recording_frames": 240,
+        "world_seconds": 29.806173522025347,
+        "phase": "stopped",
+        "speed": 0,
+        "x": 450.434172030065,
+        "y": 326.0161386494734,
+        "gait": "walk",
+        "style": "carrying",
+        "stance": "crouch",
+        "move_target": "",
+        "look_at": "door",
+        "moving": false,
+        "remaining_steps": 0,
+        "accepted_count": 3,
+        "actual_gait": "Als.Gait.Walking",
+        "actual_stance": "Als.Stance.Crouching",
+        "overlay": "Als.OverlayMode.Box",
+        "animation_loaded": true
+      }
+    },
+    {
+      "name": "late_response_injected",
+      "video_seconds": 9.0,
+      "observed": {
+        "recording_frames": 270,
+        "world_seconds": 30.80617357417941,
+        "phase": "stopped",
+        "speed": 0,
+        "x": 450.434172030065,
+        "y": 326.0161386494734,
+        "gait": "walk",
+        "style": "carrying",
+        "stance": "crouch",
+        "move_target": "",
+        "look_at": "door",
+        "moving": false,
+        "remaining_steps": 0,
+        "accepted_count": 3,
+        "actual_gait": "Als.Gait.Walking",
+        "actual_stance": "Als.Stance.Crouching",
+        "overlay": "Als.OverlayMode.Box",
+        "animation_loaded": true
+      }
+    },
+    {
+      "name": "late_response_ignored",
+      "video_seconds": 12.0,
+      "observed": {
+        "recording_frames": 360,
+        "world_seconds": 33.8061737306416,
+        "phase": "stopped",
+        "speed": 0,
+        "x": 450.434172030065,
+        "y": 326.0161386494734,
+        "gait": "walk",
+        "style": "carrying",
+        "stance": "crouch",
+        "move_target": "",
+        "look_at": "door",
+        "moving": false,
+        "remaining_steps": 0,
+        "accepted_count": 3,
+        "actual_gait": "Als.Gait.Walking",
+        "actual_stance": "Als.Stance.Crouching",
+        "overlay": "Als.OverlayMode.Box",
+        "animation_loaded": true
+      },
+      "old_file_unread": true,
+      "displacement_cm": 0.0
+    },
+    {
+      "name": "fresh_request_resumes",
+      "video_seconds": 12.3,
+      "observed": {
+        "recording_frames": 369,
+        "world_seconds": 34.10617374628782,
+        "phase": "executing",
+        "speed": 133.3333405554291,
+        "x": 451.3399604886611,
+        "y": 319.41129186065524,
+        "gait": "walk",
+        "style": "normal",
+        "stance": "stand",
+        "move_target": "blue_box",
+        "look_at": "",
+        "moving": true,
+        "remaining_steps": 1,
+        "accepted_count": 4,
+        "actual_gait": "Als.Gait.Walking",
+        "actual_stance": "Als.Stance.Standing",
+        "overlay": "Als.OverlayMode.Default",
+        "animation_loaded": true
+      }
+    }
+  ],
+  "original_report_sha256": "ebfc265753a2c37c1a8c490eafdd7b880505c219ba502bc44fe42b542beebd04"
+}
