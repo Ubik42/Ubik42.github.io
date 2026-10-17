@@ -9,6 +9,7 @@ import lyraPerformanceStory from '../content/projects/lyra-performance.zh.md?raw
 import performanceWorkbenchStory from '../content/projects/performance-workbench.zh.md?raw';
 import lyraHeroStory from '../content/projects/lyra-hero.zh.md?raw';
 import physicsLabStory from '../content/projects/physics-lab.zh.md?raw';
+import noemancerStory from '../content/projects/noemancer.zh.md?raw';
 
 export type PortfolioCategory = 'pipeline' | 'ai-agent' | 'general-ta' | 'engine-games' | 'other-tools';
 
@@ -242,38 +243,7 @@ A Chinese Unreal Editor tool that turns profiling setup into repeatable experime
     tags: ['C++20', 'D3D12 / Vulkan', 'C#', 'MCP'],
     repositoryUrl: 'https://github.com/Ubik42/Noemancer',
     story: {
-      zh: `# Noemancer：面向人与 AI 协作的自研游戏引擎
-
-Noemancer v0.2.0 Preview 1 是一套仍处于 pre-alpha 的 C++20 游戏引擎与编辑器。当前在 Windows x64 上把通用项目从编辑、运行、Cook、打包到独立 Player 串成一条可复核链路，并让 Editor、CLI、MCP 共享同一套状态与命令合同。
-
-## 从建立工程到独立运行
-
-- Project Hub 管理创建、打开和恢复工程；Scene View、Outliner、Inspector、Asset Browser、Console、Animation Graph 与 Scene Flow Canvas 组成编辑工作区，音频、VFX、Sprite 和材质作者面板接入同一 Editor。
-- Edit World 与 Play World 互相隔离，运行时改动不会污染编辑场景；需要的结果可选择性 Apply Back，并进入同一套 Undo / Redo。
-- Gameplay 层使用 .NET 10 / C# 项目脚本，支持编译、热重载状态迁移与调试会话；Runtime 集成 Flecs ECS、Jolt 物理、ozz 骨骼动画、GPU Skinning、RmlUi、输入、音频、VFX、Prefab 和存档，并提供确定性延迟/重复事件、实体池与增量 Prefab 生成/销毁。
-- NoemancerPlatformer 已经贯通“项目 UI / 输入 → C# Gameplay → Cook → Package → 独立 Player”，用于验证游戏侧的完整生命周期。
-
-## D3D12 / Vulkan 渲染管线
-
-- SDL_GPU 后端让 D3D12 与 Vulkan 共享资源、Shader 和 Render Graph 合同，同时保留各后端的 Pass 时间与诊断回执。
-- Raster 主路径包含 Forward PBR、split-sum IBL、四级 CSM、Point/Spot 阴影、GPU 视锥裁剪与间接绘制。
-- 画面管线已接入四 LUT 动态天空、Aerial Perspective、共享 HiZ、SSR、SSGI、TAA、GTAO、双边降噪、Bloom、曝光调色和 ACES Tone Mapping。
-- RenderLab 使用 Intel Sponza 2022 进行实时验证：约 205 万顶点、1124 万索引、405 个 primitive 和 72 张纹理。页面中的画面均来自 Release 运行捕获。
-- RTX 4080 上已完成 D3D12/Vulkan 的 BLAS/TLAS、Pipeline、SBT、Trace 与 Readback 闭环；D3D12 已接入真实 SceneRenderer 几何并形成可见线性直接光，Vulkan 仍是私有全帧输出。项目可见的生产 RTGI、VSM、完整光追材质与 Vulkan SDL 安全呈现仍在后续路线中。
-
-## 资产 Cook 与发布
-
-- 导入 GLB、JSON glTF 与 FBX，使用 meshoptimizer 处理几何，烘焙 Mesh、Animation、KTX2、Sprite Atlas 和 Tilemap 数据。
-- Cook 产物由源文件、配方、目标 Profile 和工具版本共同寻址；Runtime 加载前复核范围、Schema 与 SHA-256。
-- Windows Player 只带运行时资产、app-local .NET、VC Runtime、Shader Manifest 和第三方 NOTICE，不会在玩家机器上临时解析源 FBX / glTF。
-
-## 编辑器与 Agent 共用命令系统
-
-引擎的 C++ Command Registry 同时服务 Editor、direct JSON、CLI 和 MCP。场景、项目、资产注册表和运行时诊断以稳定 ID、Schema、Revision 和有限观察结果公开；自动化遵循 **Observe → Plan → Apply → Receipt → Undo / Redo**，连接当前 Editor 的权威 World 与撤销记录，不建立第二份场景数据库，也不把 Flecs、Jolt 或 SDL 句柄暴露给 Agent。
-
-## 当前状态
-
-项目处于 Pre-alpha，目前主要验证 Windows x64。Sprite 元数据与 Atlas 仍是计划态，材质作者台尚无完整资产持久化事务；稳定插件 SDK、跨平台发行、生产网络、签名安装器、生产 RTGI/VSM，以及真实 Provider→Staging 的 AIGC 管线仍在后续计划中。当前展示对应 v0.2.0 Preview 1 的 Editor—Runtime—Cook—Player 链路与实时渲染结果。`,
+      zh: noemancerStory,
       en: `# Noemancer
 
 Noemancer v0.2.0 Preview 1 is a pre-alpha C++20 game engine and editor. It provides a verifiable Windows x64 path from authoring and runtime execution through asset Cook, packaging, and a standalone Player, with the Editor, CLI, and MCP sharing one state and command contract.

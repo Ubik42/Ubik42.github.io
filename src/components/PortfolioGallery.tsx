@@ -12,6 +12,7 @@ import { useLanguage } from '../i18n/LanguageContext';
 import { MarkdownStory } from './MarkdownStory';
 import { AnimationAigcShowcase } from './AnimationAigcShowcase';
 import { PerformanceEvidence } from './PerformanceEvidence';
+import { NoemancerWorkflow } from './NoemancerWorkflow';
 
 type GalleryItem =
   | { kind: 'repository'; id: string; category: PortfolioCategory; title: string; label: string; summary: string; cover: string; tags: string[]; value: RepositoryWork }
@@ -217,6 +218,7 @@ function RepositoryDetail({ work, locale }: { work: RepositoryWork; locale: 'zh'
     {work.id === 'lyra-performance-lab' && <PerformanceEvidence study="animation" locale={locale} />}
     {work.id === 'ue-performance-workbench' && <PerformanceEvidence study="hud" locale={locale} />}
     {work.id === 'animation-aigc-lab' && <AnimationAigcShowcase locale={locale} />}
+    {work.id === 'noemancer' && <NoemancerWorkflow locale={locale} />}
     <MarkdownStory markdown={localize(work.story, locale)} title={work.title} />
     {galleryImages.length > 0 && <DetailGallery fit="contain" images={galleryImages.map((image) => ({ src: image.src, alt: localize(image.alt, locale), caption: localize(image.alt, locale) }))} />}
   </>;
