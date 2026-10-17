@@ -1,0 +1,737 @@
+Simulation Parameters
+arch-id: 0
+arch-name: TRaX
+bvh-merging: 0
+bvh-preset: 0
+dataset-dir: <DATASET_DIR>
+framebuffer-height: 1024
+framebuffer-width: 1024
+logging-interval: 100000
+max-rays: 128
+pregen-bounce: 1
+pregen-rays: 0
+scene-id: 10
+scene-name: spheres
+
+Starting TRaX
+                            
+Cycle: 100000                 
+Threads Launched: 512064        
+Simulation rate: 8.08 KHz
+                            
+DRAM Read:      0.0 GB/s  (0.00%)
+ L2$ Read:      0.2 B/clk (0.02%)
+L1d$ Read:    273.3 B/clk (0.83%)
+                            
+ L2$ Hit/Half/Miss: 93.0%/5.7%/1.3%
+L1d$ Hit/Half/Miss: 99.8%/0.1%/0.0%
+                            
+ L2$ Stalls: 0.01%
+L1d$ Stalls: 0.04%
+                            
+L2$  Occ: 0.02%
+L1d$ Occ: 6.61%
+                            
+Texels: 0
+Loads: 0
+Sphere Loads: 0
+Intersections: 0
+Successful Hits: 0
+MRays/s: 0
+
+Rays: 0
+Nodes: 0
+Strips: 0
+Tris: 0
+Restarts: 0
+
+Nodes/Ray: -nan(ind)
+Strips/Ray: -nan(ind)
+Tris/Ray: -nan(ind)
+Restarts/Ray: -nan(ind)
+
+Issue Cycles: 0 (0.00%)
+
+Stall Cycles: 200000 (100.00%)
+	RAY_FETCH: 200000 (100.00%)
+                            
+Cycle: 200000                 
+Threads Launched: 1044480        
+Simulation rate: 7.92 KHz
+                            
+DRAM Read:      0.0 GB/s  (0.00%)
+ L2$ Read:      0.0 B/clk (0.00%)
+L1d$ Read:    254.7 B/clk (0.78%)
+                            
+ L2$ Hit/Half/Miss: -nan(ind)%/-nan(ind)%/-nan(ind)%
+L1d$ Hit/Half/Miss: 100.0%/0.0%/0.0%
+                            
+ L2$ Stalls: 0.00%
+L1d$ Stalls: 0.00%
+                            
+L2$  Occ: 0.00%
+L1d$ Occ: 6.22%
+                            
+Texels: 0
+Loads: 0
+Sphere Loads: 0
+Intersections: 0
+Successful Hits: 0
+MRays/s: 0
+
+Rays: 0
+Nodes: 0
+Strips: 0
+Tris: 0
+Restarts: 0
+
+Nodes/Ray: -nan(ind)
+Strips/Ray: -nan(ind)
+Tris/Ray: -nan(ind)
+Restarts/Ray: -nan(ind)
+
+Issue Cycles: 0 (0.00%)
+
+Stall Cycles: 200000 (100.00%)
+	RAY_FETCH: 200000 (100.00%)
+PROFILING DISABLED!
+Frontend:
+  impl: GEM5
+
+MemorySystem:
+  impl: GenericDRAM
+  memory_system_cycles: 477797
+  total_num_other_requests: 0
+  total_num_read_requests: 4
+  total_num_write_requests: 131072
+
+  DRAM:
+    impl: GDDR6A
+    total_power(W): 0.388716727
+  AddrMapper:
+    impl: RoBgBaRaChCo
+
+
+  Controller:
+    impl: GenericA
+    id: Channel 0
+    read_row_hits_rate: 0.75
+    avg_read_latency_0: 35.75
+    write_row_conflicts_rate: 0
+    read_row_misses_rate: 0.25
+    write_row_hits_rate: 0.631240845
+    read_row_conflicts_rate: 0
+    write_row_misses_rate: 0.00169372559
+    num_read_reqs_0: 4
+    num_write_reqs_0: 65536
+    num_other_reqs_0: 0
+    read_queue_len_avg_0: 0.000242780923
+    write_queue_len_avg_0: 11.4349251
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+    RowPolicy:
+      impl: OpenRowPolicy
+
+
+
+  Controller:
+    impl: GenericA
+    id: Channel 1
+    read_row_hits_rate: .nan
+    write_row_conflicts_rate: 0
+    read_queue_len_avg_1: 0
+    read_row_misses_rate: .nan
+    write_row_hits_rate: 0.635955811
+    num_write_reqs_1: 65536
+    read_row_conflicts_rate: .nan
+    write_row_misses_rate: 0.00169372559
+    num_read_reqs_1: 0
+    num_other_reqs_1: 0
+    write_queue_len_avg_1: 10.7569304
+    avg_read_latency_1: .nan
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+    RowPolicy:
+      impl: OpenRowPolicy
+
+
+
+Frontend:
+  impl: GEM5
+
+MemorySystem:
+  impl: GenericDRAM
+  memory_system_cycles: 477797
+  total_num_other_requests: 0
+  total_num_read_requests: 2
+  total_num_write_requests: 131072
+
+  DRAM:
+    impl: GDDR6A
+    total_power(W): 0.388555229
+  AddrMapper:
+    impl: RoBgBaRaChCo
+
+
+  Controller:
+    impl: GenericA
+    id: Channel 0
+    read_row_hits_rate: 0.5
+    avg_read_latency_0: 42.5
+    write_row_conflicts_rate: 0
+    read_row_misses_rate: 0.5
+    write_row_hits_rate: 0.632888794
+    read_row_conflicts_rate: 0
+    write_row_misses_rate: 0.00172424316
+    num_read_reqs_0: 2
+    num_write_reqs_0: 65536
+    num_other_reqs_0: 0
+    read_queue_len_avg_0: 0.000121390462
+    write_queue_len_avg_0: 11.267499
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+    RowPolicy:
+      impl: OpenRowPolicy
+
+
+
+  Controller:
+    impl: GenericA
+    id: Channel 1
+    read_row_hits_rate: .nan
+    write_row_conflicts_rate: 0
+    read_queue_len_avg_1: 0
+    read_row_misses_rate: .nan
+    write_row_hits_rate: 0.632583618
+    num_write_reqs_1: 65536
+    read_row_conflicts_rate: .nan
+    write_row_misses_rate: 0.00177001953
+    num_read_reqs_1: 0
+    num_other_reqs_1: 0
+    write_queue_len_avg_1: 10.8196449
+    avg_read_latency_1: .nan
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+    RowPolicy:
+      impl: OpenRowPolicy
+
+
+
+Frontend:
+  impl: GEM5
+
+MemorySystem:
+  impl: GenericDRAM
+  memory_system_cycles: 477797
+  total_num_other_requests: 0
+  total_num_read_requests: 2
+  total_num_write_requests: 131072
+
+  DRAM:
+    impl: GDDR6A
+    total_power(W): 0.386405289
+  AddrMapper:
+    impl: RoBgBaRaChCo
+
+
+  Controller:
+    impl: GenericA
+    id: Channel 0
+    read_row_hits_rate: 0.5
+    avg_read_latency_0: 42.5
+    write_row_conflicts_rate: 0
+    read_row_misses_rate: 0.5
+    write_row_hits_rate: 0.62727356
+    read_row_conflicts_rate: 0
+    write_row_misses_rate: 0.00163269043
+    num_read_reqs_0: 2
+    num_write_reqs_0: 65536
+    num_other_reqs_0: 0
+    read_queue_len_avg_0: 0.000121390462
+    write_queue_len_avg_0: 10.6144161
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+    RowPolicy:
+      impl: OpenRowPolicy
+
+
+
+  Controller:
+    impl: GenericA
+    id: Channel 1
+    read_row_hits_rate: .nan
+    write_row_conflicts_rate: 0
+    read_queue_len_avg_1: 0
+    read_row_misses_rate: .nan
+    write_row_hits_rate: 0.622009277
+    num_write_reqs_1: 65536
+    read_row_conflicts_rate: .nan
+    write_row_misses_rate: 0.00158691406
+    num_read_reqs_1: 0
+    num_other_reqs_1: 0
+    write_queue_len_avg_1: 10.7869368
+    avg_read_latency_1: .nan
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+    RowPolicy:
+      impl: OpenRowPolicy
+
+
+
+Frontend:
+  impl: GEM5
+
+MemorySystem:
+  impl: GenericDRAM
+  memory_system_cycles: 477797
+  total_num_other_requests: 0
+  total_num_read_requests: 0
+  total_num_write_requests: 131072
+
+  DRAM:
+    impl: GDDR6A
+    total_power(W): 0.386988878
+  AddrMapper:
+    impl: RoBgBaRaChCo
+
+
+  Controller:
+    impl: GenericA
+    id: Channel 0
+    read_row_hits_rate: .nan
+    avg_read_latency_0: .nan
+    write_row_conflicts_rate: 0
+    read_row_misses_rate: .nan
+    write_row_hits_rate: 0.629486084
+    read_row_conflicts_rate: .nan
+    write_row_misses_rate: 0.00163269043
+    num_read_reqs_0: 0
+    num_write_reqs_0: 65536
+    num_other_reqs_0: 0
+    read_queue_len_avg_0: 0
+    write_queue_len_avg_0: 10.6836252
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+    RowPolicy:
+      impl: OpenRowPolicy
+
+
+
+  Controller:
+    impl: GenericA
+    id: Channel 1
+    read_row_hits_rate: .nan
+    write_row_conflicts_rate: 0
+    read_queue_len_avg_1: 0
+    read_row_misses_rate: .nan
+    write_row_hits_rate: 0.624588013
+    num_write_reqs_1: 65536
+    read_row_conflicts_rate: .nan
+    write_row_misses_rate: 0.00158691406
+    num_read_reqs_1: 0
+    num_other_reqs_1: 0
+    write_queue_len_avg_1: 10.8401766
+    avg_read_latency_1: .nan
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+    RowPolicy:
+      impl: OpenRowPolicy
+
+
+
+Frontend:
+  impl: GEM5
+
+MemorySystem:
+  impl: GenericDRAM
+  memory_system_cycles: 477797
+  total_num_other_requests: 0
+  total_num_read_requests: 0
+  total_num_write_requests: 131072
+
+  DRAM:
+    impl: GDDR6A
+    total_power(W): 0.389205366
+  AddrMapper:
+    impl: RoBgBaRaChCo
+
+
+  Controller:
+    impl: GenericA
+    id: Channel 0
+    read_row_hits_rate: .nan
+    avg_read_latency_0: .nan
+    write_row_conflicts_rate: 0
+    read_row_misses_rate: .nan
+    write_row_hits_rate: 0.641555786
+    read_row_conflicts_rate: .nan
+    write_row_misses_rate: 0.00169372559
+    num_read_reqs_0: 0
+    num_write_reqs_0: 65536
+    num_other_reqs_0: 0
+    read_queue_len_avg_0: 0
+    write_queue_len_avg_0: 10.658824
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+    RowPolicy:
+      impl: OpenRowPolicy
+
+
+
+  Controller:
+    impl: GenericA
+    id: Channel 1
+    read_row_hits_rate: .nan
+    write_row_conflicts_rate: 0
+    read_queue_len_avg_1: 0
+    read_row_misses_rate: .nan
+    write_row_hits_rate: 0.630081177
+    num_write_reqs_1: 65536
+    read_row_conflicts_rate: .nan
+    write_row_misses_rate: 0.00161743164
+    num_read_reqs_1: 0
+    num_other_reqs_1: 0
+    write_queue_len_avg_1: 10.8429899
+    avg_read_latency_1: .nan
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+    RowPolicy:
+      impl: OpenRowPolicy
+
+
+
+Frontend:
+  impl: GEM5
+
+MemorySystem:
+  impl: GenericDRAM
+  memory_system_cycles: 477797
+  total_num_other_requests: 0
+  total_num_read_requests: 0
+  total_num_write_requests: 131072
+
+  DRAM:
+    impl: GDDR6A
+    total_power(W): 0.388164282
+  AddrMapper:
+    impl: RoBgBaRaChCo
+
+
+  Controller:
+    impl: GenericA
+    id: Channel 0
+    read_row_hits_rate: .nan
+    avg_read_latency_0: .nan
+    write_row_conflicts_rate: 0
+    read_row_misses_rate: .nan
+    write_row_hits_rate: 0.638916016
+    read_row_conflicts_rate: .nan
+    write_row_misses_rate: 0.00170898438
+    num_read_reqs_0: 0
+    num_write_reqs_0: 65536
+    num_other_reqs_0: 0
+    read_queue_len_avg_0: 0
+    write_queue_len_avg_0: 10.6854143
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+    RowPolicy:
+      impl: OpenRowPolicy
+
+
+
+  Controller:
+    impl: GenericA
+    id: Channel 1
+    read_row_hits_rate: .nan
+    write_row_conflicts_rate: 0
+    read_queue_len_avg_1: 0
+    read_row_misses_rate: .nan
+    write_row_hits_rate: 0.62437439
+    num_write_reqs_1: 65536
+    read_row_conflicts_rate: .nan
+    write_row_misses_rate: 0.00164794922
+    num_read_reqs_1: 0
+    num_other_reqs_1: 0
+    write_queue_len_avg_1: 11.1315956
+    avg_read_latency_1: .nan
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+    RowPolicy:
+      impl: OpenRowPolicy
+
+
+
+Frontend:
+  impl: GEM5
+
+MemorySystem:
+  impl: GenericDRAM
+  memory_system_cycles: 477797
+  total_num_other_requests: 0
+  total_num_read_requests: 0
+  total_num_write_requests: 131072
+
+  DRAM:
+    impl: GDDR6A
+    total_power(W): 0.388243765
+  AddrMapper:
+    impl: RoBgBaRaChCo
+
+
+  Controller:
+    impl: GenericA
+    id: Channel 0
+    read_row_hits_rate: .nan
+    avg_read_latency_0: .nan
+    write_row_conflicts_rate: 0
+    read_row_misses_rate: .nan
+    write_row_hits_rate: 0.640319824
+    read_row_conflicts_rate: .nan
+    write_row_misses_rate: 0.00170898438
+    num_read_reqs_0: 0
+    num_write_reqs_0: 65536
+    num_other_reqs_0: 0
+    read_queue_len_avg_0: 0
+    write_queue_len_avg_0: 10.6218643
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+    RowPolicy:
+      impl: OpenRowPolicy
+
+
+
+  Controller:
+    impl: GenericA
+    id: Channel 1
+    read_row_hits_rate: .nan
+    write_row_conflicts_rate: 0
+    read_queue_len_avg_1: 0
+    read_row_misses_rate: .nan
+    write_row_hits_rate: 0.623596191
+    num_write_reqs_1: 65536
+    read_row_conflicts_rate: .nan
+    write_row_misses_rate: 0.00164794922
+    num_read_reqs_1: 0
+    num_other_reqs_1: 0
+    write_queue_len_avg_1: 11.2117405
+    avg_read_latency_1: .nan
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+    RowPolicy:
+      impl: OpenRowPolicy
+
+
+
+Frontend:
+  impl: GEM5
+
+MemorySystem:
+  impl: GenericDRAM
+  memory_system_cycles: 477797
+  total_num_other_requests: 0
+  total_num_read_requests: 0
+  total_num_write_requests: 131072
+
+  DRAM:
+    impl: GDDR6A
+    total_power(W): 0.388714343
+  AddrMapper:
+    impl: RoBgBaRaChCo
+
+
+  Controller:
+    impl: GenericA
+    id: Channel 0
+    read_row_hits_rate: .nan
+    avg_read_latency_0: .nan
+    write_row_conflicts_rate: 0
+    read_row_misses_rate: .nan
+    write_row_hits_rate: 0.641723633
+    read_row_conflicts_rate: .nan
+    write_row_misses_rate: 0.00173950195
+    num_read_reqs_0: 0
+    num_write_reqs_0: 65536
+    num_other_reqs_0: 0
+    read_queue_len_avg_0: 0
+    write_queue_len_avg_0: 10.4802999
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+    RowPolicy:
+      impl: OpenRowPolicy
+
+
+
+  Controller:
+    impl: GenericA
+    id: Channel 1
+    read_row_hits_rate: .nan
+    write_row_conflicts_rate: 0
+    read_queue_len_avg_1: 0
+    read_row_misses_rate: .nan
+    write_row_hits_rate: 0.625961304
+    num_write_reqs_1: 65536
+    read_row_conflicts_rate: .nan
+    write_row_misses_rate: 0.00163269043
+    num_read_reqs_1: 0
+    num_other_reqs_1: 0
+    write_queue_len_avg_1: 11.3817873
+    avg_read_latency_1: .nan
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+    RowPolicy:
+      impl: OpenRowPolicy
+
+
+
+
+--------------------------------------DRAM--------------------------------------
+DRAM Read: 0.0 GB/s (0.00%)
+Total: 1048584
+Loads: 8
+Stores: 1048576
+
+Unique Loads: 8
+Unique Rows: 3
+Unique Loads/Row: 2
+
+--------------------------------------L2$---------------------------------------
+ L2$ Read: 0.1 B/clk (0.01%)
+Total: 633
+Hits: 589 (93.05%)
+Half Misses: 36 (5.69%)
+Misses: 8 (1.26%)
+
+Uncached Requests: 1048576
+
+MSHR Stalls: 398
+
+Tag Array Access: 633
+Data Array Reads: 589
+Data Array Writes: 0
+
+Total Energy: 0.00 mJ
+Total Power: 0.00 W
+
+--------------------------------------L1d$--------------------------------------
+L1d$ Read: 261.1 B/clk (0.80%)
+Total: 13434880
+Hits: 13424243 (99.92%)
+Half Misses: 10004 (0.07%)
+Misses: 633 (0.00%)
+
+Uncached Requests: 1048576
+
+MSHR Stalls: 39110
+
+Tag Array Access: 13434880
+Data Array Reads: 13424243
+Data Array Writes: 0
+
+Total Energy: 0.00 mJ
+Total Power: 0.00 W
+
+----------------------------------Texture Unit----------------------------------
+Texels: 0
+Loads: 0
+
+---------------------------------------TP---------------------------------------
+Issue Cycles: 36722 (17.76%)
+	FFMAD: 7168 (3.47%)
+	IADD: 4425 (2.14%)
+	BRANCH: 4179 (2.02%)
+	LOAD: 3376 (1.63%)
+	ILOGICAL: 3336 (1.61%)
+	FADD: 3147 (1.52%)
+	JUMP: 3014 (1.46%)
+	FMUL: 2891 (1.40%)
+	FCMP: 2123 (1.03%)
+	FSIGN: 583 (0.28%)
+	CONVERT: 512 (0.25%)
+	IDIV: 512 (0.25%)
+	STORE: 352 (0.17%)
+	FCHTHRD: 264 (0.13%)
+	IMUL: 256 (0.12%)
+	FDIV: 256 (0.12%)
+	FSQRT: 165 (0.08%)
+	MOVE: 159 (0.08%)
+
+Data Stall Cycles: 164924 (79.74%)
+	LOAD: 164290 (79.44%)
+	FCHTHRD: 378 (0.18%)
+	FSQRT: 139 (0.07%)
+	IMUL: 70 (0.03%)
+	IDIV: 44 (0.02%)
+
+Pipeline Stall Cycles: 5171 (2.50%)
+	LOAD: 5171 (2.50%)
+
+------------------------------------RT Core-------------------------------------
+Rays: 0
+Nodes: 0
+Strips: 0
+Tris: 0
+Restarts: 0
+
+Nodes/Ray: -nan(ind)
+Strips/Ray: -nan(ind)
+Tris/Ray: -nan(ind)
+Restarts/Ray: -nan(ind)
+
+Issue Cycles: 0 (0.00%)
+
+Stall Cycles: 413636 (100.00%)
+	RAY_FETCH: 413636 (100.00%)
+
+----------------------------Sphere Intersection Unit----------------------------
+Sphere Loads: 0
+Intersections: 0
+Successful Hits: 0
+Sphere units: 64; pipelines per unit: 4; pipeline depth: 44; CPI: 1
+
+------------------------------Performance Summary-------------------------------
+Cycles: 206818
+Clock rate: 1515 MHz
+Frame time: 0.137 ms
+MRays/s: 0
+
+---------------------------------Power Summary----------------------------------
+Energy: 0.00 mJ
+Power: 0.00 W
+MRays/J: -nan(ind)
+
+-------------------------------Simulation Summary-------------------------------
+Simulation rate: 7.94 KHz
+Simulation time: 26 s
+MSIPS: 32.53
