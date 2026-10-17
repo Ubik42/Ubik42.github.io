@@ -224,7 +224,7 @@ function RepositoryDetail({ work, locale }: { work: RepositoryWork; locale: 'zh'
     <MarkdownStory markdown={localize(work.story, locale)} title={work.title}
       outlineLabel={work.id === 'lyra-hero-arena' && locale === 'zh' ? 'Lyra 作品章节' : undefined}
       videoPosters={work.id === 'lyra-hero-arena' ? Object.fromEntries(
-        ['striker-combat', 'full-match', 'phase-gameplay', 'hero-respawn', 'blink-network'].map(name =>
+        ['striker-combat', 'full-match', 'network-full-match', 'phase-gameplay', 'hero-respawn', 'blink-network'].map(name =>
           [`/media/repositories/lyra-hero-arena/${name}.mp4`, `/media/repositories/lyra-hero-arena/${name}-poster.jpg`])) : undefined} />
     {galleryImages.length > 0 && <DetailGallery fit="contain" images={galleryImages.map((image) => ({ src: image.src, alt: localize(image.alt, locale), caption: localize(image.alt, locale) }))} />}
   </>;
