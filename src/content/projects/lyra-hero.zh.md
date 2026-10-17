@@ -16,6 +16,18 @@
 
 [对局记录与实现分工](https://github.com/Ubik42/LyraHeroArena/blob/main/docs/完整占点对局.md)
 
+### 比赛结算与下一局衔接
+
+原战术 HUD 仅读取控制点状态，结算后仍残留轮换倒计时。现在由服务器轮换组件识别 **PostGame**，停止轮换计时并复制结束标记；客户端清理占点、重生引导及技能失败提示，显示“比赛结束 · 等待下一局”。后续等待与 **SeamlessTravel** 复用 Lyra 原生流程，新世界实例重置结束标记。
+
+![主动触发结算后的拥有客户端：原生终局画面中，战术 HUD 显示“比赛结束 · 等待下一局”](/media/repositories/lyra-hero-arena/postgame.png)
+
+独立 Dedicated Server 与拥有客户端完成自动切局，新局比分为 **0:0**。重新选择 Phase 后，两端四项英雄来源 AbilitySpec 无重复，ASC Avatar 正确；释放闪现后充能 **3→2**、待确认清零，位移约 **205 cm** 且双端一致。
+
+![自动进入下一局：目标 A 提示恢复，Phase 释放一次闪现后剩余 2/3 充能](/media/repositories/lyra-hero-arena/next-round.png)
+
+这组截图来自主动触发结算的定向测试：非打包、同机 Loopback、单拥有客户端，两端各配置 150 ms 出站延迟与 2% 出站丢包。上方完整对局保留原始录像，其赛后 HUD 为旧版表现。[切局实现与双端记录](https://github.com/Ubik42/LyraHeroArena/blob/main/docs/比赛结算与下一局.md)
+
 ## 游骑：射击、恢复场与轮换控制点
 
 游骑 Striker 的技能与占点规则由 HeroArena 扩展实现，基础移动、武器、动画及重生流程复用 Lyra。下方为单机 1 玩家加 9 Bot 的连续片段：脚本读取只读寻路和视线可达敌人的位置，通过既有 Enhanced Input 输入移动、射击与技能。
