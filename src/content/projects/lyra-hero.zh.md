@@ -61,7 +61,19 @@ Recall 使用 **ServerOnly GameplayAbility**。服务器每 0.1 秒记录 Pawn �
 | 恢复一格充能 | 1 | 1 | 0 |
 | 换人重置 | 3 | 3 | 0 |
 
-表格来自独立的连续释放测试；视频展示一次拒绝和一次成功释放。延迟与丢包为模拟器配置，未将其等同于实测 RTT。跨进程、专用服务器、长时间对战及更多技能组合仍待验证。[双端记录与测试条件](https://github.com/Ubik42/LyraHeroArena/blob/main/docs/data/blink-network.json)
+表格来自独立的连续释放测试；视频展示一次拒绝和一次成功释放。延迟与丢包为模拟器配置，未将其等同于实测 RTT。[双 PIE 记录与测试条件](https://github.com/Ubik42/LyraHeroArena/blob/main/docs/data/blink-network.json)
+
+## 独立服务器：闪现预测、换人与重生
+
+进一步将 Dedicated Server 与拥有客户端拆成两个独立进程，通过同机 Loopback UDP 连接。普通网络和双端各 **150 ms 出站延迟、2% 出站丢包**两组运行，均完成闪现拒绝、正常释放、充能补充、换人及重生流程；延迟配置不作为实测 RTT。
+
+- **预测拒绝与位置恢复：**客户端先显示 2 格充能、1 个待确认请求。开发入口仅在服务器阻止激活，GAS 拒绝返回后，客户端恢复 3 格，待确认清零，CMC 将角色拉回起点。解除阻止后再次释放，双端消耗至 2 格，实际位移约 205 cm；障碍检测缩短了最大 700 cm 的位移。
+- **换人时替换能力集合：**切至 Striker 时，两端持有 7 项英雄来源 AbilitySpec；再切至 Phase 时为 4 项，无重复授予。充能补充单独检查同一 Pawn，避免将重生重置误判为冷却完成。
+- **重生后重新绑定 Avatar：**使用 Lyra 标准自毁路径触发测试死亡，在约 9 秒后的采样中确认新 Pawn 与 ASC Avatar 对应，Phase 的 4 项能力和满充能状态正常。
+
+![独立拥有客户端重生后：Phase 的技能栏、充能和手枪正常显示；双端状态另由阶段记录核对](/media/repositories/lyra-hero-arena/standalone-respawn.png)
+
+本次补充开发专用跨进程驱动与双端状态检查，技能请求及复制仍走 UE NetDriver，GAS、CMC 和基础重生复用 Lyra。当前覆盖非打包、同机独立进程及单拥有客户端；完整比赛、多人并发和公网仍待补充。冷启动倒计时曾出现偏差，最终流程在预热后通过，冷启动稳定性仍需改进。[源码、阶段记录与复现方法](https://github.com/Ubik42/LyraHeroArena/blob/main/docs/跨进程网络案例.md)
 
 ## GAS 技能架构：选择数据跨重生保留与装备应用
 
@@ -95,7 +107,7 @@ Recall 使用 **ServerOnly GameplayAbility**。服务器每 0.1 秒记录 Pawn �
 
 2026 年 10 月的 D3D12 实机复测使用 **1 名本地玩家与 9 名 Bot**。通过开发命令触发死亡，在倒计时内使用方向键和回车切换至 Phase（闪回）；日志确认 PlayerState 选择成功，新 Pawn 保留该选择并装配 ID_Pistol_C。上方连续录像单独重录，死亡与换人请求由开发命令触发，走现有选择、确认和重生路径。
 
-**监听服务器与拥有客户端** 的换人和重生结果通过只读日志与截图对齐；Blink 另有弱网双视角演示。当前尚未完成跨进程网络环境及完整对局复测。
+**监听服务器与拥有客户端**的换人和重生结果通过只读日志与截图对齐；Blink 另有弱网双视角演示，以及独立 Dedicated Server 的普通网络、弱网阶段记录。完整比赛结算仍待复测。
 
 公开仓库提供自有 C++ 模块、结构说明及运行截图，不重新分发 Lyra、Fab 或 Unreal Engine 资产。
 
