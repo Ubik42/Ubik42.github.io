@@ -12,6 +12,7 @@
 .animation-quality .performance-kicker { color: #8ee1c8; }
 .animation-quality h3 { font-size: clamp(1.5rem, 3vw, 2.6rem); line-height: 1.3; margin: 0 0 1.5rem; }
 .animation-quality video { display: block; width: 100%; aspect-ratio: 20 / 9; background: #0c1820; }
+.hud-quality video { aspect-ratio: 80 / 53; }
 .animation-quality > p:last-child { font-size: 1rem; line-height: 1.7; color: #d1e5e3; margin-bottom: 0; }
 .performance-evidence { padding: clamp(1.25rem, 4vw, 3.5rem); border-bottom: 1px solid var(--ink); background: #f3f6f5; color: #172e29; }
 .performance-kicker { margin: 0 0 .6rem; color: #246c56; font-size: .88rem; font-weight: 750; }
