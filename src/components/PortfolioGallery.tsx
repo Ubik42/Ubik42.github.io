@@ -41,6 +41,7 @@ const pipelineOrder = new Map([
 ].map((id, index) => [id, index]));
 
 const engineGamesOrder = new Map([
+  'ray-tracing-hardware',
   'house-of-vampires',
   'siggraph-physics-lab',
   'noemancer',
@@ -208,7 +209,7 @@ function GalleryDetail({ item, locale, close }: { item: GalleryItem; locale: 'zh
 
 function RepositoryDetail({ work, locale }: { work: RepositoryWork; locale: 'zh' | 'en' }) {
   const galleryImages = work.images?.filter((image) => image.src !== work.cover) ?? [];
-  const leadFit = work.id === 'noemancer' || work.id === 'artflow-agent' ? 'cover' : 'contain';
+  const leadFit = work.id === 'noemancer' || work.id === 'artflow-agent' || work.id === 'ray-tracing-hardware' ? 'cover' : 'contain';
   return <>
     {work.repositoryUrl && <a className="project-dialog-source" href={work.repositoryUrl} target="_blank" rel="noreferrer"><span>{locale === 'zh' ? '查看 GitHub 仓库' : 'View GitHub repository'}</span><span aria-hidden="true">↗</span></a>}
     <DetailLeadMedia src={work.cover} alt={`${work.title} ${locale === 'zh' ? '项目画面' : 'project view'}`} fit={leadFit} />

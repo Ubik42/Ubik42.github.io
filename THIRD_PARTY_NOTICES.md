@@ -14,3 +14,7 @@ Copyright (c) 2026 David Haz
 
 Licensed under the MIT License with Commons Clause condition. It may be used as part of this website and may not be sold, sublicensed, or redistributed as a standalone component or component bundle. The full upstream license is available at `D:\cs\_reference\github_PPT\react-bits\LICENSE.md` in the local reference checkout.
 
+
+## Ray Tracing Hardware
+
+Course experiments follow University of Utah CS 6959 (https://graphics.cs.utah.edu/courses/cs6959/fall2026/) and use Utah Graphics Lab Arches (https://github.com/Utah-Graphics-Lab/arches). Teapot and Sponza scene assets are course test inputs; the page claims implementation and analysis of course exercises, not authorship of the framework or scene models. Images are rendered experiment outputs; source scene datasets and assignment handouts are not distributed here. Implementation, debugging, and documentation include Codex assistance.

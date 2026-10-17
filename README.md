@@ -73,3 +73,7 @@ npm run dev
 ## English summary
 
 This repository hosts Lucas Shen's portfolio for technical art, game-engine tooling, DCC production tools, and AI-assisted art workflows. Chinese is the primary language. The former AIToolTA umbrella has been retired and replaced by focused, independently verifiable tools and a small Art Pipeline Skill.
+
+## 光线追踪架构与性能实验
+
+[项目详情](https://ubik42.github.io/?work=ray-tracing-hardware) 展示 CS 6959 前六次 Arches / TRaX 实验，置于全部作品及引擎与游戏分类首位。内容包括 kernel、缓存层级、自定义指令、球体求交单元、实际输出和脱敏日志。2.54× 为固定三球场景下的模拟周期加速；缓存调整的对照同时改变多项配置。期末项目仍处于选题阶段。

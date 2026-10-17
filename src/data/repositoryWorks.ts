@@ -1,3 +1,4 @@
+import { rayTracingHardware } from './rayTracingHardware';
 import type { Localized } from './showcase';
 import { aitaProjects } from './aitaSystems';
 import { animationAigcLab } from './animationAigcLab';
@@ -21,6 +22,7 @@ export interface RepositoryWork {
 }
 
 export const repositoryWorks: RepositoryWork[] = [
+  rayTracingHardware,
   parkourAnimation,
   alsDirector,
   pcgWorkbench,

@@ -1,0 +1,9 @@
+experiment,configuration,cycles,frame_ms,log
+cache,8-tm,456551,0.301,cache-8-tm.txt
+cache,64-tm,95902,0.0633,cache-64-tm.txt
+cache,l3-initial,158135,0.104,cache-l3-initial.txt
+cache,l3-tuned,98287,0.0649,cache-l3-tuned.txt
+interpolation,software,90455,0.0597,interpolation-software.txt
+interpolation,custom-instruction,87257,0.0576,interpolation-custom-instruction.txt
+sphere,software,206818,0.137,sphere-software.txt
+sphere,hardware,81485,0.0538,sphere-hardware.txt
