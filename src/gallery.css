@@ -6,6 +6,57 @@
   padding: clamp(1.75rem, 4vw, 3.5rem) var(--page);
   border-bottom: 1px solid var(--line);
 }
+
+/* Recorded performance studies: comparison first, exact conditions one step deeper. */
+.performance-evidence { padding: clamp(1.25rem, 4vw, 3.5rem); border-bottom: 1px solid var(--ink); background: #f3f6f5; color: #172e29; }
+.performance-kicker { margin: 0 0 .6rem; color: #246c56; font-size: .88rem; font-weight: 750; }
+.performance-evidence header h3 { margin: 0 0 .7rem; max-width: 26ch; font-size: clamp(1.5rem, 3vw, 2.6rem); line-height: 1.25; }
+.performance-evidence header > p:last-child { margin: 0; color: #405d53; }
+.performance-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; margin: 2rem 0 1rem; }
+.performance-metrics figure { min-width: 0; margin: 0; }
+.performance-metrics figcaption { display: flex; flex-direction: column; gap: .5rem; font-size: 1rem; font-weight: 700; }
+.performance-metrics figcaption > strong { display: flex; align-items: baseline; flex-wrap: wrap; gap: .5rem; color: #146249; font-size: clamp(2rem, 4vw, 3.5rem); font-variant-numeric: tabular-nums; line-height: 1.15; }
+.performance-metrics figcaption > strong.is-flat { color: #695129; }
+.performance-metrics figcaption small { font-size: .8rem; }
+.performance-bar-row { display: grid; grid-template-columns: 3.2rem minmax(0, 1fr); gap: .3rem .5rem; margin-top: .8rem; align-items: center; }
+.performance-bar-row > span { font-size: .85rem; }
+.performance-bar-track { height: .7rem; background: #dce6e1; }
+.performance-bar-track > div { height: 100%; background: #768a81; }
+.performance-bar-row.optimized .performance-bar-track > div { background: #177253; }
+.performance-bar-row > b { grid-column: 2; font-size: 1.1rem; font-variant-numeric: tabular-nums; }
+.performance-bar-row > b small { font-weight: 500; }
+.performance-reading-note { margin: 1.5rem 0; color: #405d53; font-size: .9rem; line-height: 1.65; }
+.performance-policy { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; padding: 0; margin: 2rem 0; list-style: none; border-block: 1px solid #a9beb4; }
+.performance-policy li { padding: 1.1rem 1.25rem; border-left: 4px solid #197452; }
+.performance-policy li:nth-child(2) { border-color: #ae731f; }
+.performance-policy li:nth-child(3) { border-color: #a54e31; }
+.performance-policy span { display: block; font-size: .85rem; margin-bottom: .5rem; }
+.performance-policy strong { display: block; font-size: 1.15rem; }
+.performance-policy p { margin: .5rem 0 0; font-size: .9rem; }
+.performance-details { border-top: 1px solid #a9beb4; padding-top: 1rem; }
+.performance-details summary { padding: .5rem 0; font-size: 1rem; font-weight: 750; cursor: pointer; }
+.performance-details summary:focus-visible, .performance-details a:focus-visible, .performance-run-table:focus-visible { outline: 3px solid #177253; outline-offset: 4px; }
+.performance-details dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem 2rem; }
+.performance-details dl > div { min-width: 0; }
+.performance-details dt { font-size: .85rem; color: #405d53; }
+.performance-details dd { margin: .3rem 0; overflow-wrap: anywhere; }
+.performance-run-table { max-width: 100%; overflow-x: auto; margin: 1.2rem 0; }
+.performance-run-table table { width: 100%; border-collapse: collapse; font-size: .88rem; font-variant-numeric: tabular-nums; }
+.performance-run-table caption { text-align: left; margin-bottom: .75rem; color: #405d53; }
+.performance-run-table th, .performance-run-table td { padding: .65rem .5rem; text-align: right; border-bottom: 1px solid #c5d4cd; }
+.performance-run-table th:first-child { text-align: left; white-space: nowrap; }
+.performance-details > a { color: #005bb8; font-weight: 700; text-underline-offset: .2em; }
+.project-dialog-heading[data-work-id='lyra-performance-lab'] h2, .project-dialog-heading[data-work-id='ue-performance-workbench'] h2 { max-width: 24ch; font-size: clamp(2rem, 4.6vw, 4rem); line-height: 1.15; }
+@media (max-width: 700px) {
+  .performance-metrics { grid-template-columns: 1fr; gap: 1.5rem; }
+  .performance-metrics figure + figure { padding-top: 1.25rem; border-top: 1px solid #c5d4cd; }
+  .performance-metrics figcaption { flex-direction: row; align-items: center; justify-content: space-between; gap: 1rem; }
+  .performance-metrics figcaption > strong { font-size: 2.25rem; }
+  .performance-bar-row { grid-template-columns: 3.2rem minmax(0, 1fr) 6.8rem; }
+  .performance-bar-row > b { grid-column: auto; text-align: right; font-size: 1rem; }
+  .performance-policy { grid-template-columns: 1fr; }
+  .performance-details dl { grid-template-columns: 1fr; }
+}
 .profile-strip > img { width: clamp(4.5rem, 6vw, 6rem); aspect-ratio: 1; border: 3px solid var(--green); border-radius: 50%; object-fit: cover; }
 .profile-name h1 { display: flex; flex-wrap: wrap; gap: .45rem; margin: 0 0 .35rem; font-size: clamp(2rem, 3.5vw, 3.75rem); line-height: .9; letter-spacing: -.04em; }
 .profile-name h1 span:last-child { color: var(--muted); font-size: .68em; }

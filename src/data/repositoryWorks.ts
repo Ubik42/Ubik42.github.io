@@ -5,6 +5,8 @@ import { animationAigcLab } from './animationAigcLab';
 import { alsDirector } from './alsDirector';
 import { pcgWorkbench } from './pcgWorkbench';
 import { parkourAnimation } from './parkourAnimation';
+import lyraPerformanceStory from '../content/projects/lyra-performance.zh.md?raw';
+import performanceWorkbenchStory from '../content/projects/performance-workbench.zh.md?raw';
 
 export type PortfolioCategory = 'pipeline' | 'ai-agent' | 'general-ta' | 'engine-games' | 'other-tools';
 
@@ -202,27 +204,14 @@ An in-progress multiplayer hero-shooter project built on Unreal Engine 5.7 and L
     category: 'engine-games',
     categoryLabel: { zh: 'UE 性能分析与优化', en: 'UE performance analysis and optimization' },
     summary: {
-      zh: '在固定地图和角色负载下，分别比较 AI、寻路、动画、渲染与网络调整前后的性能指标和场景状态。',
+      zh: '基于 Lyra 搭建 200 个受控 AI 的测试场景，通过距离分段、原生 URO 与动画后处理裁剪降低开销，展示实际采样与技术取舍。',
       en: 'Independent, attributable before-and-after studies across AI, navigation, animation, rendering, and networking under high multi-character load.',
     },
     cover: '/media/repositories/lyra-hero-arena/gameplay.jpg',
     tags: ['Unreal Insights', 'CSV Profiler', 'Slate', 'A/B Benchmark'],
     repositoryUrl: 'https://github.com/Ubik42/LyraHeroArena/tree/main/Plugins/PerformanceLab',
     story: {
-      zh: `# 多角色高负载场景性能优化
-
-这项作品研究大量角色同时运行 AI、寻路、动画、渲染和网络行为时的性能开销。实验固定地图、随机种子、镜头、画质、RHI 和角色负载；200 个真实 Lyra Pawn 是其中一组标准配置。每个案例分别采集修改前后的性能数据和场景状态。
-
-## 可复现的性能实验
-
-- AI：目标查询、共享战场事实与决策更新；
-- Navigation：路径请求、重规划、拥堵和到达率；
-- Animation：骨骼更新、IK、远景 LOD 与可见性策略；
-- Rendering：角色材质、阴影、附件和可见距离；
-- Networking：服务器出站、空间相关性与多客户端拓扑；
-- Physics / VFX：先通过 Profile 找到明确热点，再建立独立案例。
-
-比较结果同时列出角色存活、移动、到达率、请求失败、最长等待、近景动画更新、阴影数量和连接数，用于确认两组运行的负载与表现条件一致。`,
+      zh: lyraPerformanceStory,
       en: `# Multi-Character Performance Optimization
 
 Fixed maps, seeds, viewpoints, graphics settings, RHI, and character loads create repeatable single-variable studies across AI, navigation, animation, rendering, and networking. Performance gains are accepted only when behavior and visual quality conditions remain valid.`,
@@ -234,31 +223,18 @@ Fixed maps, seeds, viewpoints, graphics settings, RHI, and character loads creat
   },
   {
     id: 'ue-performance-workbench',
-    title: 'UE Performance Workbench：性能实验工作台',
+    title: 'UE 性能实验工作台',
     category: 'engine-games',
     categoryLabel: { zh: 'Unreal Editor 性能工具', en: 'Unreal Editor performance tooling' },
     summary: {
-      zh: '在 Unreal Editor 内启动单机、服务器和多客户端实验，校验负载与质量条件，并聚合同一实验的 Baseline / Optimized 正式结果。',
+      zh: '在 Unreal Editor 内编排、采集和比较性能实验；以战术 HUD 为例，分开呈现局部刷新、UI 总耗时与整帧表现。',
       en: 'An Unreal Editor workbench for launching standalone and networked experiments, validating load and quality conditions, and aggregating formal baseline/optimized results.',
     },
     cover: '/media/repositories/lyra-hero-arena/workbench-network.png',
     tags: ['UE 5.7', 'Slate', 'CSV Profiler', 'Multi-process'],
     repositoryUrl: 'https://github.com/Ubik42/LyraHeroArena/tree/main/Plugins/PerformanceWorkbench',
     story: {
-      zh: `# UE Performance Workbench：性能实验工作台
-
-这是一个运行在 Unreal Editor 内的中文性能实验工具。它把零散的启动参数、Profile 命令和结果表格整理成一条可复跑的工程流程，既服务多角色高负载实验，也用于验证 Lyra Hero Arena 开发过程中对渲染、网络和 Gameplay 架构的改进。
-
-## 从实验定义到正式结论
-
-- 用版本化 Preset 保存地图、Experience、负载、种子、RHI、画质、采样时长与进程拓扑；
-- 从 Editor 启动单机、服务器和多个客户端，统一运行编号与输出目录；
-- 汇集 CSV Profiler、AI、Navigation、Animation、Rendering 与 Network 指标；
-- 以 Required Guard 检查角色负载、运行条件、画质与网络拓扑，未满足条件的样本标记为不可比较；
-- 聚合同一合同下的 Baseline 3 次与 Optimized 3 次，展示中位数、P95、变化率以及相应的行为和画质指标；
-- 显示缺失样本、不可比较结果、失败条件和回归提示，并保留原始 CSV 与运行配置。
-
-运行时 PerformanceLab 负责压力、采样和结果文件，Editor 侧 PerformanceWorkbench 只负责实验编排与比较。游戏逻辑不依赖性能 UI，两者通过 JSON 实验合同和结果连接。`,
+      zh: performanceWorkbenchStory,
       en: `# UE Performance Workbench
 
 A Chinese Unreal Editor tool that turns profiling setup into repeatable experiments. Versioned presets define maps, loads, seeds, RHI, graphics settings, capture duration, and process topology. The workbench launches standalone, server, and client processes, validates required load and quality conditions, and aggregates matched 3+3 baseline and optimized samples with medians, P95 values, deltas, and quality costs.`,
