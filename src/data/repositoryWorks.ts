@@ -7,6 +7,7 @@ import { pcgWorkbench } from './pcgWorkbench';
 import { parkourAnimation } from './parkourAnimation';
 import lyraPerformanceStory from '../content/projects/lyra-performance.zh.md?raw';
 import performanceWorkbenchStory from '../content/projects/performance-workbench.zh.md?raw';
+import lyraHeroStory from '../content/projects/lyra-hero.zh.md?raw';
 
 export type PortfolioCategory = 'pipeline' | 'ai-agent' | 'general-ta' | 'engine-games' | 'other-tools';
 
@@ -164,32 +165,18 @@ Version 0.1.0 is verified on Windows with Python 3.12 and DuckDB 1.5.5. It uses 
   },
   {
     id: 'lyra-hero-arena',
-    title: 'Lyra Hero Arena：五英雄多人对战游戏',
+    title: 'Lyra 英雄射击：选人、战斗与重生换人',
     category: 'engine-games',
     categoryLabel: { zh: '多人游戏与 Gameplay 架构', en: 'Multiplayer game and gameplay architecture' },
     summary: {
-      zh: '基于 UE5 Lyra 扩展五英雄射击玩法，以 GAS、Game Feature、PawnData 与服务器权威状态组织选人、战斗、死亡、重生和结算；项目仍在持续开发。',
+      zh: '基于 UE 5.7.4 与 Lyra 的五英雄射击原型。通过 HeroArena 插件扩展英雄技能与轮换占点，将选人状态保存在 PlayerState，支持阵亡窗口内换人，并在新 Pawn 初始化后重新装配技能与武器。',
       en: 'An in-progress UE5 Lyra hero shooter using GAS, Game Features, PawnData, and server-authoritative state for selection, combat, death, respawn, and results.',
     },
-    cover: '/media/repositories/lyra-hero-arena/hero-select.jpg',
+    cover: '/media/repositories/lyra-hero-arena/respawn-confirmed-20261017.jpg',
     tags: ['UE 5.7', 'Lyra', 'C++ / GAS', 'Game Features'],
     repositoryUrl: 'https://github.com/Ubik42/LyraHeroArena',
     story: {
-      zh: `# Lyra Hero Arena：五英雄多人对战游戏
-
-这是一个基于 Unreal Engine 5.7 与 Lyra Starter Game 持续开发的多人英雄射击项目。当前重点不是复制 Lyra 示例内容，而是在它已有的武器、队伍、GAS、PawnData、CommonUI 和网络框架上建立一套可扩展的英雄与比赛循环。
-
-## 游戏与 Gameplay 架构
-
-- 五名英雄以 AbilitySet、装备和数据定义组合差异，不复制整套 Pawn；
-- 服务器保存并校验英雄选择，客户端只提交意图，避免本地状态成为比赛权威；
-- 自有玩法放在 HeroArena Game Feature 中，减少主工程对具体模式的反向依赖；
-- 选人、出生、交战、目标、死亡、重生、换人与结算沿用同一状态路径；
-- 伤害、治疗、队伍、库存和武器 TargetData 尽量复用 Lyra 原有边界。
-
-## 当前状态
-
-仓库公开的是自研 C++ 模块、结构说明和真实运行截图，不重新分发 Lyra、Fab 或 Unreal Engine 资产。核心架构与主要比赛环节已经落地，但角色内容、玩法平衡、界面表现和完整发布流程仍在继续开发。`,
+      zh: lyraHeroStory,
       en: `# Lyra Hero Arena
 
 An in-progress multiplayer hero-shooter project built on Unreal Engine 5.7 and Lyra. Five heroes are composed from Ability Sets, equipment, and data definitions, while server-authoritative selection and a HeroArena Game Feature keep gameplay boundaries explicit. The repository publishes original C++ modules and real screenshots without redistributing Lyra or Fab assets.`,

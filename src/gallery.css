@@ -145,6 +145,7 @@
 .project-dialog-lead-media.is-contain img { object-fit: contain; }
 .notion-story .story-video { padding: 0; overflow: hidden; }
 .notion-story .story-video video { display: block; width: 100%; aspect-ratio: 16 / 9; background: black; }
+.notion-story .story-video video[src$="hero-respawn.mp4"] { aspect-ratio: 4 / 3; }
 .notion-story .story-video figcaption { padding: .7rem .9rem; color: var(--muted); font-size: .84rem; }
 
 .animation-aigc-showcase { display: grid; gap: 2rem; width: calc(100% - 2rem); max-width: 1040px; margin: 2rem auto; scroll-margin-top: 4rem; }
