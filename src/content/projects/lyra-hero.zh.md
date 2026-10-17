@@ -4,6 +4,18 @@
 
 基于 UE 5.7.4 与 Lyra 架构搭建的五英雄射击原型，目前处于持续开发阶段。项目以独立的 HeroArena GameFeature 插件组织玩法扩展，包含五位英雄的数据资产、专属能力组合、A/B/C 轮换控制点与战术 HUD，并为机器人补充前排、输出与支援的技能决策。底层的角色移动预测、网络同步武器、GAS 基础架构、动画资产、死亡镜头与自动重生流程复用 Lyra 的原生能力。
 
+## Lyra 轮换占点模式完整对局展示
+
+项目基于 UE 5.7.4 / Lyra 搭建，展示 Striker 玩家在阵亡后自动重生并重返活动控制点参与交火的完整循环。
+
+@[video: 轮换占点完整对局，约 6 分 20 秒，无声、无剪切，按游戏时间播放。单机 1 玩家 + 9 Bot，脚本通过 Enhanced Input 操作；保留死亡等待与转点过程，未开启无敌、传送、伤害注入或强制占点。](/media/repositories/lyra-hero-arena/full-match.mp4)
+
+本次从 **0:0** 推进至 **125:91**，队伍 1 达到目标分后自然进入赛后阶段，比分停止增长。录像覆盖 A/B/C 三点轮换，赛后画面继续保留约 5.2 秒。
+
+结算复用 **ShooterCore 原生占点计分与终局逻辑**。自有轮换组件负责维护 A/B/C 点状态，在停用控制点时清空其占有者缓存，使轮出点不再贡献分数，同时扩展了战术 HUD 与不干扰对局的只读阶段诊断。
+
+[对局记录与实现分工](https://github.com/Ubik42/LyraHeroArena/blob/main/docs/完整占点对局.md)
+
 ## 游骑：射击、恢复场与轮换控制点
 
 游骑 Striker 的技能与占点规则由 HeroArena 扩展实现，基础移动、武器、动画及重生流程复用 Lyra。下方为单机 1 玩家加 9 Bot 的连续片段：脚本读取只读寻路和视线可达敌人的位置，通过既有 Enhanced Input 输入移动、射击与技能。
@@ -71,7 +83,7 @@ Recall 使用 **ServerOnly GameplayAbility**。服务器每 0.1 秒记录 Pawn �
 
 ![独立拥有客户端重生后：Phase 的技能栏、充能和手枪正常显示；双端状态另由阶段记录核对](/media/repositories/lyra-hero-arena/standalone-respawn.png)
 
-本次补充开发专用跨进程驱动与双端状态检查，技能请求及复制仍走 UE NetDriver，GAS、CMC 和基础重生复用 Lyra。当前覆盖非打包、同机独立进程及单拥有客户端；完整比赛、多人并发和公网仍待补充。冷启动倒计时曾出现偏差，最终流程在预热后通过，冷启动稳定性仍需改进。[源码、阶段记录与复现方法](https://github.com/Ubik42/LyraHeroArena/blob/main/docs/跨进程网络案例.md)
+本次补充开发专用跨进程驱动与双端状态检查，技能请求及复制仍走 UE NetDriver，GAS、CMC 和基础重生复用 Lyra。当前覆盖非打包、同机独立进程及单拥有客户端；联网完整比赛、多人并发和公网仍待补充。冷启动倒计时曾出现偏差，最终流程在预热后通过，冷启动稳定性仍需改进。[源码、阶段记录与复现方法](https://github.com/Ubik42/LyraHeroArena/blob/main/docs/跨进程网络案例.md)
 
 ## GAS 技能架构：选择数据跨重生保留与装备应用
 
