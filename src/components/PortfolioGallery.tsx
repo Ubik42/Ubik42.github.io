@@ -15,6 +15,10 @@ import { PerformanceEvidence } from './PerformanceEvidence';
 import { AnimationQuality } from './AnimationQuality';
 import { HudQuality } from './HudQuality';
 import { NoemancerWorkflow } from './NoemancerWorkflow';
+import { ZoomImage } from './ZoomImage';
+import coverPreviews from '../data/coverPreviews.json';
+
+const previewFor = (source: string) => (coverPreviews as Record<string, string>)[source] ?? source;
 
 type GalleryItem =
   | { kind: 'repository'; id: string; category: PortfolioCategory; title: string; label: string; summary: string; cover: string; tags: string[]; value: RepositoryWork }
@@ -79,10 +83,17 @@ const categoryOrder = new Map<PortfolioCategory, number>([
   ['other-tools', 4],
 ]);
 
+function readGalleryQuery() {
+  const params = new URLSearchParams(window.location.search);
+  const category = filters.find(item => item.id === params.get('category'))?.id ?? 'all';
+  return { category, query: params.get('q') ?? '' };
+}
+
 export function PortfolioGallery() {
-  const { locale } = useLanguage();
+  const { locale, copy } = useLanguage();
   const reducedMotion = useReducedMotion() ?? false;
-  const [filter, setFilter] = useState<'all' | PortfolioCategory>('all');
+  const [filter, setFilter] = useState<'all' | PortfolioCategory>(() => readGalleryQuery().category);
+  const [query, setQuery] = useState(() => readGalleryQuery().query);
   const [activeItem, setActiveItem] = useState<GalleryItem | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -111,7 +122,20 @@ export function PortfolioGallery() {
       .map(({ item }) => item);
   }, [locale]);
 
-  const visibleItems = filter === 'all' ? items : items.filter((item) => item.category === filter);
+  const terms = query.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
+  const visibleItems = items.filter(item => (filter === 'all' || item.category === filter) &&
+    terms.every(term => [item.title, item.summary, item.label, ...item.tags].join(' ').toLocaleLowerCase().includes(term)));
+  const activeIndex = visibleItems.findIndex(item => item.id === activeItem?.id);
+  const updateFilter = (category: typeof filter, search: string, push = false) => {
+    setFilter(category);
+    setQuery(search);
+    const url = new URL(window.location.href);
+    if (category === 'all') url.searchParams.delete('category');
+    else url.searchParams.set('category', category);
+    if (search.trim()) url.searchParams.set('q', search);
+    else url.searchParams.delete('q');
+    window.history[push ? 'pushState' : 'replaceState']({}, '', `${url.pathname}${url.search}${url.hash}`);
+  };
 
   const updateWorkUrl = (workId: string | null, mode: 'push' | 'replace' = 'replace') => {
     const url = new URL(window.location.href);
@@ -132,6 +156,9 @@ export function PortfolioGallery() {
 
   useEffect(() => {
     const syncFromUrl = () => {
+      const selection = readGalleryQuery();
+      setFilter(selection.category);
+      setQuery(selection.query);
       const workId = new URLSearchParams(window.location.search).get('work');
       // Existing repository and Obsidian links still open the overview, without an eighth gallery card.
       if (workId === aitaSystems.id) {
@@ -156,6 +183,7 @@ export function PortfolioGallery() {
     if (activeItem) {
       if (!dialog.open) dialog.showModal();
       dialog.scrollTop = 0;
+      dialog.querySelector<HTMLElement>('#project-detail-title')?.focus({ preventScroll: true });
       document.body.classList.add('has-project-dialog');
     } else {
       if (dialog.open) dialog.close();
@@ -163,6 +191,12 @@ export function PortfolioGallery() {
     }
     return () => document.body.classList.remove('has-project-dialog');
   }, [activeItem]);
+
+  useEffect(() => {
+    document.title = activeItem ? `${activeItem.title} | ${locale === 'zh' ? '沈裕焱作品集' : 'Lucas Shen'}` : copy.meta.title;
+    const description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
+    if (description) description.content = activeItem?.summary ?? copy.meta.description;
+  }, [activeItem, copy.meta.title, copy.meta.description, locale]);
 
   return (
     <section id="portfolio" className="portfolio-gallery" aria-labelledby="portfolio-title">
@@ -173,16 +207,28 @@ export function PortfolioGallery() {
 
       <div className="portfolio-filters" role="group" aria-label={locale === 'zh' ? '筛选作品' : 'Filter work'}>
         {filters.map((item) => (
-          <button key={item.id} type="button" data-filter={item.id} className={filter === item.id ? 'is-active' : ''} aria-pressed={filter === item.id} onClick={() => setFilter(item.id)}>
-            {locale === 'zh' ? item.zh : item.en}
+          <button key={item.id} type="button" data-filter={item.id} className={filter === item.id ? 'is-active' : ''} aria-pressed={filter === item.id} onClick={() => updateFilter(item.id, query, true)}>
+            <span>{locale === 'zh' ? item.zh : item.en}</span><small>{item.id === 'all' ? items.length : items.filter(work => work.category === item.id).length}</small>
           </button>
         ))}
       </div>
 
+      <div className="portfolio-search-row">
+        <p aria-live="polite" aria-atomic="true">{locale === 'zh' ? `${visibleItems.length} 件作品` : `${visibleItems.length} works`}</p>
+        <div className="portfolio-search">
+          <label htmlFor="work-search">{locale === 'zh' ? '搜索作品' : 'Search work'}</label>
+          <input id="work-search" type="search" value={query} placeholder={locale === 'zh' ? '名称、技术或引擎，如 GAS / 动画 / C++' : 'Title, technology or engine'} onChange={event => updateFilter(filter, event.target.value)} />
+          {query && <button type="button" onClick={() => updateFilter(filter, '')} aria-label={locale === 'zh' ? '清空搜索' : 'Clear search'}>×</button>}
+        </div>
+      </div>
+      {visibleItems.length === 0 && <div className="portfolio-empty"><h3>{locale === 'zh' ? '没有匹配的作品' : 'No matching work'}</h3>
+        <p>{locale === 'zh' ? '可缩短关键词，或清除分类与搜索条件。' : 'Try a shorter query or clear the filters.'}</p>
+        <button type="button" onClick={() => updateFilter('all', '')}>{locale === 'zh' ? '显示全部作品' : 'Show all work'}</button></div>}
+
       <div className="portfolio-grid">
-        {visibleItems.map((item) => (
+        {visibleItems.map((item, index) => (
           <motion.button key={`${item.kind}-${item.id}`} type="button" className="portfolio-tile" data-category={item.category} onClick={() => openItem(item)} whileHover={reducedMotion ? undefined : { y: -4 }} transition={{ duration: .18 }}>
-            <figure><img src={item.cover} alt="" loading="eager" /></figure>
+            <figure><img src={previewFor(item.cover)} alt="" width="800" height="500" loading={index < 4 ? 'eager' : 'lazy'} decoding="async" /></figure>
             <div className="portfolio-tile-copy">
               <small>{item.label}</small><h3>{item.title}</h3><p>{item.summary}</p>
               <div>{item.tags.slice(0, 4).map((tag) => <span key={tag}>{tag}</span>)}</div>
@@ -191,19 +237,44 @@ export function PortfolioGallery() {
         ))}
       </div>
 
-      <dialog ref={dialogRef} className={`project-dialog unified-dialog ${activeItem?.kind === 'visual' ? 'visual-work-dialog' : ''}`} onCancel={(event) => { event.preventDefault(); closeItem(); }} onClose={closeItem} onClick={(event) => { if (event.target === event.currentTarget) closeItem(); }}>
-        {activeItem && <GalleryDetail item={activeItem} locale={locale} close={closeItem} />}
+      <dialog ref={dialogRef} aria-labelledby="project-detail-title" className={`project-dialog unified-dialog ${activeItem?.kind === 'visual' ? 'visual-work-dialog' : ''}`} onCancel={(event) => { event.preventDefault(); closeItem(); }} onClick={(event) => {
+        if (event.target !== event.currentTarget) return;
+        const bounds = event.currentTarget.getBoundingClientRect();
+        if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) closeItem();
+      }}>
+        {activeItem && <GalleryDetail key={`${activeItem.id}-${locale}`} item={activeItem} locale={locale} close={closeItem}
+          previous={activeIndex > 0 ? visibleItems[activeIndex - 1] : undefined}
+          next={activeIndex >= 0 ? visibleItems[activeIndex + 1] : undefined} open={openItem} />}
       </dialog>
     </section>
   );
 }
 
-function GalleryDetail({ item, locale, close }: { item: GalleryItem; locale: 'zh' | 'en'; close: () => void }) {
+function GalleryDetail({ item, locale, close, previous, next, open }: { item: GalleryItem; locale: 'zh' | 'en'; close: () => void; previous?: GalleryItem; next?: GalleryItem; open: (item: GalleryItem) => void }) {
   const reducedMotion = useReducedMotion() ?? false;
+  const [share, setShare] = useState<'idle' | 'copied' | 'manual'>('idle');
+  const shareUrl = new URL(window.location.href);
+  shareUrl.search = '';
+  shareUrl.hash = '';
+  shareUrl.searchParams.set('work', item.id);
+  const copyLink = async () => {
+    try { await navigator.clipboard.writeText(shareUrl.href); setShare('copied'); }
+    catch { setShare('manual'); }
+  };
   return (
     <motion.article key={`${item.kind}-${item.id}`} initial={reducedMotion ? false : { opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .2 }}>
-      <button className="project-dialog-close" type="button" onClick={close} aria-label={locale === 'zh' ? '关闭项目详情' : 'Close project details'}>×</button>
-      <div className="project-dialog-heading" data-work-id={item.id}><p>{item.label} · {item.tags.join(' · ')}</p><h2>{item.title}</h2><p>{item.summary}</p></div>
+      <div className="project-reader-bar">
+        <span className="reader-category">{item.label}</span>
+        <div className="reader-actions">
+          <button type="button" onClick={copyLink}>{share === 'copied' ? (locale === 'zh' ? '已复制链接' : 'Link copied') : (locale === 'zh' ? '复制链接' : 'Copy link')}</button>
+          <button type="button" onClick={() => previous && open(previous)} disabled={!previous} aria-label={locale === 'zh' ? '上一个作品' : 'Previous work'} title={previous?.title}>←</button>
+          <button type="button" onClick={() => next && open(next)} disabled={!next} aria-label={locale === 'zh' ? '下一个作品' : 'Next work'} title={next?.title}>→</button>
+          <button className="project-dialog-close" type="button" onClick={close} aria-label={locale === 'zh' ? '关闭项目详情' : 'Close project details'}>×</button>
+        </div>
+        <span className="sr-only" role="status">{share === 'copied' ? (locale === 'zh' ? '项目详情链接已复制' : 'Project link copied') : ''}</span>
+        {share === 'manual' && <label className="share-fallback">{locale === 'zh' ? '复制此项目链接' : 'Copy this project link'}<input readOnly value={shareUrl.href} onFocus={event => event.target.select()} /></label>}
+      </div>
+      <div className="project-dialog-heading" data-work-id={item.id}><p>{item.tags.join(' · ')}</p><h2 id="project-detail-title" tabIndex={-1}>{item.title}</h2><p>{item.summary}</p></div>
       {item.kind === 'repository' && <RepositoryDetail work={item.value} locale={locale} />}
       {item.kind === 'visual' && <VisualDetail work={item.value} locale={locale} />}
       {item.kind === 'project' && <ProjectDetail project={item.value} locale={locale} />}
@@ -247,13 +318,14 @@ function ProjectDetail({ project, locale }: { project: SelectedProject; locale: 
 }
 
 function DetailLeadMedia({ src, alt, fit }: { src: string; alt: string; fit: 'cover' | 'contain' }) {
-  return <figure className={`project-dialog-lead-media ${fit === 'contain' ? 'is-contain' : ''}`}><img src={src} alt={alt} /></figure>;
+  return <figure className={`project-dialog-lead-media ${fit === 'contain' ? 'is-contain' : ''}`}><ZoomImage src={src} alt={alt} loading="eager" /></figure>;
 }
 
 function VideoEmbed({ youtubeId, title }: { youtubeId: string; title: string }) {
-  return <div className="project-dialog-video"><iframe src={`https://www.youtube-nocookie.com/embed/${youtubeId}?rel=0`} title={`${title} demo video`} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen /></div>;
+  const { locale } = useLanguage();
+  return <div className="project-dialog-video"><iframe loading="lazy" src={`https://www.youtube-nocookie.com/embed/${youtubeId}?rel=0`} title={`${title} ${locale === 'zh' ? '演示视频' : 'demo video'}`} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen /><a className="video-fallback" href={`https://www.youtube.com/watch?v=${youtubeId}`} target="_blank" rel="noreferrer">{locale === 'zh' ? '在 YouTube 打开视频 ↗' : 'Open on YouTube ↗'}</a></div>;
 }
 
 function DetailGallery({ images, fit = 'cover' }: { images: Array<{ src: string; alt: string; caption: string; position?: string }>; fit?: 'cover' | 'contain' }) {
-  return <div className={`project-dialog-gallery ${fit === 'contain' ? 'is-contain' : ''}`}>{images.map((image) => <figure key={image.src}><img src={image.src} alt={image.alt} style={{ objectPosition: image.position }} loading="lazy" />{image.caption && <figcaption>{image.caption}</figcaption>}</figure>)}</div>;
+  return <div className={`project-dialog-gallery ${fit === 'contain' ? 'is-contain' : ''}`}>{images.map((image) => <figure key={image.src}><ZoomImage src={image.src} alt={image.alt} style={{ objectPosition: image.position }} />{image.caption && <figcaption>{image.caption}</figcaption>}</figure>)}</div>;
 }

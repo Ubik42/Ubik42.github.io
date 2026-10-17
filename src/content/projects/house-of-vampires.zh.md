@@ -6,6 +6,12 @@
 
 建议佩戴耳机游玩。
 
+![发布版城堡走廊与可交互物件](/media/projects/hov/published-corridor.png)
+
+![发布版书架与哥特式室内场景](/media/projects/hov/published-library.png)
+
+游戏画面来自团队的 [itch.io 发布页](https://musitive.itch.io/hov)。
+
 > 展示说明：下方素材主要记录手部绑定、特效和公开页面，只是我在项目中的部分工作。游戏程序以 Unreal Blueprint 为主，完整职责还包括 Gameplay 框架、交互系统、谜题状态和关卡流程。
 
 ## Gameplay 蓝图框架与程序模块

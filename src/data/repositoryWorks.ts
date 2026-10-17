@@ -171,10 +171,10 @@ Version 0.1.0 is verified on Windows with Python 3.12 and DuckDB 1.5.5. It uses 
     category: 'engine-games',
     categoryLabel: { zh: '多人游戏与 Gameplay 架构', en: 'Multiplayer game and gameplay architecture' },
     summary: {
-      zh: '基于 UE 5.7.4 与 Lyra 的五英雄射击原型，深入实践 GAS 技能架构：以 AbilitySet 管理技能授予与撤销，由 PlayerState 保存选择并交给服务器校验，在重生 Pawn 初始化后重新装配技能与武器。',
+      zh: '基于 Lyra 的五英雄射击原型：GAS 技能、轮换占点、换人重生与闪现预测回滚；独立服务器与客户端在同机模拟弱网下完成整局结算和切局。',
       en: 'An in-progress UE5 Lyra hero shooter using GAS, Game Features, PawnData, and server-authoritative state for selection, combat, death, respawn, and results.',
     },
-    cover: '/media/repositories/lyra-hero-arena/respawn-confirmed-20261017.jpg',
+    cover: '/media/repositories/lyra-hero-arena/striker-combat-poster.jpg',
     tags: ['UE 5.7', 'Lyra', 'C++ / GAS', 'Game Features'],
     repositoryUrl: 'https://github.com/Ubik42/LyraHeroArena',
     story: {
@@ -238,7 +238,7 @@ A Chinese Unreal Editor tool that turns profiling setup into repeatable experime
     title: 'Noemancer：面向人与 AI 协作的自研游戏引擎',
     category: 'engine-games',
     categoryLabel: { zh: '自研游戏引擎', en: 'Custom game engine' },
-    summary: { zh: 'Noemancer v0.2.0 Preview 1 是一套处于 pre-alpha 的 C++20 游戏引擎与编辑器，当前在 Windows x64 上贯通 Scene/Project 编辑、C# Gameplay、Jolt 物理、ozz 动画、SDL_GPU D3D12/Vulkan Raster、资产 Cook、Package 与独立 Player；Editor、CLI 和 MCP 通过稳定 ID、Schema、Revision 与 Receipt 共享状态观察和受控修改。', en: 'Noemancer v0.2.0 Preview 1 is a pre-alpha C++20 engine and editor, currently verified end to end on Windows x64 across Scene/Project authoring, C# gameplay, Jolt physics, ozz animation, SDL_GPU D3D12/Vulkan raster rendering, asset Cook, Package, and a standalone Player. Editor, CLI, and MCP share stable IDs, schemas, revisions, and receipts for structured observation and bounded mutation.' },
+    summary: { zh: 'C++20 引擎与编辑器，覆盖 PBR 渲染、C# Gameplay、Jolt 物理、ozz 动画及 Cook / 打包；Editor、CLI 与 MCP 共享场景状态和可撤销编辑。当前为 Windows 本机验证的 pre-alpha。', en: 'A pre-alpha C++20 engine and editor with PBR, C# gameplay, Jolt physics, ozz animation, Cook and packaging. Editor, CLI and MCP share scene state and undoable edits, currently validated on Windows.' },
     cover: '/media/repositories/major-updates/noemancer-sponza-atrium.webp',
     tags: ['C++20', 'D3D12 / Vulkan', 'C#', 'MCP'],
     repositoryUrl: 'https://github.com/Ubik42/Noemancer',
@@ -277,7 +277,7 @@ The project is pre-alpha and currently verified end to end on Windows x64. Raste
     category: 'engine-games',
     categoryLabel: { zh: 'UE 物理与论文复现', en: 'UE physics and paper reproduction' },
     summary: {
-      zh: '围绕布料、软体、流体、可微物理和物理角色控制，把 SIGGRAPH 研究中的求解思想接入 UE 5.4、Chaos 与真实引擎资产。',
+      zh: '五类 UE 物理实验，覆盖布料、软体、流体、可微物理与角色控制；连续演示 Chaos 受击倒地、Physics Control 跟随 ALS 起身，以及恢复 CharacterMovement 行走。',
       en: 'Five UE 5.4 studies connect SIGGRAPH research on cloth, soft bodies, fluids, differentiable physics, and physical character control to Chaos and real engine assets.',
     },
     cover: '/media/repositories/siggraph-physics-lab/cover.png',

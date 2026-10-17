@@ -69,6 +69,7 @@ export const selectedProjects: SelectedProject[] = [
     ],
     stack: ['Unreal Engine', 'Blueprint', 'Gameplay', 'Rigging', 'Animation'],
     images: [
+      { src: '/media/projects/hov/published-title.png', alt: { zh: 'House of Vampires 发布版标题画面', en: 'House of Vampires released title screen' }, caption: { zh: '来自 itch.io 发布页的游戏画面', en: 'Game capture from the itch.io release page' } },
       { src: '/media/projects/house-of-vampires.webp', alt: { zh: 'House of Vampires 的 itch.io 项目页与游戏截图', en: 'House of Vampires itch.io page and screenshots' }, caption: { zh: '已上线的 itch.io 页面与实机画面', en: 'Published itch.io page and in-game captures' }, position: 'top' },
     ],
     link: { label: { zh: '打开 itch.io 项目页', en: 'Open the itch.io page' }, href: 'https://musitive.itch.io/hov' },

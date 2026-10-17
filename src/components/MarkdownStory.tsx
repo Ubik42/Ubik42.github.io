@@ -1,4 +1,7 @@
 import { useRef, type ReactNode } from 'react';
+import { ZoomImage } from './ZoomImage';
+import { useLanguage } from '../i18n/LanguageContext';
+import { MechanismFlow } from './MechanismFlow';
 
 interface MarkdownStoryProps {
   markdown: string;
@@ -13,6 +16,9 @@ type StoryBlock =
   | { type: 'video'; src: string; caption: string }
   | { type: 'list'; ordered: boolean; items: string[] }
   | { type: 'details'; summary: string; blocks: StoryBlock[] }
+  | { type: 'table'; headers: string[]; rows: string[][] }
+  | { type: 'code'; language: string; text: string }
+  | { type: 'flow'; id: string }
   | { type: 'paragraph'; text: string };
 
 const imagePattern = /^!\[(.*?)\]\((.*?)\)$/;
@@ -21,6 +27,9 @@ const headingPattern = /^(#{1,6})\s+(.+)$/;
 const unorderedPattern = /^\s*-\s+(.+)$/;
 const orderedPattern = /^\s*\d+\.\s+(.+)$/;
 const detailsPattern = /^:::details\s+(.+)$/;
+const flowPattern = /^@\[flow\]\(([a-z-]+)\)$/;
+const tableSeparator = /^\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|?$/;
+const tableCells = (line: string) => line.trim().replace(/^\|/, '').replace(/\|$/, '').split(/(?<!\\)\|/).map(cell => cell.trim().replace(/\\\|/g, '|'));
 const inlinePattern = /(`[^`]+`|\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\)|https?:\/\/[^\s)]+)/g;
 
 function cleanLine(line: string) {
@@ -29,7 +38,7 @@ function cleanLine(line: string) {
 
 function isStructural(line: string) {
   const value = cleanLine(line).trim();
-  return !value || value === '<aside>' || value === '</aside>' || detailsPattern.test(value) || value === ':::' || imagePattern.test(value) || videoPattern.test(value) || headingPattern.test(value) || unorderedPattern.test(value) || orderedPattern.test(value);
+  return !value || flowPattern.test(value) || value.startsWith('```') || value.startsWith('|') || value === '<aside>' || value === '</aside>' || detailsPattern.test(value) || value === ':::' || imagePattern.test(value) || videoPattern.test(value) || headingPattern.test(value) || unorderedPattern.test(value) || orderedPattern.test(value);
 }
 
 function parseMarkdown(markdown: string): StoryBlock[] {
@@ -43,7 +52,31 @@ function parseMarkdown(markdown: string): StoryBlock[] {
       continue;
     }
 
+    if (line.startsWith('```')) {
+      const content: string[] = [];
+      const language = line.slice(3).trim();
+      index += 1;
+      while (index < lines.length && !lines[index].trim().startsWith('```')) content.push(lines[index++]);
+      index += 1;
+      blocks.push({ type: 'code', language, text: content.join('\n') });
+      continue;
+    }
+    if (line.includes('|') && tableSeparator.test(lines[index + 1]?.trim() ?? '')) {
+      const headers = tableCells(line);
+      const rows: string[][] = [];
+      index += 2;
+      while (index < lines.length && lines[index].trim().includes('|') && lines[index].trim()) rows.push(tableCells(lines[index++]));
+      blocks.push({ type: 'table', headers, rows });
+      continue;
+    }
+
     const details = line.match(detailsPattern);
+    const flow = line.match(flowPattern);
+    if (flow) {
+      blocks.push({ type: 'flow', id: flow[1] });
+      index += 1;
+      continue;
+    }
     if (details) {
       const content: string[] = [];
       let depth = 1;
@@ -141,10 +174,18 @@ function renderInline(text: string): ReactNode[] {
 }
 
 export function MarkdownStory({ markdown, title, outlineLabel, videoPosters }: MarkdownStoryProps) {
+  const { locale } = useLanguage();
   const storyRef = useRef<HTMLDivElement>(null);
   const blocks = parseMarkdown(markdown);
+  const hasOutline = Boolean(outlineLabel) || blocks.filter(block => block.type === 'heading' && block.level === 2).length >= 3;
   const firstHeading = blocks.findIndex((block) => block.type === 'heading' && block.level === 1);
   const renderBlock = (block: StoryBlock, key: string): ReactNode => {
+        if (block.type === 'flow') return <MechanismFlow key={key} id={block.id} />;
+        if (block.type === 'table') return <div className="story-table" key={key} role="region" tabIndex={0} aria-label={`${title} — ${locale === 'zh' ? '数据表' : 'data table'}`}>
+          <table><thead><tr>{block.headers.map((header, i) => <th key={i} scope="col">{renderInline(header)}</th>)}</tr></thead>
+            <tbody>{block.rows.map((row, i) => <tr key={i}>{block.headers.map((_, j) => <td key={j}>{renderInline(row[j] ?? '')}</td>)}</tr>)}</tbody></table>
+        </div>;
+        if (block.type === 'code') return <pre className="story-code" key={key} tabIndex={0} aria-label={block.language || (locale === 'zh' ? '代码' : 'Code')}><code>{block.text}</code></pre>;
         if (block.type === 'details') return <details className="story-details" key={key} onToggle={event => {
           if (!event.currentTarget.open) event.currentTarget.querySelectorAll('video').forEach(video => video.pause());
         }}>
@@ -154,7 +195,7 @@ export function MarkdownStory({ markdown, title, outlineLabel, videoPosters }: M
         if (block.type === 'image') {
           return (
             <figure key={key}>
-              <img src={notionImagePath(block.src)} alt={block.alt || title} loading="lazy" />
+              <ZoomImage src={notionImagePath(block.src)} alt={block.alt || title} />
             </figure>
           );
         }
@@ -178,8 +219,8 @@ export function MarkdownStory({ markdown, title, outlineLabel, videoPosters }: M
   };
 
   return (
-    <div className={`notion-story${outlineLabel ? ' has-outline' : ''}`} ref={storyRef}>
-      {outlineLabel && <nav className="story-outline" aria-label={outlineLabel}>
+    <div className={`notion-story${hasOutline ? ' has-outline' : ''}`} ref={storyRef}>
+      {hasOutline && <nav className="story-outline" aria-label={outlineLabel ?? (locale === 'zh' ? '项目章节' : 'Project chapters')}>
         {blocks.map((block, index) => block.type === 'heading' && block.level === 2 ?
           <button key={index} type="button" onClick={() => {
             storyRef.current?.querySelector(`#story-section-${index}`)?.scrollIntoView({ block: 'start' });

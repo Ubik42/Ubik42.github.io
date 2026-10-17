@@ -25,12 +25,12 @@ export interface SiteCopy {
 export const siteCopy: Record<Locale, SiteCopy> = {
   en: {
     meta: {
-      title: 'Lucas Shen | AI Tool-Pipeline TA & Engine Tools',
+      title: 'Lucas Shen | Unreal Gameplay, Engine Development & Technical Art',
       description: 'Games, DCC plug-ins, realtime graphics, engine tools, and AI-assisted art pipelines by Lucas Shen.',
     },
     nav: { work: 'Projects', practice: 'Experience', links: 'Links', aria: 'Primary navigation' },
     language: { label: 'Language', english: 'English', changed: 'Language changed to English.' },
-    hero: { role: 'AI Tool-Pipeline TA & Engine Tool Development', primaryAction: 'Selected projects' },
+    hero: { role: 'Unreal Gameplay / Engine Development · Technical Art', primaryAction: 'Selected projects' },
     personal: {
       intro: 'My work spans games, DCC plug-ins, realtime graphics, engine tools, and AI-assisted art pipelines, with running builds, project captures, and implementation details.',
       storyAction: 'About me',
@@ -65,12 +65,12 @@ export const siteCopy: Record<Locale, SiteCopy> = {
   },
   zh: {
     meta: {
-      title: '沈裕焱 | AI 工具管线 TA & 引擎工具开发',
-      description: '沈裕焱的游戏、DCC 插件、实时图形、引擎工具与 AI 辅助美术管线作品集。',
+      title: '沈裕焱 | UE 客户端、引擎开发与技术美术',
+      description: '沈裕焱的 UE 客户端与引擎开发作品集：GAS、网络同步、角色动画与物理、实时渲染，以及 DCC 工具和 AI 应用。',
     },
     nav: { work: '作品', practice: '经历', links: '链接', aria: '主导航' },
     language: { label: '语言', english: 'English', changed: '语言已切换为中文。' },
-    hero: { role: 'AI 工具管线 TA & 引擎工具开发', primaryAction: '项目作品' },
+    hero: { role: 'UE 客户端 / 引擎开发 · 技术美术', primaryAction: '项目作品' },
     personal: {
       intro: '作品覆盖游戏、DCC 插件、实时图形、引擎工具与 AI 辅助美术管线，包含运行画面、项目素材和具体实现。',
       storyAction: '关于我',

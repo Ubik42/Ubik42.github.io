@@ -130,6 +130,8 @@ Recall 使用 **ServerOnly GameplayAbility**。服务器每 0.1 秒记录 Pawn �
 
 ## 预测回滚与弱网同步
 
+@[flow](blink)
+
 闪现原实现在本地预测扣减充能，当服务端拒绝激活时位移被 CMC 纠偏，但充能缺乏回退机制而发生不同步。为此引入预测键结算模型：客户端在 **PendingPredictionKeys** 记录待确认扣减；收到 **FPredictionKey** 拒绝回调时撤销扣减，服务端处理完成后复制状态在 **OnRep** 统一结算。引入 **ResetEpoch** 隔离换人与重生的生命周期请求。位置回滚由 CMC 负责，充能一致性由预测键管理。
 
 @[video: 双 PIE 弱网演示，14 秒，无声。两端各配置 150 ms 出站延迟与 2% 丢包；预设起点、自动输入，开发指令注入服务器拒绝。双视角顺序采样，按各自时间戳播放，展示预测扣减、拒绝恢复、成功释放及充能。](/media/repositories/lyra-hero-arena/blink-network.mp4)

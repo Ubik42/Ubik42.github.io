@@ -27,12 +27,12 @@ export function Hero() {
 
   return (
     <section className="profile-strip" aria-labelledby="hero-title">
-      <img src="/media/avatar.jpg" alt="Lucas Shen hand-drawn avatar" width="640" height="640" fetchPriority="high" />
+      <img src="/media/avatar.jpg" alt={locale === 'zh' ? '沈裕焱的手绘头像' : 'Lucas Shen hand-drawn avatar'} width="640" height="640" fetchPriority="high" />
       <div className="profile-name">
         <h1 id="hero-title"><span lang="zh-CN">沈裕焱</span><span>Lucas Shen</span></h1>
         <p>{copy.hero.role}</p>
       </div>
-      <p className="profile-intro">{locale === 'zh' ? '游戏、DCC 插件、实时图形、引擎工具与 AI 辅助美术管线作品。' : 'Games, DCC plug-ins, realtime graphics, engine tools, and AI-assisted art pipelines.'}</p>
+      <p className="profile-intro">{locale === 'zh' ? 'Gameplay、GAS 与网络同步，角色动画与物理、实时渲染和引擎工具。' : 'Gameplay, GAS and networking; character animation, physics, realtime rendering and engine tools.'}</p>
       <div className="profile-history">
         <section>
           <h2>{locale === 'zh' ? '教育经历' : 'Education'}</h2>

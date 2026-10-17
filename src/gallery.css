@@ -206,3 +206,124 @@
 
 /* Keep the Chinese project title readable when it wraps on narrow screens. */
 .project-dialog-heading[data-work-id="ray-tracing-hardware"] h2 { font-size: clamp(2.1rem, 5vw, 4.5rem); line-height: 1.16; letter-spacing: -.035em; }
+
+/* Portfolio reading: the work stays prominent; controls remain within reach. */
+.profile-strip { padding-block: clamp(1.5rem, 3vw, 2.5rem); }
+.profile-name h1 { line-height: 1.2; }
+.profile-name p { line-height: 1.6; }
+.profile-history h2 { letter-spacing: .02em; }
+.profile-history li { gap: .2rem .6rem; }
+.portfolio-gallery { padding-top: clamp(2.5rem, 4vw, 4rem); }
+.portfolio-gallery-header h2 { font-size: clamp(2.6rem, 4vw, 4rem); line-height: 1.1; }
+.portfolio-filters { margin-bottom: 1.2rem; }
+.portfolio-filters button { display: flex; flex-direction: column; justify-content: center; gap: .45rem; }
+.portfolio-filters button small { font-size: .75rem; font-variant-numeric: tabular-nums; padding: .15rem .38rem; border: 1px solid currentColor; border-radius: .25rem; }
+.portfolio-search-row { display: flex; gap: 1.5rem; align-items: center; justify-content: space-between; margin: 0 0 1.75rem; }
+.portfolio-search-row > p { margin: 0; white-space: nowrap; color: var(--muted); font-size: .95rem; font-variant-numeric: tabular-nums; }
+.portfolio-search { display: flex; align-items: center; gap: .8rem; width: min(100%, 37rem); padding: .6rem .85rem; border: 1px solid var(--line); background: white; }
+.portfolio-search:focus-within { border-color: var(--blue); box-shadow: 0 0 0 2px color-mix(in oklch, var(--blue) 12%, transparent); }
+.portfolio-search label { flex-shrink: 0; font-size: .88rem; font-weight: 700; }
+.portfolio-search input { min-width: 0; width: 100%; border: 0; background: transparent; font: inherit; font-size: 1rem; color: var(--ink); outline: none; }
+.portfolio-search input::-webkit-search-cancel-button { display: none; }
+.portfolio-search > button { border: 0; background: transparent; color: var(--muted); width: 2rem; height: 2rem; cursor: pointer; }
+.portfolio-empty { padding: 4rem 1rem; text-align: center; border-block: 1px solid var(--line); }
+.portfolio-empty h3 { font-size: 1.5rem; }
+.portfolio-empty button { padding: .75rem 1rem; background: var(--blue); color: white; border: 0; cursor: pointer; }
+.portfolio-tile-copy h3 { line-height: 1.4; letter-spacing: -.015em; }
+.portfolio-tile-copy > p { font-size: .95rem; line-height: 1.65; min-height: 4.95em; font-weight: 500; }
+.portfolio-tile-copy > div span { font-size: .75rem; }
+.portfolio-tile:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
+.unified-dialog { overscroll-behavior: contain; scrollbar-gutter: stable; }
+.project-reader-bar { position: sticky; z-index: 8; top: 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; padding: .65rem clamp(1rem, 2vw, 1.75rem); background: var(--white); border-bottom: 1px solid var(--line); }
+.reader-category { min-width: 0; max-width: 50%; font-size: .85rem; font-weight: 700; color: var(--blue-deep); }
+.reader-actions { display: flex; gap: .4rem; align-items: center; }
+.reader-actions button { display: grid; place-items: center; min-width: 2.7rem; min-height: 2.7rem; padding: .45rem .7rem; border: 1px solid var(--line); background: white; color: var(--ink); cursor: pointer; font-size: .9rem; font-weight: 650; }
+.reader-actions button:disabled { opacity: .35; cursor: default; }
+.reader-actions button:not(:disabled):hover { border-color: var(--blue); color: var(--blue); }
+.unified-dialog .reader-actions .project-dialog-close { position: static; float: none; width: 2.7rem; height: 2.7rem; margin: 0; border-radius: 0; font-size: 1.5rem; }
+.share-fallback { flex-basis: 100%; display: flex; gap: .8rem; align-items: center; font-size: .85rem; }
+.share-fallback input { flex: 1; min-width: 0; padding: .5rem; font: inherit; }
+.unified-dialog .project-dialog-heading[data-work-id] { padding: clamp(1.5rem, 3.5vw, 3rem); }
+.unified-dialog .project-dialog-heading[data-work-id] h2 { max-width: 30ch; font-size: clamp(1.8rem, 3.1vw, 3.2rem); line-height: 1.3; letter-spacing: -.025em; text-wrap: pretty; margin-bottom: 1rem; }
+#project-detail-title:focus { outline: none; }
+.unified-dialog .project-dialog-heading[data-work-id] > p:first-child { padding: 0; font-size: .82rem; line-height: 1.7; margin-bottom: .8rem; }
+.unified-dialog .project-dialog-heading > p:last-child { max-width: 65ch; font-size: clamp(1rem, 1.3vw, 1.15rem); line-height: 1.8; }
+.unified-dialog .project-dialog-source { margin-block: 1.25rem; padding-block: .85rem; }
+.unified-dialog .notion-story { padding: clamp(1.5rem, 3.5vw, 3rem); }
+.unified-dialog .notion-story h3, .unified-dialog .notion-story.has-outline > h3 { font-size: clamp(1.5rem, 2.5vw, 2.25rem); line-height: 1.4; margin-top: 2.5rem; padding-top: 2rem; scroll-margin-top: 5.5rem; letter-spacing: -.01em; }
+.unified-dialog .notion-story h4 { max-width: none; font-size: clamp(1.15rem, 1.7vw, 1.5rem); line-height: 1.5; scroll-margin-top: 5.5rem; }
+.unified-dialog .notion-story p, .unified-dialog .notion-story li { max-width: 76ch; line-height: 1.85; color: #344254; }
+.unified-dialog .notion-story > p:first-of-type { font-size: 1.1rem; }
+.story-outline { gap: .5rem; }
+.story-outline button { font-size: .92rem; line-height: 1.5; padding: .6rem .8rem; }
+.story-table { width: 100%; overflow: auto; margin: 1.5rem 0 2rem; border: 1px solid var(--line); }
+.story-table table { width: 100%; border-collapse: collapse; text-align: left; font-size: .95rem; line-height: 1.7; }
+.story-table th { background: #e9eef5; color: #1e3554; font-weight: 700; }
+.story-table th, .story-table td { min-width: 7rem; padding: .8rem 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+.story-table tr:nth-child(even) td { background: #f0f3f8; }
+.story-table tr:last-child td { border: 0; }
+.story-code { max-width: 100%; overflow: auto; padding: 1.25rem; background: #172333; color: #e6edf6; border-radius: .25rem; font-size: .9rem; line-height: 1.7; }
+.unified-dialog .story-code code { background: none; padding: 0; color: inherit; }
+.image-expand { position: relative; display: block; width: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; }
+.image-expand-hint { position: absolute; z-index: 1; right: .6rem; top: .6rem; padding: .25rem .6rem; border: 1px solid #ffffff55; background: #102033db; color: white; font-size: .75rem; line-height: 1.6; border-radius: .25rem; }
+.image-expand:focus-visible { outline: 3px solid var(--blue); outline-offset: -3px; }
+.project-dialog-lead-media .image-expand, .project-dialog-gallery .image-expand { height: 100%; }
+.project-dialog-lead-media .image-expand img { height: 100%; }
+.image-dialog { width: min(97vw, 120rem); height: 94svh; max-width: none; max-height: 96svh; padding: 0; overflow: hidden; border: 1px solid #63738a; background: #111a26; color: #f0f4fa; }
+.image-dialog::backdrop { background: #08101be8; }
+.image-dialog header { display: flex; gap: 1rem; align-items: center; justify-content: space-between; padding: .8rem 1rem; border-bottom: 1px solid #435269; }
+.image-dialog header p { margin: 0; font-size: .9rem; max-width: 65ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.image-dialog header > div { display: flex; gap: .5rem; align-items: center; flex-shrink: 0; }
+.image-dialog button, .image-dialog header a { display: inline-flex; justify-content: center; align-items: center; padding: .55rem .75rem; min-height: 2.7rem; border: 1px solid #677992; background: #1f3045; color: white; cursor: pointer; text-decoration: none; font-size: .85rem; }
+.image-dialog button:last-child { font-size: 1.4rem; min-width: 2.7rem; }
+.image-dialog-canvas { height: calc(100% - 4.5rem); overflow: auto; display: grid; place-items: center; padding: .8rem; }
+.image-dialog-canvas img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
+.image-dialog-canvas.is-actual-size { display: block; }
+.image-dialog-canvas.is-actual-size img { max-width: none; max-height: none; }
+.video-fallback { display: block; width: fit-content; margin: 1rem auto 0; color: #e6f0ff; text-underline-offset: .25em; font-size: .9rem; }
+@media (max-width: 600px) {
+  .portfolio-search-row { flex-wrap: wrap; gap: .75rem; }
+  .portfolio-search { width: 100%; gap: .5rem; }
+  .portfolio-search label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .portfolio-filters button { min-height: 4rem; padding: .75rem .5rem; }
+  .portfolio-tile-copy { padding: 1.1rem; }
+  .portfolio-tile-copy > p { min-height: 0; }
+  .project-reader-bar { padding: .5rem .65rem; }
+  .reader-category { font-size: .75rem; max-width: 7rem; }
+  .reader-actions { gap: .25rem; }
+  .reader-actions button { padding: .4rem .5rem; min-width: 2.5rem; }
+  .unified-dialog .project-dialog-heading[data-work-id] { padding: 1.5rem 1rem; }
+  .unified-dialog .project-dialog-heading[data-work-id] h2 { font-size: 1.85rem; }
+  .image-dialog { width: 100vw; height: 100svh; max-height: 100svh; border: 0; }
+  .image-dialog header { flex-wrap: wrap; gap: .65rem; }
+  .image-dialog header p { width: 100%; }
+  .image-dialog header > div { width: 100%; justify-content: flex-end; }
+  .image-dialog-canvas { height: calc(100% - 7.5rem); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-tile, .portfolio-tile figure img, .portfolio-filters button { transition: none; }
+}
+
+.unified-dialog .notion-story .mechanism-flow { margin-block: 1.75rem 2.5rem; padding: clamp(1rem, 2.5vw, 1.75rem); border: 1px solid #b8cadd; background: #edf3f9; }
+.mechanism-flow > figcaption { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; margin-bottom: 1.5rem; color: #183956; }
+.mechanism-flow > figcaption strong { font-size: 1.25rem; }
+.mechanism-flow > figcaption span { font-size: .8rem; white-space: nowrap; }
+.unified-dialog .notion-story .mechanism-steps { display: grid; grid-template-columns: repeat(var(--step-count), minmax(0, 1fr)); gap: 1.4rem; padding: 0; margin: 0; list-style: none; }
+.mechanism-steps li { position: relative; min-width: 0; }
+.mechanism-steps li:not(:last-child)::after { content: '→'; position: absolute; right: -1.1rem; top: 2.6rem; color: #557b9e; font-size: 1.2rem; }
+.mechanism-steps small { display: flex; align-items: center; gap: .45rem; color: #355a7a; font-size: .75rem; line-height: 1.5; }
+.mechanism-steps small b { display: grid; place-items: center; width: 1.7rem; height: 1.7rem; flex-shrink: 0; background: #254e75; color: white; font-variant-numeric: tabular-nums; border-radius: 50%; }
+.unified-dialog .notion-story .mechanism-steps h4 { margin: .7rem 0 .5rem; font-size: 1.05rem; }
+.unified-dialog .notion-story .mechanism-steps p { margin: 0; font-size: .9rem; line-height: 1.8; }
+.mechanism-branch { display: flex; gap: 1rem; align-items: baseline; margin-top: 1.5rem; padding: 1rem 0 0; border-top: 1px dashed #9cb2c8; }
+.mechanism-branch > strong { flex-shrink: 0; font-size: .9rem; }
+.unified-dialog .notion-story .mechanism-branch p { margin: 0; font-size: .9rem; }
+.mechanism-flow footer { display: flex; gap: 1rem; align-items: baseline; justify-content: space-between; margin-top: 1.3rem; }
+.unified-dialog .notion-story .mechanism-flow footer p { margin: 0; font-size: .8rem; }
+.mechanism-flow footer a { flex-shrink: 0; font-size: .85rem; font-weight: 700; }
+@media (max-width: 780px) {
+  .unified-dialog .notion-story .mechanism-steps { grid-template-columns: 1fr; gap: 1.75rem; }
+  .mechanism-steps li:not(:last-child)::after { content: '↓'; top: auto; right: auto; left: .45rem; bottom: -1.7rem; }
+  .mechanism-flow > figcaption { flex-wrap: wrap; gap: .3rem; }
+  .mechanism-branch, .mechanism-flow footer { flex-direction: column; gap: .5rem; }
+}

@@ -1,8 +1,8 @@
-# 沈裕焱 · 技术美术与工具开发作品集
+# 沈裕焱 · UE 客户端、引擎开发与技术美术作品集
 
 [访问个人主页](https://ubik42.github.io/)
 
-这是面向国内技术美术、工具管线、引擎工具与 AI 工具岗位的个人作品集。网站默认使用简体中文，首页以统一橱窗展示项目，点击作品可查看完整图文、真实运行截图、演示视频与公开仓库。
+个人作品覆盖 Gameplay、GAS 与网络同步、角色动画与物理、实时渲染和引擎工具。网站默认使用简体中文，首页以统一橱窗展示项目，详情保留完整图文、真实运行截图、演示视频与公开仓库。
 
 当前页面重点展示四类内容：
 
@@ -33,7 +33,7 @@ Unreal 方向新增三项独立作品：[Lyra Hero Arena 五英雄多人对战�
 | [Maya Garment Preparation](https://github.com/Ubik42/maya-garment-preparation) | 服装版片 UV/位置传递、修改前预检、执行后复检与单次 Undo | 七组 CC0 Maya 场景、真实 Maya 2025 工作台截图 |
 | [Unreal Asset Batch Auditor](https://github.com/Ubik42/unreal-asset-batch-auditor) | 模型、纹理、材质三轨只读验收与混合交付汇总 | UE 5.8.1 原生 Slate、项目 Profile、版本化 Report 与宿主截图 |
 | [Rez Studio](https://github.com/Ubik42/rez-studio-launcher) | 根据项目、软件版本、插件方案和 Rez 环境启动 DCC | Windows 桌面端、项目软件库、解析与启动诊断 |
-| [MayaScope](https://github.com/Ubik42/MayaIndieTool) | 大型 Maya 场景快照、依赖关系、运行时足迹和回归调查 | Maya 2025 GUI 生命周期验证、依赖与插件诊断截图 |
+| [MayaScope](https://github.com/Ubik42/MayaScope) | 大型 Maya 场景快照、依赖关系、运行时足迹和回归调查 | Maya 2025 GUI 生命周期验证、依赖与插件诊断截图 |
 | [MayaCraft](https://github.com/Ubik42/MayaCraft) | 角色工作区、Rig Graph、形变诊断、动画重定向与 Contact IK | Maya 2025 中文工作区和四组真实界面截图 |
 
 独立的 [ArtFlow Agent](https://github.com/Ubik42/ArtFlow-Agent) 负责 AIGC 生成编排；它与 Art Pipeline Skill 不共用仓库、Python 包或开发状态。
@@ -59,6 +59,14 @@ Unreal 方向新增三项独立作品：[Lyra Hero Arena 五英雄多人对战�
 - 每个项目的准确安装方法、支持版本、测试结果和限制以对应仓库 README 为准。
 
 ## 本地开发
+
+### 作品与详情维护
+
+- `?work=<id>` 直达项目详情；`?category=engine-games&q=GAS` 保存分类和关键词。详情的“复制链接”只复制项目地址，不携带当前筛选条件。
+- `MarkdownStory` 支持段落、列表、图片、视频、表格、代码块与 `:::details`。三个及以上二级标题自动生成章节导航；图片可放大并查看原始尺寸。
+- `@[flow](blink)`、`@[flow](getup)`、`@[flow](director)` 对应源码驱动的状态流程图。实现变化时同步检查 `MechanismFlow.tsx` 中的状态归属和限制。
+- `src/data/coverPreviews.json` 将原封面映射到列表预览。详情始终使用原图；更换封面路径后自动回退到新原图。预览生成脚本位于关联工程 `ue-client-portfolio-lab/scripts/prepare_cover_previews.py`，记录在 `evidence/site24-cover-previews.json`。
+- House of Vampires 的 `published-*.png` 来自[团队 itch.io 发布页](https://musitive.itch.io/hov)，作为游戏封面和场景展示；原有开发图文继续保留。
 
 ```powershell
 npm ci
