@@ -28,17 +28,35 @@ A/B 测试采用相同 Manny 资产，每路 22 个刚体，在 60 Hz 固定步�
 
 视频节选仿真时间 0.3—6 秒，末帧停留 2 秒；开头的材质准备画面已剪去。数据记录覆盖完整 6 秒。录制使用固定步推进，画面编码耗时不作为性能指标。
 
-## 倒地之后，怎样交回动画与移动
+## 连续起身与恢复移动
 
-跌倒起身在独立场景中实现。系统根据 Chaos 中 pelvis 的朝向选择 ALS 俯卧或仰卧起身动作；起身受接触检测、线速度/角速度阈值及至少 **0.35 秒稳定时间**限制，高速状态拒绝执行。
+@[video: UE 5.4.4 连续实机 · 受击、倒地、起身与恢复移动 · 固定 60 Hz · 无声](/media/repositories/siggraph-physics-lab/character-getup.mp4)
 
-进入恢复后，Physics Control 驱动刚体追踪重定向动作。动作结束时，先销毁 Control 与 Body Modifier，再关闭物理模拟并恢复动画控制。这个清理顺序避免下一帧的 Body Modifier 再次启用模拟。
+独立连续模式使用标准 ACharacter 串联走动、受击、Chaos 倒地、稳定判定、ALS 仰卧起身、站立目标追踪与 CharacterMovement 恢复。录像通过脚本调用操作入口，在单机、60 Hz 固定游戏步长下运行。
+
+### 倒地解耦与稳定状态估计
+
+受击时停用 CharacterMovement 与胶囊体碰撞，分离 Mesh，关闭 Physics Asset 的关节驱动并交由 Chaos 模拟。起身请求只记录意图；接触地面后，骨盆变换有小幅往返，原始速度也持续波动，因此采集 pelvis 刚体的实际世界变换，以变换差分和 **0.12 秒时间常数滤波**估计稳定运动。
+
+原始速度超过 100 cm/s 或 4 rad/s 时仍直接拒绝起身。估计速度须持续 **0.35 秒**低于 18 cm/s 和 0.9 rad/s，且姿态明确、处于接地状态，才进入起身阶段。原始速度、估计速度和状态变化均输出 CSV。
+
+### 动画目标驱动物理，再归还移动控制
+
+起身前根据朝向选择 ALS Front / Back 片段，视频展示本次仰卧分支。**21 个父空间控制与 1 个 pelvis 世界空间控制**驱动身体。重定位动画目标坐标系时，保存并恢复实际刚体的世界位姿与速度；固定目标坐标系，避免驱动结果反过来移动自身目标。
+
+ALS CLF 动作结束在蹲姿，随后继续追踪站立 Idle。骨盆高度与朝向满足条件并保持 **0.25 秒**后，销毁 Controls 与 Body Modifiers，关闭骨骼模拟，重新附着 Mesh，切回 `MOVE_Walking`。恢复后的移动用于检查控制权确实归还。
+
+[连续过程的源码与复现](https://github.com/Ubik42/ue5-siggraph-physics-lab/blob/main/Docs/Development/CONTINUOUS_GETUP.md)
+
+[状态、位移与采样摘要](/media/repositories/siggraph-physics-lab/getup-evidence.json)
+
+本次采用不限力的 Physics Control，动画切换尚未接入惯性化混合；覆盖平地、单机仰卧起身。连续模式与已有服务器权威组件分别验证，联机物理同步和复杂地形适配仍需补充。
 
 ![独立起身场景：俯卧、仰卧与高速拒绝三路对照](/media/repositories/siggraph-physics-lab/character-getup.png)
 
-起身截图与记录采集于 2026-08-30，本轮复测范围为上方的同冲量 A/B 场景。
+三路场景截图采集于 2026-08-30；上方连续视频采集于 2026-10-17。旧速度拒绝示例中的强制分支修正已移除，当前判定来自实际测量。
 
-Lyra 的可恢复跌倒组件与死亡状态分开，**DeathState 优先**。客户端发送起身请求，服务器根据角色状态确认恢复，再交回 Character Movement。起身场景和联机组件分别验证；上方冲量视频展示的是姿态抗扰实验。
+Lyra 的可恢复跌倒组件与死亡状态分开，**DeathState 优先**。客户端发送起身请求，服务器根据角色状态确认恢复，再交回 Character Movement。这部分保留原有独立验证记录。
 
 ## 实现分工
 
