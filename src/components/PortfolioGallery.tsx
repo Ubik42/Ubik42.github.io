@@ -216,12 +216,16 @@ function RepositoryDetail({ work, locale }: { work: RepositoryWork; locale: 'zh'
   const leadFit = work.id === 'noemancer' || work.id === 'artflow-agent' || work.id === 'ray-tracing-hardware' ? 'cover' : 'contain';
   return <>
     {work.repositoryUrl && <a className="project-dialog-source" href={work.repositoryUrl} target="_blank" rel="noreferrer"><span>{locale === 'zh' ? '查看 GitHub 仓库' : 'View GitHub repository'}</span><span aria-hidden="true">↗</span></a>}
-    <DetailLeadMedia src={work.cover} alt={`${work.title} ${locale === 'zh' ? '项目画面' : 'project view'}`} fit={leadFit} />
+    {(work.id !== 'lyra-hero-arena' || locale !== 'zh') && <DetailLeadMedia src={work.cover} alt={`${work.title} ${locale === 'zh' ? '项目画面' : 'project view'}`} fit={leadFit} />}
     {work.id === 'lyra-performance-lab' && <><AnimationQuality locale={locale} /><PerformanceEvidence study="animation" locale={locale} /></>}
     {work.id === 'ue-performance-workbench' && <><HudQuality locale={locale} /><PerformanceEvidence study="hud" locale={locale} /></>}
     {work.id === 'animation-aigc-lab' && <AnimationAigcShowcase locale={locale} />}
     {work.id === 'noemancer' && <NoemancerWorkflow locale={locale} />}
-    <MarkdownStory markdown={localize(work.story, locale)} title={work.title} />
+    <MarkdownStory markdown={localize(work.story, locale)} title={work.title}
+      outlineLabel={work.id === 'lyra-hero-arena' && locale === 'zh' ? 'Lyra 作品章节' : undefined}
+      videoPosters={work.id === 'lyra-hero-arena' ? Object.fromEntries(
+        ['striker-combat', 'full-match', 'phase-gameplay', 'hero-respawn', 'blink-network'].map(name =>
+          [`/media/repositories/lyra-hero-arena/${name}.mp4`, `/media/repositories/lyra-hero-arena/${name}-poster.jpg`])) : undefined} />
     {galleryImages.length > 0 && <DetailGallery fit="contain" images={galleryImages.map((image) => ({ src: image.src, alt: localize(image.alt, locale), caption: localize(image.alt, locale) }))} />}
   </>;
 }

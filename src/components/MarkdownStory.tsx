@@ -1,8 +1,10 @@
-import type { ReactNode } from 'react';
+import { useRef, type ReactNode } from 'react';
 
 interface MarkdownStoryProps {
   markdown: string;
   title: string;
+  outlineLabel?: string;
+  videoPosters?: Record<string, string>;
 }
 
 type StoryBlock =
@@ -10,6 +12,7 @@ type StoryBlock =
   | { type: 'image'; src: string; alt: string }
   | { type: 'video'; src: string; caption: string }
   | { type: 'list'; ordered: boolean; items: string[] }
+  | { type: 'details'; summary: string; blocks: StoryBlock[] }
   | { type: 'paragraph'; text: string };
 
 const imagePattern = /^!\[(.*?)\]\((.*?)\)$/;
@@ -17,6 +20,7 @@ const videoPattern = /^@\[video(?::\s*(.*?))?\]\((.*?)\)$/;
 const headingPattern = /^(#{1,6})\s+(.+)$/;
 const unorderedPattern = /^\s*-\s+(.+)$/;
 const orderedPattern = /^\s*\d+\.\s+(.+)$/;
+const detailsPattern = /^:::details\s+(.+)$/;
 const inlinePattern = /(`[^`]+`|\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\)|https?:\/\/[^\s)]+)/g;
 
 function cleanLine(line: string) {
@@ -25,7 +29,7 @@ function cleanLine(line: string) {
 
 function isStructural(line: string) {
   const value = cleanLine(line).trim();
-  return !value || value === '<aside>' || value === '</aside>' || imagePattern.test(value) || videoPattern.test(value) || headingPattern.test(value) || unorderedPattern.test(value) || orderedPattern.test(value);
+  return !value || value === '<aside>' || value === '</aside>' || detailsPattern.test(value) || value === ':::' || imagePattern.test(value) || videoPattern.test(value) || headingPattern.test(value) || unorderedPattern.test(value) || orderedPattern.test(value);
 }
 
 function parseMarkdown(markdown: string): StoryBlock[] {
@@ -36,6 +40,23 @@ function parseMarkdown(markdown: string): StoryBlock[] {
     const line = cleanLine(lines[index]).trim();
     if (!line || line === '<aside>' || line === '</aside>') {
       index += 1;
+      continue;
+    }
+
+    const details = line.match(detailsPattern);
+    if (details) {
+      const content: string[] = [];
+      let depth = 1;
+      index += 1;
+      while (index < lines.length) {
+        const candidate = cleanLine(lines[index]).trim();
+        if (detailsPattern.test(candidate)) depth += 1;
+        if (candidate === ':::') depth -= 1;
+        index += 1;
+        if (depth === 0) break;
+        content.push(lines[index - 1]);
+      }
+      blocks.push({ type: 'details', summary: details[1], blocks: parseMarkdown(content.join('\n')) });
       continue;
     }
 
@@ -119,39 +140,52 @@ function renderInline(text: string): ReactNode[] {
   });
 }
 
-export function MarkdownStory({ markdown, title }: MarkdownStoryProps) {
+export function MarkdownStory({ markdown, title, outlineLabel, videoPosters }: MarkdownStoryProps) {
+  const storyRef = useRef<HTMLDivElement>(null);
   const blocks = parseMarkdown(markdown);
   const firstHeading = blocks.findIndex((block) => block.type === 'heading' && block.level === 1);
-
-  return (
-    <div className="notion-story">
-      {blocks.map((block, index) => {
-        if (index === firstHeading) return null;
+  const renderBlock = (block: StoryBlock, key: string): ReactNode => {
+        if (block.type === 'details') return <details className="story-details" key={key} onToggle={event => {
+          if (!event.currentTarget.open) event.currentTarget.querySelectorAll('video').forEach(video => video.pause());
+        }}>
+          <summary>{renderInline(block.summary)}</summary>
+          <div>{block.blocks.map((child, index) => renderBlock(child, `${key}-${index}`))}</div>
+        </details>;
         if (block.type === 'image') {
           return (
-            <figure key={`${block.src}-${index}`}>
+            <figure key={key}>
               <img src={notionImagePath(block.src)} alt={block.alt || title} loading="lazy" />
             </figure>
           );
         }
         if (block.type === 'video') {
           return (
-            <figure className="story-video" key={`${block.src}-${index}`}>
-              <video src={block.src} controls preload="metadata" playsInline />
+            <figure className="story-video" key={key}>
+              <video src={block.src} poster={videoPosters?.[block.src]} controls preload="metadata" playsInline />
               {block.caption && <figcaption>{block.caption}</figcaption>}
             </figure>
           );
         }
         if (block.type === 'heading') {
           const Heading = block.level <= 2 ? 'h3' : 'h4';
-          return <Heading key={index}>{renderInline(block.text)}</Heading>;
+          return <Heading id={`story-section-${key}`} key={key}>{renderInline(block.text)}</Heading>;
         }
         if (block.type === 'list') {
           const List = block.ordered ? 'ol' : 'ul';
-          return <List key={index}>{block.items.map((item, itemIndex) => <li key={`${item}-${itemIndex}`}>{renderInline(item)}</li>)}</List>;
+          return <List key={key}>{block.items.map((item, itemIndex) => <li key={`${item}-${itemIndex}`}>{renderInline(item)}</li>)}</List>;
         }
-        return <p key={index}>{renderInline(block.text)}</p>;
-      })}
+        return <p key={key}>{renderInline(block.text)}</p>;
+  };
+
+  return (
+    <div className={`notion-story${outlineLabel ? ' has-outline' : ''}`} ref={storyRef}>
+      {outlineLabel && <nav className="story-outline" aria-label={outlineLabel}>
+        {blocks.map((block, index) => block.type === 'heading' && block.level === 2 ?
+          <button key={index} type="button" onClick={() => {
+            storyRef.current?.querySelector(`#story-section-${index}`)?.scrollIntoView({ block: 'start' });
+          }}>{block.text}</button> : null)}
+      </nav>}
+      {blocks.map((block, index) => index === firstHeading ? null : renderBlock(block, String(index)))}
     </div>
   );
 }

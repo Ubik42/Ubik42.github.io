@@ -1,10 +1,22 @@
 # Lyra 英雄射击：GAS 深度实践与技能架构
 
-## 游戏概述
+本项目为基于 **UE 5.7.4** 与 **Lyra** 架构搭建的五英雄射击原型，目前处于持续开发阶段。项目以独立的 **HeroArena** 插件承载玩法扩展，实现五位英雄专属能力组合、A/B/C 轮换控制点玩法以及配套战术 HUD，并为 Bot 补充前排、输出与支援的技能决策。
 
-基于 UE 5.7.4 与 Lyra 架构搭建的五英雄射击原型，目前处于持续开发阶段。项目以独立的 HeroArena GameFeature 插件组织玩法扩展，包含五位英雄的数据资产、专属能力组合、A/B/C 轮换控制点与战术 HUD，并为机器人补充前排、输出与支援的技能决策。底层的角色移动预测、网络同步武器、GAS 基础架构、动画资产、死亡镜头与自动重生流程复用 Lyra 的原生能力。
+### 个人实现
 
-## Lyra 轮换占点模式完整对局展示
+- 负责 **HeroArena** 玩法扩展与 GAS 技能开发，实现闪现与范围治疗场等本地预测技能，以及基于服务器历史采样的回溯机制。
+- 在 **PlayerState** 跨 Pawn 维护英雄选择，管理技能集合的撤销与重新授予，并在新 Pawn 能力系统就绪后重新应用英雄配置。
+- 修复网络预测与倒计时偏差，建立基于预测键的状态回滚模型，管理 **CommonUI** 压栈唤起及战术 HUD 的失败反馈与注销。
+
+项目直接复用 **Lyra** 的基础架构，包括基于 CMC 的角色移动预测、网络同步武器、GAS 基础框架与动画资产；同时沿用其原生死亡镜头、自动重生流程、ShooterCore 占点计分结算及 SeamlessTravel 切局机制。
+
+## 连续玩法与占点规则
+
+演示展示游骑 Striker 在 A/B/C 轮换点与 Bot 连续交火、自动重生及释放恢复场的流程。技能通过本地预测提交并由服务端生成 Actor 执行范围治疗。单机 65 秒实机视频呈现局内对抗，0:0 至 125:91 完整比赛录像与轮换机制详见展开区。
+
+@[video: 游骑连续实机片段，约 65 秒，无声。保留完整过程与等待，按游戏时间播放；自动输入，未开启无敌、传送、伤害注入或强制占点。](/media/repositories/lyra-hero-arena/striker-combat.mp4)
+
+:::details 完整占点对局 · 约 6 分 20 秒 · 0:0 → 125:91
 
 项目基于 UE 5.7.4 / Lyra 搭建，展示 Striker 玩家在阵亡后自动重生并重返活动控制点参与交火的完整循环。
 
@@ -16,23 +28,12 @@
 
 [对局记录与实现分工](https://github.com/Ubik42/LyraHeroArena/blob/main/docs/完整占点对局.md)
 
-### 比赛结算与下一局衔接
+:::
 
-原战术 HUD 仅读取控制点状态，结算后仍残留轮换倒计时。现在由服务器轮换组件识别 **PostGame**，停止轮换计时并复制结束标记；客户端清理占点、重生引导及技能失败提示，显示“比赛结束 · 等待下一局”。后续等待与 **SeamlessTravel** 复用 Lyra 原生流程，新世界实例重置结束标记。
+:::details 恢复场与轮换控制点：实现细节及源码
 
-![主动触发结算后的拥有客户端：原生终局画面中，战术 HUD 显示“比赛结束 · 等待下一局”](/media/repositories/lyra-hero-arena/postgame.png)
+游骑 Striker 的技能与占点规则由 HeroArena 扩展实现，基础移动、武器、动画及重生流程复用 Lyra。65 秒录像为单机 1 玩家加 9 Bot 的连续片段：脚本读取只读寻路和视线可达敌人的位置，通过既有 Enhanced Input 输入移动、射击与技能。
 
-独立 Dedicated Server 与拥有客户端完成自动切局，新局比分为 **0:0**。重新选择 Phase 后，两端四项英雄来源 AbilitySpec 无重复，ASC Avatar 正确；释放闪现后充能 **3→2**、待确认清零，位移约 **205 cm** 且双端一致。
-
-![自动进入下一局：目标 A 提示恢复，Phase 释放一次闪现后剩余 2/3 充能](/media/repositories/lyra-hero-arena/next-round.png)
-
-这组截图来自主动触发结算的定向测试：非打包、同机 Loopback、单拥有客户端，两端各配置 150 ms 出站延迟与 2% 出站丢包。上方完整对局保留原始录像，其赛后 HUD 为旧版表现。[切局实现与双端记录](https://github.com/Ubik42/LyraHeroArena/blob/main/docs/比赛结算与下一局.md)
-
-## 游骑：射击、恢复场与轮换控制点
-
-游骑 Striker 的技能与占点规则由 HeroArena 扩展实现，基础移动、武器、动画及重生流程复用 Lyra。下方为单机 1 玩家加 9 Bot 的连续片段：脚本读取只读寻路和视线可达敌人的位置，通过既有 Enhanced Input 输入移动、射击与技能。
-
-@[video: 游骑连续实机片段，约 65 秒，无声。保留完整过程与等待，按游戏时间播放；自动输入，未开启无敌、传送、伤害注入或强制占点。](/media/repositories/lyra-hero-arena/striker-combat.mp4)
 
 ### 恢复场：权威治疗与脉冲反馈
 
@@ -44,11 +45,18 @@
 
 实现入口：[恢复场能力](https://github.com/Ubik42/LyraHeroArena/blob/main/Plugins/GameFeatures/HeroArena/Source/HeroArenaRuntime/Private/Abilities/HeroArenaGameplayAbility_RecoveryField.cpp)、[恢复场 Actor](https://github.com/Ubik42/LyraHeroArena/blob/main/Plugins/GameFeatures/HeroArena/Source/HeroArenaRuntime/Private/Actors/HeroArenaRecoveryField.cpp)、[控制点轮换](https://github.com/Ubik42/LyraHeroArena/blob/main/Plugins/GameFeatures/HeroArena/Source/HeroArenaRuntime/Private/Components/HeroArenaControlPointRotationComponent.cpp)。
 
-## Phase 闪回：闪现充能与历史状态回溯
+:::
+
+## GAS 闪现与历史回溯
+
+Phase 的闪现（Blink）采用 **LocalPredicted** 技能，激活时沿朝向发起胶囊体检测，遇障自动缩短位移或阻挡释放；充能由 PlayerState 组件独立维护，仅同步拥有客户端。回溯（Recall）为 **ServerOnly** 技能，服务端定时对 Pawn 的位置、朝向、生命和弹匣采样并保留数秒历史；施法时校验碰撞并回退状态。
+
+@[video: 闪回技能机制，两段实机案例，约 19 秒。1 玩家 + 9 Bot；Enhanced Input 自动输入，录制前设置起点、选人并开启无敌保护，无声。](/media/repositories/lyra-hero-arena/phase-gameplay.mp4)
+
+:::details 检测、充能、回溯采样与源码
 
 在 HeroArena GameFeature 中，基于 Lyra 的 GAS 框架与角色资产，为 Phase 实现闪现与回溯。GameplayAbility 组织技能激活，PlayerState 组件维护充能和历史记录，战术 HUD 显示剩余次数、冷却与失败原因。
 
-@[video: 闪回技能机制，两段实机案例，约 19 秒。1 玩家 + 9 Bot；Enhanced Input 自动输入，录制前设置起点、选人并开启无敌保护，无声。](/media/repositories/lyra-hero-arena/phase-gameplay.mp4)
 
 ### 胶囊体检测与闪现落点
 
@@ -62,15 +70,64 @@ Blink 使用 **LocalPredicted GameplayAbility**。激活时沿角色朝向发起
 
 Recall 使用 **ServerOnly GameplayAbility**。服务器每 0.1 秒记录 Pawn 的位置、朝向、生命及当前手枪实例的弹匣，保留约 4 秒历史。技能定位约 3 秒前的样本，校验 Pawn、武器实例与落点碰撞；落点受阻时尝试较新的合法样本。成功后恢复历史位置、生命与弹匣，清空旧记录并进入 8 秒冷却。重生、换人或武器变化时清除不匹配记录。
 
-两段录像分别展示充能耗尽，以及碰撞拒绝后回溯位置和弹匣。第二段回溯采用约 3.04 秒前的记录，弹匣从 10 发恢复到 11 发。生命同样按历史值恢复，可能降低；录像启用了无敌保护，生命保持不变。上方两段演示覆盖单机技能流程；Blink 的双端预测与弱网验证见下节。
+两段录像分别展示充能耗尽，以及碰撞拒绝后回溯位置和弹匣。第二段回溯采用约 3.04 秒前的记录，弹匣从 10 发恢复到 11 发。生命同样按历史值恢复，可能降低；录像启用了无敌保护，生命保持不变。19 秒演示覆盖单机技能流程；Blink 双端验证单列在“预测回滚与弱网同步”章节。
 
 实现入口：[闪现能力](https://github.com/Ubik42/LyraHeroArena/blob/main/Plugins/GameFeatures/HeroArena/Source/HeroArenaRuntime/Private/Abilities/HeroArenaGameplayAbility_Blink.cpp)、[充能组件](https://github.com/Ubik42/LyraHeroArena/blob/main/Plugins/GameFeatures/HeroArena/Source/HeroArenaRuntime/Private/Components/HeroArenaBlinkChargeComponent.cpp)、[回溯历史](https://github.com/Ubik42/LyraHeroArena/blob/main/Plugins/GameFeatures/HeroArena/Source/HeroArenaRuntime/Private/Components/HeroArenaRecallHistoryComponent.cpp)。
 
-## 闪现充能预测回滚与网络同步修复
+:::
+
+## 英雄切换、重生与 UI
+
+为支持阵亡期间换人，英雄选择状态脱离 Pawn 并由 **PlayerState** 挂载的组件持久化管理。换人请求经服务端校验后广播变更。系统在切换时先注销旧技能的 **AbilitySet 授予句柄**，再赋予新技能并清理槽位，通过 **Inventory** 与 **Equipment** 装配新武器。新 Pawn 生成并完成能力系统初始化后，绑定对应配置，英雄专属技能集合仅向其拥有客户端复制。
+
+@[video: 重生换人连续演示，约 13 秒。1 玩家 + 9 Bot；开发命令触发死亡与换人，无声。](/media/repositories/lyra-hero-arena/hero-respawn.mp4)
+
+针对 **CommonActivatableWidget** 退出栈后无法直接唤起的问题，界面在监听到重生开始消息时调用 **PushContentToLayer_ForPlayer** 重新压栈，重生完成后关闭。战术 HUD 匹配控制器显示技能失败中文提示，并在控件销毁时主动注销消息监听。
+
+:::details 选择数据跨重生保留：装配与 CommonUI 实现
+
+为支持阵亡期间换人，英雄选择状态与 Pawn 生命周期解耦，由挂载于 **PlayerState** 的 HeroSelectionComponent 管理。客户端通过 RequestHeroSelection 发起换人请求，经 ServerRequestHeroSelection 在服务器端完成英雄名单、锁定状态、HeroId 合法性及重复选择校验后返回确认状态，再通过复制属性 **SelectedHero** 与 OnHeroChanged 广播更新客户端表现。
+
+换人时，系统先撤销旧 **AbilitySet 授予句柄**，再授予新技能组；清理 QuickBar 槽位中的旧物品，通过 Inventory 与 Equipment 组件装配新主武器。新 Pawn 生成后，等待其能力系统初始化完毕，再应用 PlayerState 中保留的英雄配置。
+
+![重生窗口内切换至闪回，界面显示英雄选择成功](/media/repositories/lyra-hero-arena/respawn-confirmed-20261017.jpg)
+
+### CommonUI 选人界面的栈管理
+
+选人界面基于 CommonUI 制作。CommonActivatableWidget 停用并退出 UI 栈后，直接调用 ActivateWidget 无法重新显示。流程改为在监听到重生开始消息时触发 PushSelectionScreen，调用 **PushContentToLayer_ForPlayer** 将界面重新压入 UI.Layer.Menu，收到重生完成消息后关闭界面。
+
+选人卡片的职业文字曾因区域过窄被截断。现在拓宽了卡片布局，职业说明自动换行，小窗口下整体等比缩放，保留五名英雄的完整描述。
+
+:::
+
+:::details GAS 英雄切换与重生的双端复制验证
+
+在同进程 D3D12 双 PIE 环境下，通过开发指令触发了 **Striker 到 Phase** 的换人与重生验证。通过 `PlayerId=257` 对齐双端只读日志：
+
+- **切换前：**服务器与拥有客户端均持有 7 项来源为 Striker 的 AbilitySpec，包含工程期选人及 Bot 辅助能力。
+- **切换后：**双端均变更为 Phase 的 4 项专属能力：Blink、PhasePistolTuning、Recall、StickyBomb，Striker 来源能力无残留。
+- **重生后：**服务器与客户端的 Pawn 分别由 C_10 和 C_0 重建为 C_14，两端 ASC Avatar 均正确绑定新 Pawn，技能集保持为上述 4 项且无重复授予。
+
+第二名玩家保持 Striker 状态；拥有客户端查看远端玩家时，其 AbilitySpec 计数为零，符合所有者复制的可见范围。
+
+![拥有客户端换人重生后的实机画面：Phase 的闪现、回溯、被动与终极技能状态已更新；顶部目标提示与比分栏分离](/media/repositories/lyra-hero-arena/network-respawn-client-20261017.jpg)
+
+:::
+
+## 预测回滚与弱网同步
+
+闪现原实现在本地预测扣减充能，当服务端拒绝激活时位移被 CMC 纠偏，但充能缺乏回退机制而发生不同步。为此引入预测键结算模型：客户端在 **PendingPredictionKeys** 记录待确认扣减；收到 **FPredictionKey** 拒绝回调时撤销扣减，服务端处理完成后复制状态在 **OnRep** 统一结算。引入 **ResetEpoch** 隔离换人与重生的生命周期请求。位置回滚由 CMC 负责，充能一致性由预测键管理。
+
+@[video: 双 PIE 弱网演示，14 秒，无声。两端各配置 150 ms 出站延迟与 2% 丢包；预设起点、自动输入，开发指令注入服务器拒绝。双视角顺序采样，按各自时间戳播放，展示预测扣减、拒绝恢复、成功释放及充能。](/media/repositories/lyra-hero-arena/blink-network.mp4)
+
+### 充能倒计时与权威状态分离
+
+旧逻辑混合客户端估算的服务器时间导致倒计时显示虚高。改进方案在充能结构中同步快照时间，在**同一服务器时钟基准**下计算初始剩余时长，随后由客户端本地时间递减显示。该方案隔离客户端时钟估算偏差，显示仍受状态复制延迟影响，服务端仍全权判定充能与技能激活。
+
+:::details 闪现充能预测回滚与网络同步修复：双 PIE 阶段记录
 
 在 Phase 闪现（LocalPredicted GA）的原实现中，客户端直接修改收到的服务器充能值，以呈现预测扣减。通过开发指令仅在服务端阻止激活时，CMC 纠正了客户端位移，但客户端充能状态因缺乏回退机制滞留在 2 格，服务端为 3 格；2.4 秒后仍未恢复。
 
-@[video: 双 PIE 弱网演示，14 秒，无声。两端各配置 150 ms 出站延迟与 2% 丢包；预设起点、自动输入，开发指令注入服务器拒绝。双视角顺序采样，按各自时间戳播放，展示预测扣减、拒绝恢复、成功释放及充能。](/media/repositories/lyra-hero-arena/blink-network.mp4)
 
 修复采用**预测键结算模型**：客户端通过 **PendingPredictionKeys** 独立记录待确认扣减。收到 **FPredictionKey** 拒绝回调时撤销对应扣减；服务端处理成功或在技能内因碰撞拒绝后，将已处理键与充能状态一起复制，在 **OnRep** 中统一结算。**ResetEpoch** 隔离换人、重生前后的请求，弱引用委托避免组件销毁后继续调用。
 
@@ -85,7 +142,9 @@ Recall 使用 **ServerOnly GameplayAbility**。服务器每 0.1 秒记录 Pawn �
 
 以上记录来自独立的连续释放测试；视频展示一次拒绝和一次成功释放。延迟与丢包为模拟器配置，未将其等同于实测 RTT。[双 PIE 记录与测试条件](https://github.com/Ubik42/LyraHeroArena/blob/main/docs/data/blink-network.json)
 
-## 独立服务器：闪现预测、换人与重生
+:::
+
+:::details 独立服务器：闪现预测、换人与重生
 
 进一步将 Dedicated Server 与拥有客户端拆成两个独立进程，通过同机 Loopback UDP 连接。普通网络和双端各 **150 ms 出站延迟、2% 出站丢包**两组运行，均完成闪现拒绝、正常释放、充能补充、换人及重生流程；延迟配置不作为实测 RTT。
 
@@ -97,7 +156,9 @@ Recall 使用 **ServerOnly GameplayAbility**。服务器每 0.1 秒记录 Pawn �
 
 本次补充开发专用跨进程驱动与双端状态检查，技能请求及复制仍走 UE NetDriver，GAS、CMC 和基础重生复用 Lyra。当前覆盖非打包、同机独立进程及单拥有客户端；联网完整比赛、多人并发和公网仍待补充。[源码、阶段记录与复现方法](https://github.com/Ubik42/LyraHeroArena/blob/main/docs/跨进程网络案例.md)
 
-### 闪现充能倒计时：隔离客户端时钟偏差
+:::
+
+:::details 闪现充能倒计时：隔离客户端时钟偏差
 
 Phase 每 4 秒恢复一格充能，上限 3 格。旧界面用服务器截止时间减去 GameState 在客户端估计的服务器时间，历史启动记录曾显示 7.54 秒。本次在仅向拥有者复制的充能结构中加入快照时间与周期编号：先在**同一服务器时钟基准**上计算剩余时长，再用客户端本地游戏时间递减。服务器继续负责充能恢复与技能激活判定。
 
@@ -105,40 +166,42 @@ Phase 每 4 秒恢复一格充能，上限 3 格。旧界面用服务器截止�
 
 显示仍受状态复制和传输延迟影响，服务器确认的可用次数始终优先。本地倒计时归零不会自行发放充能。[计时实现、运行记录与取舍](https://github.com/Ubik42/LyraHeroArena/blob/main/docs/闪现充能倒计时.md)
 
-## GAS 技能架构：选择数据跨重生保留与装备应用
+:::
 
-@[video: 重生换人连续演示，约 13 秒。1 玩家 + 9 Bot；开发命令触发死亡与换人，无声。](/media/repositories/lyra-hero-arena/hero-respawn.mp4)
+## 比赛结算与下一局
 
-为支持阵亡期间换人，英雄选择状态与 Pawn 生命周期解耦，由挂载于 **PlayerState** 的 HeroSelectionComponent 管理。客户端通过 RequestHeroSelection 发起换人请求，经 ServerRequestHeroSelection 在服务器端完成英雄名单、锁定状态、HeroId 合法性及重复选择校验后返回确认状态，再通过复制属性 **SelectedHero** 与 OnHeroChanged 广播更新客户端表现。
+为避免终局后 HUD 残留倒计时，服务端轮换组件在 **PostGame** 停止轮换并复制结束标记，客户端据此清理占点与失败提示。对局衔接复用原生 **SeamlessTravel** 流程。独立服务器定向测试验证了新局比分重置为 0:0，重新选人后两端 Avatar 正确绑定，无重复技能授予，充能恢复正常。
 
-换人时，系统先撤销旧 **AbilitySet 授予句柄**，再授予新技能组；清理 QuickBar 槽位中的旧物品，通过 Inventory 与 Equipment 组件装配新主武器。新 Pawn 生成后，等待其能力系统初始化完毕，再应用 PlayerState 中保留的英雄配置。
+:::details 比赛结算与下一局衔接：截图与双端记录
 
-![重生窗口内切换至闪回，界面显示英雄选择成功](/media/repositories/lyra-hero-arena/respawn-confirmed-20261017.jpg)
+原战术 HUD 仅读取控制点状态，结算后仍残留轮换倒计时。现在由服务器轮换组件识别 **PostGame**，停止轮换计时并复制结束标记；客户端清理占点、重生引导及技能失败提示，显示“比赛结束 · 等待下一局”。后续等待与 **SeamlessTravel** 复用 Lyra 原生流程，新世界实例重置结束标记。
 
-## GAS 英雄切换与重生的双端复制验证
+![主动触发结算后的拥有客户端：原生终局画面中，战术 HUD 显示“比赛结束 · 等待下一局”](/media/repositories/lyra-hero-arena/postgame.png)
 
-在同进程 D3D12 双 PIE 环境下，通过开发指令触发了 **Striker 到 Phase** 的换人与重生验证。通过 `PlayerId=257` 对齐双端只读日志：
+独立 Dedicated Server 与拥有客户端完成自动切局，新局比分为 **0:0**。重新选择 Phase 后，两端四项英雄来源 AbilitySpec 无重复，ASC Avatar 正确；释放闪现后充能 **3→2**、待确认清零，位移约 **205 cm** 且双端一致。
 
-- **切换前：**服务器与拥有客户端均持有 7 项来源为 Striker 的 AbilitySpec，包含工程期选人及 Bot 辅助能力。
-- **切换后：**双端均变更为 Phase 的 4 项专属能力：Blink、PhasePistolTuning、Recall、StickyBomb，Striker 来源能力无残留。
-- **重生后：**服务器与客户端的 Pawn 分别由 C_10 和 C_0 重建为 C_14，两端 ASC Avatar 均正确绑定新 Pawn，技能集保持为上述 4 项且无重复授予。
+![自动进入下一局：目标 A 提示恢复，Phase 释放一次闪现后剩余 2/3 充能](/media/repositories/lyra-hero-arena/next-round.png)
 
-第二名玩家保持 Striker 状态；拥有客户端查看远端玩家时，其 AbilitySpec 计数为零，符合所有者复制的可见范围。
+这组截图来自主动触发结算的定向测试：非打包、同机 Loopback、单拥有客户端，两端各配置 150 ms 出站延迟与 2% 出站丢包。完整占点对局保留原始录像，其赛后 HUD 为旧版表现。[切局实现与双端记录](https://github.com/Ubik42/LyraHeroArena/blob/main/docs/比赛结算与下一局.md)
 
-![拥有客户端换人重生后的实机画面：Phase 的闪现、回溯、被动与终极技能状态已更新；顶部目标提示与比分栏分离](/media/repositories/lyra-hero-arena/network-respawn-client-20261017.jpg)
+:::
 
-## CommonUI 选人界面的栈管理
+## 性能案例与源码范围
 
-选人界面基于 CommonUI 制作。CommonActivatableWidget 停用并退出 UI 栈后，直接调用 ActivateWidget 无法重新显示。流程改为在监听到重生开始消息时触发 PushSelectionScreen，调用 **PushContentToLayer_ForPlayer** 将界面重新压入 UI.Layer.Menu，收到重生完成消息后关闭界面。
+相关性能案例：[200 角色动画更新优化](/?work=lyra-performance-lab)、[战术 HUD 刷新与 UE 性能实验工作台](/?work=ue-performance-workbench)。
 
-选人卡片的职业文字曾因区域过窄被截断。现在拓宽了卡片布局，职业说明自动换行，小窗口下整体等比缩放，保留五名英雄的完整描述。
+演示中的完整对局为单机脚本测试，双端与 Dedicated Server 仅用于验证闪现预测、换人重生与切局的定向测试；完整联网比赛、多人并发及公网部署尚未完成。公开代码仓库仅包含自有 C++ 模块与配置，不重新分发 UE、Lyra 或 Fab 的原生资源。
 
-## 验证与演示范围
+:::details 演示采集条件与历史验证范围
 
-2026 年 10 月的 D3D12 实机复测使用 **1 名本地玩家与 9 名 Bot**。通过开发命令触发死亡，在倒计时内使用方向键和回车切换至 Phase（闪回）；日志确认 PlayerState 选择成功，新 Pawn 保留该选择并装配 ID_Pistol_C。上方连续录像单独重录，死亡与换人请求由开发命令触发，走现有选择、确认和重生路径。
+2026 年 10 月的 D3D12 实机复测使用 **1 名本地玩家与 9 名 Bot**。通过开发命令触发死亡，在倒计时内使用方向键和回车切换至 Phase（闪回）；日志确认 PlayerState 选择成功，新 Pawn 保留该选择并装配 ID_Pistol_C。13 秒重生换人录像单独重录，死亡与换人请求由开发命令触发，走现有选择、确认和重生路径。
 
-**监听服务器与拥有客户端**的换人和重生结果通过只读日志与截图对齐；Blink 另有弱网双视角演示，以及独立 Dedicated Server 的普通网络、弱网阶段记录。单机完整比赛结算已在上方连续录像中展示，联网完整比赛仍待补充。
+**监听服务器与拥有客户端**的换人和重生结果通过只读日志与截图对齐；Blink 另有弱网双视角演示，以及独立 Dedicated Server 的普通网络、弱网阶段记录。单机比赛结算包含在完整占点对局录像中，联网完整比赛仍待补充。
 
 公开仓库提供自有 C++ 模块、结构说明及运行截图，不重新分发 Lyra、Fab 或 Unreal Engine 资产。
 
 相关性能案例：[200 角色动画更新优化](/?work=lyra-performance-lab)、[战术 HUD 刷新与 UE 性能实验工作台](/?work=ue-performance-workbench)。
+
+:::
+
+[HeroArena 自有源码与接入说明](https://github.com/Ubik42/LyraHeroArena)

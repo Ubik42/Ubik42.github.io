@@ -153,6 +153,25 @@
 .notion-story .story-video video { display: block; width: 100%; aspect-ratio: 16 / 9; background: black; }
 .notion-story .story-video video[src$="hero-respawn.mp4"] { aspect-ratio: 4 / 3; }
 .notion-story .story-video figcaption { padding: .7rem .9rem; color: var(--muted); font-size: .84rem; }
+.story-outline { display: flex; flex-wrap: wrap; gap: .6rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--line); margin-bottom: 2rem; }
+.story-outline button { border: 1px solid var(--line); background: var(--white); color: var(--blue-deep); padding: .65rem .85rem; font: inherit; font-size: 1rem; font-weight: 700; cursor: pointer; }
+.story-outline button:hover { background: color-mix(in oklch, var(--blue) 9%, var(--white)); border-color: var(--blue); }
+.story-outline button:focus-visible, .story-details summary:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.notion-story.has-outline > h3 { font-size: clamp(1.7rem, 3vw, 2.8rem); line-height: 1.2; scroll-margin-top: 1.5rem; }
+.story-details { margin: 1.5rem 0 2rem; border-block: 1px solid var(--line); }
+.story-details > summary { padding: 1rem .4rem; cursor: pointer; color: var(--blue-deep); font-size: 1.05rem; font-weight: 750; line-height: 1.6; }
+.story-details > summary::marker { color: var(--blue); }
+.story-details > div { padding: 1rem 0; }
+.story-details > div > :first-child { margin-top: 0; }
+.story-details[open] > summary { border-bottom: 1px solid var(--line); }
+.unified-dialog .project-dialog-heading[data-work-id="lyra-hero-arena"] { padding-block: 2rem; }
+.unified-dialog .project-dialog-heading[data-work-id="lyra-hero-arena"] h2 { max-width: none; font-size: clamp(2rem, 4.2vw, 3.5rem); line-height: 1.18; letter-spacing: -.02em; }
+.notion-story.has-outline { padding-top: 1.5rem; }
+.unified-dialog .project-dialog-heading[data-work-id="lyra-hero-arena"] > p:first-child { padding-right: 3rem; }
+@media (max-width: 600px) {
+  .story-outline { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .story-outline button { padding: .65rem .45rem; line-height: 1.5; text-align: left; }
+}
 
 .animation-aigc-showcase { display: grid; gap: 2rem; width: calc(100% - 2rem); max-width: 1040px; margin: 2rem auto; scroll-margin-top: 4rem; }
 .animation-aigc-showcase h3 { margin: 0 0 .8rem; font-size: 1.12rem; }
