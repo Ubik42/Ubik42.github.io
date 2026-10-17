@@ -19,8 +19,8 @@ type GalleryItem =
 
 const filters: Array<{ id: 'all' | PortfolioCategory; zh: string; en: string }> = [
   { id: 'all', zh: '全部作品', en: 'All work' },
-  { id: 'pipeline', zh: '工具管线', en: 'Tool pipelines' },
   { id: 'engine-games', zh: '引擎与游戏', en: 'Engines & games' },
+  { id: 'pipeline', zh: '工具管线', en: 'Tool pipelines' },
   { id: 'ai-agent', zh: 'AIGC & Agent', en: 'AIGC & Agent' },
   { id: 'general-ta', zh: '通用技术美术技能', en: 'General technical art' },
   { id: 'other-tools', zh: '部分其他工具', en: 'Selected other tools' },
@@ -41,6 +41,7 @@ const pipelineOrder = new Map([
 ].map((id, index) => [id, index]));
 
 const engineGamesOrder = new Map([
+  'house-of-vampires',
   'siggraph-physics-lab',
   'noemancer',
   'noemancer-software-rasterizer',
@@ -66,8 +67,8 @@ const aigcOrder = new Map([
 ].map((id, index) => [id, index]));
 
 const categoryOrder = new Map<PortfolioCategory, number>([
-  ['pipeline', 0],
-  ['engine-games', 1],
+  ['engine-games', 0],
+  ['pipeline', 1],
   ['ai-agent', 2],
   ['general-ta', 3],
   ['other-tools', 4],
