@@ -235,7 +235,7 @@ A Chinese Unreal Editor tool that turns profiling setup into repeatable experime
   },
   {
     id: 'noemancer',
-    title: 'Noemancer：面向人与 AI 协作的自研游戏引擎',
+    title: 'Noemancer：面向人与 AI 协作的自研 C++ 游戏引擎',
     category: 'engine-games',
     categoryLabel: { zh: '自研游戏引擎', en: 'Custom game engine' },
     summary: { zh: 'C++20 引擎与编辑器，覆盖 PBR 渲染、C# Gameplay、Jolt 物理、ozz 动画及 Cook / 打包；Editor、CLI 与 MCP 共享场景状态和可撤销编辑。当前为 Windows 本机验证的 pre-alpha。', en: 'A pre-alpha C++20 engine and editor with PBR, C# gameplay, Jolt physics, ozz animation, Cook and packaging. Editor, CLI and MCP share scene state and undoable edits, currently validated on Windows.' },
@@ -273,7 +273,7 @@ The project is pre-alpha and currently verified end to end on Windows x64. Raste
   },
   {
     id: 'siggraph-physics-lab',
-    title: 'UE5 SIGGRAPH 物理复现实验室',
+    title: 'UE5 SIGGRAPH 物理论文复现实验室',
     category: 'engine-games',
     categoryLabel: { zh: 'UE 物理与论文复现', en: 'UE physics and paper reproduction' },
     summary: {
