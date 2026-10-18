@@ -231,7 +231,7 @@ export function PortfolioGallery() {
       <div className="portfolio-grid">
         {visibleItems.map((item, index) => (
           <motion.button key={`${item.kind}-${item.id}`} type="button" className="portfolio-tile" data-category={item.category} onClick={() => openItem(item)} whileHover={reducedMotion ? undefined : { y: -4 }} transition={{ duration: .18 }}>
-            <figure><img src={previewFor(item.cover)} alt="" width="800" height="500" loading={index < 4 ? 'eager' : 'lazy'} decoding="async" /></figure>
+            <figure><img src={previewFor(item.cover)} alt="" width="800" height="500" style={item.id === 'pcg-workbench' ? { objectFit: 'contain' } : undefined} loading={index < 4 ? 'eager' : 'lazy'} decoding="async" /></figure>
             <div className="portfolio-tile-copy">
               <small>{item.label}</small><h3>{item.title}</h3><p>{item.summary}</p>
               <div>{item.tags.slice(0, 4).map((tag) => <span key={tag}>{tag}</span>)}</div>
