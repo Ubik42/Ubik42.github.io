@@ -56,7 +56,7 @@ const engineGamesOrder = new Map([
   'aita-schooling',
   'house-of-vampires',
   'lyra-performance-lab',
-  'ray-tracing-hardware',
+  'fathom',
   'aita-toon',
   'aita-wind',
   'aita-cloth',
@@ -112,6 +112,8 @@ export function PortfolioGallery() {
           return (pipelineOrder.get(a.item.id) ?? Number.MAX_SAFE_INTEGER) - (pipelineOrder.get(b.item.id) ?? Number.MAX_SAFE_INTEGER);
         }
         if (a.item.category === 'engine-games') {
+          if (a.item.id === 'ray-tracing-hardware') return 1;
+          if (b.item.id === 'ray-tracing-hardware') return -1;
           return (engineGamesOrder.get(a.item.id) ?? Number.MAX_SAFE_INTEGER) - (engineGamesOrder.get(b.item.id) ?? Number.MAX_SAFE_INTEGER);
         }
         if (a.item.category === 'ai-agent') {
