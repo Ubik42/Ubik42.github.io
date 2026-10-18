@@ -3,13 +3,13 @@ import type { RepositoryWork } from './repositoryWorks';
 export const pcgWorkbench: RepositoryWork = {
   id: 'pcg-workbench',
   title: 'UE 程序化工具集 · PCG Workbench',
-  category: 'general-ta',
+  category: 'engine-games',
   categoryLabel: { zh: '程序化建模与引擎工具', en: 'Procedural modeling and engine tools' },
   summary: {
     zh: '在 Unreal 中用参数和样条生成房屋、城墙、阶梯、地形与植被，并实现贴面藤蔓和交互水波。七项效果共用可编辑工程与自动录制流程。',
     en: 'Seven editable Unreal demonstrations: parametric houses, spline walls and stairs, terrain shaping, vegetation scattering, surface-guided vines, and interactive water waves.',
   },
-  cover: '/media/repositories/pcg-workbench/hero.webp',
+  cover: '/media/repositories/pcg-workbench/gallery.webp',
   tags: ['Unreal Engine 5.8', 'C++', '程序化网格', 'Spline', '数值模拟'],
   story: {
     zh: `# UE 程序化工具集

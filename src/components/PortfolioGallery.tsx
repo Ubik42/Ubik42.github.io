@@ -52,6 +52,7 @@ const engineGamesOrder = new Map([
   'lyra-hero-arena',
   'siggraph-physics-lab',
   'noemancer',
+  'pcg-workbench',
   'noemancer-software-rasterizer',
   'aita-schooling',
   'house-of-vampires',
