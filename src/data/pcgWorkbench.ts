@@ -3,7 +3,7 @@ import type { RepositoryWork } from './repositoryWorks';
 export const pcgWorkbench: RepositoryWork = {
   id: 'pcg-workbench',
   title: 'UE 程序化工具集 · PCG Workbench',
-  category: 'engine-games',
+  category: 'pipeline',
   categoryLabel: { zh: '程序化建模与引擎工具', en: 'Procedural modeling and engine tools' },
   summary: {
     zh: '在 Unreal 中用参数和样条生成房屋、城墙、阶梯、地形与植被，并实现贴面藤蔓和交互水波。七项效果共用可编辑工程与自动录制流程。',

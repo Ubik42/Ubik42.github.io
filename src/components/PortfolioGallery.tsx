@@ -35,6 +35,7 @@ const filters: Array<{ id: 'all' | PortfolioCategory; zh: string; en: string }> 
 ];
 
 const pipelineOrder = new Map([
+  'pcg-workbench',
   'rez-studio-launcher',
   'advanced-skeleton-python-refactor',
   'art-pipeline-skill',
@@ -52,7 +53,6 @@ const engineGamesOrder = new Map([
   'lyra-hero-arena',
   'siggraph-physics-lab',
   'noemancer',
-  'pcg-workbench',
   'noemancer-software-rasterizer',
   'aita-schooling',
   'house-of-vampires',
