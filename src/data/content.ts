@@ -25,12 +25,12 @@ export interface SiteCopy {
 export const siteCopy: Record<Locale, SiteCopy> = {
   en: {
     meta: {
-      title: 'Lucas Shen | Game Client Development / AI Tools Technical Art',
+      title: 'Lucas Shen | AI Tools Technical Art / Game Client Development',
       description: 'Games, DCC plug-ins, realtime graphics, engine tools, and AI-assisted art pipelines by Lucas Shen.',
     },
     nav: { work: 'Projects', practice: 'Experience', links: 'Links', aria: 'Primary navigation' },
     language: { label: 'Language', english: 'English', changed: 'Language changed to English.' },
-    hero: { role: 'Game Client Development / AI Tools Technical Art', primaryAction: 'Selected projects' },
+    hero: { role: 'AI Tools Technical Art / Game Client Development', primaryAction: 'Selected projects' },
     personal: {
       intro: 'My work spans games, DCC plug-ins, realtime graphics, engine tools, and AI-assisted art pipelines, with running builds, project captures, and implementation details.',
       storyAction: 'About me',
@@ -57,7 +57,7 @@ export const siteCopy: Record<Locale, SiteCopy> = {
       title: 'Experience and education',
       items: [
         { period: '2026.03 – 2026.08', title: 'UE Engine Tools Development Intern', place: 'Tencent Photon', detail: 'Built AI-assisted production tools across DCC, engine, and design workflows, with explicit execution and review boundaries.' },
-        { period: '2025.08 – 2027.05', title: 'M.S. in EAE, Game Engineering / Technical Art', place: 'University of Utah', detail: 'Studying realtime graphics, tools, pipelines, and collaborative game production in Entertainment Arts and Engineering.' },
+        { period: '2025.08 – 2027.05', title: 'M.S. in EAE, dual focus in Technical Art / Game Engineering', place: 'University of Utah', detail: 'Studying realtime graphics, tools, pipelines, and collaborative game production in Entertainment Arts and Engineering.' },
         { period: '2020.09 – 2024.06', title: 'B.S. in Industrial Engineering', place: 'Shanghai Jiao Tong University', detail: 'Built a systems and optimization foundation, then applied it through game systems, UE5 client work, and industrial digital twins.' },
       ],
     },
@@ -65,12 +65,12 @@ export const siteCopy: Record<Locale, SiteCopy> = {
   },
   zh: {
     meta: {
-      title: '沈裕焱 | 游戏客户端/AI工具技术美术',
+      title: '沈裕焱 | AI工具技术美术/游戏客户端',
       description: '沈裕焱的 UE 客户端与引擎开发作品集：GAS、网络同步、角色动画与物理、实时渲染，以及 DCC 工具和 AI 应用。',
     },
     nav: { work: '作品', practice: '经历', links: '链接', aria: '主导航' },
     language: { label: '语言', english: 'English', changed: '语言已切换为中文。' },
-    hero: { role: '游戏客户端/AI工具技术美术', primaryAction: '项目作品' },
+    hero: { role: 'AI工具技术美术/游戏客户端', primaryAction: '项目作品' },
     personal: {
       intro: '作品覆盖游戏、DCC 插件、实时图形、引擎工具与 AI 辅助美术管线，包含运行画面、项目素材和具体实现。',
       storyAction: '关于我',
@@ -97,7 +97,7 @@ export const siteCopy: Record<Locale, SiteCopy> = {
       title: '经历与教育',
       items: [
         { period: '2026.03 – 2026.08', title: 'UE 引擎工具开发实习生', place: '腾讯光子', detail: '围绕 DCC、引擎与设计流程开发 AI 辅助美术生产工具，覆盖工具接入、执行边界与人工审查。' },
-        { period: '2025.08 – 2027.05', title: 'EAE 游戏工程/技术美术硕士', place: '犹他大学', detail: '在 Entertainment Arts and Engineering 项目中学习实时图形、工具、管线与协作式游戏生产。' },
+        { period: '2025.08 – 2027.05', title: 'EAE 技术美术/游戏工程双方向硕士', place: '犹他大学', detail: '在 Entertainment Arts and Engineering 项目中学习实时图形、工具、管线与协作式游戏生产。' },
         { period: '2020.09 – 2024.06', title: '工业工程学士', place: '上海交通大学', detail: '建立优化与系统方法基础，并逐步扩展到游戏系统、UE5 客户端与工业数字孪生开发。' },
       ],
     },

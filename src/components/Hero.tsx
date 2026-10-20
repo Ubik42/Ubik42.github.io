@@ -4,11 +4,11 @@ export function Hero() {
   const { copy, locale } = useLanguage();
   const education = locale === 'zh'
     ? [
-        ['犹他大学｜娱乐艺术与工程（游戏工程/技术美术）硕士', '2025.08 — 2027.05'],
+        ['犹他大学｜娱乐艺术与工程（技术美术/游戏工程双方向）硕士', '2025.08 — 2027.05'],
         ['上海交通大学｜工业工程本科', '2020.09 — 2024.06'],
       ]
     : [
-        ['University of Utah | M.E.A.E., Game Engineering / Technical Art', 'Aug 2025 — May 2027'],
+        ['University of Utah | M.E.A.E., dual focus in Technical Art / Game Engineering', 'Aug 2025 — May 2027'],
         ['Shanghai Jiao Tong University | B.Eng., Industrial Engineering', 'Sep 2020 — Jun 2024'],
       ];
   const experience = locale === 'zh'
