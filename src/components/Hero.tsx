@@ -1,7 +1,7 @@
 import { useLanguage } from '../i18n/LanguageContext';
 
 export function Hero() {
-  const { copy, locale } = useLanguage();
+  const { locale } = useLanguage();
   const education = locale === 'zh'
     ? [
         ['犹他大学｜娱乐艺术与工程（技术美术/游戏工程双方向）硕士', '2025.08 — 2027.05'],
@@ -30,7 +30,6 @@ export function Hero() {
       <img src="/media/avatar.jpg" alt={locale === 'zh' ? '沈裕焱的手绘头像' : 'Lucas Shen hand-drawn avatar'} width="640" height="640" fetchPriority="high" />
       <div className="profile-name">
         <h1 id="hero-title"><span lang="zh-CN">沈裕焱</span><span>Lucas Shen</span></h1>
-        <p>{copy.hero.role}</p>
       </div>
       <p className="profile-intro">{locale === 'zh' ? 'Gameplay、GAS 与网络同步，角色动画与物理、实时渲染和引擎工具。' : 'Gameplay, GAS and networking; character animation, physics, realtime rendering and engine tools.'}</p>
       <div className="profile-history">
