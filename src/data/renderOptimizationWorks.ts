@@ -85,7 +85,13 @@ const courtyardStory = `# UE 场景提交与移动预览阴影优化
 
 独立移动关卡使用指定环境Cubemap，修复桌面实时天空捕获在该路径下的暗部与反射缺失；显式保存ISM材质Usage，避免运行时回退材质。关卡序列驱动相同镜头，分别采集两种阴影配置。
 
-这些是桌面GPU上的移动Shader路径验证，尚未覆盖Android打包、手机热降频或移动GPU带宽。场景布局与藤蔓为自有制作，基础几何引用UE引擎资源，未使用商业游戏提取资产。`;
+## Android部署与实际运行
+
+![Android庭院实际运行](/experiments/courtyard/media/android-courtyard.png)
+
+完成UE Android x86_64包构建，覆盖C++编译、Shader Cook、Gradle打包、安装与启动；Android15模拟器日志确认Vulkan ES3.1及独立庭院地图。为移动展示配置双面Unlit天空网格，关闭默认虚拟摇杆，并保存设备信息、APK哈希、运行截图与关键日志。
+
+该环境使用宿主RTX4080。上文性能对照保留Windows/D3D11 ES3.1条件；手机热降频与移动GPU带宽仍需真机测量。场景布局与藤蔓为自有制作，基础几何引用UE引擎资源，未使用商业游戏提取资产。`;
 
 export const renderOptimizationWorks: RepositoryWork[] = [
   { id:'vulkan-renderpass-lab',title:'Vulkan 渲染通道与 Bloom 优化实验',category:'engine-games',categoryLabel:{zh:'原生渲染与 GPU 优化',en:'Native rendering and GPU optimization'},summary:{zh:'实现 Render Pass、Subpass 与内联合成，比较同核 Bloom 分离卷积的 GPU 成本、图像误差和资源代价。',en:'Vulkan pass organization and same-kernel separable bloom, with GPU timing and image comparisons.'},cover:'/experiments/renderpass/media/separable.png',tags:['C++','Vulkan','Shader','RenderDoc','GPU 时间戳'],story:{zh:vulkanStory,en:vulkanStory}},
