@@ -1,0 +1,26 @@
+{
+  "scope": "Fixed editor images, RGB 8-bit output. No GPU timing or general visual-equivalence claim.",
+  "results": [
+    {
+      "variant": "flattened",
+      "meanAbsoluteChannelDifference": 0.1367900462962963,
+      "maxChannelDifference": 3,
+      "changedPixels": 492726,
+      "pixels": 1440000
+    },
+    {
+      "variant": "roughness-control",
+      "meanAbsoluteChannelDifference": 3.6024583333333333,
+      "maxChannelDifference": 77,
+      "changedPixels": 776945,
+      "pixels": 1440000
+    },
+    {
+      "variant": "switch-control",
+      "meanAbsoluteChannelDifference": 22.929224074074074,
+      "maxChannelDifference": 179,
+      "changedPixels": 665582,
+      "pixels": 1440000
+    }
+  ]
+}
