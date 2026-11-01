@@ -352,3 +352,8 @@
 @media (max-width: 680px) { .observer-state { grid-template-columns: 1fr; } }
 
 @media (max-width: 680px) { .animation-observer .performance-chapters { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.animation-ramp video { display: block; width: 100%; aspect-ratio: 1280 / 800; background: #11252b; }
+.animation-records { margin: 1.25rem 0; border: 1px solid #bdcdd9; }
+.animation-records > summary { padding: 1rem 1.25rem; color: #21564e; background: #edf5f3; font-weight: 750; cursor: pointer; }
+.animation-records > .animation-observer { margin: 0; border: 0; }
