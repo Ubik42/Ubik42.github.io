@@ -1,4 +1,5 @@
 import { rayTracingHardware } from './rayTracingHardware';
+import { ueEngineAgent } from './ueEngineAgent';
 import type { Localized } from './showcase';
 import { aitaProjects } from './aitaSystems';
 import { animationAigcLab } from './animationAigcLab';
@@ -28,6 +29,7 @@ export interface RepositoryWork {
 }
 
 export const repositoryWorks: RepositoryWork[] = [
+  ueEngineAgent,
   ...renderOptimizationWorks,
   rayTracingHardware,
   parkourAnimation,
@@ -1160,6 +1162,14 @@ PyArsenal is a graphical manager for Python developers who maintain many scripts
     story: { zh: `# Levelwright Agent：UE 关卡灰盒搭建智能体
 
 Levelwright Agent 面向第三人称动作 / 射击关卡的灰盒阶段。它从结构化 Brief、角色尺度、节拍图和知识卡生成候选布局，在独立 Unreal Level 中搭建入口、观察区、双路线、遭遇区与撤离点，再把引擎测量结果整理为可定位报告。
+
+## 用轨迹与知识检索修正设计判断
+
+新增的上下文模块检索 30 张本地设计知识卡片，并组合布局与试玩轨迹，为模型保留来源、适用条件和文件摘要。当前采用可解释的词项检索，针对双路线与遭遇问题返回节奏对比、分支汇合、观察点等五类知识。
+
+复核候选 B 的 49 个自动行走采样点后，发现角色距遭遇中心最近约 829 cm，却曾距右侧敌人出生标记仅约 84 cm。因此，“没有进入中心的 600 cm 判定圈”不足以判断绕过了整个遭遇。
+
+下一轮设计建议先以区域及入口记录遭遇触发，再按侧路允许避战或必须参战的目标调整空间关系。当前敌人仍是设计标记，实际战斗触发待接入后验证；本轮分析保留了原有几何布局。
 
 ## 从设计意图到两个候选
 
