@@ -14,6 +14,10 @@ export const ueEngineAgent: RepositoryWork = {
   story: {
     zh: `# UE 引擎 Agent：原生工具调用与可恢复编辑
 
+@[video: 32 秒案例：实际调用记录、蓝图结构示意、旧结果过期与真实 UE 运行复现](/media/repositories/ue-engine-agent/showcase.mp4)
+
+短片中的运动画面来自已保存蓝图的真实模拟复现；操作与验证数字来自原始模型任务。图结构按实际 DSL 绘制，原始调用、位置采样和制作源码随源码包提供。
+
 ## 根据运行结果继续改图
 
 模型读取平台原有采样，将运动调整为中心高度 180 cm、振幅 55 cm，然后检查旧结果。图摘要变化后，系统将旧采样标为过期，避免把之前的成功当成本次修改的证明。
