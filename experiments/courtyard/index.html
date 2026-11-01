@@ -16,6 +16,7 @@
 <div class="toolbar" id="ablation-controls"></div><figure><img id="ablation-image" src="media/FullRange.png" alt="单变量阴影配置运行截图"><figcaption id="ablation-caption">基准：400 米 / 2048 / 4 级联</figcaption></figure>
 <p class="note">每配置统计三批 P50 的中位数，范围为三批 P50 的最小值与最大值。较小整帧差异可能落在批次波动内；图片变化与阶段计时应一起判断。</p></section>
 <p style="margin-top:30px"><a href="coverage.html" style="color:#235f4c;font-weight:700">柔边卡片覆盖优化：网格面积、透明阶段与图像对照</a></p>
+<section id="android"><h2>Android · Vulkan ES3.1 实际运行</h2><p>原创庭院打包为 x86_64 APK，在 Android 15 模拟器中加载独立移动关卡。构建覆盖 C++ 编译、Shader Cook、Gradle 打包、安装与启动。</p><figure style="margin-top:18px"><img src="media/android-courtyard.png" alt="UE 庭院在 Android 15 模拟器中以 Vulkan ES3.1 运行的实际截图"><figcaption>Android 专属地图使用独立天空网格；关闭默认虚拟摇杆，保留庭院植被、材质与阴影。</figcaption></figure><p class="note">模拟器使用宿主 RTX 4080。此图验证部署与渲染路径；上方性能数据来自各自注明的桌面移动预览条件。源码包包含 Android 配置、场景生成器、构建脚本和运行证据。</p></section>
 <footer id="source"></footer></main><script src="data.js"></script><script src="ablation.js"></script><script>
 const $=id=>document.getElementById(id),data=window.result,a=data.FullRange,b=data.CourtyardBudget;
 $('gpu').textContent=a.GPUTime.toFixed(3)+' → '+b.GPUTime.toFixed(3);$('depth').textContent=a['GPU/ShadowDepths'].toFixed(3)+' → '+b['GPU/ShadowDepths'].toFixed(3);$('source').textContent='数据批次：'+data.source+' · 原始 CSV、命令、日志及全尺寸图像均保存在工程 Saved/Experiments 中。';
