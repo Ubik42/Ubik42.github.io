@@ -292,7 +292,7 @@ function RepositoryDetail({ work, locale }: { work: RepositoryWork; locale: 'zh'
   const leadFit = work.id === 'noemancer' || work.id === 'artflow-agent' || work.id === 'ray-tracing-hardware' ? 'cover' : 'contain';
   return <>
     {work.repositoryUrl && <a className="project-dialog-source" href={work.repositoryUrl} target="_blank" rel="noreferrer"><span>{locale === 'zh' ? '查看 GitHub 仓库' : 'View GitHub repository'}</span><span aria-hidden="true">↗</span></a>}
-    {(work.id !== 'lyra-hero-arena' || locale !== 'zh') && <DetailLeadMedia src={work.cover} alt={`${work.title} ${locale === 'zh' ? '项目画面' : 'project view'}`} fit={leadFit} />}
+    {!['lyra-performance-lab', 'ue-performance-workbench'].includes(work.id) && (work.id !== 'lyra-hero-arena' || locale !== 'zh') && <DetailLeadMedia src={work.cover} alt={`${work.title} ${locale === 'zh' ? '项目画面' : 'project view'}`} fit={leadFit} />}
     {work.id === 'lyra-performance-lab' && <><AnimationQuality locale={locale} /><PerformanceEvidence study="animation" locale={locale} /></>}
     {work.id === 'ue-performance-workbench' && <><HudQuality locale={locale} /><PerformanceEvidence study="hud" locale={locale} /></>}
     {work.id === 'animation-aigc-lab' && <AnimationAigcShowcase locale={locale} />}

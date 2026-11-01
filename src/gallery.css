@@ -14,6 +14,16 @@
 .animation-quality video { display: block; width: 100%; aspect-ratio: 20 / 9; background: #0c1820; }
 .hud-quality video { aspect-ratio: 80 / 53; }
 .animation-quality > p:last-child { font-size: 1rem; line-height: 1.7; color: #d1e5e3; margin-bottom: 0; }
+.performance-chapters { display:flex; flex-wrap:wrap; gap:.65rem; margin:1rem 0; }
+.performance-chapters button { flex:1 1 180px; padding:.8rem 1rem; border:1px solid #648c82; background:#193a3b; color:#e9f6f0; text-align:left; font:inherit; cursor:pointer; }
+.performance-chapters button[aria-pressed=true] { background:#c5ecda; color:#12352b; border-color:#c5ecda; }
+.performance-chapters button span { display:block; font-size:.8rem; margin-bottom:.3rem; font-variant-numeric:tabular-nums; }
+.performance-chapters button:focus-visible { outline:3px solid #f7c875; outline-offset:3px; }
+.performance-case-context { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr)); gap:1.5rem; border-top:1px solid #41665e; margin-top:1.5rem; padding-top:1rem; }
+.performance-case-context p { margin:0; color:#d1e5e3; line-height:1.75; }
+.performance-case-context strong { display:block; color:#a2ebcc; margin-bottom:.35rem; }
+.performance-relative-change { color:#405d53; font-size:.9rem; font-weight:500; }
+.performance-range { margin:1rem 0 0; font-size:.8rem; color:#405d53; line-height:1.7; font-variant-numeric:tabular-nums; }
 .performance-evidence { padding: clamp(1.25rem, 4vw, 3.5rem); border-bottom: 1px solid var(--ink); background: #f3f6f5; color: #172e29; }
 .performance-kicker { margin: 0 0 .6rem; color: #246c56; font-size: .88rem; font-weight: 750; }
 .performance-evidence header h3 { margin: 0 0 .7rem; max-width: 26ch; font-size: clamp(1.5rem, 3vw, 2.6rem); line-height: 1.25; }

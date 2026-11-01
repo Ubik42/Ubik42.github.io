@@ -191,12 +191,12 @@ An in-progress multiplayer hero-shooter project built on Unreal Engine 5.7 and L
   },
   {
     id: 'lyra-performance-lab',
-    title: '多角色高负载场景性能优化',
+    title: '多角色动画预算与性能优化',
     category: 'engine-games',
     categoryLabel: { zh: 'UE 性能分析与优化', en: 'UE performance analysis and optimization' },
     summary: {
       zh: '基于 Lyra 搭建 200 个受控 AI 的测试场景，通过距离分段、原生 URO 与动画后处理裁剪降低开销，展示实际采样与技术取舍。',
-      en: 'Independent, attributable before-and-after studies across AI, navigation, animation, rendering, and networking under high multi-character load.',
+      en: 'Distance-based animation updates for 200 AI characters, with URO, post-process animation tradeoffs and recorded CPU measurements.',
     },
     cover: '/media/repositories/lyra-hero-arena/animation-crowd.jpg',
     tags: ['URO / 动画分级', 'CSV Profiler', '200 AI', 'A/B 对照'],
@@ -208,7 +208,7 @@ An in-progress multiplayer hero-shooter project built on Unreal Engine 5.7 and L
 Fixed maps, seeds, viewpoints, graphics settings, RHI, and character loads create repeatable single-variable studies across AI, navigation, animation, rendering, and networking. Performance gains are accepted only when behavior and visual quality conditions remain valid.`,
     },
     images: [
-      { src: '/media/repositories/lyra-hero-arena/workbench-network.png', alt: { zh: '网络优化实验的 Baseline 与 Optimized 对比', en: 'Baseline and optimized comparison for the networking experiment' } },
+      { src: '/media/repositories/lyra-hero-arena/workbench-network.png', alt: { zh: '历史网络实验：工作台的结果组织示例，与上方动画批次分开', en: 'Baseline and optimized comparison for the networking experiment' } },
       { src: '/media/repositories/lyra-hero-arena/gameplay.jpg', alt: { zh: '性能压力实验所依托的 Lyra Gameplay 场景', en: 'Lyra gameplay environment used by the performance stress studies' } },
     ],
   },

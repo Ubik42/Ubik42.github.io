@@ -5,21 +5,27 @@ type Props = { study: 'animation' | 'hud'; locale: 'zh' | 'en' };
 export function PerformanceEvidence({ study, locale }: Props) {
   const data = results.cases[study];
   const zh = locale === 'zh';
-  const format = (value: number) => value.toFixed(value < .1 ? 4 : 2);
+  const format = (value: number) => value.toFixed(Math.abs(value) < .1 ? 4 : 2);
+  const metrics = [...data.metrics].sort((a, b) => Number(b.metric === 'frameTimeMs') - Number(a.metric === 'frameTimeMs'));
+  const range = (metric: typeof data.metrics[number], variant: string) => {
+    const samples = data.runs.filter(run => run.variant === variant).map(run => (run.metrics as Record<string, Record<string, number>>)[metric.metric][metric.statistic]);
+    return `${format(Math.min(...samples))}–${format(Math.max(...samples))}`;
+  };
   return <section className="performance-evidence" aria-label={zh ? '实际运行结果对比' : 'Recorded runtime comparison'}>
     <header>
       <p className="performance-kicker">{zh ? '同机实测 · 改动前 3 次 / 改动后 3 次' : 'Same machine · 3 baseline / 3 optimized runs'}</p>
-      <h3>{study === 'animation' ? (zh ? '200 个角色，按距离分配动画开销' : 'Animation budgets for 200 characters') : (zh ? 'HUD 刷新变快，整帧改善有多少？' : 'A faster HUD. What changes for the frame?')}</h3>
+      <h3>{study === 'animation' ? (zh ? '动画开销下降，整帧仍有其他负载' : 'Lower animation cost within a larger frame') : (zh ? '常规刷新减少，整帧耗时基本持平' : 'Fewer routine updates, similar frame time')}</h3>
       <p>{zh ? '下方为 2026-08-31 的运行记录；各组三次统计值取中位数。' : 'Recorded on 2026-08-31. Each value is the median of three per-run statistics.'}</p>
     </header>
     <div className="performance-metrics">
-      {data.metrics.map(metric => <figure key={`${metric.metric}-${metric.statistic}`}>
-        <figcaption>{metric.label[locale]} <strong className={Math.abs(metric.changePercent) < 1 ? 'is-flat' : ''}>{metric.changePercent.toFixed(1)}%{Math.abs(metric.changePercent) < 1 && <small>{zh ? '基本持平' : 'Essentially unchanged'}</small>}</strong></figcaption>
+      {metrics.map(metric => <figure key={`${metric.metric}-${metric.statistic}`}>
+        <figcaption>{metric.label[locale]} <strong className={Math.abs(metric.changePercent) < 1 ? 'is-flat' : ''}>{format(metric.optimized - metric.baseline)}<small>ms</small></strong><span className="performance-relative-change">{metric.changePercent.toFixed(1)}% · {metric.metric === 'frameTimeMs' ? (zh ? '整帧指标' : 'Whole-frame metric') : (zh ? '局部指标' : 'Local metric')}{Math.abs(metric.changePercent) < 1 && (zh ? ' · 基本持平' : ' · Essentially unchanged')}</span></figcaption>
         {(['baseline', 'optimized'] as const).map(variant => <div className={`performance-bar-row ${variant}`} key={variant}>
           <span>{variant === 'baseline' ? (zh ? '改动前' : 'Before') : (zh ? '改动后' : 'After')}</span>
           <div className="performance-bar-track" aria-hidden="true"><div style={{ width: `${metric[variant] / Math.max(metric.baseline, metric.optimized) * 100}%` }} /></div>
           <b>{format(metric[variant])}<small> ms</small></b>
         </div>)}
+        <p className="performance-range">{zh ? '三轮范围' : 'Three-run range'}<br />{zh ? '改动前' : 'Before'} {range(metric, 'Baseline')} ms<br />{zh ? '改动后' : 'After'} {range(metric, 'Optimized')} ms</p>
       </figure>)}
     </div>
     <p className="performance-reading-note">{zh ? '每项使用独立的零起点刻度；耗时越低越好。P95 表示每次采样中 95% 的帧不超过该耗时，再对三次结果取中位数。' : 'Each metric has its own zero-based scale. Lower is better. P95 is calculated per run, then the median of three runs is shown.'}</p>
