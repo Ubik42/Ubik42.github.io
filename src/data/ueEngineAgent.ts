@@ -6,7 +6,7 @@ export const ueEngineAgent: RepositoryWork = {
   category: 'ai-agent',
   categoryLabel: { zh: 'UE 编辑器与 Agent 执行', en: 'UE editor and agent execution' },
   summary: {
-    zh: '模型通过 UE 官方 MCP 编辑材质、重排场景并生成蓝图；升降平台经过编译、重启加载与 66 次真实运行位置采样。',
+    zh: '模型通过 UE 官方 MCP 编辑材质、重排场景并生成蓝图；升降平台经过编译、重启加载与运行反馈修订，新参数由 82 个真实位置点验证。',
     en: 'Native UE MCP tool discovery and material editing, with durable steps, asset readback, and viewport feedback.',
   },
   cover: '/media/repositories/ue-engine-agent/workbench.png',
@@ -96,7 +96,7 @@ export const ueEngineAgent: RepositoryWork = {
 
 ## 按任务加载工具定义
 
-工具目录用于选择能力，具体工具的 JSON Schema 在执行前按需获取。这样可以保留实际参数约束，同时减少一次性塞入整个编辑器接口的上下文。当前案例实现材质参数读取、修改、资产保存和视口捕获。
+工具目录用于选择能力，具体工具的 JSON Schema 在执行前按需获取。这样可以保留实际参数约束，同时减少一次性塞入整个编辑器接口的上下文。已用于材质编辑、Actor 变换、资产定位、蓝图图结构编辑和视口捕获。
 
 ## 执行记录连接修改与反馈
 
@@ -106,7 +106,7 @@ SQLite 保存计划摘要、步骤状态、返回值和时间。完成的步骤�
 
 ## 当前实现与继续扩展
 
-已完成独立模型循环、图像反馈、原生编辑器连接、按需工具发现、持久执行、材质案例及首次案例的重启读回。Actor 变换与展示组合检查已接入；中文操作界面已接入真实执行；工程知识检索已接入；蓝图/动画业务案例继续开发。展台由工程脚本生成，使用 UE 基础形体。
+已完成独立模型循环、工程知识检索、按需工具发现、持久执行和中文工作台。真实案例覆盖材质编辑、组合场景重排、蓝图生成及运行反馈修订，并提供原始调用、截图与过程短片。后续扩展动画业务与更复杂的场景关系。展台由工程脚本生成，使用 UE 基础形体。
 
 [下载源码与场景重建脚本](/media/repositories/ue-engine-agent/UE-Engine-Agent-source.zip)`,
     en: `# UE Engine Agent
