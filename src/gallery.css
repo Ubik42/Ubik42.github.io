@@ -337,3 +337,18 @@
   .mechanism-flow > figcaption { flex-wrap: wrap; gap: .3rem; }
   .mechanism-branch, .mechanism-flow footer { flex-direction: column; gap: .5rem; }
 }
+
+.animation-observer { margin: 2rem 0; padding: clamp(1rem, 3vw, 2rem); border: 1px solid #b8cddc; background: #f0f6f8; }
+.animation-observer h3 { margin: .5rem 0 1rem; font-size: clamp(1.35rem, 2.5vw, 2rem); }
+.animation-observer figure { margin: 1.2rem 0; }
+.animation-observer figure img { display: block; width: 100%; height: auto; background: #101820; }
+.animation-observer figcaption { padding: .65rem 0; color: #536575; font-size: .85rem; }
+.observer-state { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 1rem 0; gap: .7rem; }
+.observer-state > div { padding: 1rem; border-left: 3px solid #137467; background: #fff; }
+.observer-state dt { color: #506273; font-size: .85rem; margin-bottom: .5rem; }
+.observer-state dd { margin: 0; color: #134c43; font-size: 1rem; font-weight: 750; }
+.observer-note { color: #536575; font-size: .85rem; line-height: 1.75; }
+.observer-note a { color: #1264b1; white-space: nowrap; }
+@media (max-width: 680px) { .observer-state { grid-template-columns: 1fr; } }
+
+@media (max-width: 680px) { .animation-observer .performance-chapters { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
