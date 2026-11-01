@@ -65,6 +65,8 @@ const engineGamesOrder = new Map([
   'aita-fog',
   'aita-fracture',
   'ue-performance-workbench',
+  'vulkan-renderpass-lab',
+  'ue-mobile-scene-lab',
   'resonance-forge',
   'unreal-asset-batch-auditor',
 ].map((id, index) => [id, index]));

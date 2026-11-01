@@ -5,6 +5,7 @@ import { animationAigcLab } from './animationAigcLab';
 import { alsDirector } from './alsDirector';
 import { pcgWorkbench } from './pcgWorkbench';
 import { parkourAnimation } from './parkourAnimation';
+import { renderOptimizationWorks } from './renderOptimizationWorks';
 import lyraPerformanceStory from '../content/projects/lyra-performance.zh.md?raw';
 import performanceWorkbenchStory from '../content/projects/performance-workbench.zh.md?raw';
 import lyraHeroStory from '../content/projects/lyra-hero.zh.md?raw';
@@ -27,6 +28,7 @@ export interface RepositoryWork {
 }
 
 export const repositoryWorks: RepositoryWork[] = [
+  ...renderOptimizationWorks,
   rayTracingHardware,
   parkourAnimation,
   alsDirector,
