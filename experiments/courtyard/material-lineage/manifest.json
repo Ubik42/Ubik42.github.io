@@ -1,0 +1,49 @@
+{
+  "engine": "5.8.1-56057345+++UE5+Release-5.8",
+  "resolution": [
+    1600,
+    900
+  ],
+  "camera": {
+    "position": [
+      480,
+      -650,
+      360
+    ],
+    "target": [
+      0,
+      0,
+      100
+    ],
+    "fov": 38
+  },
+  "scene": "/Game/MaterialLineageLab/L_MaterialLineage",
+  "paintedComponents": 13,
+  "aa": "None for stable fixed-image comparison",
+  "captures": [
+    {
+      "name": "original",
+      "material": "/Game/MaterialLineageLab/MI_RedProp",
+      "image": "original.png",
+      "warmupTicks": 240
+    },
+    {
+      "name": "flattened",
+      "material": "/Game/MaterialLineageLab/MI_RedProp_Flattened",
+      "image": "flattened.png",
+      "warmupTicks": 240
+    },
+    {
+      "name": "roughness-control",
+      "material": "/Game/MaterialLineageLab/MI_RoughControl",
+      "image": "roughness-control.png",
+      "warmupTicks": 240
+    },
+    {
+      "name": "switch-control",
+      "material": "/Game/MaterialLineageLab/MI_StaticSwitchControl",
+      "image": "switch-control.png",
+      "warmupTicks": 240
+    }
+  ]
+}

@@ -1,0 +1,267 @@
+{
+  "date": "2026-11-01",
+  "engine": "5.8.1-56057345+++UE5+Release-5.8",
+  "scope": "Authored single-layer fixture with global scalar/vector/texture/static-switch parameters. Signature is a candidate filter, not visual equivalence or a shader permutation count. No production assets are edited.",
+  "originals": [
+    {
+      "asset": "/Game/MaterialLineageLab/MI_RedFamily.MI_RedFamily",
+      "parentChain": [
+        "/Game/MaterialLineageLab/M_CoatedMetal.M_CoatedMetal"
+      ],
+      "depth": 1,
+      "base": "/Game/MaterialLineageLab/M_CoatedMetal.M_CoatedMetal",
+      "effective": {
+        "scalar": {
+          "Metallic": 0.5,
+          "Roughness": 0.6
+        },
+        "vector": {
+          "Tint": [
+            0.5,
+            0.045,
+            0.018,
+            1.0
+          ]
+        },
+        "texture": {
+          "Albedo": "/Engine/EngineResources/WhiteSquareTexture.WhiteSquareTexture"
+        },
+        "staticSwitch": {
+          "UseTint": true
+        }
+      },
+      "supportedParameterSignature": "ad6e1e2542b81444b0d5537a19a6df989d596b8ed53b9c7024170cc7549cdf51"
+    },
+    {
+      "asset": "/Game/MaterialLineageLab/MI_RedPolished.MI_RedPolished",
+      "parentChain": [
+        "/Game/MaterialLineageLab/MI_RedFamily.MI_RedFamily",
+        "/Game/MaterialLineageLab/M_CoatedMetal.M_CoatedMetal"
+      ],
+      "depth": 2,
+      "base": "/Game/MaterialLineageLab/M_CoatedMetal.M_CoatedMetal",
+      "effective": {
+        "scalar": {
+          "Metallic": 0.5,
+          "Roughness": 0.22
+        },
+        "vector": {
+          "Tint": [
+            0.5,
+            0.045,
+            0.018,
+            1.0
+          ]
+        },
+        "texture": {
+          "Albedo": "/Engine/EngineResources/WhiteSquareTexture.WhiteSquareTexture"
+        },
+        "staticSwitch": {
+          "UseTint": true
+        }
+      },
+      "supportedParameterSignature": "a624d5e2442eb6497adfe62c6798e8b3be03429ac64e25c0a867529f2e4f34e7"
+    },
+    {
+      "asset": "/Game/MaterialLineageLab/MI_RedProp.MI_RedProp",
+      "parentChain": [
+        "/Game/MaterialLineageLab/MI_RedPolished.MI_RedPolished",
+        "/Game/MaterialLineageLab/MI_RedFamily.MI_RedFamily",
+        "/Game/MaterialLineageLab/M_CoatedMetal.M_CoatedMetal"
+      ],
+      "depth": 3,
+      "base": "/Game/MaterialLineageLab/M_CoatedMetal.M_CoatedMetal",
+      "effective": {
+        "scalar": {
+          "Metallic": 0.5,
+          "Roughness": 0.22
+        },
+        "vector": {
+          "Tint": [
+            0.5,
+            0.045,
+            0.018,
+            1.0
+          ]
+        },
+        "texture": {
+          "Albedo": "/Engine/EngineResources/WhiteSquareTexture.WhiteSquareTexture"
+        },
+        "staticSwitch": {
+          "UseTint": true
+        }
+      },
+      "supportedParameterSignature": "a624d5e2442eb6497adfe62c6798e8b3be03429ac64e25c0a867529f2e4f34e7"
+    },
+    {
+      "asset": "/Game/MaterialLineageLab/MI_RedEquivalent.MI_RedEquivalent",
+      "parentChain": [
+        "/Game/MaterialLineageLab/M_CoatedMetal.M_CoatedMetal"
+      ],
+      "depth": 1,
+      "base": "/Game/MaterialLineageLab/M_CoatedMetal.M_CoatedMetal",
+      "effective": {
+        "scalar": {
+          "Metallic": 0.5,
+          "Roughness": 0.22
+        },
+        "vector": {
+          "Tint": [
+            0.5,
+            0.045,
+            0.018,
+            1.0
+          ]
+        },
+        "texture": {
+          "Albedo": "/Engine/EngineResources/WhiteSquareTexture.WhiteSquareTexture"
+        },
+        "staticSwitch": {
+          "UseTint": true
+        }
+      },
+      "supportedParameterSignature": "a624d5e2442eb6497adfe62c6798e8b3be03429ac64e25c0a867529f2e4f34e7"
+    },
+    {
+      "asset": "/Game/MaterialLineageLab/MI_RoughControl.MI_RoughControl",
+      "parentChain": [
+        "/Game/MaterialLineageLab/MI_RedPolished.MI_RedPolished",
+        "/Game/MaterialLineageLab/MI_RedFamily.MI_RedFamily",
+        "/Game/MaterialLineageLab/M_CoatedMetal.M_CoatedMetal"
+      ],
+      "depth": 3,
+      "base": "/Game/MaterialLineageLab/M_CoatedMetal.M_CoatedMetal",
+      "effective": {
+        "scalar": {
+          "Metallic": 0.5,
+          "Roughness": 0.85
+        },
+        "vector": {
+          "Tint": [
+            0.5,
+            0.045,
+            0.018,
+            1.0
+          ]
+        },
+        "texture": {
+          "Albedo": "/Engine/EngineResources/WhiteSquareTexture.WhiteSquareTexture"
+        },
+        "staticSwitch": {
+          "UseTint": true
+        }
+      },
+      "supportedParameterSignature": "7b4c9208358daf5acaf8b34e8ad636ce80ffe247f526501188b37724ec79c900"
+    },
+    {
+      "asset": "/Game/MaterialLineageLab/MI_StaticSwitchControl.MI_StaticSwitchControl",
+      "parentChain": [
+        "/Game/MaterialLineageLab/MI_RedPolished.MI_RedPolished",
+        "/Game/MaterialLineageLab/MI_RedFamily.MI_RedFamily",
+        "/Game/MaterialLineageLab/M_CoatedMetal.M_CoatedMetal"
+      ],
+      "depth": 3,
+      "base": "/Game/MaterialLineageLab/M_CoatedMetal.M_CoatedMetal",
+      "effective": {
+        "scalar": {
+          "Metallic": 0.5,
+          "Roughness": 0.22
+        },
+        "vector": {
+          "Tint": [
+            0.5,
+            0.045,
+            0.018,
+            1.0
+          ]
+        },
+        "texture": {
+          "Albedo": "/Engine/EngineResources/WhiteSquareTexture.WhiteSquareTexture"
+        },
+        "staticSwitch": {
+          "UseTint": false
+        }
+      },
+      "supportedParameterSignature": "dcc55eb27c2196428e6ecc618285f6254b61d6e031b29b7232db1407bb22b04f"
+    }
+  ],
+  "candidateGroups": [
+    [
+      "/Game/MaterialLineageLab/MI_RedPolished.MI_RedPolished",
+      "/Game/MaterialLineageLab/MI_RedProp.MI_RedProp",
+      "/Game/MaterialLineageLab/MI_RedEquivalent.MI_RedEquivalent"
+    ]
+  ],
+  "changeSet": {
+    "operation": "duplicate_then_reparent",
+    "source": {
+      "asset": "/Game/MaterialLineageLab/MI_RedProp.MI_RedProp",
+      "parentChain": [
+        "/Game/MaterialLineageLab/MI_RedPolished.MI_RedPolished",
+        "/Game/MaterialLineageLab/MI_RedFamily.MI_RedFamily",
+        "/Game/MaterialLineageLab/M_CoatedMetal.M_CoatedMetal"
+      ],
+      "depth": 3,
+      "base": "/Game/MaterialLineageLab/M_CoatedMetal.M_CoatedMetal",
+      "effective": {
+        "scalar": {
+          "Metallic": 0.5,
+          "Roughness": 0.22
+        },
+        "vector": {
+          "Tint": [
+            0.5,
+            0.045,
+            0.018,
+            1.0
+          ]
+        },
+        "texture": {
+          "Albedo": "/Engine/EngineResources/WhiteSquareTexture.WhiteSquareTexture"
+        },
+        "staticSwitch": {
+          "UseTint": true
+        }
+      },
+      "supportedParameterSignature": "a624d5e2442eb6497adfe62c6798e8b3be03429ac64e25c0a867529f2e4f34e7"
+    },
+    "result": {
+      "asset": "/Game/MaterialLineageLab/MI_RedProp_Flattened.MI_RedProp_Flattened",
+      "parentChain": [
+        "/Game/MaterialLineageLab/M_CoatedMetal.M_CoatedMetal"
+      ],
+      "depth": 1,
+      "base": "/Game/MaterialLineageLab/M_CoatedMetal.M_CoatedMetal",
+      "effective": {
+        "scalar": {
+          "Metallic": 0.5,
+          "Roughness": 0.22
+        },
+        "vector": {
+          "Tint": [
+            0.5,
+            0.045,
+            0.018,
+            1.0
+          ]
+        },
+        "texture": {
+          "Albedo": "/Engine/EngineResources/WhiteSquareTexture.WhiteSquareTexture"
+        },
+        "staticSwitch": {
+          "UseTint": true
+        }
+      },
+      "supportedParameterSignature": "a624d5e2442eb6497adfe62c6798e8b3be03429ac64e25c0a867529f2e4f34e7"
+    },
+    "sourceSnapshotsUnchanged": true,
+    "effectiveParametersPreserved": true
+  },
+  "notCovered": [
+    "material layers and non-global parameter associations",
+    "base-property overrides",
+    "runtime material parameter collections",
+    "visual comparison",
+    "shader permutation counts or GPU performance"
+  ]
+}
