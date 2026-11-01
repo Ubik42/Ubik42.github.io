@@ -6,7 +6,7 @@ export const ueEngineAgent: RepositoryWork = {
   category: 'ai-agent',
   categoryLabel: { zh: 'UE 编辑器与 Agent 执行', en: 'UE editor and agent execution' },
   summary: {
-    zh: '模型通过 UE 官方 MCP 自主发现工具、修改材质并读回结果；13 轮真实调用完成参数编辑、保存与视口图像检查。',
+    zh: '模型通过 UE 官方 MCP 编辑材质、重排场景并生成蓝图；升降平台经过编译、重启加载与 66 次真实运行位置采样。',
     en: 'Native UE MCP tool discovery and material editing, with durable steps, asset readback, and viewport feedback.',
   },
   cover: '/media/repositories/ue-engine-agent/workbench.png',
@@ -14,11 +14,21 @@ export const ueEngineAgent: RepositoryWork = {
   story: {
     zh: `# UE 引擎 Agent：原生工具调用与可恢复编辑
 
+## 蓝图生成：从自然语言到运行中的升降平台
+
+给出周期升降目标后，独立模型查询 UE 节点类型与引脚，生成 Tick 驱动的蓝图，完成编译、保存和图结构读回。运动使用游戏时间计算绝对位置，避免逐帧累加位置造成误差。
+
+![模型生成蓝图后的真实 UE 模拟运行，金色板为升降平台](/media/repositories/ue-engine-agent/platform-sie.png)
+
+完整任务共 18 轮模型调用，包含保存参数错误及后续修正。重新加载蓝图后，在 UE 模拟运行中采集 66 个位置点，覆盖超过 8 秒；平台高度为 40.033–199.959 cm，与目标运动公式一致。宿主脚本负责 Mesh 装配与位置采样，图逻辑由模型生成。玩家搭乘、碰撞与联网行为尚未验证。
+
+图写入编译失败时可能留下部分节点。执行器保存修改前的图，并在明确错误后读取剩余图，让模型据此修正。原始模型调用、图脚本、运行采样和复现入口均收入源码包。
+
 ## 带来源的工程知识检索
 
 模型先搜索工程资料，再按需读取全文。当前知识库包含 6 张经过核对的资料卡，覆盖材质参数、对象组合、错误恢复、蓝图接口与 MCP；记录来源、版本、核验日期和内容摘要，本地源码变化时提示重新核对。
 
-检索已参与真实材质任务：模型引用资料，读取当前参数后改为苔绿色哑光，保存并独立读回。执行中还发现资产路径定位不足，随后补入资产查找与对象加载工具。当前采用词项检索，范围为本工程操作知识；蓝图写入与更大规模文档检索继续开发。
+检索已参与真实材质与蓝图任务：模型引用资料后查询真实工具和对象，再执行修改。资产查找与对象加载工具帮助区分包路径和对象引用。当前采用词项检索，范围为本工程操作知识；更大规模文档检索继续开发。
 
 ## 中文任务工作台
 
