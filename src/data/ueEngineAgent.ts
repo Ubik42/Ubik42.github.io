@@ -9,10 +9,20 @@ export const ueEngineAgent: RepositoryWork = {
     zh: '模型通过 UE 官方 MCP 自主发现工具、修改材质并读回结果；13 轮真实调用完成参数编辑、保存与视口图像检查。',
     en: 'Native UE MCP tool discovery and material editing, with durable steps, asset readback, and viewport feedback.',
   },
-  cover: '/media/repositories/ue-engine-agent/ceramic.png',
+  cover: '/media/repositories/ue-engine-agent/workbench.png',
   tags: ['UE 5.8', '官方 MCP', 'Python', 'SQLite', '视觉反馈', '独立模型循环'],
   story: {
     zh: `# UE 引擎 Agent：原生工具调用与可恢复编辑
+
+## 中文任务工作台
+
+输入任务后，工作台显示模型动作、真实工具结果与 UE 视口截图。历史任务可以查看原始结果；中断后继续同一会话，写入状态不明确时先读回。布局任务可保存修改前的组合关系，用于检查对象配对。
+
+![中文任务工作台：紫色陶瓷调整的真实执行记录](/media/repositories/ue-engine-agent/workbench.png)
+
+从网页提交材质目标后，模型完成 9 轮调用。它先猜错颜色参数名 BaseColor，收到 UE 的错误后改用实际参数 Tint；保存资产并独立读回，确认颜色、粗糙度与金属度。工作台将失败步骤与后续修正一起显示。
+
+执行器区分明确的只读失败和结果不明确的写入：前者交回模型修正，后者保留现场并提供读回恢复。缺少布局基线时显示检查不可用，避免将模型结束等同于所有检查通过。
 
 ## 模型自主编辑与视觉反馈
 
@@ -66,7 +76,7 @@ SQLite 保存计划摘要、步骤状态、返回值和时间。完成的步骤�
 
 ## 当前实现与继续扩展
 
-已完成独立模型循环、图像反馈、原生编辑器连接、按需工具发现、持久执行、材质案例及首次案例的重启读回。Actor 变换与展示组合检查已接入；源文档检索、蓝图/动画业务案例和中文操作界面继续开发。展台由工程脚本生成，使用 UE 基础形体。
+已完成独立模型循环、图像反馈、原生编辑器连接、按需工具发现、持久执行、材质案例及首次案例的重启读回。Actor 变换与展示组合检查已接入；中文操作界面已接入真实执行；源文档检索与蓝图/动画业务案例继续开发。展台由工程脚本生成，使用 UE 基础形体。
 
 [下载源码与场景重建脚本](/media/repositories/ue-engine-agent/UE-Engine-Agent-source.zip)`,
     en: `# UE Engine Agent
