@@ -1,0 +1,70 @@
+{
+  "engine": "5.8.1-56057345+++UE5+Release-5.8",
+  "resolution": [
+    1600,
+    900
+  ],
+  "purpose": "Presentation scene; separate from historical performance measurements",
+  "shots": [
+    {
+      "name": "overview",
+      "map": "/Game/CourtyardPolish/L_CourtyardPresentation",
+      "position": [
+        1100,
+        -2900,
+        1000
+      ],
+      "target": [
+        0,
+        450,
+        300
+      ],
+      "fov": 58
+    },
+    {
+      "name": "stone-detail",
+      "map": "/Game/CourtyardPolish/L_CourtyardPresentation",
+      "position": [
+        440,
+        50,
+        360
+      ],
+      "target": [
+        120,
+        550,
+        370
+      ],
+      "fov": 58
+    },
+    {
+      "name": "sculpture",
+      "map": "/Game/CourtyardPolish/L_CourtyardPresentation",
+      "position": [
+        700,
+        -1700,
+        650
+      ],
+      "target": [
+        0,
+        -600,
+        380
+      ],
+      "fov": 58
+    },
+    {
+      "name": "original",
+      "map": "/Game/Lab/L_Courtyard_Instanced",
+      "position": [
+        1100,
+        -2900,
+        1000
+      ],
+      "target": [
+        0,
+        450,
+        300
+      ],
+      "fov": 58
+    }
+  ]
+}
