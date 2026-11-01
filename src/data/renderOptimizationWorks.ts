@@ -42,6 +42,18 @@ const courtyardStory = `# UE 场景提交与移动预览阴影优化
 
 [阴影交互对照](/experiments/courtyard/index.html) · [下载 UE 工程与脚本](/downloads/MobileSceneLab-source.zip)
 
+## 庭院材质与场景制作
+
+![庭院展示关卡：倒角石材、三环雕塑与曲面植被](/experiments/courtyard/presentation/overview.webp)
+
+[全景、石材近景与同机位制作前后](/experiments/courtyard/presentation/index.html) · [下载展示工程与原创源素材](/downloads/CourtyardPresentation-source.zip)
+
+在独立展示关卡中保留原实例布局，为石块加入倒角与加权法线。原创石材纹理以世界坐标三向投射保持尺度，从高度导数构建微表面法线，并分开控制颜色与粗糙度。补充三环雕塑、曲面草叶、双面植被着色和远景地形，调整太阳方向、环境反射与相机。
+
+这一版用于呈现场景和材质实现。以下 ISM、阴影与其他性能记录仍对应原实验关卡；新几何和材质的成本未纳入旧数字。
+
+## 原场景的阴影运行对照
+
 @[video: ES3.1 独立运行镜头与同轨迹阴影对照；固定时间步离线采集](/experiments/courtyard/media/courtyard-demo.mp4)
 
 ## 可复现的场景与对照
@@ -105,5 +117,5 @@ UE 5.8.1 中以同一几何、机位、光照和曝光渲染原实例、新副�
 
 export const renderOptimizationWorks: RepositoryWork[] = [
   { id:'vulkan-renderpass-lab',title:'Vulkan 渲染通道与 Bloom 优化实验',category:'engine-games',categoryLabel:{zh:'原生渲染与 GPU 优化',en:'Native rendering and GPU optimization'},summary:{zh:'实现 Render Pass、Subpass 与内联合成，比较同核 Bloom 分离卷积的 GPU 成本、图像误差和资源代价。',en:'Vulkan pass organization and same-kernel separable bloom, with GPU timing and image comparisons.'},cover:'/experiments/renderpass/media/separable.png',tags:['C++','Vulkan','Shader','RenderDoc','GPU 时间戳'],story:{zh:vulkanStory,en:vulkanStory}},
-  { id:'ue-mobile-scene-lab',title:'UE 场景提交与移动预览阴影优化',category:'engine-games',categoryLabel:{zh:'场景渲染与性能取舍',en:'Scene rendering and performance tradeoffs'},summary:{zh:'用同布局庭院对照独立组件与 ISM，按场景范围调整移动预览阴影预算，记录阶段耗时与局部画质变化。',en:'A reproducible courtyard for instancing, submission cost and mobile-preview shadow budget comparisons.'},cover:'/experiments/courtyard/media/budget.png',tags:['Unreal Engine','ISM','CSM','ES3.1','Python'],story:{zh:courtyardStory,en:courtyardStory}},
+  { id:'ue-mobile-scene-lab',title:'UE 场景提交与移动预览阴影优化',category:'engine-games',categoryLabel:{zh:'场景渲染与性能取舍',en:'Scene rendering and performance tradeoffs'},summary:{zh:'用同布局庭院对照独立组件与 ISM，按场景范围调整移动预览阴影预算，记录阶段耗时与局部画质变化。',en:'A reproducible courtyard for instancing, submission cost and mobile-preview shadow budget comparisons.'},cover:'/experiments/courtyard/presentation/overview.webp',tags:['Unreal Engine','ISM','CSM','ES3.1','Python'],story:{zh:courtyardStory,en:courtyardStory}},
 ];
