@@ -14,6 +14,7 @@
 <div style="overflow-x:auto"><table><thead><tr><th>配置</th><th>GPU ms</th><th>GPU 范围 ms</th><th>ShadowDepths ms</th><th>深度耗时范围 ms</th><th>阴影 Draw</th></tr></thead><tbody id="ablation-rows"></tbody></table></div>
 <div class="toolbar" id="ablation-controls"></div><figure><img id="ablation-image" src="media/FullRange.png" alt="单变量阴影配置运行截图"><figcaption id="ablation-caption">基准：400 米 / 2048 / 4 级联</figcaption></figure>
 <p class="note">每配置统计三批 P50 的中位数，范围为三批 P50 的最小值与最大值。较小整帧差异可能落在批次波动内；图片变化与阶段计时应一起判断。</p></section>
+<p style="margin-top:30px"><a href="coverage.html" style="color:#235f4c;font-weight:700">柔边卡片覆盖优化：网格面积、透明阶段与图像对照</a></p>
 <footer id="source"></footer></main><script src="data.js"></script><script src="ablation.js"></script><script>
 const $=id=>document.getElementById(id),data=window.result,a=data.FullRange,b=data.CourtyardBudget;
 $('gpu').textContent=a.GPUTime.toFixed(3)+' → '+b.GPUTime.toFixed(3);$('depth').textContent=a['GPU/ShadowDepths'].toFixed(3)+' → '+b['GPU/ShadowDepths'].toFixed(3);$('source').textContent='数据批次：'+data.source+' · 原始 CSV、命令、日志及全尺寸图像均保存在工程 Saved/Experiments 中。';
