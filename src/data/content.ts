@@ -25,7 +25,7 @@ export interface SiteCopy {
 export const siteCopy: Record<Locale, SiteCopy> = {
   en: {
     meta: {
-      title: 'Lucas Shen | AI Tools Technical Art / Game Client Development',
+      title: '沈裕焱个人主页',
       description: 'Games, DCC plug-ins, realtime graphics, engine tools, and AI-assisted art pipelines by Lucas Shen.',
     },
     nav: { work: 'Projects', practice: 'Experience', links: 'Links', aria: 'Primary navigation' },
@@ -65,7 +65,7 @@ export const siteCopy: Record<Locale, SiteCopy> = {
   },
   zh: {
     meta: {
-      title: '沈裕焱 | AI工具技术美术/游戏客户端',
+      title: '沈裕焱个人主页',
       description: '沈裕焱的 UE 客户端与引擎开发作品集：GAS、网络同步、角色动画与物理、实时渲染，以及 DCC 工具和 AI 应用。',
     },
     nav: { work: '作品', practice: '经历', links: '链接', aria: '主导航' },
