@@ -52,6 +52,10 @@ Agent 调用 Lyra 既有的角色光追距离分级策略，检查动态几何�
 
 ![读取真实 Lyra 采集的中文性能工作台](/media/repositories/ue-engine-agent/performance-workbench.png)
 
+内存时间线保留增长与释放前后的 CSV 行号，显示本地显存曲线和同记录预算压力。原始净变化与有效预算配对序列分开计算，零预算记录直接标出。独立模型已经使用这套接口调查新构建的角色光追对照。
+
+![真实采集中的显存变化、预算压力与源行号](/media/repositories/ue-engine-agent/memory-workbench.png)
+
 团队入口包含 Markdown 提示词、项目 Skill、从实际注册表导出的工具 Schema 和案例归档工具。性能实验使用 UE5.7.4 的 Lyra 宿主；以下编辑器操作使用 UE5.8 官方 MCP。
 
 ## 编辑器操作与运行反馈
