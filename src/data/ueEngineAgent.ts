@@ -6,13 +6,47 @@ export const ueEngineAgent: RepositoryWork = {
   category: 'ai-agent',
   categoryLabel: { zh: '引擎性能与编辑器 Agent', en: 'Engine performance and editor agent' },
   summary: {
-    zh: '独立模型调用 UE 工具，读取 Insights 调用链、采集 GPU 阶段、启动隔离实验并归档对照；已落地 Niagara 首次激活调查、角色渲染实验及可恢复的材质和蓝图编辑。',
+    zh: '自研面向 UE 的持久化 Agent 运行时，结合 MCP 按需工具发现、上下文工程、任务恢复与多模态运行反馈；以真实蓝图编辑、Niagara 卡顿和角色渲染实验贯通模型决策、引擎执行与结果评测。',
     en: 'Independent model tools for UE performance captures, Insights investigations, controlled comparisons and durable editor workflows.',
   },
   cover: '/media/repositories/ue-engine-agent/crowd-mixed-baseline.png',
-  tags: ['UE / Insights', '官方 MCP', '性能实验', '持久任务', '多模态反馈', 'Python / SQLite'],
+  tags: ['Durable Runtime', 'MCP / Tool Discovery', '上下文工程', '运行反馈与评测', 'UE / Insights', 'Python / SQLite'],
   story: {
     zh: `# UE 引擎 Agent：性能诊断与可恢复编辑
+
+## Agent 架构：让模型决策持续作用于真实引擎
+
+围绕 UE 编辑和性能调查，自研 **持久化 Agent 运行时（Durable Runtime）**，将模型决策、工具执行、引擎状态和实验记录分层管理。上层模型按反馈选择下一步，下层运行时负责参数校验、串行执行、状态保存与结果读回。UE5.8 官方 MCP 承担编辑器操作，Lyra 原生插件与 CLI 承担性能采集，两个宿主通过结构化工具接入同一套模型执行机制。
+
+### 持久执行：把长任务拆成可恢复的模型轮次与工具步骤
+
+**SQLite 持久化模型回复、工具请求、步骤状态和执行事件**。模型回复先落盘，再逐项执行；恢复时复用已完成步骤，接续未完成任务。引擎实验独立记录任务 ID、PID 和进程创建时间，模型可以跨多轮观察同一采集进程。
+
+真实 UE 故障实验中，材质写入成功后主动丢弃回复。恢复流程读回目标参数，确认状态已生效，再继续会话，原写入只发送一次。这将“请求失败”和“操作是否发生”拆开处理，解决编辑器工具调用中最容易造成重复修改的问题。
+
+### 工具协议：按需发现能力，执行前取得真实接口约束
+
+编辑器侧通过 **MCP 工具目录 → Toolset 发现 → JSON Schema 获取与校验** 逐步加载能力，具体参数来自运行中的 UE。性能侧提供 16 个领域工具，将 CSV、Insights、日志、实验启动、比较和归档组织为可调用接口。读操作返回有界结果，写操作与长时采集保留明确状态，模型根据实际工具反馈修正参数与后续动作。
+
+材质任务曾因参数名错误收到 UE 返回，模型随后查明实际参数并完成修改；蓝图任务则查询节点和引脚、写图、编译、读回结构，再进入真实模拟。工具协议贯穿发现、执行和反馈三个阶段。
+
+### 上下文工程：完整记录外置，按问题提取证据
+
+**会话持久记录与模型请求上下文分离**。请求保留系统规则、用户目标和近期完整工具轮次，按字符预算收起旧轮次，保证模型调用与工具返回成组出现；完整历史仍可通过 read_history 查询。性能数据按采集 ID、CSV 行号、Trace 时间窗口和日志关键词下钻，截图以制品引用保存。模型先看摘要，再读取相关证据，减少长日志对当前任务的干扰。
+
+工程知识检索保存资料来源、版本与摘要，源码变化时提示复核。知识卡用于理解接口，当前对象状态由引擎读取，两类信息分别进入决策过程。
+
+### 实验编排：用输入身份管理结果有效性
+
+每次性能实验冻结 **构建与 DLL 指纹、地图、镜头、负载、脚本、预热和测量阶段**；比较器核对实验身份与逐帧负载，再输出局部阶段和整帧变化。蓝图运行反馈绑定图摘要，修改图后，旧采样自动标为过期。
+
+实践中，这套机制识别了 201 角色在对局切换后降至约 55 个的失效采集；升降平台修改参数后，模型重新启动 UE 模拟，取得 82 个位置样本与真实截图，完成“修改 → 执行 → 观察 → 再决策”的闭环。
+
+### 可观测与评测：把模型判断追溯到工具和引擎状态
+
+记录 **模型版本、Prompt 与工具定义指纹、调用耗时、Token 用量、原始返回及产物摘要**，把每次决策连接到对应工具结果。编辑任务核对参数、对象关系和实际运动采样；性能任务保留原始 CSV、Trace、图像及基线对照。
+
+固定案例覆盖负载坍塌、无收益优化与局部收益未转化为整帧收益。评测发现模型容易扩大因果解释后，比较接口增加证据状态，提示词同步要求区分观察与假设。运行记录既用于展示成果，也用于定位 Agent 自身的推理缺陷。
 
 ## 从性能采集到隔离实验
 
@@ -140,22 +174,14 @@ Agent 调用 Lyra 既有的角色光追距离分级策略，检查动态几何�
 
 前图保留编辑器辅助图标，后图启用 Game View。模型计划来自活动中的 Codex 对话，依据真实参数和截图编写；本地运行器执行工具步骤并记录结果。
 
-## 按任务加载工具定义
-
-工具目录用于选择能力，具体工具的 JSON Schema 在执行前按需获取。这样可以保留实际参数约束，同时减少一次性塞入整个编辑器接口的上下文。已用于材质编辑、Actor 变换、资产定位、蓝图图结构编辑和视口捕获。
-
-## 执行记录连接修改与反馈
-
-SQLite 保存计划摘要、步骤状态、返回值和时间。完成的步骤可以复用记录：本次材质计划重复运行时，8 个步骤均命中既有结果。调用结果不明确时保留现场，由新计划读回核实后继续。
-
-首次截图请求暴露了接口细节：外层可选参数中的内部字段仍需要显式提供。失败记录保留，修正请求后重新捕获。资产保存成功后又启动一次编辑器，确认粗糙度、金属度与颜色仍为目标值。
-
 ## 当前实现与继续扩展
 
-已完成独立模型循环、工程知识检索、按需工具发现、持久执行和中文工作台。真实案例覆盖材质编辑、组合场景重排、蓝图运行反馈、Niagara卡顿调查和角色渲染对照，并提供原始调用、采集、截图与过程短片。后续扩展受控渲染复测、分配级内存分析与固定模型评测集。展台由工程脚本生成，使用 UE 基础形体。
+已完成独立模型循环、工程知识检索、按需工具发现、持久执行和中文工作台。真实案例覆盖材质编辑、组合场景重排、蓝图运行反馈、Niagara卡顿调查和角色渲染对照，并提供原始调用、采集、截图与过程短片。后续扩展分配级内存分析、反射质量验证与陌生场景评测。展台由工程脚本生成，使用 UE 基础形体。
 
 [下载源码与场景重建脚本](/media/repositories/ue-engine-agent/UE-Engine-Agent-source.zip)`,
     en: `# UE Engine Agent: performance investigation and durable editing
+
+A custom durable Agent runtime separates model decisions, validated tool execution, engine state and experiment evidence. SQLite persists model turns and tool steps; uncertain material writes recover through readback. UE MCP schemas are discovered on demand, while bounded request history retains complete tool turns and retrieves older evidence from durable transcripts. Build, scene and graph fingerprints govern result validity. Model and tool telemetry supports state-based evaluation across real editor and performance tasks.
 
 Independent model tools ingest native CSV captures and Unreal Insights events, launch isolated experiments, compare load and timing, and archive raw evidence. Cases include Niagara first-use preparation, a Custom Depth experiment with no observed GPU benefit, and controlled crowd ray-tracing experiments. The performance workbench exposes phase timings, memory budgets and comparison data. Full transcripts remain in SQLite with bounded request history and model-call telemetry.
 
