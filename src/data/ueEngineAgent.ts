@@ -2,17 +2,49 @@ import type { RepositoryWork } from './repositoryWorks';
 
 export const ueEngineAgent: RepositoryWork = {
   id: 'ue-engine-agent',
-  title: 'UE 引擎 Agent：原生工具调用与可恢复编辑',
+  title: 'UE 引擎 Agent：性能诊断与可恢复编辑',
   category: 'ai-agent',
-  categoryLabel: { zh: 'UE 编辑器与 Agent 执行', en: 'UE editor and agent execution' },
+  categoryLabel: { zh: '引擎性能与编辑器 Agent', en: 'Engine performance and editor agent' },
   summary: {
-    zh: '模型通过 UE 官方 MCP 编辑材质、重排场景并生成蓝图；升降平台经过编译、重启加载与运行反馈修订，新参数由 82 个真实位置点验证。',
-    en: 'Native UE MCP tool discovery and material editing, with durable steps, asset readback, and viewport feedback.',
+    zh: '独立模型调用 UE 工具，读取 Insights 调用链、采集 GPU 阶段、启动隔离实验并归档对照；已落地 Niagara 首次激活调查、角色渲染实验及可恢复的材质和蓝图编辑。',
+    en: 'Independent model tools for UE performance captures, Insights investigations, controlled comparisons and durable editor workflows.',
   },
-  cover: '/media/repositories/ue-engine-agent/workbench.png',
-  tags: ['UE 5.8', '官方 MCP', 'Python', 'SQLite', '视觉反馈', '独立模型循环'],
+  cover: '/media/repositories/ue-engine-agent/crowd-fixed-baseline.png',
+  tags: ['UE / Insights', '官方 MCP', '性能实验', '持久任务', '多模态反馈', 'Python / SQLite'],
   story: {
-    zh: `# UE 引擎 Agent：原生工具调用与可恢复编辑
+    zh: `# UE 引擎 Agent：性能诊断与可恢复编辑
+
+## 从性能采集到隔离实验
+
+性能工具通过 CLI 和结构化 Schema 接入独立模型。模型可以读取原始 CSV、按时间区间下钻 Unreal Insights、查询原生日志，选择已有优化变体，启动隔离宿主，再比较阶段耗时、负载与画面。每个任务保存构建指纹、实际命令、进程身份和原始结果。
+
+### CPU 卡顿：追到传送效果首次准备
+
+从一次约 58.6 ms 的角色移动更新，沿实际嵌套事件追到碰撞重叠、传送器、GameplayCue 和 Niagara 准备路径。随后在固定 SIE 场景中，对两个传送效果各执行三轮激活。
+
+加载时准备将首次调用从约 29 / 26 ms 降到 0.82 / 0.41 ms，同时增加约 24 / 30 ms 的加载成本。这里比较的是激活调用与就绪状态，完整传送玩法及总帧收益分别验证。
+
+![真实 SIE 中的角色与传送效果](/media/repositories/ue-engine-agent/portal-sie-baseline.png)
+
+### GPU 实验：负载、镜头与阶段开销一起检查
+
+200 角色场景中，工具识别出正式对局切换导致的大批重生失败，把原本通过平均负载检查的采集标为不可用于比较。后续窗口保持全程 201 角色，并增加显式固定镜头、脚本指纹和测量后的同宿主截图。
+
+Agent 调用 Lyra 既有的角色光追距离分级策略，检查动态几何更新、光追场景、投影角色及实际参与计数。原始与修正后的实验都随源码包提供；独立模型动作与宿主夹具代码分别记录。
+
+![固定视角下的真实多角色场景，截图在性能测量结束后采集](/media/repositories/ue-engine-agent/crowd-fixed-baseline.png)
+
+另一次 9 AI 的 Custom Depth 实验中，参与角色均值从 10.00 降到 3.69，GPU 阶段耗时未下降。该结果作为无收益案例保留，避免将对象数减少直接写成性能提升。
+
+### 中文工作台与长会话
+
+工作台展示真实采集、GPU 阶段图、显存预算和基线差异，可以直接提交模型分析。SQLite 保留完整会话，超出请求预算时收起完整旧轮次，并通过历史查询回看。提示词、工具定义、模型版本、耗时和 token 使用量均留有记录。
+
+![读取真实 Lyra 采集的中文性能工作台](/media/repositories/ue-engine-agent/performance-workbench.png)
+
+团队入口包含 Markdown 提示词、项目 Skill、从实际注册表导出的工具 Schema 和案例归档工具。性能实验使用 UE5.7.4 的 Lyra 宿主；以下编辑器操作使用 UE5.8 官方 MCP。
+
+## 编辑器操作与运行反馈
 
 @[video: 32 秒案例：实际调用记录、蓝图结构示意、旧结果过期与真实 UE 运行复现](/media/repositories/ue-engine-agent/showcase.mp4)
 
@@ -106,10 +138,14 @@ SQLite 保存计划摘要、步骤状态、返回值和时间。完成的步骤�
 
 ## 当前实现与继续扩展
 
-已完成独立模型循环、工程知识检索、按需工具发现、持久执行和中文工作台。真实案例覆盖材质编辑、组合场景重排、蓝图生成及运行反馈修订，并提供原始调用、截图与过程短片。后续扩展动画业务与更复杂的场景关系。展台由工程脚本生成，使用 UE 基础形体。
+已完成独立模型循环、工程知识检索、按需工具发现、持久执行和中文工作台。真实案例覆盖材质编辑、组合场景重排、蓝图运行反馈、Niagara卡顿调查和角色渲染对照，并提供原始调用、采集、截图与过程短片。后续扩展受控渲染复测、分配级内存分析与固定模型评测集。展台由工程脚本生成，使用 UE 基础形体。
 
 [下载源码与场景重建脚本](/media/repositories/ue-engine-agent/UE-Engine-Agent-source.zip)`,
-    en: `# UE Engine Agent
+    en: `# UE Engine Agent: performance investigation and durable editing
+
+Independent model tools ingest native CSV captures and Unreal Insights events, launch isolated experiments, compare load and timing, and archive raw evidence. Cases include Niagara first-use preparation, a Custom Depth experiment with no observed GPU benefit, and controlled crowd ray-tracing experiments. The performance workbench exposes phase timings, memory budgets and comparison data. Full transcripts remain in SQLite with bounded request history and model-call telemetry.
+
+![Fixed-view crowd scene captured after measurement](/media/repositories/ue-engine-agent/crowd-fixed-baseline.png)
 
 A native UE 5.8 MCP editing case changes a shared material from teal metal to warm matte paint. Tool schemas and current values inform a plan authored by the active Codex conversation. SQLite records execution; a fresh editor process confirms that roughness 0.65, metallic 0.05, and the new tint survived asset saving. Replaying the completed plan reuses all eight steps.
 
