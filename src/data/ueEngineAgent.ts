@@ -9,7 +9,7 @@ export const ueEngineAgent: RepositoryWork = {
     zh: '独立模型调用 UE 工具，读取 Insights 调用链、采集 GPU 阶段、启动隔离实验并归档对照；已落地 Niagara 首次激活调查、角色渲染实验及可恢复的材质和蓝图编辑。',
     en: 'Independent model tools for UE performance captures, Insights investigations, controlled comparisons and durable editor workflows.',
   },
-  cover: '/media/repositories/ue-engine-agent/crowd-fixed-baseline.png',
+  cover: '/media/repositories/ue-engine-agent/crowd-mixed-baseline.png',
   tags: ['UE / Insights', '官方 MCP', '性能实验', '持久任务', '多模态反馈', 'Python / SQLite'],
   story: {
     zh: `# UE 引擎 Agent：性能诊断与可恢复编辑
@@ -35,6 +35,16 @@ Agent 调用 Lyra 既有的角色光追距离分级策略，检查动态几何�
 ![固定视角下的真实多角色场景，截图在性能测量结束后采集](/media/repositories/ue-engine-agent/crowd-fixed-baseline.png)
 
 另一次 9 AI 的 Custom Depth 实验中，参与角色均值从 10.00 降到 3.69，GPU 阶段耗时未下降。该结果作为无收益案例保留，避免将对象数减少直接写成性能提升。
+
+近远混合镜头中，测量后参与光追的角色由 201 个变为 59 个，动态几何更新均值从 5.19 ms 降到 2.21 ms；GPU 总时间均值没有改善。项目同时保留局部开销、整帧和实际参与状态，分别判断效果。
+
+![近远混合机位下的201角色场景](/media/repositories/ue-engine-agent/crowd-mixed-baseline.png)
+
+### 可复现适配器与模型评测
+
+源码包提供 PerformanceLab 插件、Lyra 5.7 接口补丁和安装工具，记录源文件版本、备份及安装读回。已在独立源码目录编译，并用新 DLL 验证场景接入；Lyra 美术资源由本机已有工程提供。旧 HeroArena 实验需要额外的自定义资产。
+
+固定评测覆盖负载坍塌、无收益优化和局部收益未转化为整帧收益。原始模型回答与人工复核一同保存；针对因果表述越界，工具增加证据状态，区分已观察变化与待验证解释。反射实验增加暂停后的同姿态对照，但当前图像尚不足以确定距离裁剪的画质代价。
 
 ### 中文工作台与长会话
 
@@ -144,6 +154,8 @@ SQLite 保存计划摘要、步骤状态、返回值和时间。完成的步骤�
     en: `# UE Engine Agent: performance investigation and durable editing
 
 Independent model tools ingest native CSV captures and Unreal Insights events, launch isolated experiments, compare load and timing, and archive raw evidence. Cases include Niagara first-use preparation, a Custom Depth experiment with no observed GPU benefit, and controlled crowd ray-tracing experiments. The performance workbench exposes phase timings, memory budgets and comparison data. Full transcripts remain in SQLite with bounded request history and model-call telemetry.
+
+The source package includes the PerformanceLab plugin, versioned Lyra 5.7 hooks and an installer with backups and readback. An isolated source build exercises the integration using existing local Lyra assets. A fixed evaluation set records failures in causal interpretation; paused reflection comparisons remain inconclusive about visual quality.
 
 ![Fixed-view crowd scene captured after measurement](/media/repositories/ue-engine-agent/crowd-fixed-baseline.png)
 
