@@ -1,0 +1,8 @@
+{
+  "revision": "ffe7032a041ee02ae553af975d5c127602f8d5cb",
+  "sha256": "991ad63c1df418ae86c4798d0da4d86426bec0af0399ee599ef2a4a40683b651",
+  "bytes": 51846516,
+  "performance_tools": 16,
+  "lyra_adapter_engine": "5.7.4",
+  "source": "UE-Engine-Agent-source.zip"
+}
