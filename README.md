@@ -15,6 +15,8 @@ AIGC 板块新增“AI 角色生成与视频动作重定向”：三个角色、
 
 AIGC 板块新增“动作导演”：当前 GPT/Codex 对话通过本地桥驱动 Unreal / ALS 角色，展示复合指令、姿态修订、连续路线与停止。详情包含独立 Windows 程序实机录像、十二项运行回归录像、路径脱敏的测试报告与源码重建包；明确区分模型回传、测试夹具和 ALS 提供的动画能力。
 
+新增的 [Panthesia 钢琴练习与 3D 演奏动画](https://github.com/Ubik42/Panthesia) 从 MIDI 自动生成指法，并实时解算两只手的 3D 演奏动画：手腕走加权最小急动度路径，拇指按生理限位做关节空间 IK，手指顺序由保序回归保证而不依赖碰撞；配套逐帧 benchmark，相比优化前拇指关节突变从 107.6‰ 降到 10.7‰，击键命中 96.6%。
+
 新增的 [CPU 软件光栅化实验室](https://github.com/Ubik42/NoemancerSoftwareRasterizer) 以 C++20 在 CPU 上显式完成三角形覆盖、透视正确插值、Z-Buffer 与逐像素着色，并通过十张真实输出展示基础缓冲、风格化 Shader 和 Overdraw 诊断。项目基于 MIT 许可的 TinyRenderer 教学实现扩展，主页与仓库均保留来源和素材授权边界。
 
 Unreal 方向新增三项独立作品：[Lyra Hero Arena 五英雄多人对战游戏](https://github.com/Ubik42/LyraHeroArena)、[多角色高负载场景性能优化](https://github.com/Ubik42/LyraHeroArena/tree/main/Plugins/PerformanceLab) 与 [UE Performance Workbench 性能实验工作台](https://github.com/Ubik42/LyraHeroArena/tree/main/Plugins/PerformanceWorkbench)。它们共享同一套真实 Lyra 工程，但分别展示游戏流程、优化方法和 Editor 工具开发能力。

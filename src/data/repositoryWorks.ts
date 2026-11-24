@@ -5,6 +5,7 @@ import { aitaProjects } from './aitaSystems';
 import { animationAigcLab } from './animationAigcLab';
 import { alsDirector } from './alsDirector';
 import { pcgWorkbench } from './pcgWorkbench';
+import { panthesia } from './panthesia';
 import { parkourAnimation } from './parkourAnimation';
 import { renderOptimizationWorks } from './renderOptimizationWorks';
 import lyraPerformanceStory from '../content/projects/lyra-performance.zh.md?raw';
@@ -30,6 +31,7 @@ export interface RepositoryWork {
 
 export const repositoryWorks: RepositoryWork[] = [
   ueEngineAgent,
+  panthesia,
   ...renderOptimizationWorks,
   rayTracingHardware,
   parkourAnimation,
