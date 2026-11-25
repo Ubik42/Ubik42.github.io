@@ -40,7 +40,6 @@ const pipelineOrder = new Map([
   'advanced-skeleton-python-refactor',
   'art-pipeline-skill',
   'maya-plugin',
-  'internship-art-pipeline',
   'maya-garment-preparation',
   'mayascope',
   'mayacraft',
