@@ -51,7 +51,6 @@ const pipelineOrder = new Map([
 
 const engineGamesOrder = new Map([
   'lyra-hero-arena',
-  'panthesia',
   'siggraph-physics-lab',
   'noemancer',
   'noemancer-software-rasterizer',

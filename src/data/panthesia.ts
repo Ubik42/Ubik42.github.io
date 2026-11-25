@@ -5,8 +5,8 @@ const media = '/media/repositories/panthesia';
 export const panthesia: RepositoryWork = {
   id: 'panthesia',
   title: 'Panthesia · 钢琴练习与 3D 演奏动画',
-  category: 'engine-games',
-  categoryLabel: { zh: '程序化角色动画 · 桌面应用', en: 'Procedural hand animation · desktop app' },
+  category: 'other-tools',
+  categoryLabel: { zh: '独立开发 · 程序化 3D 演奏动画', en: 'Independent app · procedural 3D hand animation' },
   summary: {
     zh: '打开一首 MIDI 就能练的钢琴软件。核心是从乐谱自动生成指法，再实时解算两只手的 3D 演奏动画：手腕最小急动度轨迹、拇指关节空间 IK、按生理数据约束关节，并用逐帧 benchmark 量化改进。',
     en: 'A piano practice app that opens any MIDI. Its core generates fingering from the notes and solves both hands in real time as 3D animation: minimum-jerk wrist paths, joint-space thumb IK, physiological joint limits, and a frame-by-frame benchmark.',
