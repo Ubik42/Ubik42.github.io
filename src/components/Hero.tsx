@@ -31,7 +31,6 @@ export function Hero() {
       <div className="profile-name">
         <h1 id="hero-title"><span lang="zh-CN">沈裕焱</span><span>Lucas Shen</span></h1>
       </div>
-      <p className="profile-intro">{locale === 'zh' ? 'Gameplay、GAS 与网络同步，角色动画与物理、实时渲染和引擎工具。' : 'Gameplay, GAS and networking; character animation, physics, realtime rendering and engine tools.'}</p>
       <div className="profile-history">
         <section>
           <h2>{locale === 'zh' ? '教育经历' : 'Education'}</h2>
